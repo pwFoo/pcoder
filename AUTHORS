@@ -1,0 +1,34 @@
+=====================================================================
+   PCODER (Editor de Codigo en la Nube)
+   Sistema de Edicion de Codigo basado en PHP
+   Copyright (C) 2013  John F. Arroyave Gutiérrez
+                       unix4you2@gmail.com
+                       www.practico.org
+========================================================================
+
+Licensed under GPLv3 terms. See the LICENSE file for details
+That is the license for the whole package.
+
+------------------------------------------------------------------------
+Important: All source files in this project should be  UTF-8 Without BOM
+------------------------------------------------------------------------
+
+PCoder esta basado en el trabajo inicial de IC9 y otras aplicaciones
+liberadas bajo licencias compatibles con la GPL v3:
+
+Font-Awesome
+	Location: inc/font-awesome/fonts/*
+	Font License: SIL OFL 1.1
+	URL: http://scripts.sil.org/OFL
+	Location: Applies to all CSS and LESS files in the following
+	          directories: font-awesome/css/, font-awesome/less/,
+	          and font-awesome/scss/.
+	Code License: MIT License
+	URL: http://opensource.org/licenses/mit-license.html
+
+Bootstrap
+	Location: inc/bootstrap/*
+	License: MIT License
+    License docs: Creative Commons  
+    URL: http://getbootstrap.com/
+	Copyright 2011-2014 Twitter, Inc.
