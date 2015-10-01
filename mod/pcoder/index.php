@@ -174,9 +174,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head>
 	<title>PCoder</title>
+	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
- 
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="generator" content="PCoder <?php  echo $PCO_PCODER_VersionActual; ?>" />
+ 	<meta name="description" content="Editor de codigo en la Nube basado en Practico Framework PHP" />
+    <meta name="author" content="John Arroyave G. - {www.practico.org} - {unix4you2 at gmail.com}">
+    
     <!-- CSS Core de Bootstrap -->
     <link href="../../inc/bootstrap/css/bootstrap.min.css" rel="stylesheet"  media="screen">
     <link href="../../inc/bootstrap/css/bootstrap-theme.css" rel="stylesheet"  media="screen">
@@ -610,6 +615,65 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                     }
                 });*/
             }
+ 		function PCO_VentanaPopup(theURL,winName,features)
+			{ 
+				window.open(theURL,winName,features);
+			}
+        function PCO_AgregarElementoDiv(marco,elemento)
+            {
+                //carga dinamicamente objetos html a marcos
+                var capa = document.getElementById(marco);
+                var zona = document.createElement("NuevoElemento");
+                zona.innerHTML = elemento;
+                capa.appendChild(zona);
+            }
+		 function PCO_ObtenerContenidoAjax(PCO_ASINCRONICO,PCO_URL,PCO_PARAMETROS)
+			{
+				var xmlhttp;
+				if (window.XMLHttpRequest)
+					{   // codigo for IE7+, Firefox, Chrome, Opera, Safari
+						xmlhttp=new XMLHttpRequest();
+					}
+				else
+					{   // codigo for IE6, IE5
+						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+
+				//funcion que se llama cada vez que cambia la propiedad readyState
+				xmlhttp.onreadystatechange=function()
+					{
+						//readyState 4: peticion finalizada y respuesta lista
+						//status 200: OK
+						if (xmlhttp.readyState===4 && xmlhttp.status===200)
+							{
+								contenido_recibido=xmlhttp.responseText;
+								contenido_recibido = contenido_recibido.trim();
+								//Cuando es asincronico devuelve la respuesta cuando este lista
+								if(PCO_ASINCRONICO==1)
+									return contenido_recibido;
+							}
+					};
+
+				/* open(metodo, url, asincronico)
+				* metodo: post o get
+				* url: localizacion del archivo en el servidor
+				* asincronico: comunicacion asincronica true o false.*/
+				if(PCO_ASINCRONICO==1)
+					xmlhttp.open("POST",PCO_URL,true);
+				else
+					xmlhttp.open("POST",PCO_URL,false);
+
+				//establece el header para la respuesta
+				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+				//enviamos las variables al archivo get_combo2.php
+				//xmlhttp.send();
+				xmlhttp.send(PCO_PARAMETROS);
+				
+				//Cuando la solicitud es asincronica devuelve el resultado al momento de llamado
+				if(PCO_ASINCRONICO==0)
+					return contenido_recibido;
+			}
         function PCODER_CargarArchivo(archivo)
             {
                 //Oculta el modal de seleccion del archivo
