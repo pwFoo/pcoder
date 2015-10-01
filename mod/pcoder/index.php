@@ -262,41 +262,41 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 
 
-<div id="contenedor_principal">
+	<div class="row navbar-inverse">
+		<div class="col-lg-1">
+			<!-- LOGO PCODER -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href=""><img src="../../img/pcoder.png"></a>
+			</div>
+		</div>
+		<div class="col-lg-11">
 
-    <nav id="barra_superior" class="navbar navbar-default navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
+			<!-- BARRA DE HERRAMIENTAS --> 
+			<div class="navbar-form navbar-left">
+				<button id="boton_navegador_archivos" class="btn btn-primary btn-xs" data-toggle="modal" href="#NavegadorArchivos" title="<?php echo $MULTILANG_PCODER_Explorar; ?>"><i class="fa fa-folder-open fa-fw"></i></button>
+				&nbsp;&nbsp;&nbsp;
+				<button id="boton_guardar" class="btn btn-danger btn-xs" OnClick="Guardar();" href="#VentanaAlmacenamiento" title="<?php echo $MULTILANG_PCODER_Guardar; ?>"><i class="fa fa-save fa-fw"></i></button>
+				&nbsp;&nbsp;&nbsp;
+				<!--<a class="btn btn-default btn-xs" OnClick="Deshacer();"><i class="fa fa-undo"></i></a>
+				<a class="btn btn-default btn-xs" OnClick="Rehacer();"><i class="fa fa-repeat"></i></a>-->
+				<a class="btn btn-info btn-xs" data-toggle="modal" href="#AtajosTeclado"><i class="fa fa-keyboard-o"></i> <?php echo $MULTILANG_PCODER_AtajosTitPcoder; ?></a>
+				<a class="btn btn-warning btn-xs" OnClick="if(window.confirm('<?php echo $MULTILANG_PCODER_AjusteConfirma; ?>')===true) MaximizarEditor();" title="Recargar ventana, Util despues de maximizar" ><i class="fa fa-refresh"></i> <?php echo $MULTILANG_PCODER_Ajuste; ?></a>
+			</div>
 
-            <!-- LOGO PCODER -->
-            <div class="navbar-header">
-                <a class="navbar-brand" href=""><img src="../../img/pcoder.png"></a>
-            </div>
+			<!-- INFORMACION DEL ARCHIVO -->
+			<ul class="nav navbar-nav navbar-form navbar-right">
+				<li class="btn-default btn-xs btn-info">
+					&nbsp;<?php echo $MULTILANG_PCODER_Tipo; ?> <span class="badge"><?php echo $PCODER_TipoElemento; ?></span>&nbsp;<br>
+					&nbsp;<?php echo $PCODER_FechaElemento; ?> <span class="badge"><?php echo $PCODER_TamanoElemento; ?> Kb</span>&nbsp;<br>
+				</li>
+			</ul>
 
-            <!-- BARRA DE HERRAMIENTAS --> 
-            <div class="navbar-form navbar-left">
-                <button id="boton_navegador_archivos" class="btn btn-primary btn-xs" data-toggle="modal" href="#NavegadorArchivos" title="<?php echo $MULTILANG_PCODER_Explorar; ?>"><i class="fa fa-folder-open fa-fw"></i></button>
-                &nbsp;&nbsp;&nbsp;
-                <button id="boton_guardar" class="btn btn-danger btn-xs" OnClick="Guardar();" href="#VentanaAlmacenamiento" title="<?php echo $MULTILANG_PCODER_Guardar; ?>"><i class="fa fa-save fa-fw"></i></button>
-                &nbsp;&nbsp;&nbsp;
-                <!--<a class="btn btn-default btn-xs" OnClick="Deshacer();"><i class="fa fa-undo"></i></a>
-                <a class="btn btn-default btn-xs" OnClick="Rehacer();"><i class="fa fa-repeat"></i></a>-->
-                <a class="btn btn-info btn-xs" data-toggle="modal" href="#AtajosTeclado"><i class="fa fa-keyboard-o"></i> <?php echo $MULTILANG_PCODER_AtajosTitPcoder; ?></a>
-                <a class="btn btn-warning btn-xs" OnClick="if(window.confirm('<?php echo $MULTILANG_PCODER_AjusteConfirma; ?>')===true) MaximizarEditor();" title="Recargar ventana, Util despues de maximizar" ><i class="fa fa-refresh"></i> <?php echo $MULTILANG_PCODER_Ajuste; ?></a>
-            </div>
-
-            <!-- INFORMACION DEL ARCHIVO -->
-            <ul class="nav navbar-nav navbar-form navbar-right">
-                <li class="btn-default btn-xs btn-info">
-                    &nbsp;<?php echo $MULTILANG_PCODER_Tipo; ?> <span class="badge"><?php echo $PCODER_TipoElemento; ?></span>&nbsp;<br>
-                    &nbsp;<?php echo $PCODER_FechaElemento; ?> <span class="badge"><?php echo $PCODER_TamanoElemento; ?> Kb</span>&nbsp;<br>
-                </li>
-            </ul>
-
-        </div><!-- /.container-fluid -->
-    </nav>
+		</div>
+	</div>
 
 
     <div class="row">
+		<div class="col-lg-12">
         <?php 
             if ($PCODER_Mensajes==1) echo '<br><br>';
             //Presenta mensajes de error o informacion
@@ -312,6 +312,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                     die();
                 }
         ?>
+        </div>
     </div>
 
 
@@ -471,7 +472,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 </nav>
 
 
-</div>
+
 
 
 
@@ -544,17 +545,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                 */
                 //Recarga el documento se queda en ciclo... ciudado
                 location.reload();
-            }
-        function RedimensionarEditor()
-            {
-                var margen_correccion=3; //Pixeles Antes 3
-                var alto_pantalla=$(document).height();
-                var alto_contenedor_principal=$(contenedor_principal).height();
-                var alto_barra_superior=$(barra_superior).height();
-                var alto_barra_inferior=$(barra_inferior).height();
-                alto_editor = alto_pantalla - alto_barra_superior - alto_barra_inferior - margen_correccion;
-                alto_inicial_editor=alto_editor;
-                document.getElementById("editor_codigo").style.height=alto_editor+"px";
             }
         function DisminuirEditor()
             {
@@ -726,10 +716,9 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
           document.getElementById("PCODER_AreaTexto").value=editor.getSession().getValue();
         });
 
-        //Ajusta tamano del editor al inicio y en cada cambio de tamano de la ventana
-        RedimensionarEditor();
+        //Ajusta tamano del editor en cada cambio de tamano de la ventana
         $( window ).resize(function() {
-          RedimensionarEditor();
+          //RedimensionarEditor();
         });
 
         //Captura el evento de Ctrl+S para guardar el archivo
