@@ -89,11 +89,6 @@
         // Agrega ademas las variables de sesion
         if (!empty($_SESSION)) extract($_SESSION);
     }
-    
-    
- 
-
-
 
 
 if (@$PCOSESS_LoginUsuario=="admin" || $PCO_PCODER_StandAlone==1)
@@ -167,6 +162,35 @@ if ($PCO_Accion=="PCOMOD_GuardarArchivo")
 
 if ($PCO_Accion=="PCOMOD_CargarPcoder") 
 	{
+
+
+// PARA REVISAR JQUERY-UI http://jqueryui.com/tabs/#manipulation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ?>
