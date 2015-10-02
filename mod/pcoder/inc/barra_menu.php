@@ -21,10 +21,12 @@
 	*/
 
     // BARRA DE MENU DEL APLICATIVO
+    // PARA REVISAR JQUERY-UI http://jqueryui.com/tabs/#manipulation
 ?>
 
+<div id="contenedor_menu">
 
-	<nav class="navbar navbar-default navbar-inverse " style="margin:0px; padding:0px;"> <!-- navbar-fixed-top navbar-fixed-bottom navbar-static-top navbar-inverse -->
+	<nav class="navbar navbar-default navbar-inverse" style="margin:0px; padding:0px;"> <!-- navbar-fixed-top navbar-fixed-bottom navbar-static-top navbar-inverse -->
 		<div class="container-fluid">
 			<!-- Logo y boton colapsable -->
 			<div class="navbar-header">
@@ -58,8 +60,6 @@
 						<ul class="dropdown-menu">
 							<li><a href="#" OnClick="Deshacer();"><i class="fa fa-undo fa-fw"></i> <?php echo $MULTILANG_PCODER_Deshacer; ?></a></li>
 							<li><a href="#" OnClick="Rehacer(); "><i class="fa fa-repeat fa-fw"></i> <?php echo $MULTILANG_PCODER_Rehacer; ?></a></li>
-							<li role="separator" class="divider"></li>
-							<li><a data-toggle="modal" href="#myModalPREFERENCIAS"><i class="fa fa-wrench fa-fw"></i> <?php echo $MULTILANG_PCODER_Preferencias; ?></a></li>
 						</ul>
 					</li>
 					<!--<li><a href="#">EJEMPLO ENLACE</a></li>-->
@@ -81,7 +81,7 @@
 				</ul>
 					
 				<ul class="nav navbar-nav navbar-right">
-					<!--<li><a href="#">EJEMPLO ENLACE</a></li>-->
+					<a data-toggle="modal" href="#myModalPREFERENCIAS" class="navbar-text"><i class="fa fa-wrench fa-fw"></i> <?php echo $MULTILANG_PCODER_Preferencias; ?></a>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-question-circle"></i> <?php echo $MULTILANG_PCODER_Ayuda; ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -95,5 +95,5 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
-	
-	
+
+</div><!-- /.contenedor -->

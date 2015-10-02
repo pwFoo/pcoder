@@ -55,7 +55,7 @@
 								for ($i=0;$i<count($PCODER_TemasOscuros);$i++)
 									{
 										$EstadoSeleccionTema="";
-										if ($PCODER_TemasOscuros[$i]["Valor"]=="tomorrow_night")
+										if ($PCODER_TemasOscuros[$i]["Valor"]=="ambiance")
 											$EstadoSeleccionTema=" SELECTED ";
 										echo '<option value="ace/theme/'.$PCODER_TemasOscuros[$i]["Valor"].'" '.$EstadoSeleccionTema.'>'.$PCODER_TemasOscuros[$i]["Nombre"].'</option>';
 									}

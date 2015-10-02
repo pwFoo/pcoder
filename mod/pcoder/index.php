@@ -155,37 +155,6 @@ if ($PCO_Accion=="PCOMOD_GuardarArchivo")
 
 if ($PCO_Accion=="PCOMOD_CargarPcoder") 
 	{
-
-
-// PARA REVISAR JQUERY-UI http://jqueryui.com/tabs/#manipulation
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
  <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
@@ -208,25 +177,13 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
     <style type="text/css">
         html, body {
-            margin: 0;
-            padding: 0;
-            /*height: 100%;*/
-            /*min-height: 100%;*/
-            width: 100%;
-            background: #888888;  /* 002a36 | BFBFBF | 888888 */
+            background: #000000;  /* 002a36 | BFBFBF | 888888 */
             overflow-x: hidden;
             overflow-y: hidden;
-        }
-        #marco_editor_codigo { 
-            margin-top:34px;
         }
         #marco_explorador { 
             overflow-y: auto;
             overflow-x: auto;
-        }
-        #editor_codigo { 
-            width: 100%; 
-            height: 600px;  /*Define el tamano segun resolucion*/
         }
     </style>
 
@@ -237,122 +194,45 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <!-- jQuery -->
 	<script type="text/javascript" src="../../inc/jquery/jquery-2.1.0.min.js"></script>
 </head>
-<body style="margin:0px; padding:0px;">
- 
- 
- <div id="wrapper" >
-	<div id="page-wrapper">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-12" style="margin:0px; padding:0px;">
-<!-- INICIO  DE CONTENIDOS DE APLICACION -->
+<body>
 
-	<!-- 
-	#######################################################################################
-	DISPOSICION PARA EDITOR  ##############################################################
-	#######################################################################################  -->
+		<?php
+			//Incluye algunos marcos del aplicativo
+			include_once ("inc/barra_menu.php");
+			include_once ("inc/mensajes_error.php");
+			include_once ("inc/marco_explorador.php");
+			include_once ("inc/marco_preferencias.php");
+			include_once ("inc/marco_acerca.php");
+			include_once ("inc/marco_guardar.php");
+			include_once ("inc/marco_teclado.php");
+		?>
 
+		<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
+			<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"><?php echo $PCODERcontenido_archivo; ?></textarea>
+			<input name="PCODER_TokenEdicion" type="hidden" value="<?php echo $PCODER_TokenEdicion; ?>">
+			<input name="PCODER_archivo" type="hidden" value="<?php echo $PCODER_archivo; ?>">
+			<input type="Hidden" name="Presentar_FullScreen" value="<?php echo $Presentar_FullScreen; ?>">
+			<input type="Hidden" name="Precarga_EstilosBS" value="<?php echo $Precarga_EstilosBS; ?>">
+			<input type="Hidden" name="PCO_ECHO" value="0"> <!-- Determina si la respuesta debe ser con o sin eco -->
+			<input name="PCO_Accion" type="hidden" value="PCOMOD_GuardarArchivo">
+		</form>
 
-	<?php
-		//Incluye algunos marcos del aplicativo
-		include_once ("inc/barra_menu.php");
-		include_once ("inc/mensajes_error.php");
-		include_once ("inc/marco_explorador.php");
-		include_once ("inc/marco_preferencias.php");
-		include_once ("inc/marco_acerca.php");
-		include_once ("inc/marco_guardar.php");
-		include_once ("inc/marco_teclado.php");
-	?>
-
-
-
-
-    <!-- ZONA DE EDICION -->
-    <form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
-        <textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"><?php echo $PCODERcontenido_archivo; ?></textarea>
-        <input name="PCODER_TokenEdicion" type="hidden" value="<?php echo $PCODER_TokenEdicion; ?>">
-        <input name="PCODER_archivo" type="hidden" value="<?php echo $PCODER_archivo; ?>">
-        <input type="Hidden" name="Presentar_FullScreen" value="<?php echo $Presentar_FullScreen; ?>">
-        <input type="Hidden" name="Precarga_EstilosBS" value="<?php echo $Precarga_EstilosBS; ?>">
-        <input type="Hidden" name="PCO_ECHO" value="0"> <!-- Determina si la respuesta debe ser con o sin eco -->
-        <input name="PCO_Accion" type="hidden" value="PCOMOD_GuardarArchivo">
-    </form>
-
-
-
-<!--
-    <div class="row">
-        <div class="row container-full">
-            <div id="marco_editor_codigo" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container-full">
-                <div class="form-group">
-                    <div id="editor_codigo"></div>
-                </div>
-            </div>
-        </div>
-    </div>
--->
-
-<!--
-    <div class="row">
-		<div class="col-lg-12">
-								<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
-		</div>
-    </div>
--->
-
-    <div class="row" style="margin:0px; padding:0px;">
-		<div class="col-lg-12" style="margin:0px; padding:0px;">
-								<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%"  height="100vh"></div>
-		</div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-	<!-- 
-	#######################################################################################
-	FIN DISPOSICION PARA EDITOR ###########################################################
-	#######################################################################################  -->
-
-<!-- FIN  DE CONTENIDOS DE APLICACION -->
-				</div>
-				<!-- /.col-lg-12 -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
 			</div>
-			<!-- /.row -->
 		</div>
-		<!-- /.container-fluid -->
-	</div>
-	<!-- /#page-wrapper -->
-</div>
-<!-- /#wrapper inicial -->
+
+		<?php
+			//Incluye algunos marcos del aplicativo
+			include_once ("inc/barra_estado.php");
+		?>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script type="text/javascript" src="../../inc/bootstrap/js/bootstrap.min.js"></script>
-
-    <script language="JavaScript">
-        //Carga los tooltips programados en la hoja.  Por defecto todos los elementos con data-toggle=tootip
-        $(function () {
-          $('[data-toggle="tooltip"]').tooltip();
-        })
-    </script>
-
-    <script language="JavaScript">
-        //Carga los popovers programados en la hoja.  Por defecto todos los elementos con data-toggle=popover
-        $(function () {
-          $('[data-toggle="popover"]').popover()
-        })
-    </script>
-
-    <script src="../../inc/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-
+    
+	<script src="../../inc/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 
     <script type="text/javascript">
         function CambiarFuenteEditor(tamano)
@@ -490,6 +370,21 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                 PCO_VentanaPopup('index.php?PCO_Accion=PCOMOD_CargarPcoder&Presentar_FullScreen=1&Precarga_EstilosBS=1&PCODER_archivo='+archivo,'{P} '+archivo,'toolbar=no, location=no, directories=0, directories=no, status=no, location=no, menubar=no ,scrollbars=no, resizable=yes, fullscreen=no, titlebar=no, width=800, height=600');
             }
 
+        function RedimensionarEditor()
+            {
+				//Obtiene las dimensiones actuales de la ventana de edicion y algunos objetos
+				var alto_ventana = $(window).height();
+				var alto_documento = $(document).height();
+				var alto_contenedor_editor = $("#editor_codigo").height();
+				var alto_contenedor_menu = $("#contenedor_menu").height();
+				var alto_contenedor_barra_estado = $("#contenedor_barra_estado").height();
+				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado)*100/alto_documento;
+				var porcentaje_final=100-porcentaje_barrasmenuyestado;
+				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_barra_estado;
+				//$('#editor_codigo').height( alto_final ).css({ });			//Asignacion en pixeles
+				$('#editor_codigo').height( porcentaje_final+"vh" ).css({ });	//Asignacion en porcentaje
+			}
+
         // Crea el editor
         editor = ace.edit("editor_codigo");
         editor.getSession().setUseWorker(false); //Evita el error 404 para "worker-php.js Failed to load resource: the server responded with a status of 404 (Not Found)"
@@ -500,7 +395,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
         // Inicia el editor de codigo con las opciones predeterminadas
         ActualizarTituloEditor("<?php echo '{P} '.$PCODER_NombreArchivo; ?>");
         CambiarFuenteEditor("14px");
-        CambiarTemaEditor("ace/theme/tomorrow_night");  //tomorrow_night|twilight|eclipse|ambiance|ETC
+        CambiarTemaEditor("ace/theme/ambiance");  //tomorrow_night|twilight|eclipse|ambiance|ETC
         CambiarModoEditor("ace/mode/<?php echo $PCODER_ModoEditor; ?>");
         CaracteresInvisiblesEditor(0);
         editor.clearSelection();
@@ -512,8 +407,9 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
         //Ajusta tamano del editor en cada cambio de tamano de la ventana
         $( window ).resize(function() {
-          //RedimensionarEditor();
+			RedimensionarEditor();
         });
+        RedimensionarEditor();
 
         //Captura el evento de Ctrl+S para guardar el archivo
         $(window).bind('keydown', function(event) {
@@ -544,7 +440,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 <!-- Marco para recepcion de eventos generados por el boton de guardar -->
 <iframe OnLoad="if (frame_almacenamiento.location.href != 'about:blank') AvisoAlmacenamiento();" height="0" width="0" name="frame_almacenamiento" id="frame_almacenamiento" src="about:blank" style="visibility:hidden; display:none"></iframe>
-
 
 </body>
 </html>
