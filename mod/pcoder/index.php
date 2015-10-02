@@ -197,7 +197,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
  <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head>
-	<title>PCoder</title>
+	<title>{P}</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -289,7 +289,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 							<li><a href="#"><i class="fa fa-times fa-fw"></i> <?php echo $MULTILANG_PCODER_Salir; ?></a></li>
 						</ul>
 					</li>
-					
+
 					<!-- MENU EDITAR -->
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Editar; ?> <span class="caret"></span></a>
@@ -297,16 +297,16 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 							<li><a href="#" OnClick="Deshacer();"><i class="fa fa-undo fa-fw"></i> <?php echo $MULTILANG_PCODER_Deshacer; ?></a></li>
 							<li><a href="#" OnClick="Rehacer(); "><i class="fa fa-repeat fa-fw"></i> <?php echo $MULTILANG_PCODER_Rehacer; ?></a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="#"><i class="fa fa-wrench fa-fw"></i> <?php echo $MULTILANG_PCODER_Preferencias; ?></a></li>
+							<li><a data-toggle="modal" href="#myModalPREFERENCIAS"><i class="fa fa-wrench fa-fw"></i> <?php echo $MULTILANG_PCODER_Preferencias; ?></a></li>
 						</ul>
 					</li>
 					<!--<li><a href="#">EJEMPLO ENLACE</a></li>-->
 
 				</ul>
-				
+
 				<!-- FORMULARIO IR A -->
 				<div class="navbar-form navbar-left">
-					<input type="text" id="linea_salto" size=9 name="linea_salto" class="input-sm btn-xs btn-default" placeholder="<?php echo $MULTILANG_PCODER_SaltarLinea; ?>">
+					<input type="text" id="linea_salto" size=9 name="linea_salto" class="input-mini btn-xs btn-default" placeholder="<?php echo $MULTILANG_PCODER_SaltarLinea; ?>">
 					<button class="btn btn-default btn-xs" onClick="SaltarALinea();"><?php echo $MULTILANG_PCODER_Ir; ?> <i class="fa fa-arrow-circle-right"></i></button>
 				</div>
 
@@ -378,6 +378,84 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <?php 
         $barra_herramientas_modal='
         <button type="button" class="btn btn-default" data-dismiss="modal">'.$MULTILANG_PCODER_Cancelar.' {<i class="fa fa-keyboard-o"></i> Esc}</button>';
+        cerrar_dialogo_modal($barra_herramientas_modal);
+    ?>
+
+
+    <!-- PREFERENCIAS -->
+    <?php abrir_dialogo_modal("myModalPREFERENCIAS",$MULTILANG_PCODER_Preferencias); ?>
+
+			<div class="row">
+				<div class="col-lg-6">
+						<label for="tamano_fuente"><?php echo $MULTILANG_PCODER_TamanoFuente; ?></label>
+						<select id="tamano_fuente" size="1" class="form-control btn-warning" onchange="CambiarFuenteEditor(this.value)">
+						  <option value="10px">10px</option>
+						  <option value="11px">11px</option>
+						  <option value="12px">12px</option>
+						  <option value="13px">13px</option>
+						  <option value="14px" selected="selected">14px</option>
+						  <option value="16px">16px</option>
+						  <option value="18px">18px</option>
+						  <option value="20px">20px</option>
+						  <option value="24px">24px</option>
+						</select>
+				</div>
+				<div class="col-lg-6">
+						<label for="tema_grafico"><?php echo $MULTILANG_PCODER_AparienciaEditor; ?></label>
+						<select id="tema_grafico" size="1" class="form-control btn-primary" onchange="CambiarTemaEditor(this.value)">
+						  <optgroup label="Brillantes / Bright">
+							  <?php
+								//Presenta los temas claros disponibles
+								for ($i=0;$i<count($PCODER_TemasBrillantes);$i++)
+									echo '<option value="ace/theme/'.$PCODER_TemasBrillantes[$i]["Valor"].'">'.$PCODER_TemasBrillantes[$i]["Nombre"].'</option>';
+							  ?>
+						  </optgroup>
+						  <optgroup label="Oscuros / Dark">
+							  <?php
+								//Presenta los temas claros disponibles
+								for ($i=0;$i<count($PCODER_TemasOscuros);$i++)
+									{
+										$EstadoSeleccionTema="";
+										if ($PCODER_TemasOscuros[$i]["Valor"]=="tomorrow_night")
+											$EstadoSeleccionTema=" SELECTED ";
+										echo '<option value="ace/theme/'.$PCODER_TemasOscuros[$i]["Valor"].'" '.$EstadoSeleccionTema.'>'.$PCODER_TemasOscuros[$i]["Nombre"].'</option>';
+									}
+							  ?>
+						  </optgroup>
+						</select>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-lg-6">
+						<label for="modo_archivo">Lenguaje</label>
+						<select id="modo_archivo" size="1" class="form-control btn-info" onchange="CambiarModoEditor(this.value)">
+							  <?php
+								//Presenta los temas claros disponibles
+								for ($i=0;$i<count($PCODER_Modos);$i++)
+									{
+										//Determina si el lenguaje o modo de archivo actual es la opcion a desplegar
+										$modo_seleccion='';
+										if($PCODER_Modos[$i]["Nombre"]==$PCODER_ModoEditor)
+											$modo_seleccion='SELECTED';
+										//PResenta la opcion
+										echo '<option value="ace/mode/'.$PCODER_Modos[$i]["Nombre"].'" '.$modo_seleccion.' >'.$PCODER_Modos[$i]["Nombre"].'</option>';
+									}
+							  ?>
+						</select>
+				</div>
+				<div class="col-lg-6">
+						<label for="modo_invisibles">Ver caracteres invisibles</label>
+						<select id="modo_invisibles" size="1" class="form-control btn-default" onchange="CaracteresInvisiblesEditor(this.value)">
+							<option value="0"><?php echo $MULTILANG_PCODER_No; ?></option>
+							<option value="1"><?php echo $MULTILANG_PCODER_Si; ?></option>
+						</select>
+				</div>
+			</div>
+
+    <?php 
+        $barra_herramientas_modal='
+        <button type="button" class="btn btn-default" data-dismiss="modal">'.$MULTILANG_PCODER_Cerrar.' {<i class="fa fa-keyboard-o"></i> Esc}</button>';
         cerrar_dialogo_modal($barra_herramientas_modal);
     ?>
 
@@ -460,83 +538,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		</div>
     </div>
 
-
-    <!-- CONFIGURACIONES Y UTILIDADES DEL EDITOR -->
-<nav id="barra_inferior" class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav text-inverse">
-
-        <li class="btn-xs">
-            <label for="tamano_fuente">Tamano Fuente</label>
-            <select id="tamano_fuente" size="1" class="form-control btn-xs" onchange="CambiarFuenteEditor(this.value)">
-              <option value="10px">10px</option>
-              <option value="11px">11px</option>
-              <option value="12px">12px</option>
-              <option value="13px">13px</option>
-              <option value="14px" selected="selected">14px</option>
-              <option value="16px">16px</option>
-              <option value="18px">18px</option>
-              <option value="20px">20px</option>
-              <option value="24px">24px</option>
-            </select>
-        </li>
-
-        <li class="btn-xs">
-            <label for="tema_grafico">Apariencia</label>
-            <select id="tema_grafico" size="1" class="form-control btn-xs btn-primary" onchange="CambiarTemaEditor(this.value)">
-              <optgroup label="Brillantes / Bright">
-                  <?php
-                    //Presenta los temas claros disponibles
-                    for ($i=0;$i<count($PCODER_TemasBrillantes);$i++)
-                        echo '<option value="ace/theme/'.$PCODER_TemasBrillantes[$i]["Valor"].'">'.$PCODER_TemasBrillantes[$i]["Nombre"].'</option>';
-                  ?>
-              </optgroup>
-              <optgroup label="Oscuros / Dark">
-                  <?php
-                    //Presenta los temas claros disponibles
-                    for ($i=0;$i<count($PCODER_TemasOscuros);$i++)
-                        echo '<option value="ace/theme/'.$PCODER_TemasOscuros[$i]["Valor"].'">'.$PCODER_TemasOscuros[$i]["Nombre"].'</option>';
-                  ?>
-              </optgroup>
-            </select>
-        </li>
-
-        <li class="btn-xs">
-            <label for="modo_archivo">Lenguaje</label>
-            <select id="modo_archivo" size="1" class="form-control btn-xs btn-info" onchange="CambiarModoEditor(this.value)">
-                  <?php
-                    //Presenta los temas claros disponibles
-                    for ($i=0;$i<count($PCODER_Modos);$i++)
-                        {
-                            //Determina si el lenguaje o modo de archivo actual es la opcion a desplegar
-                            $modo_seleccion='';
-                            if($PCODER_Modos[$i]["Nombre"]==$PCODER_ModoEditor)
-                                $modo_seleccion='SELECTED';
-                            //PResenta la opcion
-                            echo '<option value="ace/mode/'.$PCODER_Modos[$i]["Nombre"].'" '.$modo_seleccion.' >'.$PCODER_Modos[$i]["Nombre"].'</option>';
-                        }
-                  ?>
-            </select>
-        </li>
-
-        <li class="btn-xs">
-            <label for="modo_invisibles">Ver caracteres invisibles</label>
-            <select id="modo_invisibles" size="1" class="form-control btn-xs" onchange="CaracteresInvisiblesEditor(this.value)">
-                <option value="0"><?php echo $MULTILANG_PCODER_No; ?></option>
-                <option value="1"><?php echo $MULTILANG_PCODER_Si; ?></option>
-            </select>
-        </li>
-
-      </ul>
-
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
 
 
 
@@ -718,7 +719,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                 //Oculta el modal de seleccion del archivo
                 $('button#boton_navegador_archivos').click();
                 //Carga la nueva ventana con el archivo, Reemplaza metodo anterior
-                PCO_VentanaPopup('index.php?PCO_Accion=PCOMOD_CargarPcoder&Presentar_FullScreen=1&Precarga_EstilosBS=1&PCODER_archivo='+archivo,'Pcoder'+archivo,'toolbar=no, location=no, directories=0, directories=no, status=no, location=no, menubar=no ,scrollbars=no, resizable=yes, fullscreen=no, titlebar=no, width=800, height=600');
+                PCO_VentanaPopup('index.php?PCO_Accion=PCOMOD_CargarPcoder&Presentar_FullScreen=1&Precarga_EstilosBS=1&PCODER_archivo='+archivo,'{P} '+archivo,'toolbar=no, location=no, directories=0, directories=no, status=no, location=no, menubar=no ,scrollbars=no, resizable=yes, fullscreen=no, titlebar=no, width=800, height=600');
             }
 
         // Crea el editor
@@ -729,7 +730,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
         editor.setValue(document.getElementById("PCODER_AreaTexto").value);
 
         // Inicia el editor de codigo con las opciones predeterminadas
-        ActualizarTituloEditor("<?php echo $PCODER_NombreArchivo.' {PCodEr}'; ?>");
+        ActualizarTituloEditor("<?php echo '{P} '.$PCODER_NombreArchivo; ?>");
         CambiarFuenteEditor("14px");
         CambiarTemaEditor("ace/theme/tomorrow_night");  //tomorrow_night|twilight|eclipse|ambiance|ETC
         CambiarModoEditor("ace/mode/<?php echo $PCODER_ModoEditor; ?>");
