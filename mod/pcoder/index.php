@@ -244,20 +244,92 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <!-- jQuery -->
 	<script type="text/javascript" src="../../inc/jquery/jquery-2.1.0.min.js"></script>
 </head>
-<body>
+<body style="margin:0px; padding:0px;">
  
  
- <div id="wrapper">
+ <div id="wrapper" >
 	<div id="page-wrapper">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-lg-12" style="margin:0px; padding:0px;">
 <!-- INICIO  DE CONTENIDOS DE APLICACION -->
 
 	<!-- 
 	#######################################################################################
 	DISPOSICION PARA EDITOR  ##############################################################
 	#######################################################################################  -->
+
+
+
+
+<nav class="navbar navbar-default navbar-inverse  " style="margin:0px; padding:0px;"> <!-- navbar-fixed-top navbar-fixed-bottom navbar-static-top navbar-inverse -->
+	<div class="container-fluid">
+		<!-- Logo y boton colapsable -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#barra_menu_superior" aria-expanded="false">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"><b>{P}Coder</b></a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="barra_menu_superior">
+
+
+
+			<ul class="nav navbar-nav">
+				<button id="boton_navegador_archivos" class="btn btn-primary btn-xs" data-toggle="modal" href="#NavegadorArchivos" title="<?php echo $MULTILANG_PCODER_Explorar; ?>"><i class="fa fa-folder-open fa-fw"></i></button>
+
+
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Editar; ?> <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#" OnClick="Deshacer();"><i class="fa fa-undo fa-fw"></i> <?php echo $MULTILANG_PCODER_Deshacer; ?></a></li>
+						<li><a href="#" OnClick="Rehacer(); "><i class="fa fa-repeat fa-fw"></i> <?php echo $MULTILANG_PCODER_Rehacer; ?></a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#"><i class="fa fa-wrench fa-fw"></i> <?php echo $MULTILANG_PCODER_Preferencias; ?></a></li>
+					</ul>
+				</li>
+				<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">Link</a></li>
+			</ul>
+			
+			<!-- FORMULARIO IR A -->
+			<div class="navbar-form navbar-left">
+				<input type="text" id="linea_salto" size=9 name="linea_salto" class="input-sm btn-xs btn-default" placeholder="<?php echo $MULTILANG_PCODER_SaltarLinea; ?>">
+				<button class="btn btn-default btn-xs" onClick="SaltarALinea();"><?php echo $MULTILANG_PCODER_Ir; ?> <i class="fa fa-arrow-circle-right"></i></button>
+			</div>
+		
+			
+			<ul class="nav navbar-nav navbar-right">
+				<!-- <li><a href="#">Link</a></li>-->
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-question-circle"></i> <?php echo $MULTILANG_PCODER_Ayuda; ?> <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a data-toggle="modal" href="#AtajosTeclado"><i class="fa fa-keyboard-o"></i> <?php echo $MULTILANG_PCODER_AtajosTitPcoder; ?></a></li>
+						<li role="separator" class="divider"></li>
+						<li><a data-toggle="modal" href="#myModalACERCADEPCODER"><i class="fa fa-info-circle fa-fw"></i> <?php echo $MULTILANG_PCODER_Acerca; ?></a></li>
+					</ul>
+				</li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -277,9 +349,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				&nbsp;&nbsp;&nbsp;
 				<button id="boton_guardar" class="btn btn-danger btn-xs" OnClick="Guardar();" href="#VentanaAlmacenamiento" title="<?php echo $MULTILANG_PCODER_Guardar; ?>"><i class="fa fa-save fa-fw"></i></button>
 				&nbsp;&nbsp;&nbsp;
-				<!--<a class="btn btn-default btn-xs" OnClick="Deshacer();"><i class="fa fa-undo"></i></a>
-				<a class="btn btn-default btn-xs" OnClick="Rehacer();"><i class="fa fa-repeat"></i></a>-->
-				<a class="btn btn-info btn-xs" data-toggle="modal" href="#AtajosTeclado"><i class="fa fa-keyboard-o"></i> <?php echo $MULTILANG_PCODER_AtajosTitPcoder; ?></a>
+
+				
 				<a class="btn btn-warning btn-xs" OnClick="if(window.confirm('<?php echo $MULTILANG_PCODER_AjusteConfirma; ?>')===true) MaximizarEditor();" title="Recargar ventana, Util despues de maximizar" ><i class="fa fa-refresh"></i> <?php echo $MULTILANG_PCODER_Ajuste; ?></a>
 			</div>
 
@@ -336,6 +407,24 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     ?>
 
 
+    <!-- ACERCA DE PCODER -->
+    <?php abrir_dialogo_modal("myModalACERCADEPCODER",$MULTILANG_PCODER_Acerca); ?>
+		<div align="center">
+			<br><h2><b>{P}Coder </b><i>ver <?php echo $PCO_PCODER_VersionActual; ?></i></h2>
+			Practico CODe EditoR<br><br>
+			 Powered by <a href="http://www.practico.org/"><i>Practico Framework PHP (www.practico.org)</i></a><hr>
+
+			   <b>Editor de C&oacute;digo en la Nube basado en PHP<br></b>
+			   Copyright (C) 2015  John F. Arroyave Guti&eacute;rrez<br><br>
+			<?php echo $MULTILANG_PCODER_ResumenLicencia; ?><br>
+		</div>
+    <?php 
+        $barra_herramientas_modal='
+        <button type="button" class="btn btn-default" data-dismiss="modal">'.$MULTILANG_PCODER_Cerrar.' {<i class="fa fa-keyboard-o"></i> Esc}</button>';
+        cerrar_dialogo_modal($barra_herramientas_modal);
+    ?>
+
+
     <!-- EXPLORADOR DE ARCHIVOS -->
     <?php
         abrir_dialogo_modal("VentanaAlmacenamiento","");
@@ -368,15 +457,32 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
         <input name="PCO_Accion" type="hidden" value="PCOMOD_GuardarArchivo">
     </form>
 
+
+
+<!--
     <div class="row">
         <div class="row container-full">
             <div id="marco_editor_codigo" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container-full">
                 <div class="form-group">
-                    <!-- Dispone el control de area de texto y el div donde se empotrara el editor -->
                     <div id="editor_codigo"></div>
                 </div>
             </div>
         </div>
+    </div>
+-->
+
+<!--
+    <div class="row">
+		<div class="col-lg-12">
+								<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
+		</div>
+    </div>
+-->
+
+    <div class="row" style="margin:0px; padding:0px;">
+		<div class="col-lg-12" style="margin:0px; padding:0px;">
+								<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%"  height="100vh"></div>
+		</div>
     </div>
 
 
@@ -450,20 +556,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
             </select>
         </li>
 
-      </ul>
-
-
-
-
-      <ul class="nav navbar-nav navbar-right">
-            <a class="btn btn-xs" onclick="AumentarEditor();"><i class="fa fa-plus-square fa-fw"></i></a>
-            <br>
-            <a class="btn btn-xs" onclick="DisminuirEditor();"><i class="fa fa-minus-square fa-fw"></i></a>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-            <input id="linea_salto" name="linea_salto" type="text" class="btn-xs btn-default" placeholder="<?php echo $MULTILANG_PCODER_SaltarLinea; ?>">
-            <button onClick="SaltarALinea();" class="btn btn-default btn-xs"><?php echo $MULTILANG_PCODER_Ir; ?> <i class="fa fa-arrow-circle-right"></i></button>
       </ul>
 
 
@@ -546,22 +638,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                 //Recarga el documento se queda en ciclo... ciudado
                 location.reload();
             }
-        function DisminuirEditor()
-            {
-                var alto_actual=$(editor_codigo).height();
-                alto_editor = alto_actual - 15;
-                if (alto_editor<600)
-                    alto_editor=alto_actual;
-                document.getElementById("editor_codigo").style.height=alto_editor+"px";
-            }
-        function AumentarEditor()
-            {
-                var alto_actual=$(editor_codigo).height();
-                alto_editor = alto_actual + 15;
-                if (alto_editor>alto_inicial_editor)
-                    alto_editor=alto_inicial_editor;
-                document.getElementById("editor_codigo").style.height=alto_editor+"px";
-            }
         function CambiarFuenteEditor(tamano)
             {
                 //Cambia la fuente del editor al tamano recibido
@@ -598,6 +674,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                 var linea = document.getElementById("linea_salto").value;
                 //Salta a una linea especifica del editor
                 editor.gotoLine(linea, 1, true);
+                document.getElementById("linea_salto").value="";
             }
         function Deshacer()
             {
