@@ -8,7 +8,7 @@
 1.  Este es un archivo de demostracion cargado por el editor cuando no se recibe
     un archivo especifico para ser presentado.  Utilice el boton de Abrir en la
     parte superior para cargar un archivo.
-                
+                 s
 2.  Los archivos a editar deberian contar con los permisos correctos del lado
     del servidor para poder ser escritos o manipulados.
     

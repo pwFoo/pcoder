@@ -32,6 +32,8 @@
 	$MULTILANG_PCODER_DescripcionIdioma='Espanol - Spanish';
 
 	//Lexico general
+	$MULTILANG_PCODER_Abrir='Abrir';
+	$MULTILANG_PCODER_Archivo='Archivo';
 	$MULTILANG_PCODER_Ayuda='Ayuda';
 	$MULTILANG_PCODER_Basicos='B&aacute;sicos';
 	$MULTILANG_PCODER_Cancelar='Cancelar';
@@ -50,6 +52,7 @@
 	$MULTILANG_PCODER_Otros='Otros';
 	$MULTILANG_PCODER_Preferencias='Preferencias';
 	$MULTILANG_PCODER_Rehacer='Rehacer';
+	$MULTILANG_PCODER_Salir='Salir';
 	$MULTILANG_PCODER_Seleccionar='Seleccionar';
 	$MULTILANG_PCODER_Si='Si';
 	$MULTILANG_PCODER_Tipo='Tipo';
@@ -57,7 +60,6 @@
 	//Mensajes de error y varios
 	$MULTILANG_PCODER_CargarArchivo='Cargar el archivo';
     $MULTILANG_PCODER_Ajuste='Ajuste de ventana';
-    $MULTILANG_PCODER_AjusteConfirma='Esta a punto de recargar el documento actual con el fin de establecer el tamano de ventana al tamano maximo disponible segun su pantalla.  Al recargar el documento puede perder cualquier cambio no almacenado.  Desea continuar?';
 	$MULTILANG_PCODER_DefPcoder='Editor de c&oacute;digo en l&iacute;nea';
 	$MULTILANG_PCODER_EnlacePcoder='Editor de C&oacute;digo {P}Coder';
 	$MULTILANG_PCODER_AtajosTitPcoder='Atajos de teclado';
