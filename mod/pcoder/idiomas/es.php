@@ -32,12 +32,16 @@
 	$MULTILANG_PCODER_DescripcionIdioma='Espanol - Spanish';
 
 	//Lexico general
+	$MULTILANG_PCODER_Abrir='Abrir';
+	$MULTILANG_PCODER_Archivo='Archivo';
 	$MULTILANG_PCODER_Ayuda='Ayuda';
 	$MULTILANG_PCODER_Basicos='B&aacute;sicos';
 	$MULTILANG_PCODER_Cancelar='Cancelar';
 	$MULTILANG_PCODER_Cargando='Cargando';
 	$MULTILANG_PCODER_Cerrar='Cerrar';
+	$MULTILANG_PCODER_Deshacer='Deshacer';
 	$MULTILANG_PCODER_Desplazar='Desplazar';
+	$MULTILANG_PCODER_Editar='Editar';
 	$MULTILANG_PCODER_Error='Error';
 	$MULTILANG_PCODER_Estado='Estado';
 	$MULTILANG_PCODER_Explorar='Explorar';
@@ -46,6 +50,9 @@
 	$MULTILANG_PCODER_Ir='Ir';
 	$MULTILANG_PCODER_No='No';
 	$MULTILANG_PCODER_Otros='Otros';
+	$MULTILANG_PCODER_Preferencias='Preferencias';
+	$MULTILANG_PCODER_Rehacer='Rehacer';
+	$MULTILANG_PCODER_Salir='Salir';
 	$MULTILANG_PCODER_Seleccionar='Seleccionar';
 	$MULTILANG_PCODER_Si='Si';
 	$MULTILANG_PCODER_Tipo='Tipo';
@@ -53,9 +60,8 @@
 	//Mensajes de error y varios
 	$MULTILANG_PCODER_CargarArchivo='Cargar el archivo';
     $MULTILANG_PCODER_Ajuste='Ajuste de ventana';
-    $MULTILANG_PCODER_AjusteConfirma='Esta a punto de recargar el documento actual con el fin de establecer el tamano de ventana al tamano maximo disponible segun su pantalla.  Al recargar el documento puede perder cualquier cambio no almacenado.  Desea continuar?';
 	$MULTILANG_PCODER_DefPcoder='Editor de c&oacute;digo en l&iacute;nea';
-	$MULTILANG_PCODER_EnlacePcoder='Editor de C&oacute;digo {PCoder}';
+	$MULTILANG_PCODER_EnlacePcoder='Editor de C&oacute;digo {P}Coder';
 	$MULTILANG_PCODER_AtajosTitPcoder='Atajos de teclado';
 	$MULTILANG_PCODER_PcoderAjuste='Ajuste de ventana';
 	$MULTILANG_PCODER_ErrorExistencia='El archivo indicado para edicion no existe!';
@@ -63,5 +69,10 @@
 	$MULTILANG_PCODER_ErrorNoACE='No se encuentra el modulo ACE para edici&oacute;n del archivo';
 	$MULTILANG_PCODER_AyudaExplorador='Importante:  Algunas carpetas son presentadas a manera informativa sobre su existencia.  Sin embargo, estas son expandibles solamente cuando tienen archivos editables';
 	$MULTILANG_PCODER_SaltarLinea='Saltar a l&iacute;nea';
-
+	$MULTILANG_PCODER_Acerca='Acerca de';
+	$MULTILANG_PCODER_ResumenLicencia='Esta herramienta es Software Libre distribuido bajo licencia GNU-GPL v3';
+	$MULTILANG_PCODER_AparienciaEditor='Apariencia del editor';
+	$MULTILANG_PCODER_TamanoFuente='Tama&ntilde;o de la fuente';
+	$MULTILANG_PCODER_LenguajeProg='Lenguaje de programaci&oacute;n';
+	$MULTILANG_PCODER_VerCaracteres='Ver caracteres invisibles';
 

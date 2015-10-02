@@ -1,5 +1,5 @@
 
-PCoder es un editor de codigo en la nube, basado inicialmente en el editor de codigo para [Practico Framework](https://www.practico.org) e IC9 compatible con cualquier tipo de proyecto.
+PCoder es un editor de codigo en la nube, basado inicialmente en el editor de codigo para [Practico Framework](https://www.practico.org) y ACE compatible con cualquier tipo de proyecto.
 
 ## Características
 
