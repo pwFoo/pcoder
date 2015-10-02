@@ -31,7 +31,7 @@
 	header('Content-type: text/html; charset=utf-8');
 
     //Incluye archivo inicial de configuracion
-	include_once("configuracion.php");
+	include_once("inc/configuracion.php");
 
 	// Determina si no se trabaja en modo StandAlone y verifica entonces credenciales
 	if ($PCO_PCODER_StandAlone==0)
@@ -44,16 +44,9 @@
 				}
 		}
 
-	// Configuraciones basicas del modulo
-	$PCODER_raiz_modulo = "";
-	$PCODER_modelos = $PCODER_raiz_modulo."modelo/";
-	$PCODER_vistas = $PCODER_raiz_modulo."vista/";
-	$PCODER_controladores = $PCODER_raiz_modulo."controlador/";
-
-    //Llamar al controlador inicial de la aplicacion o modulo
-    @require($PCODER_modelos.'modelo.php');
-    @require($PCODER_vistas.'vista.php');
-    @require($PCODER_controladores.'controlador.php');
+    //Incluye librerias basicas de trabajo
+    @require('inc/variables.php');
+    @require('inc/comunes.php');
 
     //Incluye idioma espanol, o sobreescribe vbles por configuracion de usuario
     include("idiomas/es.php");
@@ -68,7 +61,7 @@
     $PCO_PCODER_DireccionAuditoria=$_SERVER ['REMOTE_ADDR'];
 
 	// Establece version actual del sistema
-	$PCO_PCODER_VersionActual = file("version_actual.txt");
+	$PCO_PCODER_VersionActual = file("inc/version_actual.txt");
 	$PCO_PCODER_VersionActual = trim($PCO_PCODER_VersionActual[0]);
 	
 	// Si no hay una accion definida entonces inicia con la predeterminada
@@ -95,7 +88,7 @@ if (@$PCOSESS_LoginUsuario=="admin" || $PCO_PCODER_StandAlone==1)
 {
     //Carga el archivo recibido, si no recibe nada carga un demo
     if (@$PCODER_archivo=="")
-        $PCODER_archivo = "demo.php";
+        $PCODER_archivo = "demos/demo.php";
     PCODER_cargar_archivo($PCODER_archivo);
 
     $PCODER_Mensajes=0;
@@ -260,247 +253,22 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 	#######################################################################################  -->
 
 
-
-
-	<nav class="navbar navbar-default navbar-inverse  " style="margin:0px; padding:0px;"> <!-- navbar-fixed-top navbar-fixed-bottom navbar-static-top navbar-inverse -->
-		<div class="container-fluid">
-			<!-- Logo y boton colapsable -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#barra_menu_superior" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand text-danger" href="#"><b><font color="#FFFFFF">{P}Coder</font></b></a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="barra_menu_superior">
-				<ul class="nav navbar-nav">
-
-					<!-- MENU ARCHIVO -->
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Archivo; ?> <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a id="boton_navegador_archivos" data-toggle="modal"  href="#NavegadorArchivos">    <i class="fa fa-folder-open fa-fw"></i> <?php echo $MULTILANG_PCODER_Abrir; ?></a></li>
-							<li><a id="boton_guardar"            OnClick="Guardar();" href="#VentanaAlmacenamiento"><i class="fa fa-floppy-o fa-fw"></i> <?php echo $MULTILANG_PCODER_Guardar; ?></a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#"><i class="fa fa-times fa-fw"></i> <?php echo $MULTILANG_PCODER_Salir; ?></a></li>
-						</ul>
-					</li>
-
-					<!-- MENU EDITAR -->
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Editar; ?> <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#" OnClick="Deshacer();"><i class="fa fa-undo fa-fw"></i> <?php echo $MULTILANG_PCODER_Deshacer; ?></a></li>
-							<li><a href="#" OnClick="Rehacer(); "><i class="fa fa-repeat fa-fw"></i> <?php echo $MULTILANG_PCODER_Rehacer; ?></a></li>
-							<li role="separator" class="divider"></li>
-							<li><a data-toggle="modal" href="#myModalPREFERENCIAS"><i class="fa fa-wrench fa-fw"></i> <?php echo $MULTILANG_PCODER_Preferencias; ?></a></li>
-						</ul>
-					</li>
-					<!--<li><a href="#">EJEMPLO ENLACE</a></li>-->
-
-				</ul>
-
-				<!-- FORMULARIO IR A -->
-				<div class="navbar-form navbar-left">
-					<input type="text" id="linea_salto" size=9 name="linea_salto" class="input-mini btn-xs btn-default" placeholder="<?php echo $MULTILANG_PCODER_SaltarLinea; ?>">
-					<button class="btn btn-default btn-xs" onClick="SaltarALinea();"><?php echo $MULTILANG_PCODER_Ir; ?> <i class="fa fa-arrow-circle-right"></i></button>
-				</div>
-
-				<!-- INFORMACION DEL ARCHIVO -->
-				<ul class="nav navbar-nav navbar-form navbar-right">
-					<li class="btn-default btn-xs btn-info">
-						&nbsp;<?php echo $MULTILANG_PCODER_Tipo; ?> <span class="badge"><?php echo $PCODER_TipoElemento; ?></span>&nbsp;<br>
-						&nbsp;<?php echo $PCODER_FechaElemento; ?> <span class="badge"><?php echo $PCODER_TamanoElemento; ?> Kb</span>&nbsp;<br>
-					</li>
-				</ul>
-					
-				<ul class="nav navbar-nav navbar-right">
-					<!--<li><a href="#">EJEMPLO ENLACE</a></li>-->
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-question-circle"></i> <?php echo $MULTILANG_PCODER_Ayuda; ?> <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a data-toggle="modal" href="#AtajosTeclado"><i class="fa fa-keyboard-o fa-fw"></i> <?php echo $MULTILANG_PCODER_AtajosTitPcoder; ?></a></li>
-							<li role="separator" class="divider"></li>
-							<li><a data-toggle="modal" href="#myModalACERCADEPCODER"><i class="fa fa-info-circle fa-fw"></i> <?php echo $MULTILANG_PCODER_Acerca; ?></a></li>
-						</ul>
-					</li>
-				</ul>
-
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
+	<?php
+		//Incluye algunos marcos del aplicativo
+		include_once ("inc/barra_menu.php");
+		include_once ("inc/mensajes_error.php");
+		include_once ("inc/marco_explorador.php");
+		include_once ("inc/marco_preferencias.php");
+		include_once ("inc/marco_acerca.php");
+		include_once ("inc/marco_guardar.php");
+		include_once ("inc/marco_teclado.php");
+	?>
 
 
 
-
-
-
-
-
-    <div class="row">
-		<div class="col-lg-12">
-        <?php 
-            if ($PCODER_Mensajes==1) echo '<br><br>';
-            //Presenta mensajes de error o informacion
-            if ($existencia_ok==0)
-                mensaje('<i class="fa fa-warning text-info texto-blink"></i> '.$MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorExistencia.'. '.$MULTILANG_PCODER_Cargando.'='.$PCODER_archivo, '', '', '', 'alert alert-danger alert-dismissible');
-            if ($permisos_ok==0)
-                {
-                    mensaje('<i class="fa fa-warning text-info texto-blink"></i> '.$MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorRW.'. '.$MULTILANG_PCODER_Estado.'='.$permisos_encontrados, '', '', '', 'alert alert-warning alert-dismissible');
-                }
-            if ($editor_ok==0)
-                {
-                    mensaje('<i class="fa fa-warning text-info texto-blink"></i> '.$MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorNoACE.': '.$PCODER_archivo, '', '', '', 'alert alert-danger alert-dismissible');
-                    die();
-                }
-        ?>
-        </div>
-    </div>
-
-
-    <!-- EXPLORADOR DE ARCHIVOS -->
-    <?php abrir_dialogo_modal("NavegadorArchivos",$MULTILANG_PCODER_Explorar.' - '.$MULTILANG_PCODER_CargarArchivo); ?>
-        <i class="well well-sm btn-xs btn-block"><?php echo $MULTILANG_AyudaExplorador; ?></i>
-        <div id="marco_explorador" class="embed-responsive embed-responsive-4by3">
-            <?php
-                //Presenta el arbol de carpetas
-                //echo @php_file_tree($_SERVER['DOCUMENT_ROOT'], "http://example.com/?file=[link]/");
-                //echo @php_file_tree(".", "javascript:alert('You clicked on [link]');");
-                //echo @php_file_tree(".", "javascript:alert('You clicked on [link]');",$PCODER_ExtensionesPermitidas);
-                //$PCODER_ExtensionesPermitidas = array("txt", "php", "inc", "css", "txt");
-                echo @php_file_tree("../../../", "javascript:PCODER_CargarArchivo('[link]');");	// .=DirActual ../../=RaizPCoder ../../../=RaizInstalacionPCoder  /=RaizServidor
-            ?>  
-        </div>
-    <?php 
-        $barra_herramientas_modal='
-        <button type="button" class="btn btn-default" data-dismiss="modal">'.$MULTILANG_PCODER_Cancelar.' {<i class="fa fa-keyboard-o"></i> Esc}</button>';
-        cerrar_dialogo_modal($barra_herramientas_modal);
-    ?>
-
-
-    <!-- PREFERENCIAS -->
-    <?php abrir_dialogo_modal("myModalPREFERENCIAS",$MULTILANG_PCODER_Preferencias); ?>
-
-			<div class="row">
-				<div class="col-lg-6">
-						<label for="tamano_fuente"><?php echo $MULTILANG_PCODER_TamanoFuente; ?></label>
-						<select id="tamano_fuente" size="1" class="form-control btn-warning" onchange="CambiarFuenteEditor(this.value)">
-						  <option value="10px">10px</option>
-						  <option value="11px">11px</option>
-						  <option value="12px">12px</option>
-						  <option value="13px">13px</option>
-						  <option value="14px" selected="selected">14px</option>
-						  <option value="16px">16px</option>
-						  <option value="18px">18px</option>
-						  <option value="20px">20px</option>
-						  <option value="24px">24px</option>
-						</select>
-				</div>
-				<div class="col-lg-6">
-						<label for="tema_grafico"><?php echo $MULTILANG_PCODER_AparienciaEditor; ?></label>
-						<select id="tema_grafico" size="1" class="form-control btn-primary" onchange="CambiarTemaEditor(this.value)">
-						  <optgroup label="Brillantes / Bright">
-							  <?php
-								//Presenta los temas claros disponibles
-								for ($i=0;$i<count($PCODER_TemasBrillantes);$i++)
-									echo '<option value="ace/theme/'.$PCODER_TemasBrillantes[$i]["Valor"].'">'.$PCODER_TemasBrillantes[$i]["Nombre"].'</option>';
-							  ?>
-						  </optgroup>
-						  <optgroup label="Oscuros / Dark">
-							  <?php
-								//Presenta los temas claros disponibles
-								for ($i=0;$i<count($PCODER_TemasOscuros);$i++)
-									{
-										$EstadoSeleccionTema="";
-										if ($PCODER_TemasOscuros[$i]["Valor"]=="tomorrow_night")
-											$EstadoSeleccionTema=" SELECTED ";
-										echo '<option value="ace/theme/'.$PCODER_TemasOscuros[$i]["Valor"].'" '.$EstadoSeleccionTema.'>'.$PCODER_TemasOscuros[$i]["Nombre"].'</option>';
-									}
-							  ?>
-						  </optgroup>
-						</select>
-				</div>
-			</div>
-			<hr>
-			<div class="row">
-				<div class="col-lg-6">
-						<label for="modo_archivo">Lenguaje</label>
-						<select id="modo_archivo" size="1" class="form-control btn-info" onchange="CambiarModoEditor(this.value)">
-							  <?php
-								//Presenta los temas claros disponibles
-								for ($i=0;$i<count($PCODER_Modos);$i++)
-									{
-										//Determina si el lenguaje o modo de archivo actual es la opcion a desplegar
-										$modo_seleccion='';
-										if($PCODER_Modos[$i]["Nombre"]==$PCODER_ModoEditor)
-											$modo_seleccion='SELECTED';
-										//PResenta la opcion
-										echo '<option value="ace/mode/'.$PCODER_Modos[$i]["Nombre"].'" '.$modo_seleccion.' >'.$PCODER_Modos[$i]["Nombre"].'</option>';
-									}
-							  ?>
-						</select>
-				</div>
-				<div class="col-lg-6">
-						<label for="modo_invisibles">Ver caracteres invisibles</label>
-						<select id="modo_invisibles" size="1" class="form-control btn-default" onchange="CaracteresInvisiblesEditor(this.value)">
-							<option value="0"><?php echo $MULTILANG_PCODER_No; ?></option>
-							<option value="1"><?php echo $MULTILANG_PCODER_Si; ?></option>
-						</select>
-				</div>
-			</div>
-
-    <?php 
-        $barra_herramientas_modal='
-        <button type="button" class="btn btn-default" data-dismiss="modal">'.$MULTILANG_PCODER_Cerrar.' {<i class="fa fa-keyboard-o"></i> Esc}</button>';
-        cerrar_dialogo_modal($barra_herramientas_modal);
-    ?>
-
-
-    <!-- ACERCA DE PCODER -->
-    <?php abrir_dialogo_modal("myModalACERCADEPCODER",$MULTILANG_PCODER_Acerca); ?>
-		<div align="center">
-			<br><h2><b>{P}Coder </b><i>ver <?php echo $PCO_PCODER_VersionActual; ?></i></h2>
-			Practico CODe EditoR<br><br>
-			 Powered by <a href="http://www.practico.org/"><i>Practico Framework PHP (www.practico.org)</i></a><hr>
-
-			   <b>Editor de C&oacute;digo en la Nube basado en PHP<br></b>
-			   Copyright (C) 2015  John F. Arroyave Guti&eacute;rrez<br><br>
-			<?php echo $MULTILANG_PCODER_ResumenLicencia; ?><br>
-		</div>
-    <?php 
-        $barra_herramientas_modal='
-        <button type="button" class="btn btn-default" data-dismiss="modal">'.$MULTILANG_PCODER_Cerrar.' {<i class="fa fa-keyboard-o"></i> Esc}</button>';
-        cerrar_dialogo_modal($barra_herramientas_modal);
-    ?>
-
-
-    <!-- EXPLORADOR DE ARCHIVOS -->
-    <?php
-        abrir_dialogo_modal("VentanaAlmacenamiento","");
-        echo '<i class="fa fa-save fa-fw fa-2x"></i>'.$MULTILANG_PCODER_Guardar.' '.$MULTILANG_PCODER_Finalizado;
-        $barra_herramientas_modal='
-        <button type="button" class="btn btn-default" data-dismiss="modal">'.$MULTILANG_PCODER_Cerrar.' {<i class="fa fa-keyboard-o"></i> Esc}</button>';
-        cerrar_dialogo_modal($barra_herramientas_modal);
-    ?>
-
-
-    <!-- AYUDA DE TECLADO -->
-    <?php abrir_dialogo_modal("AtajosTeclado",$MULTILANG_PCODER_Ayuda.': <b>'.$MULTILANG_PCODER_AtajosTitPcoder.'</b>',"modal-wide"); ?>
-        <DIV style="DISPLAY: block; OVERFLOW: auto; WIDTH: 100%; POSITION: relative; HEIGHT: 600px">
-            <?php Presentar_KeyBindings(); ?>
-        </DIV>
-    <?php 
-        $barra_herramientas_modal='
-        <button type="button" class="btn btn-default" data-dismiss="modal">'.$MULTILANG_PCODER_Cerrar.' {<i class="fa fa-keyboard-o"></i> Esc}</button>';
-        cerrar_dialogo_modal($barra_herramientas_modal);
-    ?>
 
     <!-- ZONA DE EDICION -->
-    <form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento">
+    <form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
         <textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"><?php echo $PCODERcontenido_archivo; ?></textarea>
         <input name="PCODER_TokenEdicion" type="hidden" value="<?php echo $PCODER_TokenEdicion; ?>">
         <input name="PCODER_archivo" type="hidden" value="<?php echo $PCODER_archivo; ?>">

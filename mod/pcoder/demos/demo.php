@@ -8,12 +8,12 @@
 1.  Este es un archivo de demostracion cargado por el editor cuando no se recibe
     un archivo especifico para ser presentado.  Utilice el boton de Abrir en la
     parte superior para cargar un archivo.
-                 s
+                 
 2.  Los archivos a editar deberian contar con los permisos correctos del lado
     del servidor para poder ser escritos o manipulados.
     
 3.  Si requiere crear archivos o carpetas nuevas debera hacerlo por medio del
-    administrador de archivos incluido en Practico para garantizar sus permisos,
+    administrador de ar chivos incluido en Practico para garantizar sus permisos,
     luego podra editarlos por medio de esta herramienta.
 
 4.  Este editor tiene control total de los archivos (sin importar formato). Sea

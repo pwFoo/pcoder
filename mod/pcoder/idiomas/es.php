@@ -72,5 +72,7 @@
 	$MULTILANG_PCODER_Acerca='Acerca de';
 	$MULTILANG_PCODER_ResumenLicencia='Esta herramienta es Software Libre distribuido bajo licencia GNU-GPL v3';
 	$MULTILANG_PCODER_AparienciaEditor='Apariencia del editor';
-	$MULTILANG_PCODER_TamanoFuente='Tamano de la fuente';
+	$MULTILANG_PCODER_TamanoFuente='Tama&ntilde;o de la fuente';
+	$MULTILANG_PCODER_LenguajeProg='Lenguaje de programaci&oacute;n';
+	$MULTILANG_PCODER_VerCaracteres='Ver caracteres invisibles';
 
