@@ -400,8 +400,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				$("#NroLineasDocumento").html("<?php echo $MULTILANG_PCODER_Lineas; ?>: "+NroLineasDocumento);
 				$("#NroCaracteresDocumento").html("<?php echo $MULTILANG_PCODER_Caracteres; ?>: "+NroCaracteresDocumento);
 				$("#TipoDocumento").html("<?php echo $MULTILANG_PCODER_Tipo; ?>: <?php echo $PCODER_TipoElemento; ?>");
-				$("#TamanoDocumento").html("<?php echo $MULTILANG_PCODER_Tamano; ?>: <?php echo $PCODER_TamanoElemento; ?> Kb");
-				$("#FechaModificadoDocumento").html("<?php echo $MULTILANG_PCODER_Modificado; ?>: <?php echo $PCODER_FechaElemento; ?>");
+				$("#TamanoDocumento").html("<?php echo $MULTILANG_PCODER_Tamano; ?>: <b><?php echo $PCODER_TamanoElemento; ?> Kb</b>");
+				$("#FechaModificadoDocumento").html("<?php echo $MULTILANG_PCODER_Modificado; ?>: <b><?php echo $PCODER_FechaElemento; ?></b>");
 				
 				//Llama periodicamente la rutina de actualizacion de la barra
 				window.setTimeout(ActualizarBarraEstado, 1500);

@@ -33,7 +33,7 @@
                 //echo @php_file_tree(".", "javascript:alert('You clicked on [link]');");
                 //echo @php_file_tree(".", "javascript:alert('You clicked on [link]');",$PCODER_ExtensionesPermitidas);
                 //$PCODER_ExtensionesPermitidas = array("txt", "php", "inc", "css", "txt");
-                echo @php_file_tree("../../../", "javascript:PCODER_CargarArchivo('[link]');");	// .=DirActual ../../=RaizPCoder ../../../=RaizInstalacionPCoder  /=RaizServidor
+                echo @php_file_tree($PCO_PCODER_RaizExploracionArchivos, "javascript:PCODER_CargarArchivo('[link]');");
             ?>  
         </div>
 <?php 

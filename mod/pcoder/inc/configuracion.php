@@ -21,7 +21,29 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
-	$PCO_PCODER_StandAlone=1; //1=StandAlone 0=Modulo de Practico
+	/*	Define si PCoder se ejecuta en modo StandAlone (Independiente)
+		para cualquier proyecto o servidor o como un modulo de Practico
+		Posibles Valores:  1=StandAlone   0=Modulo de Practico       */
+	$PCO_PCODER_StandAlone=1;
+	
+	
+	
+	
+	/*	Define el Path inicial sobre el cual el usuario puede navegar
+		por el sistema de archivos del servidor para editarlos
+		Posibles valores:	../../../   -> Raiz Instalacion PCoder cuando es independiente o Raiz de Practico si esta como modulo
+							.			-> Directorio Actual de PCoder (generalmente sobre mod/pcoder)
+							../../		-> Raiz de PCoder (Donde reside LICENSE, AUTHORS, Etc)
+
+	*/
+	$PCO_PCODER_RaizExploracionArchivos="../../";
+
+                //echo @php_file_tree($_SERVER['DOCUMENT_ROOT'], "http://example.com/?file=[link]/");
+                //echo @php_file_tree(".", "javascript:alert('You clicked on [link]');");
+                //echo @php_file_tree(".", "javascript:alert('You clicked on [link]');",$PCODER_ExtensionesPermitidas);
+                //$PCODER_ExtensionesPermitidas = array("txt", "php", "inc", "css", "txt");
+                // ../../../=RaizInstalacionPCoder  /=RaizServidor
+
 
 	$ZonaHoraria='America/Bogota';
 	$IdiomaPredeterminado='es';
