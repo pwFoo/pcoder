@@ -65,25 +65,11 @@
 					<!--<li><a href="#">EJEMPLO ENLACE</a></li>-->
 
 				</ul>
-
-				<!-- FORMULARIO IR A -->
-				<div class="navbar-form navbar-left">
-					<input type="text" id="linea_salto" size=9 name="linea_salto" class="input-mini btn-xs btn-default" placeholder="<?php echo $MULTILANG_PCODER_SaltarLinea; ?>">
-					<button class="btn btn-default btn-xs" onClick="SaltarALinea();"><?php echo $MULTILANG_PCODER_Ir; ?> <i class="fa fa-arrow-circle-right"></i></button>
-				</div>
-
-				<!-- INFORMACION DEL ARCHIVO -->
-				<ul class="nav navbar-nav navbar-form navbar-right">
-					<li class="btn-default btn-xs btn-info">
-						&nbsp;<?php echo $MULTILANG_PCODER_Tipo; ?> <span class="badge"><?php echo $PCODER_TipoElemento; ?></span>&nbsp;<br>
-						&nbsp;<?php echo $PCODER_FechaElemento; ?> <span class="badge"><?php echo $PCODER_TamanoElemento; ?> Kb</span>&nbsp;<br>
-					</li>
-				</ul>
 					
 				<ul class="nav navbar-nav navbar-right">
-					<a data-toggle="modal" href="#myModalPREFERENCIAS" class="navbar-text"><i class="fa fa-wrench fa-fw"></i> <?php echo $MULTILANG_PCODER_Preferencias; ?></a>
+					<a data-toggle="modal" href="#myModalPREFERENCIAS" class="navbar-text"><i class="fa fa-wrench fa-fw text-success"></i> <?php echo $MULTILANG_PCODER_Preferencias; ?></a>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-question-circle"></i> <?php echo $MULTILANG_PCODER_Ayuda; ?> <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-question-circle text-warning"></i> <?php echo $MULTILANG_PCODER_Ayuda; ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a data-toggle="modal" href="#AtajosTeclado"><i class="fa fa-keyboard-o fa-fw"></i> <?php echo $MULTILANG_PCODER_AtajosTitPcoder; ?></a></li>
 							<li role="separator" class="divider"></li>

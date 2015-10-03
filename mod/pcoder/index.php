@@ -268,10 +268,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
             }
         function SaltarALinea()
             {
+				//Salta a una linea especifica del editor
                 var linea = document.getElementById("linea_salto").value;
-                //Salta a una linea especifica del editor
-                editor.gotoLine(linea, 1, true);
-                document.getElementById("linea_salto").value="";
+                //Valida que se tenga un valor de linea y que este en un rango valido
+                if (linea!="" && linea>0)
+					{
+						editor.gotoLine(linea, 1, true);
+						document.getElementById("linea_salto").value="";			
+					}
             }
         function Deshacer()
             {
@@ -378,12 +382,31 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				var alto_contenedor_editor = $("#editor_codigo").height();
 				var alto_contenedor_menu = $("#contenedor_menu").height();
 				var alto_contenedor_barra_estado = $("#contenedor_barra_estado").height();
-				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado)*100/alto_documento;
+				var alto_contenedor_mensajes_error = $("#contenedor_mensajes_error").height();
+				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado+alto_contenedor_mensajes_error)*100/alto_ventana;
 				var porcentaje_final=100-porcentaje_barrasmenuyestado;
-				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_barra_estado;
+				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_barra_estado-alto_contenedor_mensajes_error;
 				//$('#editor_codigo').height( alto_final ).css({ });			//Asignacion en pixeles
 				$('#editor_codigo').height( porcentaje_final+"vh" ).css({ });	//Asignacion en porcentaje
 			}
+
+        function ActualizarBarraEstado()
+            {
+				//Actualiza la barra de estado del editor
+				var NroLineasDocumento=editor.session.getLength();
+				var NroCaracteresDocumento=editor.session.getValue().length;
+				
+				//Actualiza los contenedores con la informacion de estado
+				$("#NroLineasDocumento").html("<?php echo $MULTILANG_PCODER_Lineas; ?>: "+NroLineasDocumento);
+				$("#NroCaracteresDocumento").html("<?php echo $MULTILANG_PCODER_Caracteres; ?>: "+NroCaracteresDocumento);
+				$("#TipoDocumento").html("<?php echo $MULTILANG_PCODER_Tipo; ?>: <?php echo $PCODER_TipoElemento; ?>");
+				$("#TamanoDocumento").html("<?php echo $MULTILANG_PCODER_Tamano; ?>: <?php echo $PCODER_TamanoElemento; ?> Kb");
+				$("#FechaModificadoDocumento").html("<?php echo $MULTILANG_PCODER_Modificado; ?>: <?php echo $PCODER_FechaElemento; ?>");
+				
+				//Llama periodicamente la rutina de actualizacion de la barra
+				window.setTimeout(ActualizarBarraEstado, 1500);
+			}
+		window.setTimeout(ActualizarBarraEstado, 2000);
 
         // Crea el editor
         editor = ace.edit("editor_codigo");

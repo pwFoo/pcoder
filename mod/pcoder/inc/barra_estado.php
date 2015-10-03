@@ -24,12 +24,51 @@
 ?>
 
 <div id="contenedor_barra_estado">
+	
+    <div class="well well-sm" style="border:0px; margin:0px; padding:0px; background: #272727;">
 
-	<nav class="navbar navbar-default navbar-inverse" style="margin:0px; padding:0px;"> <!-- navbar-fixed-top navbar-fixed-bottom navbar-static-top navbar-inverse -->
-		<div class="container-fluid">
+				<!-- FORMULARIO IR A -->
+				<div style="display:inline;">
+					<input type="text" id="linea_salto" size=10 name="linea_salto" class="input-mini btn-xs btn-default" placeholder="<?php echo $MULTILANG_PCODER_SaltarLinea; ?>">
+					<button class="btn btn-primary btn-xs" onClick="SaltarALinea();"><?php echo $MULTILANG_PCODER_Ir; ?> <i class="fa fa-arrow-circle-right"></i></button>
+				</div>
 
-			
-		</div><!-- /.container-fluid -->
-	</nav>
+				<!-- LINEAS DEL DOCUMENTO -->
+				<font color="gray">
+					<div id="NroLineasDocumento" class="btn-xs" style="display:inline;">
+						0
+					</div>
+				</font>
+
+				<!-- CARACTERES DEL DOCUMENTO -->
+				<font color="gray">
+					<div id="NroCaracteresDocumento" class="btn-xs" style="display:inline;">
+						0
+					</div>
+				</font>
+
+				<!-- TIPO DOCUMENTO -->
+				<font color="gray">
+					<div id="TipoDocumento" class="btn-xs" style="display:inline;">
+						0
+					</div>
+				</font>
+
+				<!-- TAMANO DEL DOCUMENTO -->
+				<font color="gray">
+					<div id="TamanoDocumento" class="btn-xs" style="display:inline;">
+						0
+					</div>
+				</font>
+
+				<!-- FECHA MODIFICACION -->
+				<font color="gray">
+					<div id="FechaModificadoDocumento" class="btn-xs" style="display:inline;">
+						0
+					</div>
+				</font>
+
+
+    </div>
 
 </div><!-- /.contenedor -->

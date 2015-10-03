@@ -23,22 +23,30 @@
     // MENSAJES DE ERROR
 ?>
 
+<div id="contenedor_mensajes_error">
+	
     <div class="row">
 		<div class="col-lg-12">
         <?php 
-            //Presenta mensajes de error o informacion
-            if ($existencia_ok==0)
-                mensaje('<i class="fa fa-exclamation-circle fa-2x"></i> '.$MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorExistencia.'. '.$MULTILANG_PCODER_Cargando.'='.$PCODER_archivo, '', '', '', 'alert alert-danger alert-dismissible');
-            if ($permisos_ok==0)
-                {
-                    mensaje('<i class="fa fa-warning fa-2x"></i> '.$MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorRW.'. '.$MULTILANG_PCODER_Estado.'='.$permisos_encontrados, '', '', '', 'alert alert-warning alert-dismissible');
-                }
-            if ($editor_ok==0)
-                {
-                    mensaje('<i class="fa fa-exclamation-circle fa-2x"></i> '.$MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorNoACE.': '.$PCODER_archivo, '', '', '', 'alert alert-danger alert-dismissible');
-                    die();
-                }
+			if ($PCODER_Mensajes==1)
+				{
+					echo "<br>";
+					//Presenta mensajes de error o informacion
+					if ($existencia_ok==0)
+						mensaje('<i class="fa fa-exclamation-circle fa-2x"></i> '.$MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorExistencia.'. '.$MULTILANG_PCODER_Cargando.'='.$PCODER_archivo, '', '', '', 'alert alert-danger alert-dismissible');
+					if ($permisos_ok==0)
+						{
+							mensaje('<i class="fa fa-warning fa-2x"></i> '.$MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorRW.'. '.$MULTILANG_PCODER_Estado.'='.$permisos_encontrados, '', '', '', 'alert alert-warning alert-dismissible');
+						}
+					if ($editor_ok==0)
+						{
+							mensaje('<i class="fa fa-exclamation-circle fa-2x"></i> '.$MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorNoACE.': '.$PCODER_archivo, '', '', '', 'alert alert-danger alert-dismissible');
+							die();
+						}
+					
+				}
         ?>
         </div>
     </div>
-
+    
+</div>

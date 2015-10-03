@@ -37,6 +37,7 @@
 	$MULTILANG_PCODER_Ayuda='Ayuda';
 	$MULTILANG_PCODER_Basicos='B&aacute;sicos';
 	$MULTILANG_PCODER_Cancelar='Cancelar';
+	$MULTILANG_PCODER_Caracteres='Caracteres';
 	$MULTILANG_PCODER_Cargando='Cargando';
 	$MULTILANG_PCODER_Cerrar='Cerrar';
 	$MULTILANG_PCODER_Deshacer='Deshacer';
@@ -48,6 +49,8 @@
 	$MULTILANG_PCODER_Finalizado='Finalizado';
 	$MULTILANG_PCODER_Guardar='Guardar';
 	$MULTILANG_PCODER_Ir='Ir';
+	$MULTILANG_PCODER_Lineas='L&iacute;neas';
+	$MULTILANG_PCODER_Modificado='Modificado';
 	$MULTILANG_PCODER_No='No';
 	$MULTILANG_PCODER_Otros='Otros';
 	$MULTILANG_PCODER_Preferencias='Preferencias';
@@ -55,6 +58,7 @@
 	$MULTILANG_PCODER_Salir='Salir';
 	$MULTILANG_PCODER_Seleccionar='Seleccionar';
 	$MULTILANG_PCODER_Si='Si';
+	$MULTILANG_PCODER_Tamano='Tama&ntilde;o';
 	$MULTILANG_PCODER_Tipo='Tipo';
 
 	//Mensajes de error y varios
