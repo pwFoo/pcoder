@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #   PCODER (Editor de Codigo en la Nube)
-#   Sistema de Edicion de Codigo basado en PHP
 #   Copyright (C) 2015  John F. Arroyave Gutiérrez
 #                       unix4you2@gmail.com
 #                       www.practico.org
@@ -44,9 +43,9 @@
 
 # PARAMETROS BASICOS DEL EMPAQUETADO
 	#Lista de archivos y carpetas a empaquetar (relativos a la raiz y separados por espacio)
-	ListaArchivos=" AUTHORS index.php LICENSE CHANGELOG.md README.md inc mod "
+	ListaArchivos=" INSTALL README.md mod "
 	#Nombre del archivo resultante
-	NombreArchivo="PCoder";
+	NombreArchivo="PCoder-ModuloPractico";
 	Version=`head -n 1 mod/pcoder/inc/version_actual.txt`
 	Extension=".zip"
 

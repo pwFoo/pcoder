@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #   PCODER (Editor de Codigo en la Nube)
-#   Sistema de Edicion de Codigo basado en PHP
 #   Copyright (C) 2015  John F. Arroyave Gutiérrez
 #                       unix4you2@gmail.com
 #                       www.practico.org
