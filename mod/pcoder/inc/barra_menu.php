@@ -67,9 +67,9 @@
 				</ul>
 					
 				<ul class="nav navbar-nav navbar-right">
-					<a data-toggle="modal" href="#myModalPREFERENCIAS" class="navbar-text"><i class="fa fa-wrench fa-fw text-success"></i> <?php echo $MULTILANG_PCODER_Preferencias; ?></a>
+					<a data-toggle="modal" href="#myModalPREFERENCIAS" class="navbar-text"><i class="fa fa-wrench fa-fw text-info"></i> <?php echo $MULTILANG_PCODER_Preferencias; ?></a>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-question-circle text-warning"></i> <?php echo $MULTILANG_PCODER_Ayuda; ?> <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-question-circle text-info"></i> <?php echo $MULTILANG_PCODER_Ayuda; ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a data-toggle="modal" href="#AtajosTeclado"><i class="fa fa-keyboard-o fa-fw"></i> <?php echo $MULTILANG_PCODER_AtajosTitPcoder; ?></a></li>
 							<li role="separator" class="divider"></li>
