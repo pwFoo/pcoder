@@ -33,9 +33,13 @@
     //Incluye archivo inicial de configuracion
 	include_once("inc/configuracion.php");
 	
-	//Verifica la raiz de exploracion tomada desde configuracion.php en caso que este como modulo
+	//Si se encuentra configurado como modulo de Practico sobreescribe algunas configuraciones desde alli
 	if ($PCO_PCODER_StandAlone==0)
-		$PCO_PCODER_RaizExploracionArchivos="../../../";
+		{
+			//Raiz de exploracion
+			$PCO_PCODER_RaizExploracionArchivos="../../../";
+		}
+		
 
 	// Determina si no se trabaja en modo StandAlone y verifica entonces credenciales
 	if ($PCO_PCODER_StandAlone==0)

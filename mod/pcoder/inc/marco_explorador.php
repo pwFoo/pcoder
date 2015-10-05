@@ -25,7 +25,7 @@
 	abrir_dialogo_modal("NavegadorArchivos",$MULTILANG_PCODER_Explorar.' - '.$MULTILANG_PCODER_CargarArchivo);
 	
 	?>
-        <i class="well well-sm btn-xs btn-block"><?php echo $MULTILANG_AyudaExplorador; ?></i>
+        <i class="well well-sm btn-xs btn-block"><?php echo $MULTILANG_PCODER_AyudaExplorador; ?></i>
         <div id="marco_explorador" class="embed-responsive embed-responsive-4by3">
             <?php
                 //Presenta el arbol de carpetas.  Ver archivo configuracion.php
