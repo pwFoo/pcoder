@@ -32,6 +32,10 @@
 
     //Incluye archivo inicial de configuracion
 	include_once("inc/configuracion.php");
+	
+	//Verifica la raiz de exploracion tomada desde configuracion.php en caso que este como modulo
+	if ($PCO_PCODER_StandAlone==0)
+		$PCO_PCODER_RaizExploracionArchivos="../../../";
 
 	// Determina si no se trabaja en modo StandAlone y verifica entonces credenciales
 	if ($PCO_PCODER_StandAlone==0)
@@ -105,8 +109,8 @@ if (@$PCOSESS_LoginUsuario=="admin" || $PCO_PCODER_StandAlone==1)
     $editor_ok=1;
     if (@!file_exists("../../inc/ace")) { $editor_ok=0; $PCODER_Mensajes=1; } 
 
-// Main function file
-include("phpFileTree/php_file_tree.php");
+	// Clase para exploracion de archivos
+	include("phpFileTree/php_file_tree.php");
 
 /* ################################################################## */
 /* ################################################################## */

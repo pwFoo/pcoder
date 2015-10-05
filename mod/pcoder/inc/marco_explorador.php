@@ -28,12 +28,12 @@
         <i class="well well-sm btn-xs btn-block"><?php echo $MULTILANG_AyudaExplorador; ?></i>
         <div id="marco_explorador" class="embed-responsive embed-responsive-4by3">
             <?php
-                //Presenta el arbol de carpetas
-                //echo @php_file_tree($_SERVER['DOCUMENT_ROOT'], "http://example.com/?file=[link]/");
-                //echo @php_file_tree(".", "javascript:alert('You clicked on [link]');");
-                //echo @php_file_tree(".", "javascript:alert('You clicked on [link]');",$PCODER_ExtensionesPermitidas);
-                //$PCODER_ExtensionesPermitidas = array("txt", "php", "inc", "css", "txt");
-                echo @php_file_tree($PCO_PCODER_RaizExploracionArchivos, "javascript:PCODER_CargarArchivo('[link]');");
+                //Presenta el arbol de carpetas.  Ver archivo configuracion.php
+				//Valida ademas si se puede abrir cualquier tipo de extension o solo algunas
+                if ($PCO_PCODER_ForzarExtensionesConocidas==1)
+					echo @php_file_tree($PCO_PCODER_RaizExploracionArchivos, "javascript:PCODER_CargarArchivo('[link]');",$PCO_PCODER_ExtensionesPermitidas);
+                else
+					echo @php_file_tree($PCO_PCODER_RaizExploracionArchivos, "javascript:PCODER_CargarArchivo('[link]');");
             ?>  
         </div>
 <?php 

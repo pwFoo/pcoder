@@ -79,4 +79,5 @@
 	$MULTILANG_PCODER_TamanoFuente='Tama&ntilde;o de la fuente';
 	$MULTILANG_PCODER_LenguajeProg='Lenguaje de programaci&oacute;n';
 	$MULTILANG_PCODER_VerCaracteres='Ver caracteres invisibles';
+	$MULTILANG_PCODER_CerrarVentana='Finalizar edici&oacute;n';
 

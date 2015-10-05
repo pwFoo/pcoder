@@ -21,28 +21,30 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
+
 	/*	Define si PCoder se ejecuta en modo StandAlone (Independiente)
 		para cualquier proyecto o servidor o como un modulo de Practico
-		Posibles Valores:  1=StandAlone   0=Modulo de Practico       */
+		Posibles Valores:  1=StandAlone   0=Modulo de Practico        */
 	$PCO_PCODER_StandAlone=1;
-	
-	
-	
-	
+
+
 	/*	Define el Path inicial sobre el cual el usuario puede navegar
 		por el sistema de archivos del servidor para editarlos
-		Posibles valores:	../../../   -> Raiz Instalacion PCoder cuando es independiente o Raiz de Practico si esta como modulo
-							.			-> Directorio Actual de PCoder (generalmente sobre mod/pcoder)
-							../../		-> Raiz de PCoder (Donde reside LICENSE, AUTHORS, Etc)
+		Posibles valores:	../../../  					-> Raiz Instalacion PCoder cuando es independiente o Raiz de Practico si esta como modulo
+							.							-> Directorio Actual de PCoder (generalmente sobre mod/pcoder)
+							../../						-> Raiz de PCoder (Donde reside LICENSE, AUTHORS, Etc)
+							$_SERVER['DOCUMENT_ROOT']	-> Raiz de Todo el servidor web  */
+	$PCO_PCODER_RaizExploracionArchivos="../../../";
 
-	*/
-	$PCO_PCODER_RaizExploracionArchivos="../../";
 
-                //echo @php_file_tree($_SERVER['DOCUMENT_ROOT'], "http://example.com/?file=[link]/");
-                //echo @php_file_tree(".", "javascript:alert('You clicked on [link]');");
-                //echo @php_file_tree(".", "javascript:alert('You clicked on [link]');",$PCODER_ExtensionesPermitidas);
-                //$PCODER_ExtensionesPermitidas = array("txt", "php", "inc", "css", "txt");
-                // ../../../=RaizInstalacionPCoder  /=RaizServidor
+	//Define las extensiones permitidas por el editor de texto
+	$PCO_PCODER_ExtensionesPermitidas = array("txt", "inc", "css", "cpp", "c", "java", "php", "htm", "html", "py", "md", "bat", "sh", "ini", "log", "conf", "asc", "csv", "xml", "pl", "asp", "aspx", "jsp", "nfo", "yml", "json", "xsl", "ans", "dat", "err", "mdown", "lisp", "man");
+
+
+	/*  Determina si solamente se permiten abrir las extensiones conocidas
+		Posibles Valores:  1=Solo permite abrir ciertas extensiones
+		                   0=Abre cualquier tipo de extension         */
+	$PCO_PCODER_ForzarExtensionesConocidas = 0;
 
 
 	$ZonaHoraria='America/Bogota';
