@@ -55,6 +55,7 @@
 	$MULTILANG_PCODER_Modificado='Modified';
 	$MULTILANG_PCODER_No='No';
 	$MULTILANG_PCODER_Otros='Others';
+	$MULTILANG_PCODER_Predeterminado='Default';
 	$MULTILANG_PCODER_Preferencias='Preferences';
 	$MULTILANG_PCODER_Rehacer='Redo';
 	$MULTILANG_PCODER_Salir='Quit';
@@ -82,3 +83,4 @@
 	$MULTILANG_PCODER_LenguajeProg='Programming language';
 	$MULTILANG_PCODER_VerCaracteres='Show hidden chars';
 	$MULTILANG_PCODER_CerrarVentana='Changes may lost';
+	$MULTILANG_PCODER_PathDisponible='Exploration paths available';

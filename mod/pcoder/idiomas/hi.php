@@ -55,6 +55,7 @@
 	$MULTILANG_PCODER_Modificado='संशोधित';
 	$MULTILANG_PCODER_No='नहीं';
 	$MULTILANG_PCODER_Otros='अन्य लोग';
+	$MULTILANG_PCODER_Predeterminado='चूक';
 	$MULTILANG_PCODER_Preferencias='प्राथमिकताएं';
 	$MULTILANG_PCODER_Rehacer='फिर से करना';
 	$MULTILANG_PCODER_Salir='छोड़ना';
@@ -82,3 +83,4 @@
 	$MULTILANG_PCODER_LenguajeProg='प्रोग्रामिंग भाषा';
 	$MULTILANG_PCODER_VerCaracteres='शो छिपा घर का काम';
 	$MULTILANG_PCODER_CerrarVentana='परिवर्तन खो सकता है';
+	$MULTILANG_PCODER_PathDisponible='उपलब्ध अन्वेषण रास्तों';
