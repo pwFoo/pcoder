@@ -12,7 +12,9 @@
 * Added: Combo de navegacion por sistema de archivos
 * Added: La carga del arbol de archivos se hace por demanda
 * Added: Soporte a idiomas Hindi, Portugues e Ingles
+* Added: Agregadas opciones de formato y edicion sobre la barra de menu
 * Enhan: Velocidad de apertura
+* Enhan: Eliminado el marco indicativo del limite de impresion
 * Enhan: Barras de progreso en operaciones
 
 

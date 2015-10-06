@@ -73,10 +73,10 @@
 	$MULTILANG_PCODER_Tipo='Tipo';
 
 	//Mensajes de error y varios
-	$MULTILANG_PCODER_AumSangria='Aumentar sangria';
-	$MULTILANG_PCODER_DisSangria='Disminuir sangria';
-	$MULTILANG_PCODER_ConvMay='Convertir a mayuscula';
-	$MULTILANG_PCODER_ConvMin='Convertir a minuscula';
+	$MULTILANG_PCODER_AumSangria='Aumentar sangr&iacute;a';
+	$MULTILANG_PCODER_DisSangria='Disminuir sangr&iacute;a';
+	$MULTILANG_PCODER_ConvMay='Convertir a may&uacute;scula';
+	$MULTILANG_PCODER_ConvMin='Convertir a min&uacute;scula';
 	$MULTILANG_PCODER_OrdenaSel='Ordenar la seleccion';
 	$MULTILANG_PCODER_CargarArchivo='Cargar el archivo';
     $MULTILANG_PCODER_Ajuste='Ajuste de ventana';
