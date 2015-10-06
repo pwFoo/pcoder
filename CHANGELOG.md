@@ -16,6 +16,7 @@
 * Enhan: Velocidad de apertura
 * Enhan: Eliminado el marco indicativo del limite de impresion
 * Enhan: Barras de progreso en operaciones
+* Enhan: Actualizacion de la version de ACE
 
 
 ## Versión 15.9 (2015-10-03)
