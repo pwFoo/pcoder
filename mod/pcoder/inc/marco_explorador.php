@@ -27,17 +27,24 @@
 	?>
         <i class="well well-sm btn-xs btn-block"><?php echo $MULTILANG_PCODER_AyudaExplorador; ?></i>
 
-			<label for="path_exploracion_archivos"><?php echo $MULTILANG_PCODER_PathDisponible; ?>:</label>
-			<select id="path_exploracion_archivos" size="1" class="form-control btn-info" onchange="ExplorarPath()">
-			  <option value="<?php echo $PCO_PCODER_RaizExploracionArchivos; ?>">[<?php echo $PCO_PCODER_RaizExploracionArchivos; ?>] (<?php echo $MULTILANG_PCODER_Predeterminado; ?>)</option>
-			  <optgroup label="<?php echo $MULTILANG_PCODER_Comunes; ?>">
-				  <option value=".">[.] <?php echo $MULTILANG_PCODER_Path1Punto; ?></option>
-				  <option value="../">[../] <?php echo $MULTILANG_PCODER_Path2Punto; ?></option>
-				  <option value="../../">[../../] <?php echo $MULTILANG_PCODER_Path3Punto; ?></option>
-				  <option value="../../../">[../../../] <?php echo $MULTILANG_PCODER_Path4Punto; ?></option>
-				  <option value="<?php echo $_SERVER['DOCUMENT_ROOT']; ?>">[<?php echo $_SERVER['DOCUMENT_ROOT']; ?>] <?php echo $MULTILANG_PCODER_PathFull; ?></option>
-			  </optgroup>
-			</select>
+		<label for="path_exploracion_archivos"><?php echo $MULTILANG_PCODER_PathDisponible; ?>:</label>
+		<select id="path_exploracion_archivos" size="1" class="form-control btn-info" onchange="ExplorarPath()">
+		  <option value="<?php echo $PCO_PCODER_RaizExploracionArchivos; ?>">[<?php echo $PCO_PCODER_RaizExploracionArchivos; ?>] (<?php echo $MULTILANG_PCODER_Predeterminado; ?>)</option>
+		  <optgroup label="<?php echo $MULTILANG_PCODER_Comunes; ?>">
+			  <option value=".">[.] <?php echo $MULTILANG_PCODER_Path1Punto; ?></option>
+			  <option value="../">[../] <?php echo $MULTILANG_PCODER_Path2Punto; ?></option>
+			  <option value="../../">[../../] <?php echo $MULTILANG_PCODER_Path3Punto; ?></option>
+			  <option value="../../../">[../../../] <?php echo $MULTILANG_PCODER_Path4Punto; ?></option>
+			  <option value="<?php echo $_SERVER['DOCUMENT_ROOT']; ?>">[<?php echo $_SERVER['DOCUMENT_ROOT']; ?>] <?php echo $MULTILANG_PCODER_PathFull; ?></option>
+		  </optgroup>
+		</select>
+
+		<!--
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-hdd-o"></i></span>
+		  <input name="path_exploracion_archivos_manual" type="text" class="form-control" placeholder="o ingrese aqui un path manual">
+		</div>
+		-->
 
         <div id="progreso_marco_explorador">
 			<div class="progress">
@@ -46,7 +53,7 @@
 				</div>
 			</div>
         </div>
-		<hr>
+		
         <div id="marco_explorador" class="embed-responsive embed-responsive-4by3">
 			<iframe name="iframe_marco_explorador" id="iframe_marco_explorador" class="embed-responsive-item" src="" style="overflow-x: hidden; overflow-y: hidden;"></iframe>
         </div>

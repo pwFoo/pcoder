@@ -180,10 +180,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
             overflow-x: hidden;
             overflow-y: hidden;
         }
-        #marco_explorador { 
-            overflow-y: auto;
-            overflow-x: auto;
-        }
     </style>
 
     <!-- Agrega archivos necesarios para el Explorador en arbol de directorios -->
@@ -394,8 +390,13 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				//Presenta la barra de carga que deberia ocultarse automaticamente en el OnLoad del Iframe
 				$('#progreso_marco_explorador').show();
 				
-				//Se encarga de actualizar el path de navegacion de acuerdo al valor del combo
-				$('#iframe_marco_explorador').attr('src', 'explorador.php?PCO_PCODER_Accion=PCOMOD_ExplorarPath&PathExploracion='+path_exploracion_archivos.value);
+				//Se encarga de actualizar el path de navegacion de acuerdo al valor del combo o caja de texto
+				/*
+				if (path_exploracion_archivos_manual.value!="")
+					$('#iframe_marco_explorador').attr('src', 'explorador.php?PCO_PCODER_Accion=PCOMOD_ExplorarPath&PathExploracion='+path_exploracion_archivos_manual.value);
+				else
+				*/
+					$('#iframe_marco_explorador').attr('src', 'explorador.php?PCO_PCODER_Accion=PCOMOD_ExplorarPath&PathExploracion='+path_exploracion_archivos.value);
 			}
 
 		//Evento que quita la barra de progreso de carga para el explorador cada que finaliza el cargue de su IFrame

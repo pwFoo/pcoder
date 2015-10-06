@@ -84,3 +84,9 @@
 	$MULTILANG_PCODER_VerCaracteres='शो छिपा घर का काम';
 	$MULTILANG_PCODER_CerrarVentana='परिवर्तन खो सकता है';
 	$MULTILANG_PCODER_PathDisponible='उपलब्ध अन्वेषण रास्तों';
+	$MULTILANG_PCODER_Path1Punto='PCoder की वर्तमान फ़ोल्डर (आम तौर पर खत्मmod/pcoder)';
+	$MULTILANG_PCODER_Path2Punto='मॉड्यूल के रूप में PCoder (आम तौर पर खत्म की जड़mod/pcoder/mod)';
+	$MULTILANG_PCODER_Path3Punto='आप पा सकते हैं जहां स्टैंडअलोन के रूप में PCoder (की जड़ LICENSE, AUTHORS, Etc)';
+	$MULTILANG_PCODER_Path4Punto='एक मॉड्यूल है, तो स्टैंडअलोन या Practico रूट के रूप में PCoder के लिए रूट स्थापित';
+	$MULTILANG_PCODER_PathFull='वेबसर्वर रूट। उपलब्ध फाइल करने के लिए धीमी गति अनुसार हो सकता है।';
+	
