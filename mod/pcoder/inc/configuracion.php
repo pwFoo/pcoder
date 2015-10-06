@@ -53,4 +53,4 @@
 	$ZonaHoraria='America/Bogota';
 	$IdiomaPredeterminado='es';
 	$CodigoGoogleAnalytics='UA-847800-9';
-
+	
