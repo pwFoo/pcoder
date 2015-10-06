@@ -29,6 +29,10 @@ MODO 1: Instalacion independiente (StandAlone):
    
 	2) Asegurarse que el archivo de mod/pcoder/configuracion.php
 	   tenga la variable $PCO_PCODER_StandAlone=1
+	   
+	   Verifique y defina las demás configuraciones sobre el archivo
+	   Actualice el valor de Raiz deseado y extensiones permitidas
+	   
 	3) Abrir su navegador en la carpeta de instalacion
 		Pruebe  http://DomainOrIP/pcoder
 

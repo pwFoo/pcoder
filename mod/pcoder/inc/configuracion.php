@@ -29,12 +29,15 @@
 
 
 	/*	Define el Path inicial sobre el cual el usuario puede navegar
-		por el sistema de archivos del servidor para editarlos
-		Posibles valores:	../../../  					-> Raiz Instalacion PCoder cuando es independiente o Raiz de Practico si esta como modulo
-							.							-> Directorio Actual de PCoder (generalmente sobre mod/pcoder)
+		por el sistema de archivos del servidor para editarlos. A mayor
+		numero de carpetas a leer sera mas lenta la apertura del editor.
+		Posibles valores:	.							-> Directorio Actual de PCoder (generalmente sobre mod/pcoder)
+							../							-> Raiz de PCoder (generalmente sobre mod/pcoder/mod)
 							../../						-> Raiz de PCoder (Donde reside LICENSE, AUTHORS, Etc)
+							../../../  					-> Raiz Instalacion PCoder cuando es independiente o Raiz de Practico si esta como modulo
+							Otros						-> Agregue aqui tantos niveles superiores como desee segun su ruta de instalacion
 							$_SERVER['DOCUMENT_ROOT']	-> Raiz de Todo el servidor web  */
-	$PCO_PCODER_RaizExploracionArchivos="../../../";
+	$PCO_PCODER_RaizExploracionArchivos=".";
 
 
 	//Define las extensiones permitidas por el editor de texto
@@ -44,7 +47,7 @@
 	/*  Determina si solamente se permiten abrir las extensiones conocidas
 		Posibles Valores:  1=Solo permite abrir ciertas extensiones
 		                   0=Abre cualquier tipo de extension         */
-	$PCO_PCODER_ForzarExtensionesConocidas = 0;
+	$PCO_PCODER_ForzarExtensionesConocidas = 1;
 
 
 	$ZonaHoraria='America/Bogota';
