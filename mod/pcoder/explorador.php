@@ -72,9 +72,6 @@
  	<meta name="description" content="Editor de codigo en la Nube basado en Practico Framework PHP" />
     <meta name="author" content="John Arroyave G. - {www.practico.org} - {unix4you2 at gmail.com}">
 
-    <!-- Custom Fonts -->
-    <link href="../../inc/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
     <!-- Agrega archivos necesarios para el Explorador en arbol de directorios -->
     <link href="lib/phpFileTree/styles/default/default.css" rel="stylesheet" type="text/css" media="screen" />
     <script src="lib/phpFileTree/php_file_tree.js" type="text/javascript"></script>
