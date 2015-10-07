@@ -88,6 +88,8 @@
 					<!-- BOTONES INDEPENDIENTES -->
 					<li><a href="#" OnClick="editor.execCommand('find');" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_Buscar; ?>"><i class="fa fa-search fa-fw text-danger "></i></a></li>
 					<li><a href="#" OnClick="editor.execCommand('sortlines');" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_OrdenaSel; ?>"><i class="fa fa-sort-alpha-asc fa-fw text-primary"></i></a></li>
+					<li><a href="#" OnClick="IntercambiarEstadoCaracteresInvisibles();" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_CaracNoImprimibles; ?>"><i class="fa fa-eye-slash fa-fw text-default"></i></a></li>
+				
 				
 				</ul>
 					

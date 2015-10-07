@@ -7,16 +7,23 @@
             |___/ 
 ```
 
+## Versión 15.11 (2015-11-01)
+
+* Added: Agregadas opciones de formato, caracteres invisibles y edicion sobre la barra de menu
+* Added: Agregada prediccion de codigo y snippets
+* Added: Agregada la deteccion de errores de sintaxis sobre el lenguaje utilizado
+* Added: Inicio a soporte para cargar formatos de imagen
+* Enhan: Actualizacion de la version de ACE
+* Enhan: Eliminado el marco indicativo del limite de impresion
+* Enhan: Barras de progreso en operaciones
+
+
 ## Versión 15.10 (2015-10-06)
 
 * Added: Combo de navegacion por sistema de archivos
 * Added: La carga del arbol de archivos se hace por demanda
 * Added: Soporte a idiomas Hindi, Portugues e Ingles
-* Added: Agregadas opciones de formato y edicion sobre la barra de menu
 * Enhan: Velocidad de apertura
-* Enhan: Eliminado el marco indicativo del limite de impresion
-* Enhan: Barras de progreso en operaciones
-* Enhan: Actualizacion de la version de ACE
 
 
 ## Versión 15.9 (2015-10-03)

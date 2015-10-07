@@ -101,3 +101,4 @@
 	$MULTILANG_PCODER_Path3Punto='Root of PCoder as StandAlone (where you can find LICENSE, AUTHORS, Etc)';
 	$MULTILANG_PCODER_Path4Punto='Install root for PCoder as StandAlone or Practico root if is a module';
 	$MULTILANG_PCODER_PathFull='WebServer Root. Could be slow acording to the available files.';
+	$MULTILANG_PCODER_CaracNoImprimibles='Show/Hide Invisible characters';

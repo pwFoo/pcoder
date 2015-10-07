@@ -101,4 +101,4 @@
 	$MULTILANG_PCODER_Path3Punto='Raiz de PCoder como autônomo (onde você pode encontrar LICENSE, AUTHORS, Etc)';
 	$MULTILANG_PCODER_Path4Punto='Instale raiz para PCoder como autônomo ou Practico raiz se &eacute; um módulo';
 	$MULTILANG_PCODER_PathFull='WebServer Root. Poderia ser monitores segundo lento para os ficheiros dispon&iacute;veis.';
-	
+	$MULTILANG_PCODER_CaracNoImprimibles='Exposição / Esconder personagens invis&iacute;veis';

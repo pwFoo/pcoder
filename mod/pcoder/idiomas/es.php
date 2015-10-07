@@ -102,3 +102,4 @@
 	$MULTILANG_PCODER_Path3Punto='Raiz de PCoder StandAlone (Donde reside LICENSE, AUTHORS, Etc)';
 	$MULTILANG_PCODER_Path4Punto='Raiz Instalacion PCoder cuando es independiente o Raiz de Practico si esta como modulo';
 	$MULTILANG_PCODER_PathFull='Raiz de Todo el servidor web. Podria tardar segun cantidad de archivos posibles.';
+	$MULTILANG_PCODER_CaracNoImprimibles='Ver/Ocultar Caracteres no imprimibles';

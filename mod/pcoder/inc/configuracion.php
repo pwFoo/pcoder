@@ -43,6 +43,8 @@
 	//Define las extensiones permitidas por el editor de texto
 	$PCO_PCODER_ExtensionesPermitidas = array("txt", "inc", "css", "cpp", "c", "java", "php", "htm", "html", "py", "md", "bat", "sh", "ini", "log", "conf", "asc", "csv", "xml", "pl", "asp", "aspx", "jsp", "nfo", "yml", "json", "xsl", "ans", "dat", "err", "mdown", "lisp", "man");
 
+	//Extensiones de archivo para cargar directamente en el editor
+	$PCO_PCODER_ExtensionesExternas = array("gif", "jpg", "png", "bmp", "pdf");
 
 	/*  Determina si solamente se permiten abrir las extensiones conocidas
 		Posibles Valores:  1=Solo permite abrir ciertas extensiones

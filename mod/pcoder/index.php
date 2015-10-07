@@ -227,7 +227,9 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <!-- Bootstrap Core JavaScript -->
     <script type="text/javascript" src="../../inc/bootstrap/js/bootstrap.min.js"></script>
     
+    <!-- Carga editor ACE y sus extensiones -->
 	<script src="../../inc/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../inc/ace/src-min-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
 
     <script type="text/javascript">
         function CambiarFuenteEditor(tamano)
@@ -254,6 +256,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                     editor.setShowInvisibles(false);
                 else
                     editor.setShowInvisibles(true);
+            }
+        function IntercambiarEstadoCaracteresInvisibles()
+            {
+				//InterCambia el modo del editor para mostrar (true) u ocultar (false) los caracteres invisibles segun su estado actual
+				if (editor.getShowInvisibles()==true)
+					editor.setShowInvisibles(false);
+				else
+					editor.setShowInvisibles(true);
             }
         function ActualizarTituloEditor(titulo)
             {
@@ -365,9 +375,13 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			}
 		window.setTimeout(ActualizarBarraEstado, 2000);
 
+
+		//Incluye extension de lenguaje para ACE
+		ace.require("ace/ext/language_tools");
         // Crea el editor
         editor = ace.edit("editor_codigo");
-        editor.getSession().setUseWorker(false); //Evita el error 404 para "worker-php.js Failed to load resource: the server responded with a status of 404 (Not Found)"
+        //editor.getSession().setUseWorker(false); //Evita el error 404 para "worker-php.js Failed to load resource: the server responded with a status of 404 (Not Found)"
+        editor.getSession().setUseWorker(true); //Evita el error 404 para "worker-php.js Failed to load resource: the server responded with a status of 404 (Not Found)"
         
         //Actualiza el editor con el valor cargado inicialmente en el textarea
         editor.setValue(document.getElementById("PCODER_AreaTexto").value);
@@ -377,7 +391,18 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
         CambiarFuenteEditor("14px");
         CambiarTemaEditor("ace/theme/ambiance");  //tomorrow_night|twilight|eclipse|ambiance|ETC
         CambiarModoEditor("ace/mode/<?php echo $PCODER_ModoEditor; ?>");
-        editor.setShowPrintMargin(0); //Elimina la visualizacion de margen de impresion
+        
+        
+        
+        //Activa la autocompletacion de codigo y los snippets
+		editor.setOptions({
+			enableBasicAutocompletion: true,
+			enableSnippets: true,
+			enableLiveAutocompletion: true
+		});
+        
+        //Elimina la visualizacion de margen de impresion
+        editor.setShowPrintMargin(0);
         CaracteresInvisiblesEditor(0);
         editor.clearSelection();
         
