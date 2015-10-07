@@ -45,7 +45,7 @@
 	#Lista de archivos y carpetas a empaquetar (relativos a la raiz y separados por espacio)
 	ListaArchivos=" AUTHORS index.php LICENSE INSTALL CHANGELOG.md README.md inc mod "
 	#Nombre del archivo resultante
-	NombreArchivo="PCoder-StandAlone_Install";
+	NombreArchivo="PCoder";
 	Version=`head -n 1 mod/pcoder/inc/version_actual.txt`
 	Extension=".zip"
 
