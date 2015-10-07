@@ -13,9 +13,12 @@
 * Added: Agregada prediccion de codigo y snippets
 * Added: Agregada la deteccion de errores de sintaxis sobre el lenguaje utilizado
 * Added: Inicio a soporte para cargar formatos de imagen
+* Added: Posibilidad de pantalla completa
+* Added: Opciones de aumentar o disminuir tamano de fuente
 * Enhan: Actualizacion de la version de ACE
 * Enhan: Eliminado el marco indicativo del limite de impresion
 * Enhan: Barras de progreso en operaciones
+* Enhan: Reorganizadas las opciones del menu
 
 
 ## Versión 15.10 (2015-10-06)

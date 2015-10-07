@@ -36,6 +36,8 @@
 	//Lexico general
 	$MULTILANG_PCODER_Abrir='Open';
 	$MULTILANG_PCODER_Archivo='File';
+	$MULTILANG_PCODER_Acercar='Zoom in';
+	$MULTILANG_PCODER_Alejar='Zoom out';
 	$MULTILANG_PCODER_Ayuda='Help';
 	$MULTILANG_PCODER_Basicos='Basics';
 	$MULTILANG_PCODER_Buscar='Find';
@@ -70,6 +72,7 @@
 	$MULTILANG_PCODER_Si='Yes';
 	$MULTILANG_PCODER_Tamano='Size';
 	$MULTILANG_PCODER_Tipo='Type';
+	$MULTILANG_PCODER_Ver='View';
 
 	//Mensajes de error y varios
 	$MULTILANG_PCODER_AumSangria='Increase indent';
@@ -102,3 +105,4 @@
 	$MULTILANG_PCODER_Path4Punto='Install root for PCoder as StandAlone or Practico root if is a module';
 	$MULTILANG_PCODER_PathFull='WebServer Root. Could be slow acording to the available files.';
 	$MULTILANG_PCODER_CaracNoImprimibles='Show/Hide Invisible characters';
+	$MULTILANG_PCODER_PantallaCompleta='Full screen';

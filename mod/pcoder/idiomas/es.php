@@ -36,6 +36,8 @@
 	//Lexico general
 	$MULTILANG_PCODER_Abrir='Abrir';
 	$MULTILANG_PCODER_Archivo='Archivo';
+	$MULTILANG_PCODER_Acercar='Acercar';
+	$MULTILANG_PCODER_Alejar='Alejar';
 	$MULTILANG_PCODER_Ayuda='Ayuda';
 	$MULTILANG_PCODER_Basicos='B&aacute;sicos';
 	$MULTILANG_PCODER_Buscar='Buscar';
@@ -71,6 +73,7 @@
 	$MULTILANG_PCODER_Si='Si';
 	$MULTILANG_PCODER_Tamano='Tama&ntilde;o';
 	$MULTILANG_PCODER_Tipo='Tipo';
+	$MULTILANG_PCODER_Ver='Ver';
 
 	//Mensajes de error y varios
 	$MULTILANG_PCODER_AumSangria='Aumentar sangr&iacute;a';
@@ -103,3 +106,4 @@
 	$MULTILANG_PCODER_Path4Punto='Raiz Instalacion PCoder cuando es independiente o Raiz de Practico si esta como modulo';
 	$MULTILANG_PCODER_PathFull='Raiz de Todo el servidor web. Podria tardar segun cantidad de archivos posibles.';
 	$MULTILANG_PCODER_CaracNoImprimibles='Ver/Ocultar Caracteres no imprimibles';
+	$MULTILANG_PCODER_PantallaCompleta='Pantalla completa';

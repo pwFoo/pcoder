@@ -73,6 +73,19 @@
 					</li>
 					<!--<li><a href="#">EJEMPLO ENLACE</a></li>-->
 
+					<!-- MENU VER -->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Ver; ?> <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#" OnClick="IntercambiarPantallaCompleta();"><i class="fa fa-arrows-alt fa-fw"></i> <?php echo $MULTILANG_PCODER_PantallaCompleta; ?></a></li>
+							<li><a href="#" OnClick="IntercambiarEstadoCaracteresInvisibles();"><i class="fa fa-eye-slash fa-fw"></i> <?php echo $MULTILANG_PCODER_CaracNoImprimibles; ?></a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#" OnClick="AumentarTamanoFuente();"><i class="fa fa-plus-square fa-fw"></i> <?php echo $MULTILANG_PCODER_Acercar; ?></a></li>
+							<li><a href="#" OnClick="DisminuirTamanoFuente();"><i class="fa fa-minus-square fa-fw"></i> <?php echo $MULTILANG_PCODER_Alejar; ?></a></li>
+						</ul>
+					</li>
+					<!--<li><a href="#">EJEMPLO ENLACE</a></li>-->
+
 					<!-- MENU FORMATO -->
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Formato; ?> <span class="caret"></span></a>
@@ -84,11 +97,10 @@
 							<li><a href="#" OnClick="editor.execCommand('tolowercase');"><i class="fa fa-info fa-fw"></i> <?php echo $MULTILANG_PCODER_ConvMin; ?></a></li>
 						</ul>
 					</li>
-					
+
 					<!-- BOTONES INDEPENDIENTES -->
 					<li><a href="#" OnClick="editor.execCommand('find');" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_Buscar; ?>"><i class="fa fa-search fa-fw text-danger "></i></a></li>
 					<li><a href="#" OnClick="editor.execCommand('sortlines');" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_OrdenaSel; ?>"><i class="fa fa-sort-alpha-asc fa-fw text-primary"></i></a></li>
-					<li><a href="#" OnClick="IntercambiarEstadoCaracteresInvisibles();" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_CaracNoImprimibles; ?>"><i class="fa fa-eye-slash fa-fw text-default"></i></a></li>
 				
 				
 				</ul>

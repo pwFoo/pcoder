@@ -337,7 +337,47 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				//$('#editor_codigo').height( alto_final ).css({ });			//Asignacion en pixeles
 				$('#editor_codigo').height( porcentaje_final+"vh" ).css({ });	//Asignacion en porcentaje
 			}
-			
+
+		function IntercambiarPantallaCompleta()
+			{
+				if (!document.fullscreenElement &&    // alternative standard method
+				  !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {  // current working methods
+					if (document.documentElement.requestFullscreen) {
+					  document.documentElement.requestFullscreen();
+					} else if (document.documentElement.msRequestFullscreen) {
+					  document.documentElement.msRequestFullscreen();
+					} else if (document.documentElement.mozRequestFullScreen) {
+					  document.documentElement.mozRequestFullScreen();
+					} else if (document.documentElement.webkitRequestFullscreen) {
+					  document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+					}
+				} else {
+					if (document.exitFullscreen) {
+					  document.exitFullscreen();
+					} else if (document.msExitFullscreen) {
+					  document.msExitFullscreen();
+					} else if (document.mozCancelFullScreen) {
+					  document.mozCancelFullScreen();
+					} else if (document.webkitExitFullscreen) {
+					  document.webkitExitFullscreen();
+					}
+				}
+			}
+		function AumentarTamanoFuente()
+			{
+				tamano=editor.getFontSize();
+				tamano = tamano.substring(0, tamano.length-2); //Elimina las letras de px al final
+				tamano=parseInt(tamano)+2;
+				CambiarFuenteEditor(tamano+"px");
+			}
+		function DisminuirTamanoFuente()
+			{
+				tamano=editor.getFontSize();
+				tamano = tamano.substring(0, tamano.length-2); //Elimina las letras de px al final
+				tamano=parseInt(tamano)-2;
+				CambiarFuenteEditor(tamano+"px");
+			}
+
 		function ExplorarPath()
 			{
 				//Presenta la barra de carga que deberia ocultarse automaticamente en el OnLoad del Iframe

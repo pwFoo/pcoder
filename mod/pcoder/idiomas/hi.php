@@ -36,6 +36,8 @@
 	//Lexico general
 	$MULTILANG_PCODER_Abrir='खुला';
 	$MULTILANG_PCODER_Archivo='फ़ाइल';
+	$MULTILANG_PCODER_Acercar='ज़ूम इन';
+	$MULTILANG_PCODER_Alejar='ज़ूम आउट';
 	$MULTILANG_PCODER_Ayuda='मदद';
 	$MULTILANG_PCODER_Basicos='मूल बातें';
 	$MULTILANG_PCODER_Buscar='खोज';
@@ -70,6 +72,7 @@
 	$MULTILANG_PCODER_Si='हाँ';
 	$MULTILANG_PCODER_Tamano='आकार';
 	$MULTILANG_PCODER_Tipo='टाइप';
+	$MULTILANG_PCODER_Ver='राय';
 
 	//Mensajes de error y varios
 	$MULTILANG_PCODER_AumSangria='बढ़ते हुए अंतर में';
@@ -102,3 +105,4 @@
 	$MULTILANG_PCODER_Path4Punto='एक मॉड्यूल है, तो स्टैंडअलोन या Practico रूट के रूप में PCoder के लिए रूट स्थापित';
 	$MULTILANG_PCODER_PathFull='वेबसर्वर रूट। उपलब्ध फाइल करने के लिए धीमी गति अनुसार हो सकता है।';
 	$MULTILANG_PCODER_CaracNoImprimibles='दिखाएँ / छुपाएँ अदृश्य पात्रों';
+	$MULTILANG_PCODER_PantallaCompleta='पूर्ण स्क्रीन';
