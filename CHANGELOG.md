@@ -7,6 +7,12 @@
             |___/ 
 ```
 
+
+## Versión 15.12 (2015-12-01)
+
+* Fixed: Opcion de salir en menu Archivo no cerraba la ventana
+
+
 ## Versión 15.11 (2015-11-01)
 
 * Added: Agregadas opciones de formato, caracteres invisibles y edicion sobre la barra de menu
