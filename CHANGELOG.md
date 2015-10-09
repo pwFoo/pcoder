@@ -17,7 +17,6 @@
 * Enhan: Barra de estado muestra la ruta completa al archivo
 
 
-
 ## Versión 15.11 (2015-11-01)
 
 * Added: Agregadas opciones de formato, caracteres invisibles y edicion sobre la barra de menu
