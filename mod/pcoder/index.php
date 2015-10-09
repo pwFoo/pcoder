@@ -176,7 +176,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
     <style type="text/css">
         html, body {
-            background: #000000;  /* 002a36 | BFBFBF | 888888 */
+            background: #272727;  /* 002a36 | BFBFBF | 888888 | 272727 | 000000 */
             overflow-x: hidden;
             overflow-y: hidden;
         }
@@ -195,7 +195,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			//Incluye algunos marcos del aplicativo
 			include_once ("inc/barra_menu.php");
 			include_once ("inc/mensajes_error.php");
-			include_once ("inc/marco_explorador.php");
 			include_once ("inc/marco_preferencias.php");
 			include_once ("inc/marco_acerca.php");
 			include_once ("inc/marco_guardar.php");
@@ -205,10 +204,12 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 
 		<div class="row">
-			<div class="col-md-2">
-				<div id="barra_lateral_izquierda"></div>
+			<div class="col-md-2" style="margin:0px; padding:0px;" id="panel_izquierdo">
+				<?php
+					include_once ("inc/marco_explorador.php");
+				?>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-8" style="margin:0px; padding:0px;" id="panel_editor_codigo">
 				<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
 					<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"><?php echo $PCODERcontenido_archivo; ?></textarea>
 					<input name="PCODER_TokenEdicion" type="hidden" value="<?php echo $PCODER_TokenEdicion; ?>">
@@ -220,8 +221,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				</form>
 				<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
 			</div>
-			<div class="col-md-2">
-				<div id="barra_lateral_derecha"></div>
+			<div class="col-md-2" style="margin:0px; padding:0px;" id="panel_derecho">
 			</div>
 		</div>
 
@@ -326,16 +326,36 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                 //Oculta el modal de seleccion del archivo
                 $('button#boton_navegador_archivos').click();
                 //Carga la nueva ventana con el archivo, Reemplaza metodo anterior
-                PCO_VentanaPopup('index.php?PCO_Accion=PCOMOD_CargarPcoder&Presentar_FullScreen=1&Precarga_EstilosBS=1&PCODER_archivo='+archivo,'{P} '+archivo,'toolbar=no, location=no, directories=0, directories=no, status=no, location=no, menubar=no ,scrollbars=no, resizable=yes, fullscreen=no, titlebar=no, width=800, height=600');
+                PCO_VentanaPopup('index.php?PCO_Accion=PCOMOD_CargarPcoder&Presentar_FullScreen=1&Precarga_EstilosBS=1&PCODER_archivo='+archivo,'{P} '+archivo,'toolbar=no, location=no, directories=0, directories=no, status=no, location=no, menubar=no ,scrollbars=no, resizable=yes, fullscreen=no, titlebar=no, width=1024, height=700');
             }
 
+		ExplorarPath();	//Lanza por primera vez la exploracion de archivos para el panel izquierdo
         panel_izquierdo=0;
         panel_derecho=0;
         function AjustarPanelesLaterales()
             {
 				//Redimensiona, ajusta y aplica clases al editor segun el estado de visualizacion las barras laterales
 				ancho_panel_editor=12-panel_izquierdo-panel_derecho; //Actualiza segun los anchos de cada panel
-						
+				
+				
+				
+				
+				
+				
+				
+				//Remueve las clases tipicas de los paneles y aplica las nuevas
+				$("#panel_izquierdo").removeClass("col-md-2");
+				$("#panel_derecho").removeClass("col-md-2");
+				$("#panel_izquierdo").addClass("col-md-"+panel_izquierdo);
+				$("#panel_derecho").addClass("col-md-"+panel_derecho);
+				//Si el valor es cero entonces se ocultan
+				if(panel_izquierdo==0) $("#panel_izquierdo").hide();
+				if(panel_derecho==0) $("#panel_derecho").hide();
+				
+				
+				//Remueve las clases tipicas del editor de codigo y aplica la nueva
+				$("#panel_editor_codigo").removeClass("col-md-8");
+				$("#panel_editor_codigo").addClass("col-md-"+ancho_panel_editor);
 				
 			}
 
@@ -348,11 +368,16 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				var alto_contenedor_menu = $("#contenedor_menu").height();
 				var alto_contenedor_barra_estado = $("#contenedor_barra_estado").height();
 				var alto_contenedor_mensajes_error = $("#contenedor_mensajes_error").height();
+				var alto_barra_lateral_izquierda = $("#barra_lateral_izquierda").height();
+				
+				//Modifica el ALTO DEL EDITOR
 				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado+alto_contenedor_mensajes_error)*100/alto_ventana;
 				var porcentaje_final=100-porcentaje_barrasmenuyestado;
 				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_barra_estado-alto_contenedor_mensajes_error;
 				//$('#editor_codigo').height( alto_final ).css({ });			//Asignacion en pixeles
 				$('#editor_codigo').height( porcentaje_final+"vh" ).css({ });	//Asignacion en porcentaje
+				
+				AjustarPanelesLaterales();
 			}
 
 		function IntercambiarPantallaCompleta()
@@ -394,19 +419,33 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				tamano=parseInt(tamano)-2;
 				CambiarFuenteEditor(tamano+"px");
 			}
-
+		function ActivarPanelIzquierdo()
+			{
+				panel_izquierdo=2;
+				$("#panel_izquierdo").show();
+				$("#panel_izquierdo").removeClass("col-md-0");
+				$("#panel_izquierdo").addClass("col-md-"+panel_izquierdo);
+				AjustarPanelesLaterales();
+			}
+		function ActivarPanelDerecho()
+			{
+				panel_derecho=2;
+				$("#panel_derecho").show();
+				$("#panel_derecho").removeClass("col-md-0");
+				$("#panel_derecho").addClass("col-md-"+panel_derecho);
+				AjustarPanelesLaterales();
+			}
 		function ExplorarPath()
 			{
+				//Si el panel izquierdo esta oculto lo muestra y actualiza paneles
+				if(panel_izquierdo==0)
+					ActivarPanelIzquierdo();
+
 				//Presenta la barra de carga que deberia ocultarse automaticamente en el OnLoad del Iframe
 				$('#progreso_marco_explorador').show();
 				
 				//Se encarga de actualizar el path de navegacion de acuerdo al valor del combo o caja de texto
-				/*
-				if (path_exploracion_archivos_manual.value!="")
-					$('#iframe_marco_explorador').attr('src', 'explorador.php?PCO_PCODER_Accion=PCOMOD_ExplorarPath&PathExploracion='+path_exploracion_archivos_manual.value);
-				else
-				*/
-					$('#iframe_marco_explorador').attr('src', 'explorador.php?PCO_PCODER_Accion=PCOMOD_ExplorarPath&PathExploracion='+path_exploracion_archivos.value);
+				$('#iframe_marco_explorador').attr('src', 'explorador.php?PCO_PCODER_Accion=PCOMOD_ExplorarPath&PathExploracion='+path_exploracion_archivos.value);
 			}
 
 		//Evento que quita la barra de progreso de carga para el explorador cada que finaliza el cargue de su IFrame
@@ -474,6 +513,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			RedimensionarEditor();
         });
         RedimensionarEditor();
+        AjustarPanelesLaterales();
 
         //Captura el evento de Ctrl+S para guardar el archivo
         $(window).bind('keydown', function(event) {

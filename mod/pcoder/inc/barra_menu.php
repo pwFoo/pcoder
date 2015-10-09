@@ -85,6 +85,9 @@
 									<li role="separator" class="divider"></li>
 									<li><a href="#" OnClick="AumentarTamanoFuente();"><i class="fa fa-plus-square fa-fw"></i> <?php echo $MULTILANG_PCODER_Acercar; ?></a></li>
 									<li><a href="#" OnClick="DisminuirTamanoFuente();"><i class="fa fa-minus-square fa-fw"></i> <?php echo $MULTILANG_PCODER_Alejar; ?></a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#" OnClick="ActivarPanelIzquierdo();"><i class="fa fa-columns fa-fw"></i> <?php echo $MULTILANG_PCODER_PanelIzq; ?></a></li>
+									<li><a href="#" OnClick="ActivarPanelDerecho();"><i class="fa fa-columns fa-fw"></i> <?php echo $MULTILANG_PCODER_PanelDer; ?></a></li>
 								</ul>
 							</li>
 							<!--<li><a href="#">EJEMPLO ENLACE</a></li>-->
