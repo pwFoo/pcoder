@@ -10,6 +10,8 @@
 
 ## Versión 15.12 (2015-12-01)
 
+* Added: Posibilidad de dos paneles dinamicos (izquierdo y derecho)
+* Enhan: Barra de estado muestra la ruta completa al archivo
 * Fixed: Opcion de salir en menu Archivo no cerraba la ventana
 
 

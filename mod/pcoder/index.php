@@ -202,19 +202,26 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			include_once ("inc/marco_teclado.php");
 		?>
 
-		<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
-			<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"><?php echo $PCODERcontenido_archivo; ?></textarea>
-			<input name="PCODER_TokenEdicion" type="hidden" value="<?php echo $PCODER_TokenEdicion; ?>">
-			<input name="PCODER_archivo" type="hidden" value="<?php echo $PCODER_archivo; ?>">
-			<input type="Hidden" name="Presentar_FullScreen" value="<?php echo $Presentar_FullScreen; ?>">
-			<input type="Hidden" name="Precarga_EstilosBS" value="<?php echo $Precarga_EstilosBS; ?>">
-			<input type="Hidden" name="PCO_ECHO" value="0"> <!-- Determina si la respuesta debe ser con o sin eco -->
-			<input name="PCO_Accion" type="hidden" value="PCOMOD_GuardarArchivo">
-		</form>
+
 
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-md-2">
+				<div id="barra_lateral_izquierda"></div>
+			</div>
+			<div class="col-md-8">
+				<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
+					<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"><?php echo $PCODERcontenido_archivo; ?></textarea>
+					<input name="PCODER_TokenEdicion" type="hidden" value="<?php echo $PCODER_TokenEdicion; ?>">
+					<input name="PCODER_archivo" type="hidden" value="<?php echo $PCODER_archivo; ?>">
+					<input type="Hidden" name="Presentar_FullScreen" value="<?php echo $Presentar_FullScreen; ?>">
+					<input type="Hidden" name="Precarga_EstilosBS" value="<?php echo $Precarga_EstilosBS; ?>">
+					<input type="Hidden" name="PCO_ECHO" value="0"> <!-- Determina si la respuesta debe ser con o sin eco -->
+					<input name="PCO_Accion" type="hidden" value="PCOMOD_GuardarArchivo">
+				</form>
 				<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
+			</div>
+			<div class="col-md-2">
+				<div id="barra_lateral_derecha"></div>
 			</div>
 		</div>
 
@@ -322,6 +329,16 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                 PCO_VentanaPopup('index.php?PCO_Accion=PCOMOD_CargarPcoder&Presentar_FullScreen=1&Precarga_EstilosBS=1&PCODER_archivo='+archivo,'{P} '+archivo,'toolbar=no, location=no, directories=0, directories=no, status=no, location=no, menubar=no ,scrollbars=no, resizable=yes, fullscreen=no, titlebar=no, width=800, height=600');
             }
 
+        panel_izquierdo=0;
+        panel_derecho=0;
+        function AjustarPanelesLaterales()
+            {
+				//Redimensiona, ajusta y aplica clases al editor segun el estado de visualizacion las barras laterales
+				ancho_panel_editor=12-panel_izquierdo-panel_derecho; //Actualiza segun los anchos de cada panel
+						
+				
+			}
+
         function RedimensionarEditor()
             {
 				//Obtiene las dimensiones actuales de la ventana de edicion y algunos objetos
@@ -408,7 +425,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				$("#TipoDocumento").html("<?php echo $MULTILANG_PCODER_Tipo; ?>: <?php echo $PCODER_TipoElemento; ?>");
 				$("#TamanoDocumento").html("<?php echo $MULTILANG_PCODER_Tamano; ?>: <b><?php echo $PCODER_TamanoElemento; ?> Kb</b>");
 				$("#FechaModificadoDocumento").html("<?php echo $MULTILANG_PCODER_Modificado; ?>: <b><?php echo $PCODER_FechaElemento; ?></b>");
-				$("#RutaDocumento").html("<i class='fa fa-hdd-o text-info'> <?php echo $PCODER_NombreArchivo; ?></i>");
+				$("#RutaDocumento").html("<i class='fa fa-hdd-o text-info'> <?php echo $PCODER_archivo; ?></i>");
 
 				//Llama periodicamente la rutina de actualizacion de la barra
 				window.setTimeout(ActualizarBarraEstado, 1500);
