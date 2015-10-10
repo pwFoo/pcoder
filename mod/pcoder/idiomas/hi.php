@@ -106,3 +106,4 @@
 	$MULTILANG_PCODER_PantallaCompleta='पूर्ण स्क्रीन';
 	$MULTILANG_PCODER_PanelIzq='बाएं पैनल';
 	$MULTILANG_PCODER_PanelDer='राइट पैनल';
+	$MULTILANG_PCODER_OcultarPanel='पैनल को छिपाने';

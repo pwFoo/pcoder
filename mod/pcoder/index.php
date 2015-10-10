@@ -180,6 +180,17 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
             overflow-x: hidden;
             overflow-y: hidden;
         }
+
+		/* Personalizacion del estilo bootstrap para el alto del menu */
+			.navbar-nav > li > a, .navbar-brand {
+				padding-top:0px !important; padding-bottom:0 !important;
+				height: 30px;
+			}
+			.navbar {min-height:30px !important;}
+		/*Adicion de clase para el alto de menu*/
+			.navbar-xs { min-height:30px; height: 30px; }
+			.navbar-xs .navbar-brand{ padding: 0px 12px;font-size: 16px;line-height: 30px; }
+			.navbar-xs .navbar-nav > li > a {  padding-top: 0px; padding-bottom: 0px; line-height: 30px; }
     </style>
 
     <!-- Agrega archivos necesarios para el Explorador en arbol de directorios -->
@@ -206,7 +217,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		<div class="row">
 			<div class="col-md-2" style="margin:0px; padding:0px;" id="panel_izquierdo">
 				<?php
-					include_once ("inc/marco_explorador.php");
+					include_once ("inc/panel_izquierdo.php");
 				?>
 			</div>
 			<div class="col-md-8" style="margin:0px; padding:0px;" id="panel_editor_codigo">
@@ -222,6 +233,9 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
 			</div>
 			<div class="col-md-2" style="margin:0px; padding:0px;" id="panel_derecho">
+				<?php
+					include_once ("inc/panel_derecho.php");
+				?>
 			</div>
 		</div>
 
@@ -239,6 +253,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 	<script src="../../inc/ace/src-min-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
 
     <script type="text/javascript">
+		//##############################################################
+		//###              INICIALIZACION DE VARIABLES               ###
+		//##############################################################
+		panel_izquierdo=0;
+        panel_derecho=0;
+		
+		
+		
         function CambiarFuenteEditor(tamano)
             {
                 //Cambia la fuente del editor al tamano recibido
@@ -329,36 +351,58 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                 PCO_VentanaPopup('index.php?PCO_Accion=PCOMOD_CargarPcoder&Presentar_FullScreen=1&Precarga_EstilosBS=1&PCODER_archivo='+archivo,'{P} '+archivo,'toolbar=no, location=no, directories=0, directories=no, status=no, location=no, menubar=no ,scrollbars=no, resizable=yes, fullscreen=no, titlebar=no, width=1024, height=700');
             }
 
-		ExplorarPath();	//Lanza por primera vez la exploracion de archivos para el panel izquierdo
-        panel_izquierdo=0;
-        panel_derecho=0;
         function AjustarPanelesLaterales()
             {
 				//Redimensiona, ajusta y aplica clases al editor segun el estado de visualizacion las barras laterales
 				ancho_panel_editor=12-panel_izquierdo-panel_derecho; //Actualiza segun los anchos de cada panel
-				
-				
-				
-				
-				
-				
-				
+
 				//Remueve las clases tipicas de los paneles y aplica las nuevas
 				$("#panel_izquierdo").removeClass("col-md-2");
 				$("#panel_derecho").removeClass("col-md-2");
-				$("#panel_izquierdo").addClass("col-md-"+panel_izquierdo);
-				$("#panel_derecho").addClass("col-md-"+panel_derecho);
-				//Si el valor es cero entonces se ocultan
-				if(panel_izquierdo==0) $("#panel_izquierdo").hide();
-				if(panel_derecho==0) $("#panel_derecho").hide();
-				
-				
+				//Si el valor es cero entonces se ocultan sino agrega la clase
+				if(panel_izquierdo==0)
+					$("#panel_izquierdo").hide();
+				else
+					$("#panel_izquierdo").addClass("col-md-"+panel_izquierdo);
+				if(panel_derecho==0)
+					$("#panel_derecho").hide();
+				else
+					$("#panel_derecho").addClass("col-md-"+panel_derecho);
+
 				//Remueve las clases tipicas del editor de codigo y aplica la nueva
 				$("#panel_editor_codigo").removeClass("col-md-8");
 				$("#panel_editor_codigo").addClass("col-md-"+ancho_panel_editor);
-				
 			}
-
+		function ActivarPanelIzquierdo()
+			{
+				panel_izquierdo=2;
+				$("#panel_izquierdo").show();
+				$("#panel_izquierdo").removeClass("col-md-0");
+				$("#panel_izquierdo").addClass("col-md-"+panel_izquierdo);
+				AjustarPanelesLaterales();
+			}
+		function ActivarPanelDerecho()
+			{
+				panel_derecho=2;
+				$("#panel_derecho").show();
+				$("#panel_derecho").removeClass("col-md-0");
+				$("#panel_derecho").addClass("col-md-"+panel_derecho);
+				AjustarPanelesLaterales();
+			}
+		function DesactivarPanelIzquierdo()
+			{
+				panel_izquierdo=0;
+				$("#panel_izquierdo").removeClass("col-md-2");
+				$("#panel_izquierdo").hide();
+				AjustarPanelesLaterales();
+			}
+		function DesactivarPanelDerecho()
+			{
+				panel_derecho=0;
+				$("#panel_derecho").removeClass("col-md-2");
+				$("#panel_derecho").hide();
+				AjustarPanelesLaterales();
+			}
         function RedimensionarEditor()
             {
 				//Obtiene las dimensiones actuales de la ventana de edicion y algunos objetos
@@ -419,27 +463,11 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				tamano=parseInt(tamano)-2;
 				CambiarFuenteEditor(tamano+"px");
 			}
-		function ActivarPanelIzquierdo()
-			{
-				panel_izquierdo=2;
-				$("#panel_izquierdo").show();
-				$("#panel_izquierdo").removeClass("col-md-0");
-				$("#panel_izquierdo").addClass("col-md-"+panel_izquierdo);
-				AjustarPanelesLaterales();
-			}
-		function ActivarPanelDerecho()
-			{
-				panel_derecho=2;
-				$("#panel_derecho").show();
-				$("#panel_derecho").removeClass("col-md-0");
-				$("#panel_derecho").addClass("col-md-"+panel_derecho);
-				AjustarPanelesLaterales();
-			}
 		function ExplorarPath()
 			{
 				//Si el panel izquierdo esta oculto lo muestra y actualiza paneles
-				if(panel_izquierdo==0)
-					ActivarPanelIzquierdo();
+				//if(panel_izquierdo==0)
+				//	ActivarPanelIzquierdo();
 
 				//Presenta la barra de carga que deberia ocultarse automaticamente en el OnLoad del Iframe
 				$('#progreso_marco_explorador').show();
@@ -470,6 +498,11 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				window.setTimeout(ActualizarBarraEstado, 1500);
 			}
 		window.setTimeout(ActualizarBarraEstado, 2000);
+
+		//##############################################################
+		//###              FUNCIONES DE INICIALIZACION               ###
+		//##############################################################
+		ExplorarPath();
 
 
 		//Incluye extension de lenguaje para ACE
@@ -513,7 +546,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			RedimensionarEditor();
         });
         RedimensionarEditor();
-        AjustarPanelesLaterales();
 
         //Captura el evento de Ctrl+S para guardar el archivo
         $(window).bind('keydown', function(event) {

@@ -107,4 +107,4 @@
 	$MULTILANG_PCODER_PantallaCompleta='Pantalla completa';
 	$MULTILANG_PCODER_PanelIzq='Panel izquierdo';
 	$MULTILANG_PCODER_PanelDer='Panel derecho';
-	
+	$MULTILANG_PCODER_OcultarPanel='Ocultar panel';

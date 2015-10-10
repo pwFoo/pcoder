@@ -106,4 +106,5 @@
 	$MULTILANG_PCODER_PantallaCompleta='Full screen';
 	$MULTILANG_PCODER_PanelIzq='Left panel';
 	$MULTILANG_PCODER_PanelDer='Right panel';
+	$MULTILANG_PCODER_OcultarPanel='Panel hide';
 
