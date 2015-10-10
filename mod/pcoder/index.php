@@ -370,7 +370,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 					$("#panel_derecho").addClass("col-md-"+panel_derecho);
 
 				//Remueve las clases tipicas del editor de codigo y aplica la nueva
-				$("#panel_editor_codigo").removeClass("col-md-8");
+				$("#panel_editor_codigo").removeClass("col-md-8"); //Cuando estan los dos paneles activos
+				$("#panel_editor_codigo").removeClass("col-md-10"); //Cuando esta un solo panel activo
 				$("#panel_editor_codigo").addClass("col-md-"+ancho_panel_editor);
 			}
 		function ActivarPanelIzquierdo()
@@ -465,14 +466,10 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			}
 		function ExplorarPath()
 			{
-				//Si el panel izquierdo esta oculto lo muestra y actualiza paneles
-				//if(panel_izquierdo==0)
-				//	ActivarPanelIzquierdo();
-
 				//Presenta la barra de carga que deberia ocultarse automaticamente en el OnLoad del Iframe
 				$('#progreso_marco_explorador').show();
 				
-				//Se encarga de actualizar el path de navegacion de acuerdo al valor del combo o caja de texto
+				//Se encarga de actualizar el path de navegacion de acuerdo al valor del combo
 				$('#iframe_marco_explorador').attr('src', 'explorador.php?PCO_PCODER_Accion=PCOMOD_ExplorarPath&PathExploracion='+path_exploracion_archivos.value);
 			}
 

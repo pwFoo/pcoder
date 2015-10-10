@@ -13,8 +13,12 @@
 * Added: Posibilidad de dos paneles dinamicos (izquierdo y derecho)
 * Added: Se agrega por defecto la navegación de archivos al lado izquierdo del editor.
 * Fixed: Opcion de salir en menu Archivo no cerraba la ventana
+* Fixed: Estilos en ancho de editor cuando se ocultan paneles son aplicados ahora correctamente
 * Enhan: Se cambia el tamaño predeterminado de apertura de archivo
-* Enhan: Barra de estado muestra la ruta completa al archivo
+* Enhan: Barra de estado muestra la ruta completa al archivo.
+* Enhan: Disminuida la altura de la barra de menu con personalización de estilos
+* Enhan: Reubicada la opcion de preferencias hacia el menu de Editar
+* Enhan: Agregados archivos independientes para los marcos
 
 
 ## Versión 15.11 (2015-11-01)
