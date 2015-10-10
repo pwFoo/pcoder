@@ -107,3 +107,4 @@
 	$MULTILANG_PCODER_PanelIzq='बाएं पैनल';
 	$MULTILANG_PCODER_PanelDer='राइट पैनल';
 	$MULTILANG_PCODER_OcultarPanel='पैनल को छिपाने';
+	$MULTILANG_PCODER_RevisarSintaxis='मैं लिखना, जबकि भाषा वाक्यविन्यास चेक';

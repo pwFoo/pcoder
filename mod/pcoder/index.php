@@ -286,6 +286,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                 else
                     editor.setShowInvisibles(true);
             }
+        function VerificarSintaxisEditor(estado)
+            {
+                //Cambia el la verificacion de sintaxis del editor
+                if (estado==0)
+                    editor.setUseWorker(false);
+                else
+                    editor.setUseWorker(true);
+            }
         function IntercambiarEstadoCaracteresInvisibles()
             {
 				//InterCambia el modo del editor para mostrar (true) u ocultar (false) los caracteres invisibles segun su estado actual
