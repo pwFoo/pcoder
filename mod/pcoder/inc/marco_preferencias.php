@@ -101,7 +101,13 @@
 						</select>
 				</div>
 				<div class="col-lg-6">
-
+					<!--
+						<label for="verificacion_autocompletado"><?php echo $MULTILANG_PCODER_RevisarSintaxis; ?></label>
+						<select id="verificacion_autocompletado" size="1" class="form-control btn-success" onchange="VerificarAutocompletadoEditor(this.value)">
+							<option value="0"><?php echo $MULTILANG_PCODER_No; ?></option>
+							<option value="1"><?php echo $MULTILANG_PCODER_Si; ?></option>
+						</select>
+					-->
 				</div>
 			</div>
     <?php 

@@ -294,6 +294,22 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                 else
                     editor.session.setOption("useWorker", true);
             }
+        function VerificarAutocompletadoEditor(estado)
+            {
+                //Cambia el la verificacion de sintaxis del editor
+                if (estado==0)
+					{
+						 editor.session.setOption("enableBasicAutocompletion", false);
+						 editor.session.setOption("enableSnippets", false);
+						 editor.session.setOption("enableLiveAutocompletion", false);
+					}
+                else
+					{
+						editor.session.setOption("enableBasicAutocompletion", true);
+						editor.session.setOption("enableSnippets", true);
+						editor.session.setOption("enableLiveAutocompletion", true);
+					}
+            }
         function IntercambiarEstadoCaracteresInvisibles()
             {
 				//InterCambia el modo del editor para mostrar (true) u ocultar (false) los caracteres invisibles segun su estado actual
@@ -506,8 +522,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		ace.require("ace/ext/language_tools");
         // Crea el editor
         editor = ace.edit("editor_codigo");
-        //editor.getSession().setUseWorker(false); //Evita el error 404 para "worker-php.js Failed to load resource: the server responded with a status of 404 (Not Found)"
-        editor.getSession().setUseWorker(true); //Evita el error 404 para "worker-php.js Failed to load resource: the server responded with a status of 404 (Not Found)"
+        editor.getSession().setUseWorker(true); //Llevar a false para evitar el error 404 para "worker-php.js Failed to load resource: the server responded with a status of 404 (Not Found)"
         
         //Actualiza el editor con el valor cargado inicialmente en el textarea
         editor.setValue(document.getElementById("PCODER_AreaTexto").value);
