@@ -290,9 +290,9 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
             {
                 //Cambia el la verificacion de sintaxis del editor
                 if (estado==0)
-                    editor.setUseWorker(false);
+                    editor.session.setOption("useWorker", false);
                 else
-                    editor.setUseWorker(true);
+                    editor.session.setOption("useWorker", true);
             }
         function IntercambiarEstadoCaracteresInvisibles()
             {
@@ -429,7 +429,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_barra_estado-alto_contenedor_mensajes_error;
 				//$('#editor_codigo').height( alto_final ).css({ });			//Asignacion en pixeles
 				$('#editor_codigo').height( porcentaje_final+"vh" ).css({ });	//Asignacion en porcentaje
-				
 				AjustarPanelesLaterales();
 			}
 
@@ -480,11 +479,10 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				//Se encarga de actualizar el path de navegacion de acuerdo al valor del combo
 				$('#iframe_marco_explorador').attr('src', 'explorador.php?PCO_PCODER_Accion=PCOMOD_ExplorarPath&PathExploracion='+path_exploracion_archivos.value);
 			}
-
-		//Evento que quita la barra de progreso de carga para el explorador cada que finaliza el cargue de su IFrame
+				//Evento que quita la barra de progreso de carga para el explorador cada que finaliza el cargue de su IFrame
 				$('#iframe_marco_explorador').load(function(){
-				$('#progreso_marco_explorador').hide();
-			});
+					$('#progreso_marco_explorador').hide();
+				});
 
         function ActualizarBarraEstado()
             {
@@ -502,13 +500,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				//Llama periodicamente la rutina de actualizacion de la barra
 				window.setTimeout(ActualizarBarraEstado, 1500);
 			}
-		window.setTimeout(ActualizarBarraEstado, 2000);
-
-		//##############################################################
-		//###              FUNCIONES DE INICIALIZACION               ###
-		//##############################################################
-		ExplorarPath();
-
+		
 
 		//Incluye extension de lenguaje para ACE
 		ace.require("ace/ext/language_tools");
@@ -550,20 +542,27 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
         $( window ).resize(function() {
 			RedimensionarEditor();
         });
-        RedimensionarEditor();
+        
 
-        //Captura el evento de Ctrl+S para guardar el archivo
-        $(window).bind('keydown', function(event) {
-            if (event.ctrlKey || event.metaKey) {
-                switch (String.fromCharCode(event.which).toLowerCase()) {
-                case 's':  //<-- Cambiar para otras letras ;)
-                    event.preventDefault();
-                    Guardar();
-                    break;
-                }
-            }
-        });
-                
+		// CAPTURA DE EVENTOS DE TECLADO #############################################################
+			//Captura el evento de Ctrl+S para guardar el archivo
+			$(window).bind('keydown', function(event) {
+				if (event.ctrlKey || event.metaKey) {
+					switch (String.fromCharCode(event.which).toLowerCase()) {
+					case 's':  //<-- Cambiar para otras letras ;)
+						event.preventDefault();
+						Guardar();
+						break;
+					}
+				}
+			});
+
+		// FUNCIONES DE INICIALIZACION ###############################################################
+			ExplorarPath();
+			RedimensionarEditor();
+			window.setTimeout(ActualizarBarraEstado, 2000);
+
+
     </script>
 
 	<script language="JavaScript">
@@ -583,10 +582,10 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <?php
         // Estadisticas de uso anonimo con GABeacon
         $PrefijoGA='<img src="https://ga-beacon.appspot.com/';
-        $PosfijoGA='/Practico/'.$PCO_Accion.'?pixel" border=0 ALT=""/>';
+        $PosfijoGA='/PCoder/'.$PCO_Accion.'?pixel" border=0 ALT=""/>';
         // Este valor indica un ID generico de GA UA-847800-9 No edite esta linea sobre el codigo
         // Para validar que su ID es diferente al generico de seguimiento.  En lugar de esto cambie
-        // su valor a traves del panel de configuracion de Practico con el entregado como ID de GoogleAnalytics
+        // su valor a traves del panel de configuracion con el entregado como ID de GoogleAnalytics
         $Infijo=base64_decode("VUEtODQ3ODAwLTk=");
         echo $PrefijoGA.$Infijo.$PosfijoGA;
         if(@$CodigoGoogleAnalytics!="")
