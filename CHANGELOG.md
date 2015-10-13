@@ -19,6 +19,7 @@
 * Enhan: Disminuida la altura de la barra de menu con personalización de estilos
 * Enhan: Reubicada la opcion de preferencias hacia el menu de Editar
 * Enhan: Agregados archivos independientes para los marcos
+* Enhan: Margenes de editor ajustadas para presentar errores del lenguage
 
 
 ## Versión 15.11 (2015-11-01)
