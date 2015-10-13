@@ -10,6 +10,10 @@
 
 ## Versión 15.12 (2015-12-01)
 
+
+
+## Versión 15.11.13 (2015-11-13)
+
 * Added: Posibilidad de dos paneles dinamicos (izquierdo y derecho)
 * Added: Se agrega por defecto la navegación de archivos al lado izquierdo del editor.
 * Fixed: Opcion de salir en menu Archivo no cerraba la ventana
