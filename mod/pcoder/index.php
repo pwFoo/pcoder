@@ -216,11 +216,13 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 		<div class="row">
 			<div class="col-md-2" style="margin:0px; padding:0px;" id="panel_izquierdo">
+				<div algin="center">
 				<?php
 					include_once ("inc/panel_izquierdo.php");
 				?>
+				</div>
 			</div>
-			<div class="col-md-8" style="margin:0px; padding:0px;" id="panel_editor_codigo">
+			<div class="col-md-8" style="margin:0px;" id="panel_editor_codigo">
 				<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
 					<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"><?php echo $PCODERcontenido_archivo; ?></textarea>
 					<input name="PCODER_TokenEdicion" type="hidden" value="<?php echo $PCODER_TokenEdicion; ?>">
