@@ -38,6 +38,9 @@
 	cd $SCRIPTPATH
 	cd ..
 
+#Incluye la compresion de archivos CSS y JS
+	source dev_tools/cssjs2min.sh
+
 #Incluye el archivo que ajusta todos los permisos previa generacion del zip
 	source dev_tools/chmod2zip.sh
 
