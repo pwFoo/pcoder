@@ -150,5 +150,4 @@
 			
 		}
 
-	//Genera la conexion inicial del sistema
-	$ConexionPDO=PCO_NuevaConexionBD($MotorBD,$PuertoBD,$BaseDatos,$ServidorBD,$UsuarioBD,$PasswordBD);
+

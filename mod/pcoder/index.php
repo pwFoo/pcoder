@@ -63,6 +63,12 @@
     include("idiomas/".$IdiomaPredeterminado.".php");
     // FIN BLOQUE BASICO DE INCLUSION ##################################
 
+	//Genera la conexion inicial del sistema para preferencias en standalone
+	if ($PCO_PCODER_StandAlone==1)
+		{
+			$ConexionPDO=PCO_NuevaConexionBD($MotorBD,$PuertoBD,$BaseDatos,$ServidorBD,$UsuarioBD,$PasswordBD);
+		}
+
     // Establece la zona horaria por defecto para la aplicacion
     date_default_timezone_set("America/Bogota");
 
