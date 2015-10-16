@@ -22,12 +22,21 @@
     // BLOQUE BASICO DE INCLUSION ######################################
     // Inicio de la sesion
     @session_start();
+
 	// Agrega las variables de sesion
 	if (!empty($_SESSION)) extract($_SESSION);
 
     //Permite WebServices propios mediante el acceso a este script en solicitudes Cross-Domain
     header('Access-Control-Allow-Origin: *');
 	header('Content-type: text/html; charset=utf-8');
+
+	//Habilita o deshabilita el modo de depuracion de la aplicacion
+	$ModoDepuracion=1;
+    if ($ModoDepuracion==1)
+        {
+            ini_set("display_errors", 1);
+            error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_DEPRECATED | E_STRICT | E_USER_DEPRECATED | E_USER_ERROR | E_USER_WARNING); //Otras disponibles | E_PARSE | E_CORE_ERROR | E_CORE_WARNING |
+        }
 
     //Incluye archivo inicial de configuracion
 	include_once("inc/configuracion.php");
@@ -45,12 +54,17 @@
 
     //Incluye librerias basicas de trabajo
     @require('inc/variables.php');
+    @require('inc/conexiones.php');
     @require('inc/comunes.php');
+    @require('inc/comunes_bd.php');
 
     //Incluye idioma espanol, o sobreescribe vbles por configuracion de usuario
     include("idiomas/es.php");
     include("idiomas/".$IdiomaPredeterminado.".php");
     // FIN BLOQUE BASICO DE INCLUSION ##################################
+
+    // Establece la zona horaria por defecto para la aplicacion
+    date_default_timezone_set("America/Bogota");
 
     // Datos de fecha, hora y direccion IP para algunas operaciones
     $PCO_PCODER_FechaOperacion=date("Ymd");
