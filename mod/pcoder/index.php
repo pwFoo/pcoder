@@ -54,9 +54,10 @@
 
     //Incluye librerias basicas de trabajo
     @require('inc/variables.php');
-    @require('inc/conexiones.php');
     @require('inc/comunes.php');
     @require('inc/comunes_bd.php');
+    @require('inc/conexiones.php');
+
 
     //Incluye idioma espanol, o sobreescribe vbles por configuracion de usuario
     include("idiomas/es.php");
@@ -67,6 +68,7 @@
 	if ($PCO_PCODER_StandAlone==1)
 		{
 			$ConexionPDO=PCO_NuevaConexionBD($MotorBD,$PuertoBD,$BaseDatos,$ServidorBD,$UsuarioBD,$PasswordBD);
+			include("inc/instalacion.php");
 		}
 
     // Establece la zona horaria por defecto para la aplicacion

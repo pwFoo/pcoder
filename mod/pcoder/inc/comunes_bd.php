@@ -228,42 +228,6 @@ function listado_visual_exploracion_archivos($RutaExploracion="",$Filtro_conteni
 		}
 
 
-/* ##################################################################
-   ##################################################################
-    Function: completar_parametros
-    reemplaza los parametros, solo se usa para depuracion
-
-    Variables de entrada:
-
-        string - 
-        data - 
-        
-    Salida:
-        Retorna la cadena de consulta con valores formateada para impresion
-*/
-function completar_parametros($string,$data) {
-        $indexed=$data==array_values($data);
-        foreach($data as $k=>$v) {
-            if(is_string($v)) 
-	      if($v =='')
-		$v="NULL";
-	      else
-	        $v="'$v'";
-            if($indexed) 
-              if($v =='')
-		$string=preg_replace('/\?/','NULL',$string,1);
-	      else
-		$string=preg_replace('/\?/',$v,$string,1);
-            else
-              if($v =='')
-		$string=str_replace(":$k","NULL",$string);
-	      else
-	        $string=str_replace(":$k",$v,$string);
-        }
-        return $string;
-}
-
-
 /* ################################################################## */
 /* ################################################################## */
 	function ejecutar_sql($query,$lista_parametros="",$ConexionBD="")
@@ -326,17 +290,7 @@ function completar_parametros($string,$data) {
 				}
 			catch( PDOException $ErrorPDO)
 				{
-					//Muestra detalles del query solo al admin y si el modo de depuracion se encuentra activo
-					if ($PCOSESS_LoginUsuario=='admin')
-						$mensaje_final=$ErrorPDO->getMessage().'<br><b>'.$MULTILANG_Detalles.'</b>: '.@completar_parametros($query,$parametros);
-					else
-						$mensaje_final='<b>'.$MULTILANG_Detalles.'</b>: '.$MULTILANG_ErrorSoloAdmin;
-					//Presenta el mensaje sobre el HTML y como Emergente JS
-                    mensaje($MULTILANG_ErrorTiempoEjecucion,$mensaje_final, '', 'fa fa-times fa-5x icon-red texto-blink', 'alert alert-danger alert-dismissible');
-					echo '<script type="" language="JavaScript"> alert("'.$MULTILANG_ErrorTiempoEjecucion.'\\n\\n'.$mensaje_final.'");</script>';
-					//Redirecciona segun la accion
-					if ($PCO_Accion=="Iniciar_login")
-						echo '<form name="Acceso" action="'.$ArchivoCORE.'" method="POST"><input type="Hidden" name="PCO_Accion" value=""></form><script type="" language="JavaScript">	document.Acceso.submit();  </script>';
+					echo $ErrorPDO->getMessage();
 					return 1;
 				}
 		}
@@ -405,11 +359,7 @@ function completar_parametros($string,$data) {
 				}
 			catch( PDOException $ErrorPDO)
 				{
-					//Muestra detalles del query solo al admin y si el modo de depuracion se encuentra activo
-					if ($PCOSESS_LoginUsuario=='admin')
-                        echo '<script language="JavaScript"> alert("'.$MULTILANG_ErrorTiempoEjecucion.'\n'.$MULTILANG_Detalles.': '.completar_parametros($query,$parametros).'\n\n'.$MULTILANG_MotorBD.': '.$ErrorPDO->getMessage().'.\n\n'.$MULTILANG_ContacteAdmin.'");  </script>';
-					else
-						echo '<script language="JavaScript"> alert("'.$MULTILANG_ErrorTiempoEjecucion.'\n'.$MULTILANG_Detalles.': '.$MULTILANG_ErrorSoloAdmin.'.\n\n'.$MULTILANG_ContacteAdmin.'");  </script>';
+					echo $ErrorPDO->getMessage();
 					return $MULTILANG_ErrorTiempoEjecucion;
 				}
 		}
