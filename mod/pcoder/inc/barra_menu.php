@@ -30,7 +30,7 @@
 	<div class="col-md-12">
 
 		<div id="contenedor_menu" >
-
+			
 			<nav class="navbar navbar-default navbar-inverse navbar-xs" style="margin:0px; padding:0px;"> <!-- navbar-fixed-top navbar-fixed-bottom navbar-static-top navbar-inverse -->
 				<div class="container-fluid">
 					<!-- Logo y boton colapsable -->

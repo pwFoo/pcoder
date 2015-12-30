@@ -215,14 +215,11 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			.navbar-xs .navbar-nav > li > a {  padding-top: 0px; padding-bottom: 0px; line-height: 30px; }
 			
 		/*Clase para las pestanas de archivos*/
-			.nav-xs {
-				float: left;
-			}
 			.nav-xs>li>a, .nav-xs {
-				display: block;
 				padding: 3px;
-				font-size: 12px;
-				margin-left: 5px;
+				font-size: 11px;
+				margin-bottom: 0px;
+				margin-right: 5px;
 			}
 
     </style>
@@ -257,6 +254,12 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				</div>
 			</div>
 			<div class="col-md-8" style="margin:0px;" id="panel_editor_codigo">
+
+				<?php
+					//Incluye algunos marcos del aplicativo
+					include_once ("inc/barra_archivos.php");
+				?>
+
 				<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
 					<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"><?php echo $PCODERcontenido_archivo; ?></textarea>
 					<input name="PCODER_TokenEdicion" type="hidden" value="<?php echo $PCODER_TokenEdicion; ?>">
@@ -266,27 +269,12 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 					<input type="Hidden" name="PCO_ECHO" value="0"> <!-- Determina si la respuesta debe ser con o sin eco -->
 					<input name="PCO_Accion" type="hidden" value="PCOMOD_GuardarArchivo">
 				</form>
-				
-				
-				
-<ul class="nav nav-pills nav-xs">
-  <li class="active" ><a data-toggle="tab" href="#home"><i class="fa fa-file-text-o fa-inactive"></i> Archivo 1</a></li>
-  <li><a data-toggle="tab" href="#menu1"><i class="fa fa-file-text-o"></i> Archivo 2</a></li>
-  <li><a data-toggle="tab" href="#menu2"><i class="fa fa-file-text-o"></i> Archivo 3</a></li>
-</ul>
 
-<div class="tab-content">
-  <div id="archivo1" class="tab-pane fade in active">
-
-
-<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
-
-  </div>
-</div>
-
-				
-
-
+				<div class="tab-content">
+				  <div id="archivo1" class="tab-pane fade in active">
+					<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
+				  </div>
+				</div>
 
 			</div>
 			<div class="col-md-2" style="margin:0px; padding:0px;" id="panel_derecho">
@@ -489,15 +477,18 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				var alto_ventana = $(window).height();
 				var alto_documento = $(document).height();
 				var alto_contenedor_editor = $("#editor_codigo").height();
+				var alto_contenedor_archivos = $("#contenedor_archivos").height();
 				var alto_contenedor_menu = $("#contenedor_menu").height();
 				var alto_contenedor_barra_estado = $("#contenedor_barra_estado").height();
 				var alto_contenedor_mensajes_error = $("#contenedor_mensajes_error").height();
 				var alto_barra_lateral_izquierda = $("#barra_lateral_izquierda").height();
+				alert(alto_contenedor_archivos);
+
 				
 				//Modifica el ALTO DEL EDITOR
-				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado+alto_contenedor_mensajes_error)*100/alto_ventana;
+				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado+alto_contenedor_mensajes_error+alto_contenedor_archivos)*100/alto_ventana;
 				var porcentaje_final=100-porcentaje_barrasmenuyestado;
-				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_barra_estado-alto_contenedor_mensajes_error;
+				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_mensajes_error-alto_contenedor_barra_estado-alto_contenedor_archivos;
 				//$('#editor_codigo').height( alto_final ).css({ });			//Asignacion en pixeles
 				$('#editor_codigo').height( porcentaje_final+"vh" ).css({ });	//Asignacion en porcentaje
 				AjustarPanelesLaterales();
