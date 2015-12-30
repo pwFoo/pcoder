@@ -141,7 +141,7 @@ if (@$PCOSESS_LoginUsuario=="admin" || $PCO_PCODER_StandAlone==1)
 if ($PCO_Accion=="PCOMOD_GuardarArchivo") 
 	{
         //Guarda el archivo
-        $PCODER_Respuesta = file_put_contents($PCODER_archivo, $_POST["PCODER_AreaTexto"]) or die("can't open file");
+        $PCODER_Respuesta = file_put_contents($PCODER_archivo, $_POST["PCODER_AreaTexto"]) or die("No se puede abrir el archivo para escritura");
         //Vuelve a cargar el archivo para continuar con su edicion
         auditar("Modifica archivo $PCODER_archivo");
         //Continua presentando todo el editor solo si se pide el echo
@@ -482,8 +482,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				var alto_contenedor_barra_estado = $("#contenedor_barra_estado").height();
 				var alto_contenedor_mensajes_error = $("#contenedor_mensajes_error").height();
 				var alto_barra_lateral_izquierda = $("#barra_lateral_izquierda").height();
-				alert(alto_contenedor_archivos);
-
 				
 				//Modifica el ALTO DEL EDITOR
 				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado+alto_contenedor_mensajes_error+alto_contenedor_archivos)*100/alto_ventana;
@@ -560,6 +558,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				window.setTimeout(ActualizarBarraEstado, 1500);
 			}
 
+		var ListaArchivos = new Array(); //Contiene la lista de los archivos cargados
+		function AgregarArchivoAbierto()
+			{
+				var IndiceArchivoAbierto=0;
+				ListaArchivos[IndiceArchivoAbierto] = { TipoDocumento: '<?php echo $PCODER_TipoElemento; ?>', TamanoDocumento: '<?php echo $PCODER_TamanoElemento; ?>', FechaModificadoDocumento: '<?php echo $PCODER_FechaElemento; ?>', RutaDocumento: '<?php echo $PCODER_archivo; ?>' };
+				IndiceArchivoAbierto++;
+			}
+		AgregarArchivoAbierto();
 
 
 		//##############################################################
