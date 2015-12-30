@@ -213,6 +213,18 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			.navbar-xs { min-height:30px; height: 30px; }
 			.navbar-xs .navbar-brand{ padding: 0px 12px;font-size: 16px;line-height: 30px; }
 			.navbar-xs .navbar-nav > li > a {  padding-top: 0px; padding-bottom: 0px; line-height: 30px; }
+			
+		/*Clase para las pestanas de archivos*/
+			.nav-xs {
+				float: left;
+			}
+			.nav-xs>li>a, .nav-xs {
+				display: block;
+				padding: 3px;
+				font-size: 12px;
+				margin-left: 5px;
+			}
+
     </style>
 
     <!-- Agrega archivos necesarios para el Explorador en arbol de directorios -->
@@ -254,7 +266,28 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 					<input type="Hidden" name="PCO_ECHO" value="0"> <!-- Determina si la respuesta debe ser con o sin eco -->
 					<input name="PCO_Accion" type="hidden" value="PCOMOD_GuardarArchivo">
 				</form>
-				<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
+				
+				
+				
+<ul class="nav nav-pills nav-xs">
+  <li class="active" ><a data-toggle="tab" href="#home"><i class="fa fa-file-text-o fa-inactive"></i> Archivo 1</a></li>
+  <li><a data-toggle="tab" href="#menu1"><i class="fa fa-file-text-o"></i> Archivo 2</a></li>
+  <li><a data-toggle="tab" href="#menu2"><i class="fa fa-file-text-o"></i> Archivo 3</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="archivo1" class="tab-pane fade in active">
+
+
+<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
+
+  </div>
+</div>
+
+				
+
+
+
 			</div>
 			<div class="col-md-2" style="margin:0px; padding:0px;" id="panel_derecho">
 				<?php
