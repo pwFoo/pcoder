@@ -387,8 +387,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
             {
                 //Oculta el modal de seleccion del archivo
                 $('button#boton_navegador_archivos').click();
+                
                 //Carga la nueva ventana con el archivo, Reemplaza metodo anterior
-                PCO_VentanaPopup('index.php?PCO_Accion=PCOMOD_CargarPcoder&Presentar_FullScreen=1&Precarga_EstilosBS=1&PCODER_archivo='+archivo,'{P} '+archivo,'toolbar=no, location=no, directories=0, directories=no, status=no, location=no, menubar=no ,scrollbars=no, resizable=yes, fullscreen=no, titlebar=no, width=1024, height=700');
+
+                //Si el archivo es demo.php abre el nuevo archivo en la misma ventana, sino en ventana nueva
+                //if(archivo!='../../mod/pcoder/demos/demo.php')
+				//	document.location='index.php?PCO_Accion=PCOMOD_CargarPcoder&Presentar_FullScreen=1&Precarga_EstilosBS=1&PCODER_archivo='+archivo;
+				//else
+					PCO_VentanaPopup('index.php?PCO_Accion=PCOMOD_CargarPcoder&Presentar_FullScreen=1&Precarga_EstilosBS=1&PCODER_archivo='+archivo,'{P} '+archivo,'toolbar=no, location=no, directories=0, directories=no, status=no, location=no, menubar=no ,scrollbars=no, resizable=yes, fullscreen=no, titlebar=no, width=1024, height=700');					
             }
 
         function AjustarPanelesLaterales()
