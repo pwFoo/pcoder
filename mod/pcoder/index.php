@@ -31,7 +31,7 @@
 	header('Content-type: text/html; charset=utf-8');
 
 	//Habilita o deshabilita el modo de depuracion de la aplicacion
-	$ModoDepuracion=1;
+	$ModoDepuracion=0;
     if ($ModoDepuracion==1)
         {
             ini_set("display_errors", 1);
@@ -110,7 +110,6 @@ if (@$PCOSESS_LoginUsuario=="admin" || $PCO_PCODER_StandAlone==1)
     //Carga el archivo recibido, si no recibe nada carga un demo
     if (@$PCODER_archivo=="")
         $PCODER_archivo = "demos/demo.php";
-    PCODER_cargar_archivo($PCODER_archivo);
 
     $PCODER_Mensajes=0;
     // Verifica que el archivo exista
@@ -156,6 +155,133 @@ if ($PCO_Accion=="PCOMOD_GuardarArchivo")
                     <input type="Hidden" name="Precarga_EstilosBS" value="'.@$Precarga_EstilosBS.'">
                 <script type="" language="JavaScript"> document.continuar_edicion.submit();  </script>
                 </body>';
+	}
+
+
+/* ################################################################## */
+/* ################################################################## */
+/*
+	Function: PCOMOD_ObtenerTipoElemento
+	Obtiene el tipo de elemento o archivo indicado
+*/
+if ($PCO_Accion=="PCOMOD_ObtenerTipoElemento") 
+	{
+		$PCODER_TipoElemento=@filetype($PCODER_archivo);
+		@ob_clean();
+        echo $PCODER_TipoElemento;
+	}
+
+
+/* ################################################################## */
+/* ################################################################## */
+/*
+	Function: PCOMOD_ObtenerTamanoDocumento
+	Obtiene el tamano de elemento o archivo indicado
+*/
+if ($PCO_Accion=="PCOMOD_ObtenerTamanoDocumento") 
+	{
+        $PCODER_TamanoElemento=@round(filesize($PCODER_archivo)/1024);
+		@ob_clean();
+        echo $PCODER_TamanoElemento;
+	}
+
+
+/* ################################################################## */
+/* ################################################################## */
+/*
+	Function: PCOMOD_ObtenerFechaElemento
+	Obtiene  la fecha de modificacion de elemento o archivo indicado
+*/
+if ($PCO_Accion=="PCOMOD_ObtenerFechaElemento") 
+	{
+        $PCODER_FechaElemento=@date("d F Y H:i:s", @filemtime($PCODER_archivo));
+		@ob_clean();
+        echo $PCODER_FechaElemento;
+	}
+
+
+/* ################################################################## */
+/* ################################################################## */
+/*
+	Function: PCOMOD_ObtenerTokenEdicion
+	Obtiene el token de edicion de elemento o archivo indicado
+*/
+if ($PCO_Accion=="PCOMOD_ObtenerTokenEdicion") 
+	{
+		//Obtiene algunos valores del archivo necesarios para el token
+		$PCODER_FechaElemento=@date("d F Y H:i:s", @filemtime($PCODER_archivo));
+		$PCODER_TamanoElemento=@round(filesize($PCODER_archivo)/1024);
+        $PCODERcontenido_original_archivo=@file_get_contents($PCODER_archivo);
+        
+        //Define un Token con el antes y despues
+        $PCODER_TokenEdicion=md5($PCODER_archivo.$PCODER_TamanoElemento.$PCODER_FechaElemento.$PCODERcontenido_original_archivo);
+   		@ob_clean();
+        echo $PCODER_TokenEdicion;
+	}
+
+
+/* ################################################################## */
+/* ################################################################## */
+/*
+	Function: PCOMOD_ObtenerModoEditor
+	Detecta el tipo de archivo y especifica el modo que se debe utilizar en el editor
+*/
+if ($PCO_Accion=="PCOMOD_ObtenerModoEditor") 
+	{
+        global $PCODER_Modos;
+        
+        //Obtiene la extension del archivo
+        $PCODER_partes_extension = explode(".",$PCODER_archivo);
+        $PCODER_extension = $PCODER_partes_extension[count($PCODER_partes_extension)-1];
+
+        //Identifica el tipo de documento a ser aplicado segun la extension del archivo
+        $PCODER_ModoEditor='';
+        for ($i=0;$i<count($PCODER_Modos) && $PCODER_ModoEditor=='';$i++)
+            {
+               if(strpos($PCODER_Modos[$i]["Extensiones"], $PCODER_extension) !== false)
+                    $PCODER_ModoEditor=$PCODER_Modos[$i]["Nombre"];
+            }
+
+   		@ob_clean();
+        echo $PCODER_ModoEditor;
+	}
+
+
+/* ################################################################## */
+/* ################################################################## */
+/*
+	Function: PCOMOD_ObtenerNombreArchivo
+	Establece el nombre del archivo abierto (sin su ruta, solo nombre.extension)
+*/
+if ($PCO_Accion=="PCOMOD_ObtenerNombreArchivo") 
+	{
+        //Obtiene el nombre del archivo para el titulo de ventana
+        $PCODER_PartesNombreArchivo=explode(DIRECTORY_SEPARATOR,$PCODER_archivo);
+        $PCODER_NombreArchivo = $PCODER_PartesNombreArchivo[count($PCODER_PartesNombreArchivo)-1];
+
+   		@ob_clean();
+        echo $PCODER_NombreArchivo;
+	}
+
+
+/* ################################################################## */
+/* ################################################################## */
+/*
+	Function: PCOMOD_ObtenerContenidoArchivo
+	Obtiene el contenido del archivo indicado
+*/
+if ($PCO_Accion=="PCOMOD_ObtenerContenidoArchivo") 
+	{
+        //Carga y Escapa el contenido del archivo
+        $PCODER_Contenido_original_archivo=@file_get_contents($PCODER_archivo);
+        $PCODER_ContenidoArchivo=@htmlspecialchars($PCODER_Contenido_original_archivo); //Para cargue como estaba en forma original (Sin Ajax)
+        $PCODER_ContenidoArchivo= $PCODER_Contenido_original_archivo;
+
+        //DOCS: http://stackoverflow.com/questions/15186558/loading-a-html-file-into-ace-editor-pre-tag
+        //DOCS: <pre id="editor"><INTE ? php echo htmlentities(file_get_contents($input_dir."abc.html")); ? ></pre>
+        //$PCODER_ContenidoArchivo=@htmlspecialchars(addslashes($PCODER_ContenidoArchivo));
+   		@ob_clean();
+        echo $PCODER_ContenidoArchivo;
 	}
 
 
@@ -208,7 +334,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				padding-top:0px !important; padding-bottom:0 !important;
 				height: 30px;
 			}
-			.navbar {min-height:30px !important;}
+		.navbar {min-height:30px !important;}
+		
 		/*Adicion de clase para el alto de menu*/
 			.navbar-xs { min-height:30px; height: 30px; }
 			.navbar-xs .navbar-brand{ padding: 0px 12px;font-size: 16px;line-height: 30px; }
@@ -216,10 +343,10 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			
 		/*Clase para las pestanas de archivos*/
 			.nav-xs>li>a, .nav-xs {
-				padding: 3px;
+				padding: 2px;
 				font-size: 11px;
-				margin-bottom: 0px;
-				margin-right: 5px;
+				margin-bottom: 1px;
+
 			}
 
     </style>
@@ -261,13 +388,15 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				?>
 
 				<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
-					<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"><?php echo $PCODERcontenido_archivo; ?></textarea>
-					<input name="PCODER_TokenEdicion" type="hidden" value="<?php echo $PCODER_TokenEdicion; ?>">
-					<input name="PCODER_archivo" type="hidden" value="<?php echo $PCODER_archivo; ?>">
-					<input type="Hidden" name="Presentar_FullScreen" value="<?php echo $Presentar_FullScreen; ?>">
-					<input type="Hidden" name="Precarga_EstilosBS" value="<?php echo $Precarga_EstilosBS; ?>">
+					<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"></textarea>
+					<input name="PCODER_TokenEdicion" type="Hidden" value="">
+					<input name="PCODER_archivo" type="Hidden" value="">
 					<input type="Hidden" name="PCO_ECHO" value="0"> <!-- Determina si la respuesta debe ser con o sin eco -->
 					<input name="PCO_Accion" type="hidden" value="PCOMOD_GuardarArchivo">
+				</form>
+
+				<!-- Zona de TextAreas ocultas segun los archivos abiertos -->
+				<form id="form_textareas_archivos" name="form_textareas_archivos" method="POST" style="visibility: hidden; display:none; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">					
 				</form>
 
 				<div class="tab-content">
@@ -382,14 +511,18 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
             }
         function Guardar()
             {
-				//Oculta mensaje de guardar finalizado y presenta el de guardando
-				$('#progreso_marco_guardar').show();
-				$('#finalizado_marco_guardar').hide();
-				$('#boton_marco_guardar').hide();
-				//Presenta la ventana informativa sobre el proceso de almacenamiento
-				$('#VentanaAlmacenamiento').modal('show');
-                //Metodo estandar, envia todo sobre el iframe para evitar recargar la pagina
-                document.form_archivo_editado.submit();
+				//Solamente guarda si no se trata del archivo demo
+				if (document.form_archivo_editado.PCODER_archivo.value != "demos/demo.php")
+					{
+						//Oculta mensaje de guardar finalizado y presenta el de guardando
+						$('#progreso_marco_guardar').show();
+						$('#finalizado_marco_guardar').hide();
+						$('#boton_marco_guardar').hide();
+						//Presenta la ventana informativa sobre el proceso de almacenamiento
+						$('#VentanaAlmacenamiento').modal('show');
+						//Metodo estandar, envia todo sobre el iframe para evitar recargar la pagina
+						document.form_archivo_editado.submit();
+					}
             }
  		function PCO_VentanaPopup(theURL,winName,features)
 			{ 
@@ -403,20 +536,53 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                 zona.innerHTML = elemento;
                 capa.appendChild(zona);
             }
- 
-        function PCODER_CargarArchivo(archivo)
-            {
-                //Oculta el modal de seleccion del archivo
-                $('button#boton_navegador_archivos').click();
-                
-                //Carga la nueva ventana con el archivo, Reemplaza metodo anterior
+		function PCODER_ObtenerContenidoAjax(PCO_ASINCRONICO,PCO_URL,PCO_PARAMETROS)
+			{
+				var xmlhttp;
+				if (window.XMLHttpRequest)
+					{   // codigo for IE7+, Firefox, Chrome, Opera, Safari
+						xmlhttp=new XMLHttpRequest();
+					}
+				else
+					{   // codigo for IE6, IE5
+						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					}
 
-                //Si el archivo es demo.php abre el nuevo archivo en la misma ventana, sino en ventana nueva
-                //if(archivo!='../../mod/pcoder/demos/demo.php')
-				//	document.location='index.php?PCO_Accion=PCOMOD_CargarPcoder&Presentar_FullScreen=1&Precarga_EstilosBS=1&PCODER_archivo='+archivo;
-				//else
-					PCO_VentanaPopup('index.php?PCO_Accion=PCOMOD_CargarPcoder&Presentar_FullScreen=1&Precarga_EstilosBS=1&PCODER_archivo='+archivo,'{P} '+archivo,'toolbar=no, location=no, directories=0, directories=no, status=no, location=no, menubar=no ,scrollbars=no, resizable=yes, fullscreen=no, titlebar=no, width=1024, height=700');					
-            }
+				//funcion que se llama cada vez que cambia la propiedad readyState
+				xmlhttp.onreadystatechange=function()
+					{
+						//readyState 4: peticion finalizada y respuesta lista
+						//status 200: OK
+						if (xmlhttp.readyState===4 && xmlhttp.status===200)
+							{
+								contenido_recibido=xmlhttp.responseText;
+								contenido_recibido = contenido_recibido.trim();
+								//Cuando es asincronico devuelve la respuesta cuando este lista
+								if(PCO_ASINCRONICO==1)
+									return contenido_recibido;
+							}
+					};
+
+				/* open(metodo, url, asincronico)
+				* metodo: post o get
+				* url: localizacion del archivo en el servidor
+				* asincronico: comunicacion asincronica true o false.*/
+				if(PCO_ASINCRONICO==1)
+					xmlhttp.open("POST",PCO_URL,true);
+				else
+					xmlhttp.open("POST",PCO_URL,false);
+
+				//establece el header para la respuesta
+				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+				//enviamos las variables al archivo get_combo2.php
+				//xmlhttp.send();
+				xmlhttp.send(PCO_PARAMETROS);
+				
+				//Cuando la solicitud es asincronica devuelve el resultado al momento de llamado
+				if(PCO_ASINCRONICO==0)
+					return contenido_recibido;
+			}
 
         function AjustarPanelesLaterales()
             {
@@ -549,23 +715,165 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				//Actualiza los contenedores con la informacion de estado
 				$("#NroLineasDocumento").html("<?php echo $MULTILANG_PCODER_Lineas; ?>: "+NroLineasDocumento);
 				$("#NroCaracteresDocumento").html("<?php echo $MULTILANG_PCODER_Caracteres; ?>: "+NroCaracteresDocumento);
-				$("#TipoDocumento").html("<?php echo $MULTILANG_PCODER_Tipo; ?>: <?php echo $PCODER_TipoElemento; ?>");
-				$("#TamanoDocumento").html("<?php echo $MULTILANG_PCODER_Tamano; ?>: <b><?php echo $PCODER_TamanoElemento; ?> Kb</b>");
-				$("#FechaModificadoDocumento").html("<?php echo $MULTILANG_PCODER_Modificado; ?>: <b><?php echo $PCODER_FechaElemento; ?></b>");
-				$("#RutaDocumento").html("<i class='fa fa-hdd-o text-info'> <?php echo $PCODER_archivo; ?></i>");
+				$("#TipoDocumento").html("<?php echo $MULTILANG_PCODER_Tipo; ?>: "+ListaArchivos[IndiceArchivoActual].TipoDocumento);
+				$("#TamanoDocumento").html("<?php echo $MULTILANG_PCODER_Tamano; ?>: <b>"+ListaArchivos[IndiceArchivoActual].TamanoDocumento+" Kb</b>");
+				$("#FechaModificadoDocumento").html("<?php echo $MULTILANG_PCODER_Modificado; ?>: <b>"+ListaArchivos[IndiceArchivoActual].FechaModificadoDocumento+"</b>");
+				$("#RutaDocumento").html("<i class='fa fa-hdd-o text-info'> "+ListaArchivos[IndiceArchivoActual].RutaDocumento+"</i>");
 
 				//Llama periodicamente la rutina de actualizacion de la barra
 				window.setTimeout(ActualizarBarraEstado, 1500);
 			}
 
-		var ListaArchivos = new Array(); //Contiene la lista de los archivos cargados
-		function AgregarArchivoAbierto()
+		
+		function AgregarNuevoTextarea(nombre_formulario,nombre_textarea,valor_predeterminado)
 			{
-				var IndiceArchivoAbierto=0;
-				ListaArchivos[IndiceArchivoAbierto] = { TipoDocumento: '<?php echo $PCODER_TipoElemento; ?>', TamanoDocumento: '<?php echo $PCODER_TamanoElemento; ?>', FechaModificadoDocumento: '<?php echo $PCODER_FechaElemento; ?>', RutaDocumento: '<?php echo $PCODER_archivo; ?>' };
-				IndiceArchivoAbierto++;
+				//contenedor.innerHTML = '<textarea name="pepe" rows="5" cols="30"></textarea>';
+				elemento_textarea = document.createElement('textarea');
+				elemento_textarea.cols = 15;
+				elemento_textarea.rows = 3;
+				elemento_textarea.name = nombre_textarea;
+				elemento_textarea.id = nombre_textarea;	
+				elemento_textarea.value = valor_predeterminado;
+				nombre_formulario.appendChild(elemento_textarea);
+			} 
+
+		var ListaArchivos = new Array();								//Contiene la lista de los archivos cargados
+		var IndiceAperturaArchivo=0;									//Posicion del arreglo sobre la que se desea guardar datos al abrir un archivo
+		var IndiceUltimoArchivoAbierto=IndiceAperturaArchivo;			//Posicion del arreglo que contiene el ultimo archivo abierto
+		var IndiceArchivoActual=IndiceAperturaArchivo;					//Posicion del arreglo con los datos del archivo actual
+		var ValorModoEditor;
+
+		function PCODER_CambiarArchivoActual(IndiceRecibido)
+			{
+				//Actualiza el Textarea y formulario base del editor
+				document.form_archivo_editado.PCODER_archivo.value=ListaArchivos[IndiceRecibido].RutaDocumento;
+				document.form_archivo_editado.PCODER_TokenEdicion.value=ListaArchivos[IndiceRecibido].TokenEdicion;
+				document.form_archivo_editado.PCODER_AreaTexto.value=document.getElementById("PCODER_AreaTexto"+IndiceRecibido).value;
+				//Actualiza el editor ACE y sus propiedades
+				editor.setValue(document.getElementById("PCODER_AreaTexto"+IndiceRecibido).value);
+				editor.focus();											//Establece el foco al editor
+				editor.gotoLine(1, 1, true);							//Va a la primera linea
+				editor.scrollToLine(1, true, true, function () {});		//Va a la primera linea
+				ActualizarTituloEditor("{P} "+ListaArchivos[IndiceRecibido].NombreArchivo);
+				CambiarModoEditor("ace/mode/"+ListaArchivos[IndiceRecibido].ModoEditor);
+				editor.clearSelection();
+				
+				//Actualiza el indice del archivo de trabajo actual
+				IndiceArchivoActual=IndiceRecibido;
+				
+				//Se asegura de corregir tamano del editor cuando se carga un archivo
+				RedimensionarEditor();
 			}
-		AgregarArchivoAbierto();
+
+		function PCODER_CerrarArchivo(IndiceRecibido)
+			{
+				//Limpia todos los campos del vector
+				ListaArchivos[IndiceRecibido].TipoDocumento="";
+				ListaArchivos[IndiceRecibido].TamanoDocumento="";
+				ListaArchivos[IndiceRecibido].FechaModificadoDocumento="";
+				ListaArchivos[IndiceRecibido].RutaDocumento="";
+				ListaArchivos[IndiceRecibido].TokenEdicion="";
+				ListaArchivos[IndiceRecibido].ModoEditor="";
+				ListaArchivos[IndiceRecibido].NombreArchivo="";
+
+				//Verifica si se trata del archivo actual, si es asi entonces se mueve al primero.Si es el primero entonces se mueve al demo
+				if(IndiceRecibido==1)
+					IndiceArchivoActual=0;
+				else
+					{
+						if(IndiceRecibido==IndiceArchivoActual)
+							IndiceArchivoActual=1;
+					}
+
+				ActualizarPestanasArchivos();
+				//Se asegura de corregir tamano del editor cuando se actualizan las pestanas
+
+				PCODER_CambiarArchivoActual(IndiceArchivoActual);
+			}
+
+		function PCODER_CerrarArchivoActual()
+			{
+				PCODER_CerrarArchivo(IndiceArchivoActual);
+			}
+
+		function PCODER_BuscarArchivoAbierto(path_archivo)
+			{
+				Encontrado=-1;
+				//Determina si el archivo ya esta abierto o no (dentro del arreglo)
+				//Retorna -1 si no es encontrado o el indice en caso de existir
+				for (i=0;i<IndiceAperturaArchivo;i++)
+					{
+						if(ListaArchivos[i].RutaDocumento==path_archivo)
+							Encontrado=i;
+					}
+				//Retorna el estado de variable si fue o no encontrado el archivo
+				return Encontrado;
+			}
+
+		function ActualizarPestanasArchivos()
+			{
+				//Limpia el marco de pestanas
+				lista_contenedor_archivos.innerHTML = "";
+
+				//Recorre arreglo de archivos y regenera las pestanas
+				for (i=1;i<IndiceAperturaArchivo;i++)
+					{
+						//Si se trata del primer archivo lo pone como activo en la barra
+						ComplementoClase='';
+						if (IndiceArchivoActual==i)
+							ComplementoClase='class="active"';
+						//Agrega el elemento simepre y cuando no sea vacio
+						if (ListaArchivos[i].NombreArchivo!="")
+							{
+								//Pestana con nombre de archivo
+								lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li ' + ComplementoClase + ' ><a data-toggle="tab" style="cursor:pointer;" OnClick="PCODER_CambiarArchivoActual('+i+');"><i class="fa fa-file-text-o fa-inactive"></i> '+ListaArchivos[i].NombreArchivo+'</a></li>';
+								//Opcion de cerrar el archivo
+								lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li ><a data-toggle="tab" style="cursor:pointer; margin-right: 10px;" OnClick="PCODER_CerrarArchivo('+i+');"><i class="fa fa-times"></i></a></li>';								
+							}
+					}
+			}
+
+		function PCODER_CargarArchivo(path_archivo)
+			{
+				if (typeof path_archivo == 'undefined') path_archivo="demos/demo.php";
+				
+				BusquedaArchivoAbierto=-1;
+				if(IndiceAperturaArchivo>0)
+					BusquedaArchivoAbierto=PCODER_BuscarArchivoAbierto(path_archivo);
+
+				if (BusquedaArchivoAbierto==-1)
+					{
+						//Busca algunos datos del archivo
+						ValorTipoElemento=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTipoElemento&PCODER_archivo="+path_archivo);
+						ValorTamanoDocumento=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTamanoDocumento&PCODER_archivo="+path_archivo);
+						ValorFechaModificadoDocumento=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerFechaElemento&PCODER_archivo="+path_archivo);
+						ValorTokenEdicion=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTokenEdicion&PCODER_archivo="+path_archivo);
+						ValorModoEditor=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerModoEditor&PCODER_archivo="+path_archivo);
+						ValorNombreArchivo=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerNombreArchivo&PCODER_archivo="+path_archivo);
+						ValorContenidoArchivo=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerContenidoArchivo&PCODER_archivo="+path_archivo);
+
+						//Agrega nuevo elemento al arreglo
+						ListaArchivos[IndiceAperturaArchivo] = { TipoDocumento: ValorTipoElemento, TamanoDocumento: ValorTamanoDocumento, FechaModificadoDocumento: ValorFechaModificadoDocumento, RutaDocumento: path_archivo, TokenEdicion: ValorTokenEdicion, ModoEditor: ValorModoEditor, NombreArchivo: ValorNombreArchivo };
+						
+						//Crea dinamicamente el textarea con el numero de indice y con su valor predeterminado
+						AgregarNuevoTextarea(document.form_textareas_archivos,"PCODER_AreaTexto"+IndiceAperturaArchivo,ValorContenidoArchivo);
+						
+						//Actualiza los indices de posiciones en el vector
+						IndiceUltimoArchivoAbierto=IndiceAperturaArchivo;
+						IndiceArchivoActual=IndiceAperturaArchivo;
+						IndiceAperturaArchivo++;
+						
+						//Despues de haber agregado el archivo al arreglo procede a presentarlo en las pestanas
+						ActualizarPestanasArchivos();
+
+						//Actualiza todo el editor con el archivo recier cargado
+						PCODER_CambiarArchivoActual(IndiceArchivoActual);
+					}
+				else
+					{
+						PCODER_CambiarArchivoActual(BusquedaArchivoAbierto);
+					}
+			}
 
 
 		//##############################################################
@@ -584,15 +892,15 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
         // Crea el editor
         editor = ace.edit("editor_codigo");
         editor.getSession().setUseWorker(true); //Llevar a false para evitar el error 404 para "worker-php.js Failed to load resource: the server responded with a status of 404 (Not Found)"
-        
-        //Actualiza el editor con el valor cargado inicialmente en el textarea
-        editor.setValue(document.getElementById("PCODER_AreaTexto").value);
+        editor.resize(true);
+
+		//Inicia el primer archivo del arreglo (como demo.php)
+		PCODER_CargarArchivo();
 
         // Inicia el editor de codigo con las opciones predeterminadas
-        ActualizarTituloEditor("<?php echo '{P} '.$PCODER_NombreArchivo; ?>");
         CambiarFuenteEditor("14px");
         CambiarTemaEditor("ace/theme/ambiance");  //tomorrow_night|twilight|eclipse|ambiance|ETC
-        CambiarModoEditor("ace/mode/<?php echo $PCODER_ModoEditor; ?>");
+
         
         //Activa la autocompletacion de codigo y los snippets
 		editor.setOptions({
@@ -604,7 +912,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
         //Elimina la visualizacion de margen de impresion
         editor.setShowPrintMargin(0);
         CaracteresInvisiblesEditor(0);
-        editor.clearSelection();
         
         
         //En cada evento de cambio actualiza el textarea
