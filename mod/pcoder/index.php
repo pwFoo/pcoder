@@ -758,12 +758,11 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				//Actualiza el editor ACE y sus propiedades
 				editor.setValue(document.getElementById("PCODER_AreaTexto"+IndiceRecibido).value);
 				editor.focus();											//Establece el foco al editor
-				editor.gotoLine(0, 0, false);							//Ubica cursor en la linea,columna,sin animacion
-				editor.scrollToLine(0, false, false, function () {});	//Desplaza archivo hasta la linea, sin centrarla en pantalla, sin animacion
+				editor.gotoLine(ListaArchivos[IndiceRecibido].LineaActual+1, ListaArchivos[IndiceRecibido].ColumnaActual, false);							//Ubica cursor en la linea,columna,sin animacion
+				editor.scrollToLine(ListaArchivos[IndiceRecibido].LineaActual+1, true, false, function () {});	//Desplaza archivo hasta la linea, sin centrarla en pantalla, sin animacion
 				editor.clearSelection();
 				ActualizarTituloEditor("{P} "+ListaArchivos[IndiceRecibido].NombreArchivo);
 				CambiarModoEditor("ace/mode/"+ListaArchivos[IndiceRecibido].ModoEditor);
-				
 				
 				//Actualiza el indice del archivo de trabajo actual
 				IndiceArchivoActual=IndiceRecibido;
