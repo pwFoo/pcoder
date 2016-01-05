@@ -28,6 +28,7 @@
 
     //Permite WebServices propios mediante el acceso a este script en solicitudes Cross-Domain
     header('Access-Control-Allow-Origin: *');
+    header('access-control-allow-credentials: true');
 	header('Content-type: text/html; charset=utf-8');
 
 	//Habilita o deshabilita el modo de depuracion de la aplicacion
@@ -425,6 +426,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <!-- Carga editor ACE y sus extensiones -->
 	<script src="../../inc/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../inc/ace/src-min-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="../../inc/ace/src-min-noconflict/ext-split.js" type="text/javascript" charset="utf-8"></script>-->
 
 	<script language="JavaScript">
         function CambiarFuenteEditor(tamano)
@@ -907,9 +909,12 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
         editor = ace.edit("editor_codigo");
         editor.getSession().setUseWorker(true); //Llevar a false para evitar el error 404 para "worker-php.js Failed to load resource: the server responded with a status of 404 (Not Found)"
         editor.resize(true);
+        
 
 		//Inicia el primer archivo del arreglo (como demo.php)
 		PCODER_CargarArchivo();
+
+
 
         // Inicia el editor de codigo con las opciones predeterminadas
         CambiarFuenteEditor("14px");
