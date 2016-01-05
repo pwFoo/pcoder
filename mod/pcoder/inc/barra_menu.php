@@ -65,15 +65,17 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Editar; ?> <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#" OnClick="editor.undo();"><i class="fa fa-undo fa-fw"></i> <?php echo $MULTILANG_PCODER_Deshacer; ?></a></li>
-									<li><a href="#" OnClick="editor.redo();"><i class="fa fa-repeat fa-fw"></i> <?php echo $MULTILANG_PCODER_Rehacer; ?></a></li>
+									<li><a href="#" OnClick="editor.undo();"><i class="fa fa-undo fa-fw"></i> <?php echo $MULTILANG_PCODER_Deshacer; ?>		<span class="pull-right text-muted small"><i>Ctrl+Z</i></span></a></li>
+									<li><a href="#" OnClick="editor.redo();"><i class="fa fa-repeat fa-fw"></i> <?php echo $MULTILANG_PCODER_Rehacer; ?>	<span class="pull-right text-muted small"><i>Ctrl+Y</i></span></a></li>
 									<li role="separator" class="divider"></li>
-									<li><a href="#" OnClick="editor.execCommand('cut');"><i class="fa fa-scissors fa-fw"></i> <?php echo $MULTILANG_PCODER_Cortar; ?></a></li>
-									<li><a href="#" OnClick="editor.execCommand('copy');"><i class="fa fa-files-o fa-fw"></i> <?php echo $MULTILANG_PCODER_Copiar; ?></a></li>
-									<li><a href="#" OnClick="editor.execCommand('paste');"><i class="fa fa-clipboard fa-fw"></i> <?php echo $MULTILANG_PCODER_Pegar; ?></a></li>
+									<li><a href="#" OnClick="editor.selectAll();"><i class="fa fa-file-text fa-fw"></i> <?php echo $MULTILANG_PCODER_SeleccionarTodo; ?>	<span class="pull-right text-muted small"><i>Ctrl+A</i></span></a></li>
 									<li role="separator" class="divider"></li>
-									<li><a href="#" OnClick="editor.execCommand('find');"><i class="fa fa-search fa-fw"></i> <?php echo $MULTILANG_PCODER_Buscar; ?></a></li>
-									<li><a href="#" OnClick="editor.execCommand('replace');"><i class="fa fa-exchange fa-fw"></i> <?php echo $MULTILANG_PCODER_Reemplazar; ?></a></li>
+									<li><a href="#" OnClick="editor.execCommand('cut');"><i class="fa fa-scissors fa-fw"></i> <?php echo $MULTILANG_PCODER_Cortar; ?>	<span class="pull-right text-muted small"><i>Ctrl+X</i></span></a></li>
+									<li><a href="#" OnClick="editor.execCommand('copy');"><i class="fa fa-files-o fa-fw"></i> <?php echo $MULTILANG_PCODER_Copiar; ?>	<span class="pull-right text-muted small"><i>Ctrl+C</i></span></a></li>
+									<li><a href="#" OnClick="editor.execCommand('paste');"><i class="fa fa-clipboard fa-fw"></i> <?php echo $MULTILANG_PCODER_Pegar; ?>	<span class="pull-right text-muted small"><i>Ctrl+V</i></span></a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#" OnClick="editor.execCommand('find');"><i class="fa fa-search fa-fw"></i> <?php echo $MULTILANG_PCODER_Buscar; ?>	<span class="pull-right text-muted small"><i>Ctrl+F</i></span></a></li>
+									<li><a href="#" OnClick="editor.execCommand('replace');"><i class="fa fa-exchange fa-fw"></i> <?php echo $MULTILANG_PCODER_Reemplazar; ?>	<span class="pull-right text-muted small"><i>Ctrl+H</i></span></a></li>
 									<li role="separator" class="divider"></li>
 									<li><a data-toggle="modal" href="#myModalPREFERENCIAS"><i class="fa fa-wrench fa-fw text-warning"></i> <?php echo $MULTILANG_PCODER_Preferencias; ?></a></li>
 								</ul>
@@ -84,7 +86,7 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Ver; ?> <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#" OnClick="IntercambiarPantallaCompleta();"><i class="fa fa-arrows-alt fa-fw"></i> <?php echo $MULTILANG_PCODER_PantallaCompleta; ?></a></li>
+									<li><a href="#" OnClick="IntercambiarPantallaCompleta();"><i class="fa fa-arrows-alt fa-fw"></i> <?php echo $MULTILANG_PCODER_PantallaCompleta; ?>	<span class="pull-right text-muted small"><i>F11</i></span></a></li>
 									<li><a href="#" OnClick="IntercambiarEstadoCaracteresInvisibles();"><i class="fa fa-eye-slash fa-fw"></i> <?php echo $MULTILANG_PCODER_CaracNoImprimibles; ?></a></li>
 									<li role="separator" class="divider"></li>
 									<li><a href="#" OnClick="AumentarTamanoFuente();"><i class="fa fa-plus-square fa-fw"></i> <?php echo $MULTILANG_PCODER_Acercar; ?></a></li>

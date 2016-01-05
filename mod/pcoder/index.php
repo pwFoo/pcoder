@@ -497,7 +497,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
                 //Valida que se tenga un valor de linea y que este en un rango valido
                 if (linea!="" && linea>0)
 					{
-						editor.gotoLine(linea, 1, true);
+						editor.gotoLine(linea, 0, true);
 						document.getElementById("linea_salto").value="";			
 					}
             }
@@ -729,8 +729,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			{
 				//contenedor.innerHTML = '<textarea name="pepe" rows="5" cols="30"></textarea>';
 				elemento_textarea = document.createElement('textarea');
-				elemento_textarea.cols = 15;
-				elemento_textarea.rows = 3;
+				elemento_textarea.cols = 1;
+				elemento_textarea.rows = 1;
 				elemento_textarea.name = nombre_textarea;
 				elemento_textarea.id = nombre_textarea;	
 				elemento_textarea.value = valor_predeterminado;
@@ -752,14 +752,18 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				//Actualiza el editor ACE y sus propiedades
 				editor.setValue(document.getElementById("PCODER_AreaTexto"+IndiceRecibido).value);
 				editor.focus();											//Establece el foco al editor
-				editor.gotoLine(1, 1, true);							//Va a la primera linea
-				editor.scrollToLine(1, true, true, function () {});		//Va a la primera linea
+				editor.gotoLine(1, 0, false);							//Ubica cursor en la linea,columna,sin animacion
+				editor.scrollToLine(1, true, false, function () {});	//Desplaza archivo hasta la linea, sin centrarla en pantalla, sin animacion
+				editor.clearSelection();
 				ActualizarTituloEditor("{P} "+ListaArchivos[IndiceRecibido].NombreArchivo);
 				CambiarModoEditor("ace/mode/"+ListaArchivos[IndiceRecibido].ModoEditor);
-				editor.clearSelection();
+				
 				
 				//Actualiza el indice del archivo de trabajo actual
 				IndiceArchivoActual=IndiceRecibido;
+
+				//Despues de haber agregado el archivo al arreglo procede a presentarlo en las pestanas
+				ActualizarPestanasArchivos();
 				
 				//Se asegura de corregir tamano del editor cuando se carga un archivo
 				RedimensionarEditor();
@@ -775,6 +779,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				ListaArchivos[IndiceRecibido].TokenEdicion="";
 				ListaArchivos[IndiceRecibido].ModoEditor="";
 				ListaArchivos[IndiceRecibido].NombreArchivo="";
+				ListaArchivos[IndiceRecibido].LineaActual="";
 
 				//Verifica si se trata del archivo actual, si es asi entonces se mueve al primero.Si es el primero entonces se mueve al demo
 				if(IndiceRecibido==1)
@@ -853,7 +858,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						ValorContenidoArchivo=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerContenidoArchivo&PCODER_archivo="+path_archivo);
 
 						//Agrega nuevo elemento al arreglo
-						ListaArchivos[IndiceAperturaArchivo] = { TipoDocumento: ValorTipoElemento, TamanoDocumento: ValorTamanoDocumento, FechaModificadoDocumento: ValorFechaModificadoDocumento, RutaDocumento: path_archivo, TokenEdicion: ValorTokenEdicion, ModoEditor: ValorModoEditor, NombreArchivo: ValorNombreArchivo };
+						ListaArchivos[IndiceAperturaArchivo] = { TipoDocumento: ValorTipoElemento, TamanoDocumento: ValorTamanoDocumento, FechaModificadoDocumento: ValorFechaModificadoDocumento, RutaDocumento: path_archivo, TokenEdicion: ValorTokenEdicion, ModoEditor: ValorModoEditor, NombreArchivo: ValorNombreArchivo, LineaActual: 1, ColumnaActual: 0 };
 						
 						//Crea dinamicamente el textarea con el numero de indice y con su valor predeterminado
 						AgregarNuevoTextarea(document.form_textareas_archivos,"PCODER_AreaTexto"+IndiceAperturaArchivo,ValorContenidoArchivo);
@@ -862,9 +867,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						IndiceUltimoArchivoAbierto=IndiceAperturaArchivo;
 						IndiceArchivoActual=IndiceAperturaArchivo;
 						IndiceAperturaArchivo++;
-						
-						//Despues de haber agregado el archivo al arreglo procede a presentarlo en las pestanas
-						ActualizarPestanasArchivos();
 
 						//Actualiza todo el editor con el archivo recier cargado
 						PCODER_CambiarArchivoActual(IndiceArchivoActual);
@@ -908,6 +910,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			enableSnippets: true,
 			enableLiveAutocompletion: true
 		});
+		editor.setAnimatedScroll(true);
         
         //Elimina la visualizacion de margen de impresion
         editor.setShowPrintMargin(0);

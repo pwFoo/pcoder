@@ -64,7 +64,7 @@
 	$MULTILANG_PCODER_Otros='अन्य लोग';
 	$MULTILANG_PCODER_Pegar='पेस्ट';
 	$MULTILANG_PCODER_Predeterminado='चूक';
-	$MULTILANG_PCODER_Preferencias='प्राथमिकताएं';
+	$MULTILANG_PCODER_Preferencias='{P}Coder संपादक वरीयताओं';
 	$MULTILANG_PCODER_Reemplazar='की जगह';
 	$MULTILANG_PCODER_Rehacer='फिर से करना';
 	$MULTILANG_PCODER_Salir='छोड़ना';
@@ -108,3 +108,4 @@
 	$MULTILANG_PCODER_PanelDer='राइट पैनल';
 	$MULTILANG_PCODER_OcultarPanel='पैनल को छिपाने';
 	$MULTILANG_PCODER_RevisarSintaxis='मैं लिखना, जबकि भाषा वाक्यविन्यास चेक';
+	$MULTILANG_PCODER_SeleccionarTodo='सबका चयन करें';

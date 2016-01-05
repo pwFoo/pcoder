@@ -64,7 +64,7 @@
 	$MULTILANG_PCODER_Otros='Outros';
 	$MULTILANG_PCODER_Pegar='Colar';
 	$MULTILANG_PCODER_Predeterminado='Padrão';
-	$MULTILANG_PCODER_Preferencias='Preferências';
+	$MULTILANG_PCODER_Preferencias='Preferências do editor {P}Coder';
 	$MULTILANG_PCODER_Reemplazar='Substituir';
 	$MULTILANG_PCODER_Rehacer='Refazer';
 	$MULTILANG_PCODER_Salir='Sair';
@@ -108,4 +108,5 @@
 	$MULTILANG_PCODER_PanelDer='Painel direito';
 	$MULTILANG_PCODER_OcultarPanel='Painel cerrar';
 	$MULTILANG_PCODER_RevisarSintaxis='Verifique a sintaxe da linguagem, enquanto eu escrevo';
+	$MULTILANG_PCODER_SeleccionarTodo='Selecionar tudo';
 	
