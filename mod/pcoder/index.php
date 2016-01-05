@@ -109,7 +109,7 @@ if (@$PCOSESS_LoginUsuario=="admin" || $PCO_PCODER_StandAlone==1)
 {
     //Carga el archivo recibido, si no recibe nada carga un demo
     if (@$PCODER_archivo=="")
-        $PCODER_archivo = "demos/demo.php";
+        $PCODER_archivo = "demos/demo.txt";
 
     $PCODER_Mensajes=0;
     // Verifica que el archivo exista
@@ -512,7 +512,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
         function Guardar()
             {
 				//Solamente guarda si no se trata del archivo demo
-				if (document.form_archivo_editado.PCODER_archivo.value != "demos/demo.php")
+				if (document.form_archivo_editado.PCODER_archivo.value != "demos/demo.txt")
 					{
 						//Oculta mensaje de guardar finalizado y presenta el de guardando
 						$('#progreso_marco_guardar').show();
@@ -762,7 +762,9 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				editor.scrollToLine(ListaArchivos[IndiceRecibido].LineaActual+1, true, false, function () {});	//Desplaza archivo hasta la linea, sin centrarla en pantalla, sin animacion
 				editor.clearSelection();
 				ActualizarTituloEditor("{P} "+ListaArchivos[IndiceRecibido].NombreArchivo);
-				CambiarModoEditor("ace/mode/"+ListaArchivos[IndiceRecibido].ModoEditor);
+				//Actualiza el modo de editor solamente si ha cambiado desde el archivo anterior
+				if (ListaArchivos[IndiceArchivoActual].ModoEditor!=ListaArchivos[IndiceRecibido].ModoEditor)
+					CambiarModoEditor("ace/mode/"+ListaArchivos[IndiceRecibido].ModoEditor);
 				
 				//Actualiza el indice del archivo de trabajo actual
 				IndiceArchivoActual=IndiceRecibido;
@@ -845,7 +847,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 		function PCODER_CargarArchivo(path_archivo)
 			{
-				if (typeof path_archivo == 'undefined') path_archivo="demos/demo.php";
+				if (typeof path_archivo == 'undefined') path_archivo="demos/demo.txt";
 				
 				BusquedaArchivoAbierto=-1;
 				if(IndiceAperturaArchivo>0)
@@ -875,6 +877,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 						//Actualiza todo el editor con el archivo recier cargado
 						PCODER_CambiarArchivoActual(IndiceArchivoActual);
+						CambiarModoEditor("ace/mode/"+ListaArchivos[IndiceArchivoActual].ModoEditor); //Hace cambio forzado de tipo de editor cuando se abre un nuevo archivo
 					}
 				else
 					{
