@@ -647,7 +647,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				var alto_contenedor_menu = $("#contenedor_menu").height();
 				var alto_contenedor_barra_estado = $("#contenedor_barra_estado").height();
 				var alto_contenedor_mensajes_error = $("#contenedor_mensajes_error").height();
-				var alto_barra_lateral_izquierda = $("#barra_lateral_izquierda").height();
+				var alto_barra_lateral_izquierda = $("#barra_lateral_izquierda").height();	
 				
 				//Modifica el ALTO DEL EDITOR
 				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado+alto_contenedor_mensajes_error+alto_contenedor_archivos)*100/alto_ventana;
@@ -655,6 +655,10 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_mensajes_error-alto_contenedor_barra_estado-alto_contenedor_archivos;
 				//$('#editor_codigo').height( alto_final ).css({ });			//Asignacion en pixeles
 				$('#editor_codigo').height( porcentaje_final+"vh" ).css({ });	//Asignacion en porcentaje
+				
+				//Llama al metodo que actualiza el tamano del editor ACE segun las nuevas dimensiones
+				editor.resize();
+				
 				AjustarPanelesLaterales();
 			}
 
@@ -771,9 +775,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 				//Despues de haber agregado el archivo al arreglo procede a presentarlo en las pestanas
 				ActualizarPestanasArchivos();
-				
-				//Se asegura de corregir tamano del editor cuando se carga un archivo
-				RedimensionarEditor();
 			}
 
 		function PCODER_CerrarArchivo(IndiceRecibido)
@@ -843,6 +844,9 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 								lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li ><a data-toggle="tab" style="cursor:pointer; margin-right: 10px;" OnClick="PCODER_CerrarArchivo('+i+');"><i class="fa fa-times"></i></a></li>';								
 							}
 					}
+
+				//Se asegura de corregir tamano del editor cuando se carga un archivo
+				RedimensionarEditor();
 			}
 
 		function PCODER_CargarArchivo(path_archivo)
@@ -952,7 +956,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		// FUNCIONES DE INICIALIZACION ###############################################################
 			ExplorarPath();
 			RedimensionarEditor();
-			window.setTimeout(ActualizarBarraEstado, 2000);
+			window.setTimeout(ActualizarBarraEstado, 1000);
 
 	</script>
 

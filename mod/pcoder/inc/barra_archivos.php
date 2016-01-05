@@ -30,11 +30,6 @@
 
 			<nav class="nav-xs">
 				<ul id="lista_contenedor_archivos" name="lista_contenedor_archivos" class="nav nav-pills nav-xs">
-					<!--
-					  <li class="active" ><a data-toggle="tab" href="#home"><i class="fa fa-file-text-o fa-inactive"></i> Archivo 1</a></li>
-					  <li><a data-toggle="tab" href="#menu1"><i class="fa fa-file-text-o"></i> Archivo 2</a></li>
-					  <li><a data-toggle="tab" href="#menu2"><i class="fa fa-file-text-o"></i> Archivo 3</a></li>
-					-->
 				</ul>
 			</nav>
 
