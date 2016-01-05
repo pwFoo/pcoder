@@ -45,6 +45,7 @@
 	$MULTILANG_PCODER_Caracteres='वर्ण';
 	$MULTILANG_PCODER_Cargando='लदान';
 	$MULTILANG_PCODER_Cerrar='बंद करे';
+	$MULTILANG_PCODER_Columna='स्तंभ';
 	$MULTILANG_PCODER_Copiar='प्रतिलिपि';
 	$MULTILANG_PCODER_Cortar='कमी';
 	$MULTILANG_PCODER_Deshacer='पूर्ववत';
@@ -58,6 +59,7 @@
 	$MULTILANG_PCODER_Guardando='रखना';
 	$MULTILANG_PCODER_Guardar='सहेजें';
 	$MULTILANG_PCODER_Ir='जाना';
+	$MULTILANG_PCODER_Linea='पंक्तियां';
 	$MULTILANG_PCODER_Lineas='पंक्तियां';
 	$MULTILANG_PCODER_Modificado='संशोधित';
 	$MULTILANG_PCODER_No='नहीं';

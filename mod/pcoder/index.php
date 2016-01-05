@@ -709,19 +709,25 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
         function ActualizarBarraEstado()
             {
+				//Actualiza ademas las posiciones del cursor sobre el arreglo de archivos abiertos
+				posicion_cursor=editor.getCursorPosition();
+				ListaArchivos[IndiceArchivoActual].LineaActual=posicion_cursor.row;
+				ListaArchivos[IndiceArchivoActual].ColumnaActual=posicion_cursor.column;
+
 				//Actualiza la barra de estado del editor
 				var NroLineasDocumento=editor.session.getLength();
 				var NroCaracteresDocumento=editor.session.getValue().length;
 				//Actualiza los contenedores con la informacion de estado
-				$("#NroLineasDocumento").html("<?php echo $MULTILANG_PCODER_Lineas; ?>: "+NroLineasDocumento);
+				$("#NroLineasDocumento").html("<?php echo $MULTILANG_PCODER_Linea; ?>: "+ (ListaArchivos[IndiceArchivoActual].LineaActual+1) +" / "+NroLineasDocumento);
+				$("#NroColumnaDocumento").html("<?php echo $MULTILANG_PCODER_Columna; ?>: "+ (ListaArchivos[IndiceArchivoActual].ColumnaActual+1));
 				$("#NroCaracteresDocumento").html("<?php echo $MULTILANG_PCODER_Caracteres; ?>: "+NroCaracteresDocumento);
 				$("#TipoDocumento").html("<?php echo $MULTILANG_PCODER_Tipo; ?>: "+ListaArchivos[IndiceArchivoActual].TipoDocumento);
 				$("#TamanoDocumento").html("<?php echo $MULTILANG_PCODER_Tamano; ?>: <b>"+ListaArchivos[IndiceArchivoActual].TamanoDocumento+" Kb</b>");
 				$("#FechaModificadoDocumento").html("<?php echo $MULTILANG_PCODER_Modificado; ?>: <b>"+ListaArchivos[IndiceArchivoActual].FechaModificadoDocumento+"</b>");
 				$("#RutaDocumento").html("<i class='fa fa-hdd-o text-info'> "+ListaArchivos[IndiceArchivoActual].RutaDocumento+"</i>");
-
+				
 				//Llama periodicamente la rutina de actualizacion de la barra
-				window.setTimeout(ActualizarBarraEstado, 1500);
+				window.setTimeout(ActualizarBarraEstado, 1000);
 			}
 
 		
@@ -752,8 +758,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				//Actualiza el editor ACE y sus propiedades
 				editor.setValue(document.getElementById("PCODER_AreaTexto"+IndiceRecibido).value);
 				editor.focus();											//Establece el foco al editor
-				editor.gotoLine(1, 0, false);							//Ubica cursor en la linea,columna,sin animacion
-				editor.scrollToLine(1, true, false, function () {});	//Desplaza archivo hasta la linea, sin centrarla en pantalla, sin animacion
+				editor.gotoLine(0, 0, false);							//Ubica cursor en la linea,columna,sin animacion
+				editor.scrollToLine(0, false, false, function () {});	//Desplaza archivo hasta la linea, sin centrarla en pantalla, sin animacion
 				editor.clearSelection();
 				ActualizarTituloEditor("{P} "+ListaArchivos[IndiceRecibido].NombreArchivo);
 				CambiarModoEditor("ace/mode/"+ListaArchivos[IndiceRecibido].ModoEditor);

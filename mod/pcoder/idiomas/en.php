@@ -45,6 +45,7 @@
 	$MULTILANG_PCODER_Caracteres='Characters';
 	$MULTILANG_PCODER_Cargando='Loading';
 	$MULTILANG_PCODER_Cerrar='Close';
+	$MULTILANG_PCODER_Columna='Column';
 	$MULTILANG_PCODER_Copiar='Copy';
 	$MULTILANG_PCODER_Cortar='Cut';
 	$MULTILANG_PCODER_Deshacer='Undo';
@@ -58,6 +59,7 @@
 	$MULTILANG_PCODER_Guardando='Saving';
 	$MULTILANG_PCODER_Guardar='Save';
 	$MULTILANG_PCODER_Ir='Go';
+	$MULTILANG_PCODER_Linea='Line';
 	$MULTILANG_PCODER_Lineas='Lines';
 	$MULTILANG_PCODER_Modificado='Modified';
 	$MULTILANG_PCODER_No='No';
