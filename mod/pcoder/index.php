@@ -113,15 +113,6 @@ if (@$PCOSESS_LoginUsuario=="admin" || $PCO_PCODER_StandAlone==1)
         $PCODER_archivo = "demos/demo.txt";
 
     $PCODER_Mensajes=0;
-    // Verifica que el archivo exista
-    $existencia_ok=1;
-    if (!file_exists($PCODER_archivo)) { $existencia_ok=0; $PCODER_Mensajes=1; } 
-    
-    // Verifica permisos de escritura
-    $permisos_ok=1;
-    $permisos_encontrados=@substr(sprintf('%o', fileperms($PCODER_archivo)), -4);
-    if (!is_writable($PCODER_archivo) && $existencia_ok) { $permisos_ok=0; $PCODER_Mensajes=1; } 
-    
     // Verifica si existe el directorio para el editor ACE
     $editor_ok=1;
     if (@!file_exists("../../inc/ace")) { $editor_ok=0; $PCODER_Mensajes=1; } 
@@ -156,6 +147,38 @@ if ($PCO_Accion=="PCOMOD_GuardarArchivo")
                     <input type="Hidden" name="Precarga_EstilosBS" value="'.@$Precarga_EstilosBS.'">
                 <script type="" language="JavaScript"> document.continuar_edicion.submit();  </script>
                 </body>';
+	}
+
+
+/* ################################################################## */
+/* ################################################################## */
+/*
+	Function: PCOMOD_ObtenerPermisosArchivo
+	Determina cuales son los permisos de un archivo
+*/
+if ($PCO_Accion=="PCOMOD_ObtenerPermisosArchivo") 
+	{
+		$permisos_encontrados=@substr(sprintf('%o', fileperms($PCODER_archivo)), -4);
+        echo $permisos_encontrados;
+	}
+	
+
+/* ################################################################## */
+/* ################################################################## */
+/*
+	Function: PCOMOD_VerificarPermisosRW
+	Verifica si el archivo cuenta o no con permisos de escritura por parte del usuario que corre el proceso web (generalmente Apache)
+*/
+if ($PCO_Accion=="PCOMOD_VerificarPermisosRW") 
+	{
+		// Verifica que el archivo exista
+		$existencia_ok=1;
+		if (!file_exists($PCODER_archivo)) { $existencia_ok=0; $PCODER_Mensajes=1; } 
+    
+		$permisos_ok=1;
+		$permisos_encontrados=@substr(sprintf('%o', fileperms($PCODER_archivo)), -4);
+		if (!is_writable($PCODER_archivo) && $existencia_ok) { $permisos_ok=0; $PCODER_Mensajes=1; }
+        echo $permisos_ok;
 	}
 
 
@@ -377,7 +400,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		<?php
 			//Incluye algunos marcos del aplicativo
 			include_once ("inc/barra_menu.php");
-			include_once ("inc/mensajes_error.php");
+			//include_once ("inc/mensajes_error.php");
 			include_once ("inc/marco_preferencias.php");
 			include_once ("inc/marco_acerca.php");
 			include_once ("inc/marco_guardar.php");
@@ -397,6 +420,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			<div class="col-md-8" style="margin:0px;" id="panel_editor_codigo">
 
 				<?php
+							include_once ("inc/mensajes_error.php");
+
 					//Incluye algunos marcos del aplicativo
 					include_once ("inc/barra_archivos.php");
 				?>
@@ -772,8 +797,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		var IndiceArchivoActual=IndiceAperturaArchivo;					//Posicion del arreglo con los datos del archivo actual
 		var ValorModoEditor;
 
-		function PCODER_CambiarArchivoActual(IndiceRecibido)
+		function PCODER_CambiarArchivoActual(IndiceRecibido,VieneDesdeApertura)
 			{
+				//Si viene en valor 1 se trata de una apertura de archivo, por lo que no se requiere guardar valores previos.  Si viene en 0 se trata de un cambio de archivo desde la barra y guarda valores previos.
+				if(VieneDesdeApertura==0)
+					document.getElementById("PCODER_AreaTexto"+IndiceArchivoActual).value=editor.getSession().getValue();
+				
+				//editor.getSession().getValue();
+				
 				//Actualiza el Textarea y formulario base del editor
 				document.form_archivo_editado.PCODER_archivo.value=ListaArchivos[IndiceRecibido].RutaDocumento;
 				document.form_archivo_editado.PCODER_TokenEdicion.value=ListaArchivos[IndiceRecibido].TokenEdicion;
@@ -791,6 +822,13 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				
 				//Actualiza el indice del archivo de trabajo actual
 				IndiceArchivoActual=IndiceRecibido;
+				
+				//Verifica permisos de escritura en cada cargue de archivo para saber si presenta o no mensaje de advertencia
+				ValorPermisosRW=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_VerificarPermisosRW&PCODER_archivo="+ListaArchivos[IndiceRecibido].RutaDocumento);
+				if(ValorPermisosRW==0)
+					contenedor_mensajes_error.innerHTML = '<div class="alert alert-danger alert-sm" role="alert"><i class="fa fa-warning fa-2x pull-left"></i>'+'<?php echo $MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorRW.'. '.$MULTILANG_PCODER_Estado.'=' ?>'+ListaArchivos[IndiceRecibido].PermisosArchivo+'</div>';
+				else
+					contenedor_mensajes_error.innerHTML = '';
 
 				//Despues de haber agregado el archivo al arreglo procede a presentarlo en las pestanas
 				ActualizarPestanasArchivos();
@@ -807,6 +845,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				ListaArchivos[IndiceRecibido].ModoEditor="";
 				ListaArchivos[IndiceRecibido].NombreArchivo="";
 				ListaArchivos[IndiceRecibido].LineaActual="";
+				ListaArchivos[IndiceRecibido].PermisosRW="";
+				ListaArchivos[IndiceRecibido].PermisosArchivo="";
 
 				//Verifica si se trata del archivo actual, si es asi entonces se mueve al primero.Si es el primero entonces se mueve al demo
 				if(IndiceRecibido==1)
@@ -820,7 +860,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				ActualizarPestanasArchivos();
 				//Se asegura de corregir tamano del editor cuando se actualizan las pestanas
 
-				PCODER_CambiarArchivoActual(IndiceArchivoActual);
+				PCODER_CambiarArchivoActual(IndiceArchivoActual,0);
 			}
 
 		function PCODER_CerrarArchivoActual()
@@ -858,7 +898,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						if (ListaArchivos[i].NombreArchivo!="")
 							{
 								//Pestana con nombre de archivo
-								lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li ' + ComplementoClase + ' ><a data-toggle="tab" style="cursor:pointer;" OnClick="PCODER_CambiarArchivoActual('+i+');"><i class="fa fa-file-text-o fa-inactive"></i> '+ListaArchivos[i].NombreArchivo+'</a></li>';
+								lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li ' + ComplementoClase + ' ><a data-toggle="tab" style="cursor:pointer;" OnClick="PCODER_CambiarArchivoActual('+i+',0);"><i class="fa fa-file-text-o fa-inactive"></i> '+ListaArchivos[i].NombreArchivo+'</a></li>';
 								//Opcion de cerrar el archivo
 								lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li ><a data-toggle="tab" style="cursor:pointer; margin-right: 10px;" OnClick="PCODER_CerrarArchivo('+i+');"><i class="fa fa-times"></i></a></li>';								
 							}
@@ -886,9 +926,11 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						ValorModoEditor=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerModoEditor&PCODER_archivo="+path_archivo);
 						ValorNombreArchivo=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerNombreArchivo&PCODER_archivo="+path_archivo);
 						ValorContenidoArchivo=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerContenidoArchivo&PCODER_archivo="+path_archivo);
+						ValorPermisosRW=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_VerificarPermisosRW&PCODER_archivo="+path_archivo);
+						ValorPermisosArchivo=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerPermisosArchivo&PCODER_archivo="+path_archivo);
 
 						//Agrega nuevo elemento al arreglo
-						ListaArchivos[IndiceAperturaArchivo] = { TipoDocumento: ValorTipoElemento, TamanoDocumento: ValorTamanoDocumento, FechaModificadoDocumento: ValorFechaModificadoDocumento, RutaDocumento: path_archivo, TokenEdicion: ValorTokenEdicion, ModoEditor: ValorModoEditor, NombreArchivo: ValorNombreArchivo, LineaActual: 1, ColumnaActual: 0 };
+						ListaArchivos[IndiceAperturaArchivo] = { TipoDocumento: ValorTipoElemento, TamanoDocumento: ValorTamanoDocumento, FechaModificadoDocumento: ValorFechaModificadoDocumento, RutaDocumento: path_archivo, TokenEdicion: ValorTokenEdicion, ModoEditor: ValorModoEditor, NombreArchivo: ValorNombreArchivo, LineaActual: 1, ColumnaActual: 0 , PermisosRW: ValorPermisosRW, PermisosArchivo: ValorPermisosArchivo};
 						
 						//Crea dinamicamente el textarea con el numero de indice y con su valor predeterminado
 						AgregarNuevoTextarea(document.form_textareas_archivos,"PCODER_AreaTexto"+IndiceAperturaArchivo,ValorContenidoArchivo);
@@ -899,12 +941,12 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						IndiceAperturaArchivo++;
 
 						//Actualiza todo el editor con el archivo recier cargado
-						PCODER_CambiarArchivoActual(IndiceArchivoActual);
+						PCODER_CambiarArchivoActual(IndiceArchivoActual,1);
 						CambiarModoEditor("ace/mode/"+ListaArchivos[IndiceArchivoActual].ModoEditor); //Hace cambio forzado de tipo de editor cuando se abre un nuevo archivo
 					}
 				else
 					{
-						PCODER_CambiarArchivoActual(BusquedaArchivoAbierto);
+						PCODER_CambiarArchivoActual(BusquedaArchivoAbierto,0);
 					}
 			}
 
@@ -928,9 +970,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
         editor.resize(true);
         
 
-		//Inicia el primer archivo del arreglo (como demo.php)
+		//Inicia el primer archivo del arreglo (como demo.txt)
 		PCODER_CargarArchivo();
-
 
 
         // Inicia el editor de codigo con las opciones predeterminadas
