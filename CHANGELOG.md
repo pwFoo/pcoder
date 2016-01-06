@@ -8,8 +8,16 @@
 ```
 
 
-## Versión 15.12 (2015-12-01)
-
+## Versión 16.1 (2016-01-07)
+* Added: Manejo de múltiples archivos en pestañas desde un solo editor!
+* Enhan: Mejorado explorador de archivos, ahora su carga se hace dinámicamente
+* Enhan: Se simplifican los path de navegación de archivos y se permite navegar incluso a la raiz del disco duro
+* Added: Ayudas de accesos directo de teclado en opciones de menú
+* Added: Comandos de seleccionar todo y cerrar archivo en el menú superior
+* Added: Indicadores de columna y fila actual en la barra de estado
+* Fixed: Cálculos y aplicaicón de tamaños a objetos cuando se redimensiona ventana
+* Fixed: Al cambiar entre archivos diferentes se recuerdan ubicaciones de cursor
+* Enhan: Eliminación de librerías innecesarias
 
 
 ## Versión 15.11.13 (2015-11-13)

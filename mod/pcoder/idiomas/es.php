@@ -100,11 +100,8 @@
 	$MULTILANG_PCODER_LenguajeProg='Lenguaje de programaci&oacute;n';
 	$MULTILANG_PCODER_VerCaracteres='Ver caracteres invisibles';
 	$MULTILANG_PCODER_CerrarVentana='Finalizar edici&oacute;n';
-	$MULTILANG_PCODER_Path1Punto='Directorio Actual de PCoder (generalmente sobre mod/pcoder)';
-	$MULTILANG_PCODER_Path2Punto='Raiz de PCoder Modulo (generalmente sobre mod/pcoder/mod)';
-	$MULTILANG_PCODER_Path3Punto='Raiz de PCoder StandAlone (Donde reside LICENSE, AUTHORS, Etc)';
-	$MULTILANG_PCODER_Path4Punto='Raiz Instalacion PCoder cuando es independiente o Raiz de Practico si esta como modulo';
-	$MULTILANG_PCODER_PathFull='Raiz de Todo el servidor web. Podria tardar segun cantidad de archivos posibles.';
+	$MULTILANG_PCODER_PathFull='Raiz de Todo el servidor web';
+	$MULTILANG_PCODER_PathDisco='Raiz del disco duro';
 	$MULTILANG_PCODER_CaracNoImprimibles='Ver/Ocultar Caracteres no imprimibles';
 	$MULTILANG_PCODER_PantallaCompleta='Pantalla completa';
 	$MULTILANG_PCODER_PanelIzq='Panel izquierdo';

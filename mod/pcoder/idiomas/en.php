@@ -99,11 +99,8 @@
 	$MULTILANG_PCODER_LenguajeProg='Programming language';
 	$MULTILANG_PCODER_VerCaracteres='Show hidden chars';
 	$MULTILANG_PCODER_CerrarVentana='Changes may lost';
-	$MULTILANG_PCODER_Path1Punto='Current folder of PCoder (generally over mod/pcoder)';
-	$MULTILANG_PCODER_Path2Punto='Root of PCoder as Module (generally over mod/pcoder/mod)';
-	$MULTILANG_PCODER_Path3Punto='Root of PCoder as StandAlone (where you can find LICENSE, AUTHORS, Etc)';
-	$MULTILANG_PCODER_Path4Punto='Install root for PCoder as StandAlone or Practico root if is a module';
-	$MULTILANG_PCODER_PathFull='WebServer Root. Could be slow acording to the available files.';
+	$MULTILANG_PCODER_PathFull='WebServer Root';
+	$MULTILANG_PCODER_PathDisco='Hard disk root';
 	$MULTILANG_PCODER_CaracNoImprimibles='Show/Hide Invisible characters';
 	$MULTILANG_PCODER_PantallaCompleta='Full screen';
 	$MULTILANG_PCODER_PanelIzq='Left panel';

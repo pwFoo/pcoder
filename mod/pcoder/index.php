@@ -349,7 +349,15 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				margin-bottom: 1px;
 
 			}
-
+		
+		/*Clase para el explorador de archivos*/
+			.explorador_archivos {
+				margin: 0px;
+				width: 100%;
+				height: 50vh;	/* vh o px */
+				overflow: auto;
+				padding: 0px;
+			}
     </style>
 
     <!-- Agrega archivos necesarios para el Explorador en arbol de directorios -->
@@ -358,6 +366,11 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     
     <!-- jQuery -->
 	<script type="text/javascript" src="../../inc/jquery/jquery-2.1.0.min.js"></script>
+	<!-- Plugins adicionales JQuery -->
+	<script type="text/javascript" src="../../inc/jquery/plugins/jquery.fileTree-1.01/jquery.easing.js"></script>
+	<script type="text/javascript" src="../../inc/jquery/plugins/jquery.fileTree-1.01/jqueryFileTree.js"></script>
+    <link href="../../inc/jquery/plugins/jquery.fileTree-1.01/jqueryFileTree.css" rel="stylesheet" media="screen" type="text/css">
+
 </head>
 <body>
 
@@ -705,11 +718,15 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			}
 		function ExplorarPath()
 			{
-				//Presenta la barra de carga que deberia ocultarse automaticamente en el OnLoad del Iframe
-				$('#progreso_marco_explorador').show();
-				
-				//Se encarga de actualizar el path de navegacion de acuerdo al valor del combo
-				$('#iframe_marco_explorador').attr('src', 'explorador.php?PCO_PCODER_Accion=PCOMOD_ExplorarPath&PathExploracion='+path_exploracion_archivos.value);
+				//Inicializa el explorador de archivos
+				$(document).ready( function() {
+					$('#marco_explorador').fileTree({ root: path_exploracion_archivos.value, script: '../../inc/jquery/plugins/jquery.fileTree-1.01/connectors/jqueryFileTree.php' }, function(archivo_seleccionado) {
+						//alert(file);
+						//PCODER_CargarArchivo('[link]');
+						PCODER_CargarArchivo(archivo_seleccionado);
+					});
+
+				});
 			}
 
 
