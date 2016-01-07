@@ -23,11 +23,8 @@
     // MENSAJES DE ERROR
 ?>
 
-<div id="contenedor_mensajes_error">
-	
+
     <div class="row">
-		<div class="col-lg-12">
+		<div id="contenedor_mensajes_error" class="col-lg-12">
         </div>
     </div>
-    
-</div>

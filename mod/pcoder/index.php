@@ -404,11 +404,11 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			<div class="col-md-8" style="margin:0px;" id="panel_editor_codigo">
 
 				<?php
-					//Incluye archivo de mensajes por si existe alguno
-					include_once ("inc/mensajes_error.php");
-
 					//Incluye algunos marcos del aplicativo
 					include_once ("inc/barra_archivos.php");
+
+					//Incluye archivo de mensajes por si existe alguno
+					include_once ("inc/mensajes_error.php");
 				?>
 
 				<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
