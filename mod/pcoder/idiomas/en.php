@@ -88,7 +88,6 @@
 	$MULTILANG_PCODER_EnlacePcoder='Code Editor {P}Coder';
 	$MULTILANG_PCODER_AtajosTitPcoder='Keyboard shortcuts';
 	$MULTILANG_PCODER_PcoderAjuste='Window adjustment';
-	$MULTILANG_PCODER_ErrorExistencia='The file you want to open doesnt exists!';
 	$MULTILANG_PCODER_ErrorRW='You dont have rights to write this file! Any change will be lost!';
 	$MULTILANG_PCODER_SaltarLinea='Jump to line';
 	$MULTILANG_PCODER_Acerca='About';

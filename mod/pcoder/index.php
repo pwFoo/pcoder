@@ -112,9 +112,6 @@ if (@$PCOSESS_LoginUsuario=="admin" || $PCO_PCODER_StandAlone==1)
     if (@$PCODER_archivo=="")
         $PCODER_archivo = "demos/demo.txt";
 
-    $PCODER_Mensajes=0;
-
-
 
 /* ################################################################## */
 /* ################################################################## */
@@ -167,13 +164,9 @@ if ($PCO_Accion=="PCOMOD_ObtenerPermisosArchivo")
 */
 if ($PCO_Accion=="PCOMOD_VerificarPermisosRW") 
 	{
-		// Verifica que el archivo exista
-		$existencia_ok=1;
-		if (!file_exists($PCODER_archivo)) { $existencia_ok=0; $PCODER_Mensajes=1; } 
-    
 		$permisos_ok=1;
 		$permisos_encontrados=@substr(sprintf('%o', fileperms($PCODER_archivo)), -4);
-		if (!is_writable($PCODER_archivo) && $existencia_ok) { $permisos_ok=0; $PCODER_Mensajes=1; }
+		if (!is_writable($PCODER_archivo)) { $permisos_ok=0; }
         echo $permisos_ok;
 	}
 

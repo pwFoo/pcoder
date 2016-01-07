@@ -88,7 +88,6 @@
 	$MULTILANG_PCODER_EnlacePcoder='कोड संपादक {P}Coder';
 	$MULTILANG_PCODER_AtajosTitPcoder='कुंजीपटल अल्प मार्ग';
 	$MULTILANG_PCODER_PcoderAjuste='विंडो समायोजन';
-	$MULTILANG_PCODER_ErrorExistencia='आप खोलना चाहते हैं फ़ाइल नहीं मौजूद करता है!';
 	$MULTILANG_PCODER_ErrorRW='आप इस फ़ाइल को लिखने के लिए अधिकार नहीं है! कोई भी परिवर्तन खो जाएगा!';
 	$MULTILANG_PCODER_SaltarLinea='लाइन के लिए कूदो';
 	$MULTILANG_PCODER_Acerca='के बारे में';

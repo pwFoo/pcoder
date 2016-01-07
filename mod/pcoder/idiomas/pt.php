@@ -88,7 +88,6 @@
 	$MULTILANG_PCODER_EnlacePcoder='Editor de C&oacute;digo {P}Coder';
 	$MULTILANG_PCODER_AtajosTitPcoder='Atalhos do teclado';
 	$MULTILANG_PCODER_PcoderAjuste='Ajuste janela';
-	$MULTILANG_PCODER_ErrorExistencia='O arquivo que você deseja abrir doesnt existe!';
 	$MULTILANG_PCODER_ErrorRW='Você não tem direitos para escrever este arquivo! Qualquer alteração ser&aacute; perdida!';
 	$MULTILANG_PCODER_SaltarLinea='Ir para linha';
 	$MULTILANG_PCODER_Acerca='Cerca de';
