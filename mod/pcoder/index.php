@@ -407,9 +407,11 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 					//Incluye algunos marcos del aplicativo
 					include_once ("inc/barra_archivos.php");
 
-					//Incluye archivo de mensajes por si existe alguno
-					include_once ("inc/mensajes_error.php");
 				?>
+				<div class="row">
+					<div id="contenedor_mensajes_error" class="col-lg-12">
+					</div>
+				</div>
 
 				<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
 					<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"></textarea>
