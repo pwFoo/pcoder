@@ -21,6 +21,7 @@
 * Fixed: Cálculos y aplicaicón de tamaños a objetos cuando se redimensiona ventana
 * Fixed: Al cambiar entre archivos diferentes se recuerdan ubicaciones de cursor
 * Enhan: Eliminación de librerías innecesarias
+* Fixed: Archivo demo siempre es limpiado
 
 
 ## Versión 15.11.13 (2015-11-13)
