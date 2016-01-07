@@ -327,7 +327,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 	<meta name="generator" content="PCoder <?php  echo $PCO_PCODER_VersionActual; ?>" />
  	<meta name="description" content="Editor de codigo en la Nube basado en Practico Framework PHP" />
     <meta name="author" content="John Arroyave G. - {www.practico.org} - {unix4you2 at gmail.com}">
-    <link rel="icono" href="favicon.ico">
+
     <!-- CSS Core de Bootstrap -->
     <link href="../../inc/bootstrap/css/bootstrap.min.css" rel="stylesheet"  media="screen">
     <link href="../../inc/bootstrap/css/bootstrap-theme.css" rel="stylesheet"  media="screen">
@@ -860,7 +860,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				ActualizarPestanasArchivos();
 				//Se asegura de corregir tamano del editor cuando se actualizan las pestanas
 
-				PCODER_CambiarArchivoActual(IndiceArchivoActual,0);
+				PCODER_CambiarArchivoActual(IndiceArchivoActual,1);
 			}
 
 		function PCODER_CerrarArchivoActual()
