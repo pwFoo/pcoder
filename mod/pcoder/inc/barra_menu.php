@@ -21,9 +21,6 @@
 	*/
 
     // BARRA DE MENU DEL APLICATIVO
-    //   https://github.com/ajaxorg/ace/blob/master/lib/ace/commands/default_commands.js#L171
-    //   http://ace.c9.io/api/editor.html
-    //   http://ace.c9.io/build/kitchen-sink.html
 ?>
 
 <div class="row">

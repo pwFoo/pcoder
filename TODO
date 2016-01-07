@@ -1,2 +1,12 @@
 
-* Agregar posibilidad de multipestana mediante JQUERY-UI http://jqueryui.com/tabs/#manipulation
+* Division de ventana de codigo para multiples vistas del mismo archivo
+* Creacion de archivos y carpetas en linea (modulo admin archivos)
+* Vista previa de una pagina web, marco para navegacion embebido (iframe)
+* Selector de colores
+* Administracion de usuarios
+* Administracion de proyectos
+* Restriccion de extensiones
+* Guardar preferencias por usuario
+* Permitir ajustar idioma por defecto
+
+
