@@ -117,8 +117,6 @@ if (@$PCOSESS_LoginUsuario=="admin" || $PCO_PCODER_StandAlone==1)
     $editor_ok=1;
     if (@!file_exists("../../inc/ace")) { $editor_ok=0; $PCODER_Mensajes=1; } 
 
-	// Clase para exploracion de archivos
-	include_once("lib/phpFileTree/php_file_tree.php");
 
 /* ################################################################## */
 /* ################################################################## */
@@ -297,8 +295,8 @@ if ($PCO_Accion=="PCOMOD_ObtenerNombreArchivo")
 if ($PCO_Accion=="PCOMOD_ObtenerContenidoArchivo") 
 	{
         //Carga y Escapa el contenido del archivo
-        $PCODER_Contenido_original_archivo=@file_get_contents($PCODER_archivo);
-        $PCODER_ContenidoArchivo=@htmlspecialchars($PCODER_Contenido_original_archivo); //Para cargue como estaba en forma original (Sin Ajax)
+        $PCODER_Contenido_original_archivo=@file_get_contents($PCODER_archivo, FILE_BINARY);   // FILE_TEXT | FILE_BINARY | FILE_USE_INCLUDE_PATH
+        //$PCODER_ContenidoArchivo=@htmlspecialchars($PCODER_Contenido_original_archivo); //Para cargue como estaba en forma original (Sin Ajax)
         $PCODER_ContenidoArchivo= $PCODER_Contenido_original_archivo;
 
         //DOCS: http://stackoverflow.com/questions/15186558/loading-a-html-file-into-ace-editor-pre-tag
@@ -382,10 +380,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				padding: 0px;
 			}
     </style>
-
-    <!-- Agrega archivos necesarios para el Explorador en arbol de directorios -->
-    <link href="lib/phpFileTree/styles/default/default.css" rel="stylesheet" type="text/css" media="screen" />
-    <script src="lib/phpFileTree/php_file_tree.js" type="text/javascript"></script>
     
     <!-- jQuery -->
 	<script type="text/javascript" src="../../inc/jquery/jquery-2.1.0.min.js"></script>
@@ -400,7 +394,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		<?php
 			//Incluye algunos marcos del aplicativo
 			include_once ("inc/barra_menu.php");
-			//include_once ("inc/mensajes_error.php");
 			include_once ("inc/marco_preferencias.php");
 			include_once ("inc/marco_acerca.php");
 			include_once ("inc/marco_guardar.php");
@@ -803,8 +796,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				if(VieneDesdeApertura==0)
 					document.getElementById("PCODER_AreaTexto"+IndiceArchivoActual).value=editor.getSession().getValue();
 				
-				//editor.getSession().getValue();
-				
 				//Actualiza el Textarea y formulario base del editor
 				document.form_archivo_editado.PCODER_archivo.value=ListaArchivos[IndiceRecibido].RutaDocumento;
 				document.form_archivo_editado.PCODER_TokenEdicion.value=ListaArchivos[IndiceRecibido].TokenEdicion;
@@ -912,9 +903,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			{
 				if (typeof path_archivo == 'undefined') path_archivo="demos/demo.txt";
 				
+				//Determina si el archivo ya ha sido abierto o no
 				BusquedaArchivoAbierto=-1;
 				if(IndiceAperturaArchivo>0)
 					BusquedaArchivoAbierto=PCODER_BuscarArchivoAbierto(path_archivo);
+
+				//Graba el estado del editor cuando se abre un nuevo archivo y no se trata del demo
+				if(IndiceAperturaArchivo!=0)
+					document.getElementById("PCODER_AreaTexto"+IndiceArchivoActual).value=editor.getSession().getValue();
 
 				if (BusquedaArchivoAbierto==-1)
 					{
