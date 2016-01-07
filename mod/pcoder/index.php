@@ -361,7 +361,13 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				margin-bottom: 1px;
 
 			}
-		
+
+        .tooltip-inner {
+            max-width: none;
+            white-space: nowrap;
+            font-size: 10px;
+        }
+
 		/*Clase para el explorador de archivos*/
 			.explorador_archivos {
 				margin: 0px;
@@ -403,15 +409,24 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			</div>
 			<div class="col-md-8" style="margin:0px;" id="panel_editor_codigo">
 
-				<?php
-					//Incluye algunos marcos del aplicativo
-					include_once ("inc/barra_archivos.php");
 
-				?>
-				<div class="row">
-					<div id="contenedor_mensajes_error" class="col-lg-12">
+				<!-- INICIO MARCO PESTANAS DE ARCHIVOS -->
+					<div id="contenedor_archivos" >
+						<nav class="nav-xs">
+							<ul id="lista_contenedor_archivos" name="lista_contenedor_archivos" class="nav nav-pills nav-xs">
+							</ul>
+						</nav>
 					</div>
-				</div>
+				<!-- FIN MARCO PESTANAS DE ARCHIVOS -->
+
+
+				<!-- INICIO MARCO MENSAJES SUPERIORES -->
+					<div class="row">
+						<div id="contenedor_mensajes_superior" class="col-lg-12">
+						</div>
+					</div>
+				<!-- FIN MARCO MENSAJES SUPERIORES -->
+
 
 				<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
 					<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"></textarea>
@@ -673,13 +688,13 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				var alto_contenedor_archivos = $("#contenedor_archivos").height();
 				var alto_contenedor_menu = $("#contenedor_menu").height();
 				var alto_contenedor_barra_estado = $("#contenedor_barra_estado").height();
-				var alto_contenedor_mensajes_error = $("#contenedor_mensajes_error").height();
+				var alto_contenedor_mensajes_superior = $("#contenedor_mensajes_superior").height();
 				var alto_barra_lateral_izquierda = $("#barra_lateral_izquierda").height();	
 				
 				//Modifica el ALTO DEL EDITOR
-				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado+alto_contenedor_mensajes_error+alto_contenedor_archivos)*100/alto_ventana;
+				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado+alto_contenedor_mensajes_superior+alto_contenedor_archivos)*100/alto_ventana;
 				var porcentaje_final=100-porcentaje_barrasmenuyestado;
-				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_mensajes_error-alto_contenedor_barra_estado-alto_contenedor_archivos;
+				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_mensajes_superior-alto_contenedor_barra_estado-alto_contenedor_archivos;
 				//$('#editor_codigo').height( alto_final ).css({ });			//Asignacion en pixeles
 				$('#editor_codigo').height( porcentaje_final+"vh" ).css({ });	//Asignacion en porcentaje
 				
@@ -811,9 +826,9 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				//Verifica permisos de escritura en cada cargue de archivo para saber si presenta o no mensaje de advertencia
 				ValorPermisosRW=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_VerificarPermisosRW&PCODER_archivo="+ListaArchivos[IndiceRecibido].RutaDocumento);
 				if(ValorPermisosRW==0)
-					contenedor_mensajes_error.innerHTML = '<div class="alert alert-danger alert-sm" role="alert"><i class="fa fa-warning fa-2x pull-left"></i>'+'<?php echo $MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorRW.'. '.$MULTILANG_PCODER_Estado.'=' ?>'+ListaArchivos[IndiceRecibido].PermisosArchivo+'</div>';
+					contenedor_mensajes_superior.innerHTML = '<div class="alert alert-warning btn-xs" role="alert" style="margin: 0px; padding: 5px;" ><i class="fa fa-warning"></i> '+'<b><?php echo $MULTILANG_PCODER_ErrorRW.'</b>. '.$MULTILANG_PCODER_Estado.'=' ?>'+ListaArchivos[IndiceRecibido].PermisosArchivo+'</div>';
 				else
-					contenedor_mensajes_error.innerHTML = '';
+					contenedor_mensajes_superior.innerHTML = '';
 
 				//Despues de haber agregado el archivo al arreglo procede a presentarlo en las pestanas
 				ActualizarPestanasArchivos();
@@ -882,11 +897,17 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						//Agrega el elemento simepre y cuando no sea vacio
 						if (ListaArchivos[i].NombreArchivo!="")
 							{
+								//Construye datos para el ToolTip
+								ComplementoTooltip='<i class=\'fa fa-hdd-o\'></i> '+ListaArchivos[i].RutaDocumento+'<br>';
+								ComplementoTooltip+='<i class=\'fa fa-key\'></i> '+'Permisos (CHMOD): '+ListaArchivos[i].PermisosArchivo+'<br>';
 								//Pestana con nombre de archivo
-								lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li ' + ComplementoClase + ' ><a data-toggle="tab" style="cursor:pointer;" OnClick="PCODER_CambiarArchivoActual('+i+',0);"><i class="fa fa-file-text-o fa-inactive"></i> '+ListaArchivos[i].NombreArchivo+'</a></li>';
-								//Opcion de cerrar el archivo
+								lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li '+ComplementoClase+' ><a href="#" data-toggle="tooltip" data-html="true" data-placement="bottom" title="'+ComplementoTooltip+'" style="cursor:pointer;" OnClick="PCODER_CambiarArchivoActual('+i+',0);"><i class="fa fa-file-text-o fa-inactive"></i> '+ListaArchivos[i].NombreArchivo+'</a></li>';
+								//Boton para cerrar el archivo
 								lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li ><a data-toggle="tab" style="cursor:pointer; margin-right: 10px;" OnClick="PCODER_CerrarArchivo('+i+');"><i class="fa fa-times"></i></a></li>';								
 							}
+
+						//Actualiza el Tooltip asociado a la pestana agregada
+						RecargarToolTipsEnlaces();
 					}
 
 				//Se asegura de corregir tamano del editor cuando se carga un archivo
@@ -1014,10 +1035,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 	</script>
 
 	<script language="JavaScript">
-		//Carga los tooltips programados en la hoja.  Por defecto todos los elementos con data-toggle=tootip
-		$(function () {
-		  $('[data-toggle="tooltip"]').tooltip();
-		})
+		function RecargarToolTipsEnlaces()
+			{
+				//Carga los tooltips programados en la hoja.  Por defecto todos los elementos con data-toggle=tootip
+				$(function () {
+				  $('[data-toggle="tooltip"]').tooltip();
+				})
+			}
+		RecargarToolTipsEnlaces();
 	</script>
 
 	<script language="JavaScript">
