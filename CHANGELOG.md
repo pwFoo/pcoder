@@ -10,6 +10,9 @@
 
 ## Versión 16.1 (2016-01-07)
 * Added: Manejo de múltiples archivos en pestañas desde un solo editor!
+* Added: Opciones de menu depuracion de archivos
+* Added: Opciones de menu para enrollar o desenrollar porciones de codigo
+* Added: Opciones de menu para manipular areas de texto seleccionadas
 * Enhan: Mejorado explorador de archivos, ahora su carga se hace dinámicamente
 * Enhan: Se simplifican los path de navegación de archivos y se permite navegar incluso a la raiz del disco duro
 * Added: Ayudas de accesos directo de teclado en opciones de menú

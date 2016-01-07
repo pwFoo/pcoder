@@ -48,6 +48,7 @@
 	$MULTILANG_PCODER_Columna='Column';
 	$MULTILANG_PCODER_Copiar='Copy';
 	$MULTILANG_PCODER_Cortar='Cut';
+	$MULTILANG_PCODER_Depurar='Debug';
 	$MULTILANG_PCODER_Deshacer='Undo';
 	$MULTILANG_PCODER_Desplazar='Move';
 	$MULTILANG_PCODER_Editar='Edit';
@@ -106,4 +107,11 @@
 	$MULTILANG_PCODER_OcultarPanel='Panel hide';
 	$MULTILANG_PCODER_RevisarSintaxis='Check language syntax while I write';
 	$MULTILANG_PCODER_SeleccionarTodo='Select all';
-
+	$MULTILANG_PCODER_DepuraErrorSiguiente='Go to next error';
+	$MULTILANG_PCODER_DepuraErrorPrevio='Go to previous error';
+	$MULTILANG_PCODER_EnrollarSeleccion='Fold selected text';
+	$MULTILANG_PCODER_DesenrollarTodo='Unfold all';
+	$MULTILANG_PCODER_DuplicarSeleccion='Duplicate selection';
+	$MULTILANG_PCODER_InvertirSeleccion='Invert Selection';
+	$MULTILANG_PCODER_UnirSeleccion='Join selected in one line';
+	

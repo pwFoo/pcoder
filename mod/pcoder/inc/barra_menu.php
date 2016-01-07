@@ -74,6 +74,11 @@
 									<li><a href="#" OnClick="editor.execCommand('copy');"><i class="fa fa-files-o fa-fw"></i> <?php echo $MULTILANG_PCODER_Copiar; ?>	<span class="pull-right text-muted small"><i>Ctrl+C</i></span></a></li>
 									<li><a href="#" OnClick="editor.execCommand('paste');"><i class="fa fa-clipboard fa-fw"></i> <?php echo $MULTILANG_PCODER_Pegar; ?>	<span class="pull-right text-muted small"><i>Ctrl+V</i></span></a></li>
 									<li role="separator" class="divider"></li>
+									<li><a href="#" OnClick="editor.execCommand('duplicateSelection');"><i class="fa fa-pause fa-fw"></i> <?php echo $MULTILANG_PCODER_DuplicarSeleccion; ?>	<span class="pull-right text-muted small"><i>Ctrl+Shift+D</i></span></a></li>
+									<li><a href="#" OnClick="editor.execCommand('invertSelection');"><i class="fa fa-eraser fa-fw"></i> <?php echo $MULTILANG_PCODER_InvertirSeleccion; ?>	</a></li>
+									<li><a href="#" OnClick="editor.execCommand('joinlines');"><i class="fa fa-reorder fa-fw"></i> <?php echo $MULTILANG_PCODER_UnirSeleccion; ?>	</a></li>
+
+									<li role="separator" class="divider"></li>
 									<li><a href="#" OnClick="editor.execCommand('find');"><i class="fa fa-search fa-fw"></i> <?php echo $MULTILANG_PCODER_Buscar; ?>	<span class="pull-right text-muted small"><i>Ctrl+F</i></span></a></li>
 									<li><a href="#" OnClick="editor.execCommand('replace');"><i class="fa fa-exchange fa-fw"></i> <?php echo $MULTILANG_PCODER_Reemplazar; ?>	<span class="pull-right text-muted small"><i>Ctrl+H</i></span></a></li>
 									<li role="separator" class="divider"></li>
@@ -94,6 +99,9 @@
 									<li role="separator" class="divider"></li>
 									<li><a href="#" OnClick="ActivarPanelIzquierdo();"><i class="fa fa-columns fa-fw"></i> <?php echo $MULTILANG_PCODER_PanelIzq; ?></a></li>
 									<li><a href="#" OnClick="ActivarPanelDerecho();"><i class="fa fa-columns fa-fw"></i> <?php echo $MULTILANG_PCODER_PanelDer; ?></a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#" OnClick="editor.execCommand('fold');"><i class="fa fa-compress fa-fw"></i> <?php echo $MULTILANG_PCODER_EnrollarSeleccion; ?> <span class="pull-right text-muted small"><i>Alt+L</i></span></a></li>
+									<li><a href="#" OnClick="editor.execCommand('unfoldall');"><i class="fa fa-expand fa-fw"></i> <?php echo $MULTILANG_PCODER_DesenrollarTodo; ?> <span class="pull-right text-muted small"><i>Alt+Shift+0</i></span></a></li>
 								</ul>
 							</li>
 							<!--<li><a href="#">EJEMPLO ENLACE</a></li>-->
@@ -108,6 +116,15 @@
 									<li><a href="#" OnClick="editor.execCommand('touppercase');"><i class="fa fa-font fa-fw"></i> <?php echo $MULTILANG_PCODER_ConvMay; ?></a></li>
 									<li><a href="#" OnClick="editor.execCommand('tolowercase');"><i class="fa fa-info fa-fw"></i> <?php echo $MULTILANG_PCODER_ConvMin; ?></a></li>
 									<li><a href="#" OnClick="editor.execCommand('sortlines');  "><i class="fa fa-sort-alpha-asc fa-fw"></i> <?php echo $MULTILANG_PCODER_OrdenaSel; ?></a></li>
+								</ul>
+							</li>
+
+							<!-- MENU DEPURAR -->
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Depurar; ?> <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#" OnClick="editor.execCommand('goToNextError');"><i class="fa fa-indent fa-fw"></i><?php echo $MULTILANG_PCODER_DepuraErrorSiguiente; ?> <span class="pull-right text-muted small"><i>Alt+E</i></span></a></li>
+									<li><a href="#" OnClick="editor.execCommand('goToPreviousError');"><i class="fa fa-outdent fa-fw"></i><?php echo $MULTILANG_PCODER_DepuraErrorPrevio; ?> <span class="pull-right text-muted small"><i>Alt+Shift+E</i></span></a></li>
 								</ul>
 							</li>
 

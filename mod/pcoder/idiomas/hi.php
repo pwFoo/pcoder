@@ -48,6 +48,7 @@
 	$MULTILANG_PCODER_Columna='स्तंभ';
 	$MULTILANG_PCODER_Copiar='प्रतिलिपि';
 	$MULTILANG_PCODER_Cortar='कमी';
+	$MULTILANG_PCODER_Depurar='डीबग';
 	$MULTILANG_PCODER_Deshacer='पूर्ववत';
 	$MULTILANG_PCODER_Desplazar='चाल';
 	$MULTILANG_PCODER_Editar='संपादित';
@@ -106,3 +107,11 @@
 	$MULTILANG_PCODER_OcultarPanel='पैनल को छिपाने';
 	$MULTILANG_PCODER_RevisarSintaxis='मैं लिखना, जबकि भाषा वाक्यविन्यास चेक';
 	$MULTILANG_PCODER_SeleccionarTodo='सबका चयन करें';
+	$MULTILANG_PCODER_DepuraErrorSiguiente='अगले त्रुटि के लिए जाना';
+	$MULTILANG_PCODER_DepuraErrorPrevio='पिछली त्रुटि के लिए जाना';
+	$MULTILANG_PCODER_EnrollarSeleccion='चयनित पाठ मोड़ो';
+	$MULTILANG_PCODER_DesenrollarTodo='सभी प्रकट करना';
+	$MULTILANG_PCODER_DuplicarSeleccion='डुप्लीकेट चयन';
+	$MULTILANG_PCODER_InvertirSeleccion='उलटा चयन';
+	$MULTILANG_PCODER_UnirSeleccion='एक लाइन में चयनित शामिल हों';
+	

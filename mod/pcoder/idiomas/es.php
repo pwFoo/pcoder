@@ -49,6 +49,7 @@
 	$MULTILANG_PCODER_Comunes='Comunes';
 	$MULTILANG_PCODER_Copiar='Copiar';
 	$MULTILANG_PCODER_Cortar='Cortar';
+	$MULTILANG_PCODER_Depurar='Depurar';
 	$MULTILANG_PCODER_Deshacer='Deshacer';
 	$MULTILANG_PCODER_Desplazar='Desplazar';
 	$MULTILANG_PCODER_Editar='Editar';
@@ -107,5 +108,10 @@
 	$MULTILANG_PCODER_OcultarPanel='Ocultar panel';
 	$MULTILANG_PCODER_RevisarSintaxis='Revisar sintaxis del lenguaje mientras se escribe';
 	$MULTILANG_PCODER_SeleccionarTodo='Seleccionar todo';
-	
-	
+	$MULTILANG_PCODER_DepuraErrorSiguiente='Ir al error siguiente';
+	$MULTILANG_PCODER_DepuraErrorPrevio='Ir al error previo';
+	$MULTILANG_PCODER_EnrollarSeleccion='Enrollar la selecci&oacute;n';
+	$MULTILANG_PCODER_DesenrollarTodo='Desenrollar todo';
+	$MULTILANG_PCODER_DuplicarSeleccion='Duplicar selecci&oacute;n';
+	$MULTILANG_PCODER_InvertirSeleccion='Invertir selecci&oacute;n';
+	$MULTILANG_PCODER_UnirSeleccion='Convertir selecci&oacute;n a una linea';
