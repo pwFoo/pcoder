@@ -825,7 +825,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				
 				//Verifica permisos de escritura en cada cargue de archivo para saber si presenta o no mensaje de advertencia
 				ValorPermisosRW=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_VerificarPermisosRW&PCODER_archivo="+ListaArchivos[IndiceRecibido].RutaDocumento);
-				if(ValorPermisosRW==0)
+				if(ValorPermisosRW==0 && ListaArchivos[IndiceRecibido].RutaDocumento!='demos/demo.txt')
 					contenedor_mensajes_superior.innerHTML = '<div class="alert alert-warning btn-xs" role="alert" style="margin: 0px; padding: 5px;" ><i class="fa fa-warning"></i> '+'<b><?php echo $MULTILANG_PCODER_ErrorRW.'</b>. '.$MULTILANG_PCODER_Estado.'=' ?>'+ListaArchivos[IndiceRecibido].PermisosArchivo+'</div>';
 				else
 					contenedor_mensajes_superior.innerHTML = '';
