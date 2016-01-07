@@ -41,7 +41,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand text-danger" href="#"><b><i class="text-info">{P}Coder</i></b></a>
+						<a data-toggle="modal" href="#myModalACERCADEPCODER" class="navbar-brand text-danger"><b><i class="text-info">{P}Coder</i></b></a>
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
