@@ -91,7 +91,6 @@
 	$MULTILANG_PCODER_PcoderAjuste='Ajuste de ventana';
 	$MULTILANG_PCODER_ErrorExistencia='El archivo indicado para edicion no existe!';
 	$MULTILANG_PCODER_ErrorRW='No se tienen permisos para escribir sobre el archivo! Cualquier cambio realizado podr&iacute;a perderse';
-	$MULTILANG_PCODER_ErrorNoACE='No se encuentra el modulo ACE para edici&oacute;n del archivo';
 	$MULTILANG_PCODER_SaltarLinea='Saltar a l&iacute;nea';
 	$MULTILANG_PCODER_Acerca='Acerca de';
 	$MULTILANG_PCODER_ResumenLicencia='Esta herramienta es Software Libre distribuido bajo licencia GNU-GPL v3';

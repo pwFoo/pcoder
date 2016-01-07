@@ -90,7 +90,6 @@
 	$MULTILANG_PCODER_PcoderAjuste='विंडो समायोजन';
 	$MULTILANG_PCODER_ErrorExistencia='आप खोलना चाहते हैं फ़ाइल नहीं मौजूद करता है!';
 	$MULTILANG_PCODER_ErrorRW='आप इस फ़ाइल को लिखने के लिए अधिकार नहीं है! कोई भी परिवर्तन खो जाएगा!';
-	$MULTILANG_PCODER_ErrorNoACE='इस फ़ाइल को संपादित करने के लिए कोई स्थापित ऐस मॉड्यूल है';
 	$MULTILANG_PCODER_SaltarLinea='लाइन के लिए कूदो';
 	$MULTILANG_PCODER_Acerca='के बारे में';
 	$MULTILANG_PCODER_ResumenLicencia='यह उपकरण के तहत नि: शुल्क सॉफ्टवेयर है GNU-GPL v3 License';

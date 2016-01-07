@@ -38,12 +38,6 @@
 						{
 							mensaje('<i class="fa fa-warning fa-2x"></i> '.$MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorRW.'. '.$MULTILANG_PCODER_Estado.'='.$permisos_encontrados, '', '', '', 'alert alert-warning alert-dismissible');
 						}
-					if ($editor_ok==0)
-						{
-							mensaje('<i class="fa fa-exclamation-circle fa-2x"></i> '.$MULTILANG_PCODER_Error.': '.$MULTILANG_PCODER_ErrorNoACE.': '.$PCODER_archivo, '', '', '', 'alert alert-danger alert-dismissible');
-							die();
-						}
-					
 				}
         ?>
         </div>

@@ -113,9 +113,7 @@ if (@$PCOSESS_LoginUsuario=="admin" || $PCO_PCODER_StandAlone==1)
         $PCODER_archivo = "demos/demo.txt";
 
     $PCODER_Mensajes=0;
-    // Verifica si existe el directorio para el editor ACE
-    $editor_ok=1;
-    if (@!file_exists("../../inc/ace")) { $editor_ok=0; $PCODER_Mensajes=1; } 
+
 
 
 /* ################################################################## */
@@ -413,7 +411,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			<div class="col-md-8" style="margin:0px;" id="panel_editor_codigo">
 
 				<?php
-							include_once ("inc/mensajes_error.php");
+					//Incluye archivo de mensajes por si existe alguno
+					include_once ("inc/mensajes_error.php");
 
 					//Incluye algunos marcos del aplicativo
 					include_once ("inc/barra_archivos.php");

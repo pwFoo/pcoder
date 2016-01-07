@@ -90,7 +90,6 @@
 	$MULTILANG_PCODER_PcoderAjuste='Window adjustment';
 	$MULTILANG_PCODER_ErrorExistencia='The file you want to open doesnt exists!';
 	$MULTILANG_PCODER_ErrorRW='You dont have rights to write this file! Any change will be lost!';
-	$MULTILANG_PCODER_ErrorNoACE='There is no ACE module installed to edit this file';
 	$MULTILANG_PCODER_SaltarLinea='Jump to line';
 	$MULTILANG_PCODER_Acerca='About';
 	$MULTILANG_PCODER_ResumenLicencia='This tool is Free Software under GNU-GPL v3 License';
