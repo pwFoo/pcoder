@@ -443,6 +443,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				<div class="tab-content">
 				  <div id="archivo1" class="tab-pane fade in active">
 					<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
+					<div id="editor_clonado" style="display:block; width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#FFFF00;" width="100%" height="100vh"></div>
 				  </div>
 				</div>
 
@@ -466,7 +467,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <!-- Carga editor ACE y sus extensiones -->
 	<script src="../../inc/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../inc/ace/src-min-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
-	<!--<script src="../../inc/ace/src-min-noconflict/ext-split.js" type="text/javascript" charset="utf-8"></script>-->
 
 	<script language="JavaScript">
         function CambiarFuenteEditor(tamano)
@@ -679,25 +679,98 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				$("#panel_derecho").hide();
 				AjustarPanelesLaterales();
 			}
+		function DividirPantalla_NO()
+			{
+				//Ejecuta la operacion si ya no esta dividido
+				if (ListaArchivos[IndiceArchivoActual].VistaSplit!="")
+					{
+						ListaArchivos[IndiceArchivoActual].VistaSplit="";
+						AltoEditor_clonado="0px";	//Sin tamano
+						AnchoEditor_clonado="0px";	//Sin tamano
+						
+						ListaArchivos[IndiceArchivoActual].VistaSplit="";
+						
+						//Actualiza el editor
+						RedimensionarEditor();
+					}
+			}
+		function DividirPantalla_Horizontal()
+			{
+				//Ejecuta la operacion si ya no esta dividido
+				if (ListaArchivos[IndiceArchivoActual].VistaSplit!="H")
+					{
+						//Restablece la pantalla
+						DividirPantalla_NO();
+
+						//Determina alto y ancho del editor clonado cuando se tiene activa una vista split
+						altoActual_contenedor_editor = $("#editor_codigo").height();
+						anchoActual_contenedor_editor = $("#editor_codigo").width();
+
+						//Calcula los tamanos para la vista dividida
+						AltoEditor_clonado=(Math.round(altoActual_contenedor_editor/2))+"px";
+						AnchoEditor_clonado=$("#editor_codigo").width();
+						ListaArchivos[IndiceArchivoActual].VistaSplit="H";
+						
+						//Actualiza el editor
+						RedimensionarEditor();
+					}
+
+			}
+		function DividirPantalla_Vertical()
+			{
+				//Ejecuta la operacion si ya no esta dividido
+				if (ListaArchivos[IndiceArchivoActual].VistaSplit!="V")
+					{
+						//Restablece la pantalla
+						DividirPantalla_NO();
+							
+						//Determina alto y ancho del editor clonado cuando se tiene activa una vista split
+						altoActual_contenedor_editor = $("#editor_codigo").height();
+						anchoActual_contenedor_editor = $("#editor_codigo").width();
+
+						//Calcula los tamanos para la vista dividida
+						AltoEditor_clonado=$("#editor_codigo").height();
+						AnchoEditor_clonado="100px";
+						ListaArchivos[IndiceArchivoActual].VistaSplit="V";
+						
+						//Actualiza el editor
+						RedimensionarEditor();
+					}
+			}
+		function EstablecerDivisionPantalla()
+			{
+				//Actualiza tamano del editor clonado
+				$('#editor_clonado').height( AltoEditor_clonado ).css({ });
+				$('#editor_clonado').width( AnchoEditor_clonado ).css({ });
+
+				//Segun la division seleccionada para el archivo actual llama la rutina correspondiente
+				if(ListaArchivos[IndiceArchivoActual].VistaSplit=="") 	DividirPantalla_NO();
+				if(ListaArchivos[IndiceArchivoActual].VistaSplit=="H")	DividirPantalla_Horizontal();
+				if(ListaArchivos[IndiceArchivoActual].VistaSplit=="V") 	DividirPantalla_Vertical();
+			}
         function RedimensionarEditor()
             {
+				//Determina si la vista esta dividida o no
+				EstablecerDivisionPantalla();
+
 				//Obtiene las dimensiones actuales de la ventana de edicion y algunos objetos
 				var alto_ventana = $(window).height();
 				var alto_documento = $(document).height();
 				var alto_contenedor_editor = $("#editor_codigo").height();
+				var alto_contenedor_editor_clonado = $("#editor_clonado").height();
 				var alto_contenedor_archivos = $("#contenedor_archivos").height();
 				var alto_contenedor_menu = $("#contenedor_menu").height();
 				var alto_contenedor_barra_estado = $("#contenedor_barra_estado").height();
 				var alto_contenedor_mensajes_superior = $("#contenedor_mensajes_superior").height();
-				var alto_barra_lateral_izquierda = $("#barra_lateral_izquierda").height();	
+				var alto_barra_lateral_izquierda = $("#barra_lateral_izquierda").height();
 				
 				//Modifica el ALTO DEL EDITOR
-				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado+alto_contenedor_mensajes_superior+alto_contenedor_archivos)*100/alto_ventana;
+				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado+alto_contenedor_mensajes_superior+alto_contenedor_archivos+alto_contenedor_editor_clonado)*100/alto_ventana;
 				var porcentaje_final=100-porcentaje_barrasmenuyestado;
-				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_mensajes_superior-alto_contenedor_barra_estado-alto_contenedor_archivos;
+				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_mensajes_superior-alto_contenedor_barra_estado-alto_contenedor_archivos-alto_contenedor_editor_clonado;
 				//$('#editor_codigo').height( alto_final ).css({ });			//Asignacion en pixeles
 				$('#editor_codigo').height( porcentaje_final+"vh" ).css({ });	//Asignacion en porcentaje
-				
+
 				//Llama al metodo que actualiza el tamano del editor ACE segun las nuevas dimensiones
 				editor.resize();
 				
@@ -847,6 +920,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				ListaArchivos[IndiceRecibido].LineaActual="";
 				ListaArchivos[IndiceRecibido].PermisosRW="";
 				ListaArchivos[IndiceRecibido].PermisosArchivo="";
+				ListaArchivos[IndiceRecibido].VistaSplit="";
 
 				//Verifica si se trata del archivo actual, si es asi entonces se mueve al primero.Si es el primero entonces se mueve al demo
 				if(IndiceRecibido==1)
@@ -939,9 +1013,10 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						ValorContenidoArchivo=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerContenidoArchivo&PCODER_archivo="+path_archivo);
 						ValorPermisosRW=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_VerificarPermisosRW&PCODER_archivo="+path_archivo);
 						ValorPermisosArchivo=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerPermisosArchivo&PCODER_archivo="+path_archivo);
+						ValorVistaSplit=""; //Valor inicial de la vista dividida (sin dividir)
 
 						//Agrega nuevo elemento al arreglo
-						ListaArchivos[IndiceAperturaArchivo] = { TipoDocumento: ValorTipoElemento, TamanoDocumento: ValorTamanoDocumento, FechaModificadoDocumento: ValorFechaModificadoDocumento, RutaDocumento: path_archivo, TokenEdicion: ValorTokenEdicion, ModoEditor: ValorModoEditor, NombreArchivo: ValorNombreArchivo, LineaActual: 1, ColumnaActual: 0 , PermisosRW: ValorPermisosRW, PermisosArchivo: ValorPermisosArchivo};
+						ListaArchivos[IndiceAperturaArchivo] = { TipoDocumento: ValorTipoElemento, TamanoDocumento: ValorTamanoDocumento, FechaModificadoDocumento: ValorFechaModificadoDocumento, RutaDocumento: path_archivo, TokenEdicion: ValorTokenEdicion, ModoEditor: ValorModoEditor, NombreArchivo: ValorNombreArchivo, LineaActual: 1, ColumnaActual: 0 , PermisosRW: ValorPermisosRW, PermisosArchivo: ValorPermisosArchivo, VistaSplit: ValorVistaSplit};
 						
 						//Crea dinamicamente el textarea con el numero de indice y con su valor predeterminado
 						AgregarNuevoTextarea(document.form_textareas_archivos,"PCODER_AreaTexto"+IndiceAperturaArchivo,ValorContenidoArchivo);
@@ -967,6 +1042,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		//##############################################################
 		panel_izquierdo=0;
         panel_derecho=0;
+		AltoEditor_clonado="0px";	//Sin tamano
+		AnchoEditor_clonado="0px";	//Sin tamano
 
 		//Evento que quita la barra de progreso de carga para el explorador cada que finaliza el cargue de su IFrame
 		$('#iframe_marco_explorador').load(function(){
@@ -975,6 +1052,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 		//Incluye extension de lenguaje para ACE
 		ace.require("ace/ext/language_tools");
+		//ace.require("ace/ext/split");
         // Crea el editor
         editor = ace.edit("editor_codigo");
         editor.getSession().setUseWorker(true); //Llevar a false para evitar el error 404 para "worker-php.js Failed to load resource: the server responded with a status of 404 (Not Found)"
@@ -1031,8 +1109,61 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			ExplorarPath();
 			RedimensionarEditor();
 			window.setTimeout(ActualizarBarraEstado, 1000);
-
 	</script>
+	
+	
+	<!--<script type="text/javascript" src="../../inc/ace/split.js"></script>-->
+	<script language="JavaScript">
+		
+function ClonarSesionEditor(session) {
+	/*
+  var s = new ace.EditSession(session.getDocument(), session.getMode());
+
+  // Both session should use the same undo manager. Well, actually, shouldn't
+  // the undo manager live on the documnet?!?
+  s.setUndoManager(session.getUndoManager());
+
+  // Overwrite the default $informUndoManager function such that new delas
+  // aren't added to the undo manager from the new and the old session.
+  //s.$informUndoManager = lang.deferredCall(function() { s.$deltas = []; });
+
+  // Copy over 'settings' from the session.
+  s.setUseSoftTabs(session.getUseSoftTabs());
+  s.setTabSize(session.getTabSize());
+  s.setUseWrapMode(session.getUseWrapMode());
+  s.setWrapLimitRange(session.$wrapLimitRange.min, session.$wrapLimitRange.max);
+  // TODO: There might be more settings, but for now I'm fine with that.
+
+  return s;
+  */
+  
+  //OTRA FORMA DE FUNCION
+
+        var s = new ace.EditSession(session.getDocument(), session.getMode());
+        // Copy over 'settings' from the session.
+        s.setTabSize(session.getTabSize());
+        s.setUseSoftTabs(session.getUseSoftTabs());
+        s.setOverwrite(session.getOverwrite());
+        s.setBreakpoints(session.getBreakpoints());
+        s.setUseWrapMode(session.getUseWrapMode());
+        s.setUseWorker(false);
+        s.setWrapLimitRange(session.$wrapLimitRange.min, session.$wrapLimitRange.max);
+        s.$foldData = session.$cloneFoldData();
+    
+        return s;
+}
+
+
+		//Clona el editor hacia uno nuevo para permitir los split
+		var NuevaSessionEditor = editor.getSession();
+		var editor_actual = document.getElementById("editor_codigo");
+		var parent = editor_actual.parentNode;
+
+		var clone = editor_actual.cloneNode();
+		var EditorClonado = ace.edit("editor_clonado");
+		EditorClonado.setSession( ClonarSesionEditor(NuevaSessionEditor) );
+	</script>
+
 
 	<script language="JavaScript">
 		function RecargarToolTipsEnlaces()

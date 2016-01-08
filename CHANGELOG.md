@@ -6,7 +6,8 @@
 |_____\___/ \__, |  \__,_|\___|  \___\__,_|_| |_| |_|_.__/|_|\___/|___/
             |___/ 
 ```
-
+## Versión 16.2 (2016-01-07)
+* Actualizacion ACE version 1.2.2
 
 ## Versión 16.1 (2016-01-07)
 * Added: Manejo de múltiples archivos en pestañas desde un solo editor!
