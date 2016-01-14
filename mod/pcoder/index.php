@@ -443,7 +443,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				<div class="tab-content">
 				  <div id="archivo1" class="tab-pane fade in active">
 					<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
-					<div id="editor_clonado" style="display:block; width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#FFFF00;" width="100%" height="100vh"></div>
+					<div id="editor_clonado" style="display:block; width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#FFFFFF;" width="100%" height="100vh"></div>
 				  </div>
 				</div>
 
@@ -714,7 +714,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						//Actualiza el editor
 						RedimensionarEditor();
 					}
-
+				ClonarPropiedadesEditor();
 			}
 		function DividirPantalla_Vertical()
 			{
@@ -736,6 +736,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						//Actualiza el editor
 						RedimensionarEditor();
 					}
+				ClonarPropiedadesEditor();
 			}
 		function EstablecerDivisionPantalla()
 			{
@@ -1140,19 +1141,26 @@ function ClonarSesionEditor(session) {
   //OTRA FORMA DE FUNCION
 
         var s = new ace.EditSession(session.getDocument(), session.getMode());
-        // Copy over 'settings' from the session.
-        s.setTabSize(session.getTabSize());
-        s.setUseSoftTabs(session.getUseSoftTabs());
-        s.setOverwrite(session.getOverwrite());
-        s.setBreakpoints(session.getBreakpoints());
-        s.setUseWrapMode(session.getUseWrapMode());
-        s.setUseWorker(false);
-        s.setWrapLimitRange(session.$wrapLimitRange.min, session.$wrapLimitRange.max);
         s.$foldData = session.$cloneFoldData();
-    
         return s;
 }
+	
+		//Toma las propiedades del editor principal y las copia en el editor clonado
+		function ClonarPropiedadesEditor()
+			{
+				EditorClonado.setAnimatedScroll(editor.getAnimatedScroll());
+				EditorClonado.setBehavioursEnabled(editor.getBehavioursEnabled());
+				EditorClonado.setOverwrite(editor.getOverwrite());
+				EditorClonado.setPrintMarginColumn(editor.getPrintMarginColumn());
+				EditorClonado.setScrollSpeed(editor.getScrollSpeed());
+				EditorClonado.setShowInvisibles(editor.getShowInvisibles());
+				EditorClonado.setShowPrintMargin(editor.getShowPrintMargin());
+				EditorClonado.setWrapBehavioursEnabled(editor.getWrapBehavioursEnabled());
+				EditorClonado.setTheme(editor.getTheme());
 
+				//Evita el chequeo de sintaxis en el editor auxiliar
+				EditorClonado.getSession().setUseWorker(false);
+			}
 
 		//Clona el editor hacia uno nuevo para permitir los split
 		var NuevaSessionEditor = editor.getSession();
