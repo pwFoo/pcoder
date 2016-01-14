@@ -443,7 +443,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				<div class="tab-content">
 				  <div id="archivo1" class="tab-pane fade in active">
 					<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
-					<div id="editor_clonado" style="display:block; width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#FFFFFF;" width="100%" height="100vh"></div>
+					<div id="editor_clonado" style="display:block; width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
 				  </div>
 				</div>
 
@@ -987,6 +987,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 				//Se asegura de corregir tamano del editor cuando se carga un archivo
 				RedimensionarEditor();
+				
+				ClonarPropiedadesEditor();
 			}
 
 		function PCODER_CargarArchivo(path_archivo)
@@ -1116,35 +1118,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 	<!--<script type="text/javascript" src="../../inc/ace/split.js"></script>-->
 	<script language="JavaScript">
 		
-function ClonarSesionEditor(session) {
-	/*
-  var s = new ace.EditSession(session.getDocument(), session.getMode());
+		//Genera una nueva sesion del editor ACE
+		function ClonarSesionEditor(session)
+			{
+				var s = new ace.EditSession(session.getDocument(), session.getMode());
+				s.$foldData = session.$cloneFoldData();
+				return s;
+			}
 
-  // Both session should use the same undo manager. Well, actually, shouldn't
-  // the undo manager live on the documnet?!?
-  s.setUndoManager(session.getUndoManager());
-
-  // Overwrite the default $informUndoManager function such that new delas
-  // aren't added to the undo manager from the new and the old session.
-  //s.$informUndoManager = lang.deferredCall(function() { s.$deltas = []; });
-
-  // Copy over 'settings' from the session.
-  s.setUseSoftTabs(session.getUseSoftTabs());
-  s.setTabSize(session.getTabSize());
-  s.setUseWrapMode(session.getUseWrapMode());
-  s.setWrapLimitRange(session.$wrapLimitRange.min, session.$wrapLimitRange.max);
-  // TODO: There might be more settings, but for now I'm fine with that.
-
-  return s;
-  */
-  
-  //OTRA FORMA DE FUNCION
-
-        var s = new ace.EditSession(session.getDocument(), session.getMode());
-        s.$foldData = session.$cloneFoldData();
-        return s;
-}
-	
 		//Toma las propiedades del editor principal y las copia en el editor clonado
 		function ClonarPropiedadesEditor()
 			{
@@ -1157,11 +1138,19 @@ function ClonarSesionEditor(session) {
 				EditorClonado.setShowPrintMargin(editor.getShowPrintMargin());
 				EditorClonado.setWrapBehavioursEnabled(editor.getWrapBehavioursEnabled());
 				EditorClonado.setTheme(editor.getTheme());
+				EditorClonado.setFontSize(editor.getFontSize());
+				
+				//Modo de resaltado
+				ModoClonado="ace/mode/"+ListaArchivos[IndiceArchivoActual].ModoEditor;
+                var ModoFiltrado = ModoClonado.replace(/_/g, " ");
+                ModoFiltrado = ModoFiltrado.toLowerCase();
+                //Cambia el modo de sintaxis y errores resaltado por el editor
+                EditorClonado.getSession().setMode(ModoFiltrado);
 
 				//Evita el chequeo de sintaxis en el editor auxiliar
 				EditorClonado.getSession().setUseWorker(false);
 			}
-
+			
 		//Clona el editor hacia uno nuevo para permitir los split
 		var NuevaSessionEditor = editor.getSession();
 		var editor_actual = document.getElementById("editor_codigo");
