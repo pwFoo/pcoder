@@ -442,8 +442,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 				<div class="tab-content">
 				  <div id="archivo1" class="tab-pane fade in active">
-					<div id="editor_codigo" style="display:block; width:100%; height:100vh;" width="100%" height="100vh"></div>
-					<div id="editor_clonado" style="display:block; width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
+					 <div id="editor_codigo" style="display:block;  width:100%; height:100vh;" width="100%" height="100vh"></div>
+					 <div id="editor_clonado" style="display:block;  width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
 				  </div>
 				</div>
 
@@ -730,7 +730,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 						//Calcula los tamanos para la vista dividida
 						AltoEditor_clonado=$("#editor_codigo").height();
-						AnchoEditor_clonado="100px";
+						AnchoEditor_clonado=(Math.round(anchoActual_contenedor_editor/2))+"px";
 						ListaArchivos[IndiceArchivoActual].VistaSplit="V";
 						
 						//Actualiza el editor
@@ -987,8 +987,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 				//Se asegura de corregir tamano del editor cuando se carga un archivo
 				RedimensionarEditor();
-				
-				ClonarPropiedadesEditor();
 			}
 
 		function PCODER_CargarArchivo(path_archivo)
