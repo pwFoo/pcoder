@@ -26,7 +26,7 @@
 <div class="row">
 	<div class="col-md-12">
 
-		<div id="contenedor_barra_estado">
+		<div id="panel_inferior">
 			
 			<div class="well well-sm" style="border:0px; margin:0px; padding:0px; padding-bottom:5px; background: #272727;">
 

@@ -388,26 +388,23 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 </head>
 <body>
 
+
+	<!-- ################# INICIO DE LA MAQUETACION ################ -->
+
 		<?php
 			//Incluye algunos marcos del aplicativo
-			include_once ("inc/barra_menu.php");
-			include_once ("inc/marco_preferencias.php");
-			include_once ("inc/marco_acerca.php");
-			include_once ("inc/marco_guardar.php");
-			include_once ("inc/marco_teclado.php");
+			include_once ("inc/panel_superior.php");
 		?>
 
-
-
 		<div class="row">
-			<div class="col-md-2" style="margin:0px; padding:0px;" id="panel_izquierdo">
-				<div algin="center">
-				<?php
-					include_once ("inc/panel_izquierdo.php");
-				?>
-				</div>
-			</div>
-			<div class="col-md-8" style="margin:0px;" id="panel_editor_codigo">
+
+			<?php
+				//Incluye algunos marcos del aplicativo
+				include_once ("inc/panel_izquierdo.php");
+			?>
+
+
+			<div class="col-md-8" style="margin:0px;" id="panel_central">
 
 
 				<!-- INICIO MARCO PESTANAS DE ARCHIVOS -->
@@ -441,10 +438,10 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				</form>
 
 				<div class="row">
-				  <div id="panel_editor_real" style="margin:0px; display:inline"> <!--   overflow: hidden;    --><font color=yellow>XXXXXXXX</font>
+				  <div id="panel_editor_real" style="margin:0px; display:inline">
 					 <div id="editor_codigo" style="display:block;  width:100%; height:100vh;" width="100%" height="100vh"></div>
 				  </div>
-				  <div id="panel_editor_clonado" style="margin:0px; display:inline"> <!--   overflow: hidden;    --><font color=yellow>YYYYYYYY</font>
+				  <div id="panel_editor_clonado" style="margin:0px; display:inline">
 					 <div id="editor_clonado" style="display:block;  width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
 				  </div>
 				</div>
@@ -453,17 +450,23 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 			</div>
 
 
-			<div class="col-md-2" style="margin:0px; padding:0px;" id="panel_derecho">
-				<?php
-					include_once ("inc/panel_derecho.php");
-				?>
-			</div>
+
+			<?php
+				//Incluye algunos marcos del aplicativo
+				include_once ("inc/panel_derecho.php");
+			?>
+
 		</div>
 
 		<?php
 			//Incluye algunos marcos del aplicativo
-			include_once ("inc/barra_estado.php");
+			include_once ("inc/panel_inferior.php");
 		?>
+
+	<!-- ################## FIN DE LA MAQUETACION ################## -->
+
+
+
 
 
     <!-- Bootstrap Core JavaScript -->
@@ -650,13 +653,13 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 					$("#panel_derecho").addClass("col-md-"+panel_derecho);
 
 				//Remueve las clases tipicas del editor de codigo y aplica la nueva
-				$("#panel_editor_codigo").removeClass("col-md-6"); //Split vertical sin paneles
-				$("#panel_editor_codigo").removeClass("col-md-5"); //Split vertical con un panel
-				$("#panel_editor_codigo").removeClass("col-md-4"); //Split vertical con dos paneles
+				$("#panel_central").removeClass("col-md-6"); //Split vertical sin paneles
+				$("#panel_central").removeClass("col-md-5"); //Split vertical con un panel
+				$("#panel_central").removeClass("col-md-4"); //Split vertical con dos paneles
 				
-				$("#panel_editor_codigo").removeClass("col-md-8"); //Cuando estan los dos paneles activos
-				$("#panel_editor_codigo").removeClass("col-md-10"); //Cuando esta un solo panel activo
-				$("#panel_editor_codigo").addClass("col-md-"+ancho_panel_editor);
+				$("#panel_central").removeClass("col-md-8"); //Cuando estan los dos paneles activos
+				$("#panel_central").removeClass("col-md-10"); //Cuando esta un solo panel activo
+				$("#panel_central").addClass("col-md-"+ancho_panel_editor);
 				
 				/*
 				//Establece tamano por defecto en los editores
@@ -673,7 +676,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						$("#panel_editor_real").addClass("col-md-6");
 						$("#panel_editor_clonado").addClass("col-md-6");
 						
-						anchoActual_contenedor_editor = $("#panel_editor_codigo").width();
+						anchoActual_contenedor_editor = $("#panel_central").width();
 						$('#panel_editor_real').width( (anchoActual_contenedor_editor/3)+"px" ).css({ });	//Asignacion en porcentaje
 						$('#panel_editor_clonado').width( (anchoActual_contenedor_editor/3)+"px" ).css({ });	//Asignacion en porcentaje
 						editor.resize();
@@ -761,7 +764,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						anchoActual_contenedor_editor = $("#editor_codigo").width();
 
 						//Calcula los tamanos para la vista dividida
-						AltoEditor_clonado=$("#panel_editor_codigo").height();
+						AltoEditor_clonado=$("#panel_central").height();
 						AnchoEditor_clonado=(Math.round(anchoActual_contenedor_editor/2))+"px";
 						ListaArchivos[IndiceArchivoActual].VistaSplit="V";
 						
@@ -792,13 +795,13 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				var alto_contenedor_editor = $("#editor_codigo").height();
 				var alto_contenedor_editor_clonado = $("#editor_clonado").height();
 				var alto_contenedor_archivos = $("#contenedor_archivos").height();
-				var alto_contenedor_menu = $("#contenedor_menu").height();
-				var alto_contenedor_barra_estado = $("#contenedor_barra_estado").height();
+				var alto_panel_superior = $("#panel_superior").height();
+				var alto_panel_inferior = $("#panel_inferior").height();
 				var alto_contenedor_mensajes_superior = $("#contenedor_mensajes_superior").height();
 				var alto_barra_lateral_izquierda = $("#barra_lateral_izquierda").height();
 				
 				//Modifica el ALTO DEL EDITOR
-				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado+alto_contenedor_mensajes_superior+alto_contenedor_archivos+alto_contenedor_editor_clonado)*100/alto_ventana;
+				var porcentaje_barrasmenuyestado=(alto_panel_superior+alto_panel_inferior+alto_contenedor_mensajes_superior+alto_contenedor_archivos+alto_contenedor_editor_clonado)*100/alto_ventana;
 				var porcentaje_final=100-porcentaje_barrasmenuyestado;
 				$('#editor_codigo').height( porcentaje_final+"vh" ).css({ });	//Asignacion en porcentaje
 

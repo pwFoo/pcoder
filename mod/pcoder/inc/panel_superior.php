@@ -21,12 +21,18 @@
 	*/
 
     // BARRA DE MENU DEL APLICATIVO
+
+	//Incluye algunos marcos del aplicativo
+	include_once ("inc/marco_preferencias.php");
+	include_once ("inc/marco_acerca.php");
+	include_once ("inc/marco_guardar.php");
+	include_once ("inc/marco_teclado.php");
 ?>
 
 <div class="row">
 	<div class="col-md-12">
 
-		<div id="contenedor_menu" >
+		<div id="panel_superior" >
 			
 			<nav class="navbar navbar-default navbar-inverse navbar-xs" style="margin:0px; padding:0px;"> <!-- navbar-fixed-top navbar-fixed-bottom navbar-static-top navbar-inverse -->
 				<div class="container-fluid">

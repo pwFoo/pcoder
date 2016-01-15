@@ -21,13 +21,16 @@
 	*/
 
     // PANEL IZQUIERDO DEL EDITOR
-	
-	//Agrega boton para poder ocultar el panel
-	echo '<div align="right"><a class="btn btn-xs text-primary" href="#" Onclick="DesactivarPanelIzquierdo();"><i class="fa fa-backward"></i> '.$MULTILANG_PCODER_OcultarPanel.'</a></div>';
-
-	//Presenta el explorador de archivos del lado del servidor
-	include_once ("inc/marco_explorador.php");
 ?>
 
+	<div class="col-md-2" style="margin:0px; padding:0px;" id="panel_izquierdo">
+		
+		<!-- Boton de ocultacion del panel -->
+		<div align="right"><a class="btn btn-xs text-primary" href="#" Onclick="DesactivarPanelIzquierdo();"><i class="fa fa-backward"></i> <?php echo $MULTILANG_PCODER_OcultarPanel; ?></a></div>
+		
+		<?php
+			//Presenta el explorador de archivos del lado del servidor
+			include_once ("inc/marco_explorador.php");
+		?>
 
-
+	</div>
