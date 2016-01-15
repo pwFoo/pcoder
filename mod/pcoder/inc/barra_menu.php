@@ -128,11 +128,6 @@
 							<!-- BOTONES INDEPENDIENTES -->
 							<li><a href="#" OnClick="editor.execCommand('find');" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_Buscar; ?>"><i class="fa fa-search fa-fw text-danger "></i></a></li>
 							<li><a href="#" OnClick="IntercambiarPantallaCompleta();" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>"><i class="fa fa-arrows-alt fa-fw text-primary"></i></a></li>
-
-							<li><a href="#" OnClick="DividirPantalla_NO();" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>"><i class="fa fa-stop fa-fw text-primary"></i></a></li>
-							<li><a href="#" OnClick="DividirPantalla_Vertical();" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>"><i class="fa fa-pause fa-fw text-primary"></i></a></li>
-							<li><a href="#" OnClick="DividirPantalla_Horizontal();" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>"><i class="fa fa-pause fa-rotate-90 fa-fw text-primary"></i></a></li>
-
 						
 						</ul>
 							

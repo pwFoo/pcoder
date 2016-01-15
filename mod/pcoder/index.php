@@ -848,7 +848,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				$("#TipoDocumento").html("<?php echo $MULTILANG_PCODER_Tipo; ?>: "+ListaArchivos[IndiceArchivoActual].TipoDocumento);
 				$("#TamanoDocumento").html("<?php echo $MULTILANG_PCODER_Tamano; ?>: <b>"+ListaArchivos[IndiceArchivoActual].TamanoDocumento+" Kb</b>");
 				$("#FechaModificadoDocumento").html("<?php echo $MULTILANG_PCODER_Modificado; ?>: <b>"+ListaArchivos[IndiceArchivoActual].FechaModificadoDocumento+"</b>");
-				$("#RutaDocumento").html("<i class='fa fa-hdd-o text-info'> "+ListaArchivos[IndiceArchivoActual].RutaDocumento+"</i>");
 				
 				//Llama periodicamente la rutina de actualizacion de la barra
 				window.setTimeout(ActualizarBarraEstado, 1000);

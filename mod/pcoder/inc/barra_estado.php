@@ -30,6 +30,15 @@
 			
 			<div class="well well-sm" style="border:0px; margin:0px; padding:0px; background: #272727;">
 
+						<!-- FORMULARIO DISPOSICION DE PANTALLA -->
+						<div style="display:inline;">
+							&nbsp;
+							<button data-toggle="tooltip" data-placement="top" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>" class="btn btn-success btn-xs" onClick="DividirPantalla_NO();"><i class="fa fa-stop fa-rotate-90 fa-fw"></i></button>
+							<button data-toggle="tooltip" data-placement="top" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>" class="btn btn-danger btn-xs" onClick="DividirPantalla_Horizontal();"><i class="fa fa-pause fa-rotate-90 fa-fw"></i></button>
+							<button data-toggle="tooltip" data-placement="top" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>" class="btn btn-danger btn-xs" onClick="DividirPantalla_Vertical();"><i class="fa fa-pause fa-fw"></i></button>
+							&nbsp;
+						</div>
+
 						<!-- FORMULARIO IR A -->
 						<div style="display:inline;">
 							<input type="text" id="linea_salto" size=10 name="linea_salto" class="input-mini btn-xs btn-default" placeholder="<?php echo $MULTILANG_PCODER_SaltarLinea; ?>">
@@ -40,40 +49,27 @@
 							
 							<!-- LINEAS DEL DOCUMENTO -->
 							<div id="NroLineasDocumento" class="btn-xs" style="display:inline;">
-								0
 							</div>
 
 							<!-- COLUMNA ACTUAL DEL DOCUMENTO -->
 							<div id="NroColumnaDocumento" class="btn-xs" style="display:inline;">
-								0
 							</div>
 
 							<!-- CARACTERES DEL DOCUMENTO -->
 							<div id="NroCaracteresDocumento" class="btn-xs" style="display:inline;">
-								0
 							</div>
 
 							<!-- TIPO DOCUMENTO -->
 							<div id="TipoDocumento" class="btn-xs" style="display:inline;">
-								0
 							</div>
 
 							<!-- TAMANO DEL DOCUMENTO -->
 							<div id="TamanoDocumento" class="btn-xs" style="display:inline;">
-								0
 							</div>
 
 							<!-- FECHA MODIFICACION -->
 							<div id="FechaModificadoDocumento" class="btn-xs" style="display:inline;">
-								0
 							</div>
-
-							<!-- NOMBRE DE ARCHIVO -->
-							<font color="white">
-							<div id="RutaDocumento" class="btn-xs" style="display:inline;">
-								0
-							</div>
-							</font>
 
 						</font>
 
