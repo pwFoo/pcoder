@@ -440,14 +440,19 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				<form id="form_textareas_archivos" name="form_textareas_archivos" method="POST" style="visibility: hidden; display:none; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">					
 				</form>
 
-				<div class="tab-content">
-				  <div id="archivo1" class="tab-pane fade in active" style=""> <!--   overflow: hidden;    -->
+				<div class="row">
+				  <div id="panel_editor_real" style="margin:0px; display:inline"> <!--   overflow: hidden;    --><font color=yellow>XXXXXXXX</font>
 					 <div id="editor_codigo" style="display:block;  width:100%; height:100vh;" width="100%" height="100vh"></div>
+				  </div>
+				  <div id="panel_editor_clonado" style="margin:0px; display:inline"> <!--   overflow: hidden;    --><font color=yellow>YYYYYYYY</font>
 					 <div id="editor_clonado" style="display:block;  width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
 				  </div>
 				</div>
 
+
 			</div>
+
+
 			<div class="col-md-2" style="margin:0px; padding:0px;" id="panel_derecho">
 				<?php
 					include_once ("inc/panel_derecho.php");
@@ -645,9 +650,36 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 					$("#panel_derecho").addClass("col-md-"+panel_derecho);
 
 				//Remueve las clases tipicas del editor de codigo y aplica la nueva
+				$("#panel_editor_codigo").removeClass("col-md-6"); //Split vertical sin paneles
+				$("#panel_editor_codigo").removeClass("col-md-5"); //Split vertical con un panel
+				$("#panel_editor_codigo").removeClass("col-md-4"); //Split vertical con dos paneles
+				
 				$("#panel_editor_codigo").removeClass("col-md-8"); //Cuando estan los dos paneles activos
 				$("#panel_editor_codigo").removeClass("col-md-10"); //Cuando esta un solo panel activo
 				$("#panel_editor_codigo").addClass("col-md-"+ancho_panel_editor);
+				
+				/*
+				//Establece tamano por defecto en los editores
+				$("#panel_editor_real").removeClass("col-md-6");
+				$("#panel_editor_real").removeClass("col-md-12");
+				$("#panel_editor_clonado").removeClass("col-md-6");
+				$("#panel_editor_clonado").removeClass("col-md-12");
+				$("#panel_editor_real").addClass("col-md-12");
+				$("#panel_editor_clonado").addClass("col-md-12");
+				//Divide por dos el ancho del editor en caso de estar en modo split vertical
+				if(ListaArchivos[IndiceArchivoActual].VistaSplit=="V")
+					{
+						ancho_panel_editores=ancho_panel_editor/2;
+						$("#panel_editor_real").addClass("col-md-6");
+						$("#panel_editor_clonado").addClass("col-md-6");
+						
+						anchoActual_contenedor_editor = $("#panel_editor_codigo").width();
+						$('#panel_editor_real').width( (anchoActual_contenedor_editor/3)+"px" ).css({ });	//Asignacion en porcentaje
+						$('#panel_editor_clonado').width( (anchoActual_contenedor_editor/3)+"px" ).css({ });	//Asignacion en porcentaje
+						editor.resize();
+						EditorClonado.resize();
+
+					}*/
 			}
 		function ActivarPanelIzquierdo()
 			{
@@ -729,7 +761,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						anchoActual_contenedor_editor = $("#editor_codigo").width();
 
 						//Calcula los tamanos para la vista dividida
-						AltoEditor_clonado=$("#editor_codigo").height();
+						AltoEditor_clonado=$("#panel_editor_codigo").height();
 						AnchoEditor_clonado=(Math.round(anchoActual_contenedor_editor/2))+"px";
 						ListaArchivos[IndiceArchivoActual].VistaSplit="V";
 						
@@ -768,8 +800,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				//Modifica el ALTO DEL EDITOR
 				var porcentaje_barrasmenuyestado=(alto_contenedor_menu+alto_contenedor_barra_estado+alto_contenedor_mensajes_superior+alto_contenedor_archivos+alto_contenedor_editor_clonado)*100/alto_ventana;
 				var porcentaje_final=100-porcentaje_barrasmenuyestado;
-				var alto_final=alto_ventana-alto_contenedor_menu-alto_contenedor_mensajes_superior-alto_contenedor_barra_estado-alto_contenedor_archivos-alto_contenedor_editor_clonado;
-				//$('#editor_codigo').height( alto_final ).css({ });			//Asignacion en pixeles
 				$('#editor_codigo').height( porcentaje_final+"vh" ).css({ });	//Asignacion en porcentaje
 
 				//Llama al metodo que actualiza el tamano del editor ACE segun las nuevas dimensiones
