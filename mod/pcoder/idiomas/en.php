@@ -114,4 +114,6 @@
 	$MULTILANG_PCODER_DuplicarSeleccion='Duplicate selection';
 	$MULTILANG_PCODER_InvertirSeleccion='Invert Selection';
 	$MULTILANG_PCODER_UnirSeleccion='Join selected in one line';
-	
+	$MULTILANG_PCODER_DividirNO='No split code editor';
+	$MULTILANG_PCODER_DividirHorizontal='Horizontal split';
+	$MULTILANG_PCODER_DividirVertical='Vertical split';

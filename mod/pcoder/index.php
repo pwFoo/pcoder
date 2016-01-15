@@ -441,7 +441,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				</form>
 
 				<div class="tab-content">
-				  <div id="archivo1" class="tab-pane fade in active">
+				  <div id="archivo1" class="tab-pane fade in active" style=""> <!--   overflow: hidden;    -->
 					 <div id="editor_codigo" style="display:block;  width:100%; height:100vh;" width="100%" height="100vh"></div>
 					 <div id="editor_clonado" style="display:block;  width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
 				  </div>

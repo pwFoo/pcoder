@@ -115,3 +115,6 @@
 	$MULTILANG_PCODER_DuplicarSeleccion='Duplicar selecci&oacute;n';
 	$MULTILANG_PCODER_InvertirSeleccion='Invertir selecci&oacute;n';
 	$MULTILANG_PCODER_UnirSeleccion='Convertir selecci&oacute;n a una linea';
+	$MULTILANG_PCODER_DividirNO='No dividir editor de c&oacute;digo';
+	$MULTILANG_PCODER_DividirHorizontal='Dividir horizontalmente';
+	$MULTILANG_PCODER_DividirVertical='Dividir verticalmente';

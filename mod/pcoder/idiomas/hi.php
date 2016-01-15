@@ -114,4 +114,7 @@
 	$MULTILANG_PCODER_DuplicarSeleccion='डुप्लीकेट चयन';
 	$MULTILANG_PCODER_InvertirSeleccion='उलटा चयन';
 	$MULTILANG_PCODER_UnirSeleccion='एक लाइन में चयनित शामिल हों';
-	
+	$MULTILANG_PCODER_DividirNO='कोई विभाजन कोड संपादक';
+	$MULTILANG_PCODER_DividirHorizontal='क्षैतिज विभाजन';
+	$MULTILANG_PCODER_DividirVertical='कार्यक्षेत्र विभाजन';
+

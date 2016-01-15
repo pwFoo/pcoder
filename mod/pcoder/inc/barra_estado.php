@@ -20,7 +20,7 @@
 	 along with this program.  If not, see <http://www.gnu.org/licenses/>
 	*/
 
-    // BARRA DE MENU DEL APLICATIVO
+    // BARRA DE ESTADO DEL APLICATIVO
 ?>
 
 <div class="row">
@@ -28,14 +28,14 @@
 
 		<div id="contenedor_barra_estado">
 			
-			<div class="well well-sm" style="border:0px; margin:0px; padding:0px; background: #272727;">
+			<div class="well well-sm" style="border:0px; margin:0px; padding:0px; padding-bottom:5px; background: #272727;">
 
 						<!-- FORMULARIO DISPOSICION DE PANTALLA -->
 						<div style="display:inline;">
 							&nbsp;
-							<button data-toggle="tooltip" data-placement="top" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>" class="btn btn-success btn-xs" onClick="DividirPantalla_NO();"><i class="fa fa-stop fa-rotate-90 fa-fw"></i></button>
-							<button data-toggle="tooltip" data-placement="top" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>" class="btn btn-danger btn-xs" onClick="DividirPantalla_Horizontal();"><i class="fa fa-pause fa-rotate-90 fa-fw"></i></button>
-							<button data-toggle="tooltip" data-placement="top" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>" class="btn btn-danger btn-xs" onClick="DividirPantalla_Vertical();"><i class="fa fa-pause fa-fw"></i></button>
+							<button data-toggle="tooltip" data-placement="top" title="<?php echo $MULTILANG_PCODER_DividirNO; ?>" class="btn btn-success btn-xs" onClick="DividirPantalla_NO();"><i class="fa fa-stop fa-fw"></i></button>
+							<button data-toggle="tooltip" data-placement="top" title="<?php echo $MULTILANG_PCODER_DividirHorizontal; ?>" class="btn btn-danger btn-xs" onClick="DividirPantalla_Horizontal();"><i class="fa fa-pause fa-rotate-90 fa-fw"></i></button>
+							<button data-toggle="tooltip" data-placement="top" title="<?php echo $MULTILANG_PCODER_DividirVertical; ?>" class="btn btn-danger btn-xs" onClick="DividirPantalla_Vertical();"><i class="fa fa-pause fa-fw"></i></button>
 							&nbsp;
 						</div>
 
