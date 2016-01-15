@@ -388,54 +388,24 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 </head>
 <body>
 
+			<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
+				<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"></textarea>
+				<input name="PCODER_TokenEdicion" type="Hidden" value="">
+				<input name="PCODER_archivo" type="Hidden" value="">
+				<input type="Hidden" name="PCO_ECHO" value="0"> <!-- Determina si la respuesta debe ser con o sin eco -->
+				<input name="PCO_Accion" type="hidden" value="PCOMOD_GuardarArchivo">
+			</form>
 
+			<!-- Zona de TextAreas ocultas segun los archivos abiertos -->
+			<form id="form_textareas_archivos" name="form_textareas_archivos" method="POST" style="visibility: hidden; display:none; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">					
+			</form>
 	<!-- ################# INICIO DE LA MAQUETACION ################ -->
-
-		<?php
-			//Incluye algunos marcos del aplicativo
-			include_once ("inc/panel_superior.php");
-		?>
-
-		<div class="row">
-
-			<?php
-				//Incluye algunos marcos del aplicativo
-				include_once ("inc/panel_izquierdo.php");
-			?>
-
-
+		<?php include_once ("inc/panel_superior.php"); ?>
+		<DIV class="row">
+			<?php include_once ("inc/panel_izquierdo.php");	?>
 			<div class="col-md-8" style="margin:0px;" id="panel_central">
-
-
-				<!-- INICIO MARCO PESTANAS DE ARCHIVOS -->
-					<div id="contenedor_archivos" >
-						<nav class="nav-xs">
-							<ul id="lista_contenedor_archivos" name="lista_contenedor_archivos" class="nav nav-pills nav-xs">
-							</ul>
-						</nav>
-					</div>
-				<!-- FIN MARCO PESTANAS DE ARCHIVOS -->
-
-
-				<!-- INICIO MARCO MENSAJES SUPERIORES -->
-					<div class="row">
-						<div id="contenedor_mensajes_superior" class="col-lg-12">
-						</div>
-					</div>
-				<!-- FIN MARCO MENSAJES SUPERIORES -->
-
-
-				<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
-					<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"></textarea>
-					<input name="PCODER_TokenEdicion" type="Hidden" value="">
-					<input name="PCODER_archivo" type="Hidden" value="">
-					<input type="Hidden" name="PCO_ECHO" value="0"> <!-- Determina si la respuesta debe ser con o sin eco -->
-					<input name="PCO_Accion" type="hidden" value="PCOMOD_GuardarArchivo">
-				</form>
-
-				<!-- Zona de TextAreas ocultas segun los archivos abiertos -->
-				<form id="form_textareas_archivos" name="form_textareas_archivos" method="POST" style="visibility: hidden; display:none; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">					
-				</form>
+				
+				<?php include_once ("inc/panel_infoarchivos.php");	?>
 
 				<div class="row">
 				  <div id="panel_editor_real" style="margin:0px; display:inline">
@@ -446,23 +416,10 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				  </div>
 				</div>
 
-
 			</div>
-
-
-
-			<?php
-				//Incluye algunos marcos del aplicativo
-				include_once ("inc/panel_derecho.php");
-			?>
-
-		</div>
-
-		<?php
-			//Incluye algunos marcos del aplicativo
-			include_once ("inc/panel_inferior.php");
-		?>
-
+			<?php include_once ("inc/panel_derecho.php"); ?>
+		</DIV>
+		<?php include_once ("inc/panel_inferior.php"); ?>
 	<!-- ################## FIN DE LA MAQUETACION ################## -->
 
 
