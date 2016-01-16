@@ -359,7 +359,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				padding: 2px;
 				font-size: 11px;
 				margin-bottom: 1px;
-
 			}
 
         .tooltip-inner {
@@ -388,41 +387,49 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 </head>
 <body>
 
-			<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
-				<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"></textarea>
-				<input name="PCODER_TokenEdicion" type="Hidden" value="">
-				<input name="PCODER_archivo" type="Hidden" value="">
-				<input type="Hidden" name="PCO_ECHO" value="0"> <!-- Determina si la respuesta debe ser con o sin eco -->
-				<input name="PCO_Accion" type="hidden" value="PCOMOD_GuardarArchivo">
-			</form>
+	<!-- ################# FORMULARIOS DE TRABAJO ################## -->
+	<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
+		<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"></textarea>
+		<input name="PCODER_TokenEdicion" type="Hidden" value="">
+		<input name="PCODER_archivo" type="Hidden" value="">
+		<input type="Hidden" name="PCO_ECHO" value="0"> <!-- Determina si la respuesta debe ser con o sin eco -->
+		<input name="PCO_Accion" type="hidden" value="PCOMOD_GuardarArchivo">
+	</form>
+	<!-- Zona de TextAreas ocultas segun los archivos abiertos -->
+	<form id="form_textareas_archivos" name="form_textareas_archivos" method="POST" style="visibility: hidden; display:none; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">					
+	</form>
 
-			<!-- Zona de TextAreas ocultas segun los archivos abiertos -->
-			<form id="form_textareas_archivos" name="form_textareas_archivos" method="POST" style="visibility: hidden; display:none; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">					
-			</form>
+
 	<!-- ################# INICIO DE LA MAQUETACION ################ -->
-		<?php include_once ("inc/panel_superior.php"); ?>
+		<?php include_once ("inc/panel_superior.php"); 	?>
 		<DIV class="row">
 			<?php include_once ("inc/panel_izquierdo.php");	?>
 			<div class="col-md-8" style="margin:0px;" id="panel_central">
 				
-				<?php include_once ("inc/panel_infoarchivos.php");	?>
+				<?php include_once ("inc/panel_centralsuperior.php");	?>
 
-				<div class="row">
-				  <div id="panel_editor_real" style="margin:0px; display:inline">
-					 <div id="editor_codigo" style="display:block;  width:100%; height:100vh;" width="100%" height="100vh"></div>
-				  </div>
-				  <div id="panel_editor_clonado" style="margin:0px; display:inline">
-					 <div id="editor_clonado" style="display:block;  width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
-				  </div>
+				<div class="tab-content">
+					<div id="pestanas_editores" class="tab-pane fade in active">
+						
+						<div class="row" style="margin:0px;">
+						  <div id="panel_editor_real" style="display:inline">
+							 <div id="editor_codigo" style="display:block;  width:100%; height:100vh;" width="100%" height="100vh"></div>
+						  </div>
+						  <div id="panel_editor_clonado" style="display:inline">
+							 <div id="editor_clonado" style="display:block;  width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
+						  </div>
+						</div>
+
+					</div>
 				</div>
+
+				<?php include_once ("inc/panel_centralinferior.php");	?>
 
 			</div>
 			<?php include_once ("inc/panel_derecho.php"); ?>
 		</DIV>
 		<?php include_once ("inc/panel_inferior.php"); ?>
 	<!-- ################## FIN DE LA MAQUETACION ################## -->
-
-
 
 
 
@@ -609,10 +616,12 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				else
 					$("#panel_derecho").addClass("col-md-"+panel_derecho);
 
+
 				//Remueve las clases tipicas del editor de codigo y aplica la nueva
+				/*
 				$("#panel_central").removeClass("col-md-6"); //Split vertical sin paneles
 				$("#panel_central").removeClass("col-md-5"); //Split vertical con un panel
-				$("#panel_central").removeClass("col-md-4"); //Split vertical con dos paneles
+				$("#panel_central").removeClass("col-md-4"); //Split vertical con dos paneles*/
 				
 				$("#panel_central").removeClass("col-md-8"); //Cuando estan los dos paneles activos
 				$("#panel_central").removeClass("col-md-10"); //Cuando esta un solo panel activo
@@ -965,7 +974,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 								ComplementoTooltip='<i class=\'fa fa-hdd-o\'></i> '+ListaArchivos[i].RutaDocumento+'<br>';
 								ComplementoTooltip+='<i class=\'fa fa-key\'></i> '+'Permisos (CHMOD): '+ListaArchivos[i].PermisosArchivo+'<br>';
 								//Pestana con nombre de archivo
-								lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li '+ComplementoClase+' ><a href="#" data-toggle="tooltip" data-html="true" data-placement="bottom" title="'+ComplementoTooltip+'" style="cursor:pointer;" OnClick="PCODER_CambiarArchivoActual('+i+',0);"><i class="fa fa-file-text-o fa-inactive"></i> '+ListaArchivos[i].NombreArchivo+'</a></li>';
+								lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li '+ComplementoClase+' ><a data-toggle="tooltip" data-html="true" data-placement="bottom" title="'+ComplementoTooltip+'" style="cursor:pointer;" OnClick="PCODER_CambiarArchivoActual('+i+',0);"><i class="fa fa-file-text-o fa-inactive"></i> '+ListaArchivos[i].NombreArchivo+'</a></li>';
 								//Boton para cerrar el archivo
 								lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li ><a data-toggle="tab" style="cursor:pointer; margin-right: 10px;" OnClick="PCODER_CerrarArchivo('+i+');"><i class="fa fa-times"></i></a></li>';								
 							}
