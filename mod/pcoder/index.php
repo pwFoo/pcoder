@@ -167,7 +167,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 </head>
 <body>
 
-	<!-- ################# FORMULARIOS DE TRABAJO ################## -->
+	<!-- ######### FORMULARIOS Y MARCOS DE TRABAJO OCULTOS ######### -->
 	<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
 		<textarea id="PCODER_AreaTexto" name="PCODER_AreaTexto" style="visibility:hidden; display:none;"></textarea>
 		<input name="PCODER_TokenEdicion" type="Hidden" value="">
@@ -178,6 +178,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 	<!-- Zona de TextAreas ocultas segun los archivos abiertos -->
 	<form id="form_textareas_archivos" name="form_textareas_archivos" method="POST" style="visibility: hidden; display:none; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">					
 	</form>
+	<!-- Marco para recepcion de eventos generados por el boton de guardar -->
+	<iframe OnLoad="if (frame_almacenamiento.location.href != 'about:blank') AvisoAlmacenamiento();" height="0" width="0" name="frame_almacenamiento" id="frame_almacenamiento" src="about:blank" style="visibility:hidden; display:none"></iframe>
 
 
 	<!-- ################# INICIO DE LA MAQUETACION ################ -->
@@ -271,9 +273,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
         if(@$CodigoGoogleAnalytics!="")
             echo $PrefijoGA.$CodigoGoogleAnalytics.$PosfijoGA;	
     ?>
-
-<!-- Marco para recepcion de eventos generados por el boton de guardar -->
-<iframe OnLoad="if (frame_almacenamiento.location.href != 'about:blank') AvisoAlmacenamiento();" height="0" width="0" name="frame_almacenamiento" id="frame_almacenamiento" src="about:blank" style="visibility:hidden; display:none"></iframe>
 
 </body>
 </html>
