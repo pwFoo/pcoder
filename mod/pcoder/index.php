@@ -154,47 +154,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <!-- Custom Fonts -->
     <link href="../../inc/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <style type="text/css">
-        html, body {
-            background: #272727;  /* 002a36 | BFBFBF | 888888 | 272727 | 000000 */
-            overflow-x: hidden;
-            overflow-y: hidden;
-        }
-
-		/* Personalizacion del estilo bootstrap para el alto del menu */
-			.navbar-nav > li > a, .navbar-brand {
-				padding-top:0px !important; padding-bottom:0 !important;
-				height: 30px;
-			}
-		.navbar {min-height:30px !important;}
-		
-		/*Adicion de clase para el alto de menu*/
-			.navbar-xs { min-height:30px; height: 30px; }
-			.navbar-xs .navbar-brand{ padding: 0px 12px;font-size: 16px;line-height: 30px; }
-			.navbar-xs .navbar-nav > li > a {  padding-top: 0px; padding-bottom: 0px; line-height: 30px; }
-			
-		/*Clase para las pestanas de archivos*/
-			.nav-xs>li>a, .nav-xs {
-				padding: 2px;
-				font-size: 11px;
-				margin-bottom: 1px;
-			}
-
-        .tooltip-inner {
-            max-width: none;
-            white-space: nowrap;
-            font-size: 10px;
-        }
-
-		/*Clase para el explorador de archivos*/
-			.explorador_archivos {
-				margin: 0px;
-				width: 100%;
-				height: 50vh;	/* vh o px */
-				overflow: auto;
-				padding: 0px;
-			}
-    </style>
+	<!-- Estilos especificos PCoder -->
+    <link href="inc/lib_pcoder.css" rel="stylesheet" type="text/css">
     
     <!-- jQuery -->
 	<script type="text/javascript" src="../../inc/jquery/jquery-2.1.0.min.js"></script>
@@ -279,8 +240,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		var MULTILANG_PCODER_Estado="<?php echo $MULTILANG_PCODER_Estado; ?>";
 	</script>
 	<script type="text/javascript" src="inc/lib_pcoder.js"></script>
-
-
 
 	<script language="JavaScript">
 		function RecargarToolTipsEnlaces()
