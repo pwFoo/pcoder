@@ -40,10 +40,10 @@
 
 # INFORMACION DE ARCHIVOS A PROCESAR
 	#Lista de archivos de Hojas de Estilo SIN extension
-	ListaArchivosCSS=" mod/pcoder/inc/pcoder "
+	ListaArchivosCSS=" mod/pcoder/css/pcoder "
 	ExtensionArchivosCSS=".css"
 	#Lista de archivos de JavaScript SIN extension
-	ListaArchivosJS=" mod/pcoder/inc/pcoder_func mod/pcoder/inc/pcoder_init "
+	ListaArchivosJS=" mod/pcoder/js/pcoder "
 	ExtensionArchivosJS=".js"
 	#Prefijo nombre del archivo resultante
 	PrefijoArchivo=".min";

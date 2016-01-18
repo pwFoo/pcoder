@@ -117,4 +117,5 @@
 	$MULTILANG_PCODER_DividirNO='कोई विभाजन कोड संपादक';
 	$MULTILANG_PCODER_DividirHorizontal='क्षैतिज विभाजन';
 	$MULTILANG_PCODER_DividirVertical='कार्यक्षेत्र विभाजन';
-
+	$MULTILANG_PCODER_ClicSeleccionar='चुनने के लिए क्लिक करें';
+	$MULTILANG_PCODER_ExploradorColores='रंग एक्सप्लोरर';

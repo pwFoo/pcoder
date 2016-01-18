@@ -3,11 +3,21 @@ function CambiarFuenteEditor(tamano)
 	{
 		//Cambia la fuente del editor al tamano recibido
 		editor.setFontSize(tamano);
+		try
+			{
+				EditorClonado.setFontSize(tamano);
+			}
+		catch(error) {}
 	}
 function CambiarTemaEditor(tema)
 	{
 		//Cambia la apariencia grafica del editor
 		editor.setTheme(tema);
+		try
+			{
+				EditorClonado.setTheme(tema);
+			}
+		catch(error) {}
 	}
 function CambiarModoEditor(modo)
 	{
@@ -15,6 +25,11 @@ function CambiarModoEditor(modo)
 		ModoFiltrado = ModoFiltrado.toLowerCase();
 		//Cambia el modo de sintaxis y errores resaltado por el editor
 		editor.getSession().setMode(ModoFiltrado);
+		try
+			{
+				EditorClonado.getSession().setMode(ModoFiltrado);
+			}
+		catch(error) {}
 	}
 function CaracteresInvisiblesEditor(estado)
 	{
@@ -108,6 +123,13 @@ function PCO_AgregarElementoDiv(marco,elemento)
 		zona.innerHTML = elemento;
 		capa.appendChild(zona);
 	}
+
+
+
+//###################################################################################################################
+//###################################################################################################################
+//###################################################################################################################
+//###################################################################################################################
 function PCODER_ObtenerContenidoAjax(PCO_ASINCRONICO,PCO_URL,PCO_PARAMETROS)
 	{
 		var xmlhttp;
@@ -155,186 +177,166 @@ function PCODER_ObtenerContenidoAjax(PCO_ASINCRONICO,PCO_URL,PCO_PARAMETROS)
 		if(PCO_ASINCRONICO==0)
 			return contenido_recibido;
 	}
-
-function AjustarPanelesLaterales()
+function PCODER_DesactivarPanelIzquierdo()
+	{
+		AnchoPanelIzquierdo=0;
+		$("#panel_izquierdo").removeClass("col-md-2");
+		$("#panel_izquierdo").hide();
+		PCODER_RecalcularMaquetacion();
+	}
+function PCODER_DesactivarPanelDerecho()
+	{
+		AnchoPanelDerecho=0;
+		$("#panel_derecho").removeClass("col-md-2");
+		$("#panel_derecho").hide();
+		PCODER_RecalcularMaquetacion();
+	}
+function PCODER_RecalcularPanelesLaterales()  //AjustarPanelesLaterales();
 	{
 		//Redimensiona, ajusta y aplica clases al editor segun el estado de visualizacion las barras laterales
-		ancho_panel_editor=12-panel_izquierdo-panel_derecho; //Actualiza segun los anchos de cada panel
+		AnchoPanelCentral=12-AnchoPanelIzquierdo-AnchoPanelDerecho; //Actualiza segun los anchos de cada panel
 
 		//Remueve las clases tipicas de los paneles y aplica las nuevas
 		$("#panel_izquierdo").removeClass("col-md-2");
 		$("#panel_derecho").removeClass("col-md-2");
+		
 		//Si el valor es cero entonces se ocultan sino agrega la clase
-		if(panel_izquierdo==0)
+		if(AnchoPanelIzquierdo==0)
 			$("#panel_izquierdo").hide();
 		else
-			$("#panel_izquierdo").addClass("col-md-"+panel_izquierdo);
-		if(panel_derecho==0)
+			$("#panel_izquierdo").addClass("col-md-"+AnchoPanelIzquierdo);
+		if(AnchoPanelDerecho==0)
 			$("#panel_derecho").hide();
 		else
-			$("#panel_derecho").addClass("col-md-"+panel_derecho);
-
+			$("#panel_derecho").addClass("col-md-"+AnchoPanelDerecho);
 
 		//Remueve las clases tipicas del editor de codigo y aplica la nueva
-		/*
-		$("#panel_central").removeClass("col-md-6"); //Split vertical sin paneles
-		$("#panel_central").removeClass("col-md-5"); //Split vertical con un panel
-		$("#panel_central").removeClass("col-md-4"); //Split vertical con dos paneles*/
-		
 		$("#panel_central").removeClass("col-md-8"); //Cuando estan los dos paneles activos
 		$("#panel_central").removeClass("col-md-10"); //Cuando esta un solo panel activo
-		$("#panel_central").addClass("col-md-"+ancho_panel_editor);
-		
-		/*
-		//Establece tamano por defecto en los editores
-		$("#panel_editor_real").removeClass("col-md-6");
-		$("#panel_editor_real").removeClass("col-md-12");
-		$("#panel_editor_clonado").removeClass("col-md-6");
-		$("#panel_editor_clonado").removeClass("col-md-12");
-		$("#panel_editor_real").addClass("col-md-12");
-		$("#panel_editor_clonado").addClass("col-md-12");
-		//Divide por dos el ancho del editor en caso de estar en modo split vertical
-		if(ListaArchivos[IndiceArchivoActual].VistaSplit=="V")
-			{
-				ancho_panel_editores=ancho_panel_editor/2;
-				$("#panel_editor_real").addClass("col-md-6");
-				$("#panel_editor_clonado").addClass("col-md-6");
-				
-				anchoActual_contenedor_editor = $("#panel_central").width();
-				$('#panel_editor_real').width( (anchoActual_contenedor_editor/3)+"px" ).css({ });	//Asignacion en porcentaje
-				$('#panel_editor_clonado').width( (anchoActual_contenedor_editor/3)+"px" ).css({ });	//Asignacion en porcentaje
-				editor.resize();
-				EditorClonado.resize();
-
-			}*/
+		$("#panel_central").removeClass("col-md-12"); //Cuando esta un solo panel activo
+		$("#panel_central").addClass("col-md-"+AnchoPanelCentral);
 	}
-function ActivarPanelIzquierdo()
+function PCODER_ActivarPanelIzquierdo()
 	{
-		panel_izquierdo=2;
+		AnchoPanelIzquierdo=2;
 		$("#panel_izquierdo").show();
 		$("#panel_izquierdo").removeClass("col-md-0");
-		$("#panel_izquierdo").addClass("col-md-"+panel_izquierdo);
-		AjustarPanelesLaterales();
-	}
-function ActivarPanelDerecho()
+		$("#panel_izquierdo").addClass("col-md-"+AnchoPanelIzquierdo);
+		PCODER_RecalcularMaquetacion();
+	}	
+function PCODER_ActivarPanelDerecho()
 	{
-		panel_derecho=2;
+		AnchoPanelDerecho=2;
 		$("#panel_derecho").show();
 		$("#panel_derecho").removeClass("col-md-0");
-		$("#panel_derecho").addClass("col-md-"+panel_derecho);
-		AjustarPanelesLaterales();
+		$("#panel_derecho").addClass("col-md-"+AnchoPanelDerecho);
+		PCODER_RecalcularMaquetacion();
 	}
-function DesactivarPanelIzquierdo()
+function PCODER_RecalcularPanelesEditores()
 	{
-		panel_izquierdo=0;
-		$("#panel_izquierdo").removeClass("col-md-2");
-		$("#panel_izquierdo").hide();
-		AjustarPanelesLaterales();
+		//Define el ALTO Y ANCHO DE LOS EDITORES segun la disposicion visual (splits) y el tamano del panel_central_medio
+		var AltoDisponible_Editores = $("#panel_central_medio").height();
+		var AnchoDisponible_Editores = $("#panel_central_medio").width();
+
+		//Establece tamanos especificos para los editores segun la disposicion visual (splits) y deja visible el editor clonado
+		if(ListaArchivos[IndiceArchivoActual].VistaSplit=="H")
+			{
+				AltoDisponible_Editores=Math.round(AltoDisponible_Editores/2)-2;
+				$("#panel_editor_clonado").show();
+			}
+			
+		if(ListaArchivos[IndiceArchivoActual].VistaSplit=="V")
+			{
+				AnchoDisponible_Editores=Math.round(AnchoDisponible_Editores/2)-2;
+				$("#panel_editor_clonado").show();
+			}
+
+		//Reasigna los anchos y altos a los paneles por defecto
+		AltoEditorReal = AltoDisponible_Editores;
+		AnchoEditorReal = AnchoDisponible_Editores;
+		AltoEditorClonado = AltoDisponible_Editores;
+		AnchoEditorClonado = AnchoDisponible_Editores;
+		
+		//Si no hay divisiones pone en ceros el editor clonado y ademas oculta el marco que lo contiene
+		if(ListaArchivos[IndiceArchivoActual].VistaSplit=="")
+			{
+				AltoEditorClonado = 0;
+				AnchoEditorClonado = 0;
+				$("#panel_editor_clonado").hide();
+			}
+		
+		$('#editor_codigo').height( AltoEditorReal+"px" ).css({ });	//Asignacion en porcentaje
+		$('#editor_codigo').width( AnchoEditorReal+"px" ).css({ });	//Asignacion en porcentaje
+		$('#editor_clonado').height( AltoEditorClonado+"px" ).css({ });	//Asignacion en porcentaje
+		$('#editor_clonado').width( AnchoEditorClonado+"px" ).css({ });	//Asignacion en porcentaje
+		
+		//Actualiza el tamano de los editores segun las nuevas dimensiones
+		editor.resize();
+		try
+			{
+				EditorClonado.resize();
+			}
+		catch(error)
+			{
+				//document.getElementById("demo").innerHTML = err.message;
+			}
 	}
-function DesactivarPanelDerecho()
-	{
-		panel_derecho=0;
-		$("#panel_derecho").removeClass("col-md-2");
-		$("#panel_derecho").hide();
-		AjustarPanelesLaterales();
-	}
-function DividirPantalla_NO()
+function PCODER_DividirPantalla_NO()
 	{
 		//Ejecuta la operacion si ya no esta dividido
 		if (ListaArchivos[IndiceArchivoActual].VistaSplit!="")
 			{
 				ListaArchivos[IndiceArchivoActual].VistaSplit="";
-				AltoEditor_clonado="0px";	//Sin tamano
-				AnchoEditor_clonado="0px";	//Sin tamano
-				
-				ListaArchivos[IndiceArchivoActual].VistaSplit="";
-				
 				//Actualiza el editor
-				RedimensionarEditor();
+				PCODER_RecalcularMaquetacion();
 			}
 	}
-function DividirPantalla_Horizontal()
+function PCODER_DividirPantalla_Horizontal()
 	{
 		//Ejecuta la operacion si ya no esta dividido
 		if (ListaArchivos[IndiceArchivoActual].VistaSplit!="H")
 			{
-				//Restablece la pantalla
-				DividirPantalla_NO();
-
-				//Determina alto y ancho del editor clonado cuando se tiene activa una vista split
-				altoActual_contenedor_editor = $("#editor_codigo").height();
-				anchoActual_contenedor_editor = $("#editor_codigo").width();
-
-				//Calcula los tamanos para la vista dividida
-				AltoEditor_clonado=(Math.round(altoActual_contenedor_editor/2))+"px";
-				AnchoEditor_clonado=$("#editor_codigo").width();
 				ListaArchivos[IndiceArchivoActual].VistaSplit="H";
-				
+				ClonarPropiedadesEditor();
 				//Actualiza el editor
-				RedimensionarEditor();
+				PCODER_RecalcularMaquetacion();
 			}
-		ClonarPropiedadesEditor();
 	}
-function DividirPantalla_Vertical()
+function PCODER_DividirPantalla_Vertical()
 	{
 		//Ejecuta la operacion si ya no esta dividido
 		if (ListaArchivos[IndiceArchivoActual].VistaSplit!="V")
 			{
-				//Restablece la pantalla
-				DividirPantalla_NO();
-					
-				//Determina alto y ancho del editor clonado cuando se tiene activa una vista split
-				altoActual_contenedor_editor = $("#editor_codigo").height();
-				anchoActual_contenedor_editor = $("#editor_codigo").width();
-
-				//Calcula los tamanos para la vista dividida
-				AltoEditor_clonado=$("#panel_central").height();
-				AnchoEditor_clonado=(Math.round(anchoActual_contenedor_editor/2))+"px";
 				ListaArchivos[IndiceArchivoActual].VistaSplit="V";
-				
+				ClonarPropiedadesEditor();
 				//Actualiza el editor
-				RedimensionarEditor();
+				PCODER_RecalcularMaquetacion();
 			}
-		ClonarPropiedadesEditor();
 	}
-function EstablecerDivisionPantalla()
-	{
-		//Actualiza tamano del editor clonado
-		$('#editor_clonado').height( AltoEditor_clonado ).css({ });
-		$('#editor_clonado').width( AnchoEditor_clonado ).css({ });
 
-		//Segun la division seleccionada para el archivo actual llama la rutina correspondiente
-		if(ListaArchivos[IndiceArchivoActual].VistaSplit=="") 	DividirPantalla_NO();
-		if(ListaArchivos[IndiceArchivoActual].VistaSplit=="H")	DividirPantalla_Horizontal();
-		if(ListaArchivos[IndiceArchivoActual].VistaSplit=="V") 	DividirPantalla_Vertical();
-	}
-function RedimensionarEditor()
+function PCODER_RecalcularMaquetacion()   //RedimensionarEditor();
 	{
-		//Determina si la vista esta dividida o no
-		EstablecerDivisionPantalla();
+		PCODER_RecalcularPanelesLaterales();
 
 		//Obtiene las dimensiones actuales de la ventana de edicion y algunos objetos
-		var alto_ventana = $(window).height();
-		var alto_documento = $(document).height();
-		var alto_contenedor_editor = $("#editor_codigo").height();
-		var alto_contenedor_editor_clonado = $("#editor_clonado").height();
-		var alto_contenedor_archivos = $("#contenedor_archivos").height();
+		var AltoVentana = $(window).height();
+		var AnchoVentana = $(window).width();
+		var AltoDocumento = $(document).height();
+		var AnchoDocumento = $(document).width();
+
+		//Obtiene el alto de los diferentes marcos que componen el aplicativo
 		var alto_panel_superior = $("#panel_superior").height();
+		var alto_panel_central_superior = $("#panel_central_superior").height();
+		var alto_panel_central_inferior = $("#panel_central_inferior").height();
 		var alto_panel_inferior = $("#panel_inferior").height();
-		var alto_contenedor_mensajes_superior = $("#contenedor_mensajes_superior").height();
-		var alto_barra_lateral_izquierda = $("#barra_lateral_izquierda").height();
-		
-		//Modifica el ALTO DEL EDITOR
-		var porcentaje_barrasmenuyestado=(alto_panel_superior+alto_panel_inferior+alto_contenedor_mensajes_superior+alto_contenedor_archivos+alto_contenedor_editor_clonado)*100/alto_ventana;
-		var porcentaje_final=100-porcentaje_barrasmenuyestado;
-		$('#editor_codigo').height( porcentaje_final+"vh" ).css({ });	//Asignacion en porcentaje
 
-		//Llama al metodo que actualiza el tamano del editor ACE segun las nuevas dimensiones
-		editor.resize();
+		//Modifica el ALTO DEL PANEL CENTRAL MEDIO
+		var PorcentajeOcupacion_PanelesAplicativo = ( alto_panel_superior + alto_panel_central_superior + alto_panel_central_inferior + alto_panel_inferior ) * 100 / AltoVentana;
+		var PorcentajeFinal_PanelCentralMedio = 100 - PorcentajeOcupacion_PanelesAplicativo;
+		$('#panel_central_medio').height( PorcentajeFinal_PanelCentralMedio+"vh" ).css({ });
 		
-		AjustarPanelesLaterales();
+		PCODER_RecalcularPanelesEditores();
 	}
-
 function IntercambiarPantallaCompleta()
 	{
 		if (!document.fullscreenElement &&    // alternative standard method
@@ -386,8 +388,6 @@ function ExplorarPath()
 
 		});
 	}
-
-
 function ActualizarBarraEstado()
 	{
 		//Actualiza ademas las posiciones del cursor sobre el arreglo de archivos abiertos
@@ -409,8 +409,6 @@ function ActualizarBarraEstado()
 		//Llama periodicamente la rutina de actualizacion de la barra
 		window.setTimeout(ActualizarBarraEstado, 1000);
 	}
-
-
 function AgregarNuevoTextarea(nombre_formulario,nombre_textarea,valor_predeterminado)
 	{
 		//contenedor.innerHTML = '<textarea name="pepe" rows="5" cols="30"></textarea>';
@@ -423,11 +421,6 @@ function AgregarNuevoTextarea(nombre_formulario,nombre_textarea,valor_predetermi
 		nombre_formulario.appendChild(elemento_textarea);
 	} 
 
-var ListaArchivos = new Array();								//Contiene la lista de los archivos cargados
-var IndiceAperturaArchivo=0;									//Posicion del arreglo sobre la que se desea guardar datos al abrir un archivo
-var IndiceUltimoArchivoAbierto=IndiceAperturaArchivo;			//Posicion del arreglo que contiene el ultimo archivo abierto
-var IndiceArchivoActual=IndiceAperturaArchivo;					//Posicion del arreglo con los datos del archivo actual
-var ValorModoEditor;
 
 function PCODER_CambiarArchivoActual(IndiceRecibido,VieneDesdeApertura)
 	{
@@ -542,7 +535,7 @@ function ActualizarPestanasArchivos()
 			}
 
 		//Se asegura de corregir tamano del editor cuando se carga un archivo
-		RedimensionarEditor();
+		PCODER_RecalcularMaquetacion();
 	}
 
 function PCODER_CargarArchivo(path_archivo)
@@ -597,10 +590,13 @@ function PCODER_CargarArchivo(path_archivo)
 //##############################################################
 //###              INICIALIZACION DE VARIABLES               ###
 //##############################################################
-panel_izquierdo=0;
-panel_derecho=0;
-AltoEditor_clonado="0px";	//Sin tamano
-AnchoEditor_clonado="0px";	//Sin tamano
+var ListaArchivos = new Array();								//Contiene la lista de los archivos cargados
+var IndiceAperturaArchivo=0;									//Posicion del arreglo sobre la que se desea guardar datos al abrir un archivo
+var IndiceUltimoArchivoAbierto=IndiceAperturaArchivo;			//Posicion del arreglo que contiene el ultimo archivo abierto
+var IndiceArchivoActual=IndiceAperturaArchivo;					//Posicion del arreglo con los datos del archivo actual
+var ValorModoEditor;
+AnchoPanelIzquierdo=0;
+AnchoPanelDerecho=0;
 
 //Evento que quita la barra de progreso de carga para el explorador cada que finaliza el cargue de su IFrame
 $('#iframe_marco_explorador').load(function(){
@@ -620,7 +616,7 @@ PCODER_CargarArchivo();
 
 
 // Inicia el editor de codigo con las opciones predeterminadas
-CambiarFuenteEditor("14px");
+CambiarFuenteEditor("13px");
 CambiarTemaEditor("ace/theme/ambiance");  //tomorrow_night|twilight|eclipse|ambiance|ETC
 
 
@@ -644,27 +640,24 @@ editor.getSession().on('change', function(){
 
 //Ajusta tamano del editor en cada cambio de tamano de la ventana
 $( window ).resize(function() {
-	RedimensionarEditor();
+	PCODER_RecalcularMaquetacion();
 });
 
 
 // CAPTURA DE EVENTOS DE TECLADO #############################################################
-	//Captura el evento de Ctrl+S para guardar el archivo
-	$(window).bind('keydown', function(event) {
-		if (event.ctrlKey || event.metaKey) {
-			switch (String.fromCharCode(event.which).toLowerCase()) {
-			case 's':  //<-- Cambiar para otras letras ;)
-				event.preventDefault();
-				Guardar();
-				break;
-			}
+//Captura el evento de Ctrl+S para guardar el archivo
+$(window).bind('keydown', function(event) {
+	if (event.ctrlKey || event.metaKey) {
+		switch (String.fromCharCode(event.which).toLowerCase()) {
+		case 's':  //<-- Cambiar para otras letras ;)
+			event.preventDefault();
+			Guardar();
+			break;
 		}
-	});
+	}
+});
 
-// FUNCIONES DE INICIALIZACION ###############################################################
-	ExplorarPath();
-	RedimensionarEditor();
-	window.setTimeout(ActualizarBarraEstado, 1000);
+
 
 //Genera una nueva sesion del editor ACE
 function ClonarSesionEditor(session)
@@ -707,3 +700,8 @@ var parent = editor_actual.parentNode;
 var clone = editor_actual.cloneNode();
 var EditorClonado = ace.edit("editor_clonado");
 EditorClonado.setSession( ClonarSesionEditor(NuevaSessionEditor) );
+
+// FUNCIONES DE INICIALIZACION ###############################################################
+	ExplorarPath();
+	PCODER_RecalcularMaquetacion();
+	window.setTimeout(ActualizarBarraEstado, 1000);

@@ -117,3 +117,5 @@
 	$MULTILANG_PCODER_DividirNO='No split code editor';
 	$MULTILANG_PCODER_DividirHorizontal='Horizontal split';
 	$MULTILANG_PCODER_DividirVertical='Vertical split';
+	$MULTILANG_PCODER_ClicSeleccionar='Click to select';
+	$MULTILANG_PCODER_ExploradorColores='Color explorer Tool';

@@ -7,7 +7,12 @@
             |___/ 
 ```
 ## Versión 16.2 (2016-01-07)
-* Actualizacion ACE version 1.2.2
+* Added: Soporte a vistas clonadas del archivo horizontal y verticalmente 
+* Added: Utilidad para exploración de colores RGB
+* Enhan: Optimización y minimización de archivos JS y CSS
+* Enhan: Reescritura de funciones para cómputo de interfaz con mejora sustancial en rendimiento y apariencia
+* Enhan: Rediseño y maquetación de todos los marcos del aplicativo para hacerlos más claros
+* Enhan: Actualizacion ACE version 1.2.2
 
 ## Versión 16.1 (2016-01-07)
 * Added: Manejo de múltiples archivos en pestañas desde un solo editor!

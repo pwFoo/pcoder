@@ -55,7 +55,7 @@
 							<li class="dropdown">
 								<a style="cursor:pointer;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Archivo; ?> <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a id="boton_navegador_archivos" data-toggle="modal"  href="#NavegadorArchivos" OnClick="ActivarPanelIzquierdo();">   <i class="fa fa-folder-open fa-fw"></i> <?php echo $MULTILANG_PCODER_Abrir; ?></a>		</li>
+									<li><a id="boton_navegador_archivos" data-toggle="modal"  href="#NavegadorArchivos" OnClick="PCODER_ActivarPanelIzquierdo();">   <i class="fa fa-folder-open fa-fw"></i> <?php echo $MULTILANG_PCODER_Abrir; ?></a>		</li>
 									<li><a id="boton_guardar"            OnClick="Guardar();" href="#VentanaAlmacenamiento">					<i class="fa fa-floppy-o fa-fw"></i> <?php echo $MULTILANG_PCODER_Guardar; ?>			<span class="pull-right text-muted small"><i>Ctrl+S</i></span></a></li>
 									<li role="separator" class="divider"></li>
 									<li><a style="cursor:pointer;" id="boton_cerraractual"       OnClick="PCODER_CerrarArchivoActual();">								<i class="fa fa-times fa-fw"></i> <?php echo $MULTILANG_PCODER_Cerrar; ?>			</a></li>
@@ -100,12 +100,12 @@
 									<li><a style="cursor:pointer;" OnClick="AumentarTamanoFuente();"><i class="fa fa-plus-square fa-fw"></i> <?php echo $MULTILANG_PCODER_Acercar; ?></a></li>
 									<li><a style="cursor:pointer;" OnClick="DisminuirTamanoFuente();"><i class="fa fa-minus-square fa-fw"></i> <?php echo $MULTILANG_PCODER_Alejar; ?></a></li>
 									<li role="separator" class="divider"></li>
-									<li><a style="cursor:pointer;" OnClick="ActivarPanelIzquierdo();"><i class="fa fa-columns fa-fw"></i> <?php echo $MULTILANG_PCODER_PanelIzq; ?></a></li>
-									<li><a style="cursor:pointer;" OnClick="ActivarPanelDerecho();"><i class="fa fa-columns fa-fw"></i> <?php echo $MULTILANG_PCODER_PanelDer; ?></a></li>
+									<li><a style="cursor:pointer;" OnClick="PCODER_ActivarPanelIzquierdo();"><i class="fa fa-columns fa-fw"></i> <?php echo $MULTILANG_PCODER_PanelIzq; ?></a></li>
+									<li><a style="cursor:pointer;" OnClick="PCODER_ActivarPanelDerecho();"><i class="fa fa-columns fa-fw"></i> <?php echo $MULTILANG_PCODER_PanelDer; ?></a></li>
 									<li role="separator" class="divider"></li>
-									<li><a style="cursor:pointer;" OnClick="DividirPantalla_NO();"><i class="fa fa-stop fa-fw"></i> <?php echo $MULTILANG_PCODER_DividirNO; ?></a></li>
-									<li><a style="cursor:pointer;" OnClick="DividirPantalla_Horizontal();"><i class="fa fa-pause fa-rotate-90 fa-fw"></i> <?php echo $MULTILANG_PCODER_DividirHorizontal; ?></a></li>
-									<li><a style="cursor:pointer;" OnClick="DividirPantalla_Vertical();"><i class="fa fa-pause fa-fw"></i> <?php echo $MULTILANG_PCODER_DividirVertical; ?></a></li>
+									<li><a style="cursor:pointer;" OnClick="PCODER_DividirPantalla_NO();"><i class="fa fa-stop fa-fw"></i> <?php echo $MULTILANG_PCODER_DividirNO; ?></a></li>
+									<li><a style="cursor:pointer;" OnClick="PCODER_DividirPantalla_Horizontal();"><i class="fa fa-pause fa-rotate-90 fa-fw"></i> <?php echo $MULTILANG_PCODER_DividirHorizontal; ?></a></li>
+									<li><a style="cursor:pointer;" OnClick="PCODER_DividirPantalla_Vertical();"><i class="fa fa-pause fa-fw"></i> <?php echo $MULTILANG_PCODER_DividirVertical; ?></a></li>
 									<li role="separator" class="divider"></li>
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('fold');"><i class="fa fa-compress fa-fw"></i> <?php echo $MULTILANG_PCODER_EnrollarSeleccion; ?> <span class="pull-right text-muted small"><i>Alt+L</i></span></a></li>
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('unfoldall');"><i class="fa fa-expand fa-fw"></i> <?php echo $MULTILANG_PCODER_DesenrollarTodo; ?> <span class="pull-right text-muted small"><i>Alt+Shift+0</i></span></a></li>

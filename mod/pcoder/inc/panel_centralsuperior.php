@@ -32,7 +32,7 @@
 
 	<!-- ################## PESTANAS DE ARCHIVOS ################### -->
 	<div class="row">
-		<div id="contenedor_archivos" >
+		<div id="contenedor_archivos"  class="col-lg-12">
 			<nav class="nav-xs">
 				<ul id="lista_contenedor_archivos" name="lista_contenedor_archivos" class="nav nav-pills nav-xs">
 				</ul>
@@ -43,6 +43,12 @@
 	<!-- ############### MARCO MENSAJES SUPERIORES ################# -->
 	<div class="row">
 		<div id="contenedor_mensajes_superior" class="col-lg-12">
+		</div>
+	</div>
+
+	<!-- ############### MARCO BARRA DE EDICION ################# -->
+	<div class="row">
+		<div id="contenedor_barra_edicion" class="col-lg-12">
 		</div>
 	</div>
 

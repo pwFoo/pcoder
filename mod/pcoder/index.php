@@ -155,14 +155,19 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <link href="../../inc/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 	<!-- Estilos especificos PCoder -->
-    <link href="inc/lib_pcoder.css" rel="stylesheet" type="text/css">
+    <link href="css/pcoder.min.css" rel="stylesheet" type="text/css">
     
+    <!-- Estilos selector de color -->
+    <link rel="stylesheet" href="../../inc/jquery/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+
     <!-- jQuery -->
 	<script type="text/javascript" src="../../inc/jquery/jquery-2.1.0.min.js"></script>
 	<!-- Plugins adicionales JQuery -->
 	<script type="text/javascript" src="../../inc/jquery/plugins/jquery.fileTree-1.01/jquery.easing.js"></script>
 	<script type="text/javascript" src="../../inc/jquery/plugins/jquery.fileTree-1.01/jqueryFileTree.js"></script>
-    <link href="../../inc/jquery/plugins/jquery.fileTree-1.01/jqueryFileTree.css" rel="stylesheet" media="screen" type="text/css">
+    <link  type="text/css" href="../../inc/jquery/plugins/jquery.fileTree-1.01/jqueryFileTree.css" rel="stylesheet" media="screen">
+    
+	<script type="text/javascript" src="../../inc/jquery/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 
 </head>
 <body>
@@ -197,10 +202,10 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						<div id="pestanasuperior_editores" class="tab-pane fade in active">
 					-->
 						<div class="row" style="margin:0px;">
-							<div id="panel_editor_real" style="display:inline">
+							<div id="panel_editor_real" style="float:left">
 								<div id="editor_codigo" style="display:block;  width:100%; height:100vh;" width="100%" height="100vh"></div>
 							</div>
-							<div id="panel_editor_clonado" style="display:inline">
+							<div id="panel_editor_clonado" style="float:right">
 								<div id="editor_clonado" style="display:block;  width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
 							</div>
 						</div>
@@ -228,7 +233,11 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <!-- Carga editor ACE y sus extensiones -->
 	<script src="../../inc/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../inc/ace/src-min-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
-	
+
+
+
+
+
 	<!-- Funciones especificas de PCoder -->
 	<script language="JavaScript">
 		//Convierte variables de idioma desde PHP a JS
@@ -241,7 +250,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		var MULTILANG_PCODER_ErrorRW="<?php echo $MULTILANG_PCODER_ErrorRW; ?>";
 		var MULTILANG_PCODER_Estado="<?php echo $MULTILANG_PCODER_Estado; ?>";
 	</script>
-	<script type="text/javascript" src="inc/lib_pcoder.js"></script>
+	<script type="text/javascript" src="js/pcoder.min.js"></script>
 
 	<script language="JavaScript">
 		function RecargarToolTipsEnlaces()
