@@ -16,7 +16,7 @@ html, body {
 	.navbar-xs .navbar-brand{ padding: 0px 12px;font-size: 15px;line-height: 27px; }
 	.navbar-xs .navbar-nav > li > a { padding-top: 0px; padding-bottom: 0px; line-height: 27px; }
 	.navbar-xs .navbar-nav > li > ul > li { font-size: 13px; }
-	.navbar-xs .navbar-nav > li > ul { background: gray;  }
+	.navbar-xs .navbar-nav > li > ul { background: darkgray;  }
 
 
 /*Clase para las pestanas de archivos*/

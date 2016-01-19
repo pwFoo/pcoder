@@ -32,7 +32,7 @@
 
 	<!-- ################## PESTANAS DE ARCHIVOS ################### -->
 	<div class="row">
-		<div id="contenedor_archivos"  class="col-lg-12">
+		<div id="contenedor_archivos" class="col-lg-12" style="height:0px">
 			<nav class="nav-xs">
 				<ul id="lista_contenedor_archivos" name="lista_contenedor_archivos" class="nav nav-pills nav-xs">
 				</ul>

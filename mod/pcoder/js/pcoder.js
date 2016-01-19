@@ -508,6 +508,7 @@ function PCODER_BuscarArchivoAbierto(path_archivo)
 
 function ActualizarPestanasArchivos()
 	{
+		var HayArchivosAbiertos=0;
 		//Limpia el marco de pestanas
 		lista_contenedor_archivos.innerHTML = "";
 
@@ -528,11 +529,17 @@ function ActualizarPestanasArchivos()
 						lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li '+ComplementoClase+' ><a data-toggle="tooltip" data-html="true" data-placement="bottom" title="'+ComplementoTooltip+'" style="cursor:pointer;" OnClick="PCODER_CambiarArchivoActual('+i+',0);"><i class="fa fa-file-text-o fa-inactive"></i> '+ListaArchivos[i].NombreArchivo+'</a></li>';
 						//Boton para cerrar el archivo
 						lista_contenedor_archivos.innerHTML = lista_contenedor_archivos.innerHTML + '<li ><a data-toggle="tab" style="cursor:pointer; margin-right: 10px;" OnClick="PCODER_CerrarArchivo('+i+');"><i class="fa fa-times"></i></a></li>';								
+						HayArchivosAbiertos=1;
 					}
 
 				//Actualiza el Tooltip asociado a la pestana agregada
 				RecargarToolTipsEnlaces();
 			}
+		//Si encuentra archivos abiertos actualiza el tamaño de la barra con pestanas de archivos, sino la pone en cero
+		if(HayArchivosAbiertos==1)
+			$('#contenedor_archivos').height( "auto" ).css({ });
+		else
+			$('#contenedor_archivos').height( "0px" ).css({ });
 
 		//Se asegura de corregir tamano del editor cuando se carga un archivo
 		PCODER_RecalcularMaquetacion();
