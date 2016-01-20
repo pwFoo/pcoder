@@ -290,9 +290,29 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		});
 	</script>
 <script language="JavaScript">
-function activaTab(tab){
-   $('#'+tab).trigger('click');
-};
+	
+    function activaTab(tab){
+        $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+    };
+function ActivarPestanaConsola(){
+	//$('#pestana_consola_comandos').show();
+//$('.nav-tabs a[href="#pestana_consola_comandos"]').tab('show');
+//$('.nav-tabs a:last').tab('show') 
+//activaTab('pestana_consola_comandos');
+//$(thisss).tab('show');
+
+//$('#pestana_consola_comandos').trigger('click');
+//$("#item_pestana_consola").click();
+
+/*
+$('#pestana_consola_comandos').trigger('click');
+    $("#pestana_consola_comandos a").click(function(e){
+        e.preventDefault();
+        alert();
+        $(this).tab('show');
+    });
+*/
+}
 
 </script>
 </body>
