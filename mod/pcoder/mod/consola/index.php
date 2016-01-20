@@ -372,7 +372,7 @@
 						echo $_POST['textarea_salida'];
 					//Agrega siempre la linea de promtp y el comando para simular la terminal real
 					if (isset($_POST['command']))
-						echo "[".trim($login_usuario)."@".gethostname()."]$ ".$_POST['command']."\n";
+						echo "\n[".trim($login_usuario)."@".gethostname()."]$ ".$_POST['command']."\n";
 					//Presenta la salida de los comandos
 					echo(htmlentities($output));
 				?></textarea>
