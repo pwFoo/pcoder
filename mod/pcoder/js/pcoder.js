@@ -235,13 +235,15 @@ function PCODER_ActivarPanelDerecho()
 function PCODER_RecalcularPanelesEditores()
 	{
 		//Define el ALTO Y ANCHO DE LOS EDITORES segun la disposicion visual (splits) y el tamano del panel_central_medio
-		var AltoDisponible_Editores = $("#panel_central_medio").height();
+		var alto_panel_contenedor_archivos = $("#contenedor_archivos").height();
+		var alto_contenedor_mensajes_superior = $("#contenedor_mensajes_superior").height();
+		var AltoDisponible_Editores = $("#panel_central_medio").height() - alto_panel_contenedor_archivos - alto_contenedor_mensajes_superior;
 		var AnchoDisponible_Editores = $("#panel_central_medio").width();
 
 		//Establece tamanos especificos para los editores segun la disposicion visual (splits) y deja visible el editor clonado
 		if(ListaArchivos[IndiceArchivoActual].VistaSplit=="H")
 			{
-				AltoDisponible_Editores=Math.round(AltoDisponible_Editores/2)-2;
+				AltoDisponible_Editores=Math.round(AltoDisponible_Editores/2)-1;
 				$("#panel_editor_clonado").show();
 			}
 			
@@ -314,6 +316,18 @@ function PCODER_DividirPantalla_Vertical()
 			}
 	}
 
+function PCODER_RecalcularPanelesExtensiones()
+	{
+		var AltoVentana = $(window).height();
+		
+		//Define tamanos del iframe para la TERMINAL
+		var AltoPanelTerminal = AltoVentana - $("#panel_inferior").height() - $("#panel_central_superior").height();
+
+		var AltoPanelTerminal = AltoVentana - $("#panel_superior").height() - $("#panel_inferior").height() - $("#panel_central_superior").height();
+		$('#frame_terminal').css('height', AltoPanelTerminal+'px');
+		$('#frame_terminal').css('width', '100%');
+	}
+
 function PCODER_RecalcularMaquetacion()   //RedimensionarEditor();
 	{
 		PCODER_RecalcularPanelesLaterales();
@@ -336,6 +350,7 @@ function PCODER_RecalcularMaquetacion()   //RedimensionarEditor();
 		$('#panel_central_medio').height( PorcentajeFinal_PanelCentralMedio+"vh" ).css({ });
 		
 		PCODER_RecalcularPanelesEditores();
+		PCODER_RecalcularPanelesExtensiones();
 	}
 function IntercambiarPantallaCompleta()
 	{
@@ -384,6 +399,9 @@ function ExplorarPath()
 				//alert(file);
 				//PCODER_CargarArchivo('[link]');
 				PCODER_CargarArchivo(archivo_seleccionado);
+
+				//Simula clic sobre la pestana de archivos para pasar automaticamente a esta vista
+				$('#pestana_editor_archivos').trigger('click');
 			});
 
 		});
@@ -712,3 +730,4 @@ EditorClonado.setSession( ClonarSesionEditor(NuevaSessionEditor) );
 	ExplorarPath();
 	PCODER_RecalcularMaquetacion();
 	window.setTimeout(ActualizarBarraEstado, 1000);
+

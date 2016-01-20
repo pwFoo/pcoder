@@ -120,3 +120,5 @@
 	$MULTILANG_PCODER_DividirVertical='Dividir verticalmente';
 	$MULTILANG_PCODER_ClicSeleccionar='Clic para seleccionar';
 	$MULTILANG_PCODER_ExploradorColores='Explorador de colores';
+	$MULTILANG_PCODER_TerminalRemota='Terminal remota';
+	$MULTILANG_PCODER_EditorArchivos='Editor de archivos';

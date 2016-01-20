@@ -20,36 +20,18 @@
 	 along with this program.  If not, see <http://www.gnu.org/licenses/>
 	*/
 ?>
-<div id="panel_central_superior" >
+<div class="row">
+	<div class="col-md-12">
+		
+		<div id="panel_central_superior" >
 
-	<!-- ################ INICIO PESTANAS SUPERIORES ############### -->
-	<!--
-	<ul class="nav nav-tabs" role="tablist">
-		<li role="presentation" class="active"><a href="#pestanasuperior_editores" aria-controls="pestanasuperior_editores" role="tab" data-toggle="tab">Archivos activos</a></li>
-		<li role="presentation"><a href="#pestanasuperior_preferencias" aria-controls="pestanasuperior_preferencias" role="tab" data-toggle="tab">Preferencias</a></li>
-	</ul>
-	-->
-
-	<!-- ################## PESTANAS DE ARCHIVOS ################### -->
-	<div class="row">
-		<div id="contenedor_archivos" class="col-lg-12" style="height:0px">
-			<nav class="nav-xs">
-				<ul id="lista_contenedor_archivos" name="lista_contenedor_archivos" class="nav nav-pills nav-xs">
-				</ul>
-			</nav>
+			<!-- ################ INICIO PESTANAS SUPERIORES ############### -->
+			<ul class="nav nav-tabs btn-xs" role="tablist">
+				<li class="active"><a id="pestana_editor_archivos" href="#pestana_superior_editores" data-toggle="tab" OnClick=""><i class="fa fa-pencil-square-o fa-fw"></i> <?php echo $MULTILANG_PCODER_EditorArchivos; ?></a></li>
+				<li><a id="pestana_consola" data-toggle="tab" href="#pestana_consola_comandos"><i class="fa fa-desktop fa-fw"></i> <?php echo $MULTILANG_PCODER_TerminalRemota; ?></a></li>
+			</ul>
+			
 		</div>
+		
 	</div>
-
-	<!-- ############### MARCO MENSAJES SUPERIORES ################# -->
-	<div class="row">
-		<div id="contenedor_mensajes_superior" class="col-lg-12">
-		</div>
-	</div>
-
-	<!-- ############### MARCO BARRA DE EDICION ################# -->
-	<div class="row">
-		<div id="contenedor_barra_edicion" class="col-lg-12">
-		</div>
-	</div>
-
 </div>

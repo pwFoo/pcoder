@@ -119,3 +119,5 @@
 	$MULTILANG_PCODER_DividirVertical='Vertical split';
 	$MULTILANG_PCODER_ClicSeleccionar='Click to select';
 	$MULTILANG_PCODER_ExploradorColores='Color explorer Tool';
+	$MULTILANG_PCODER_TerminalRemota='Remote terminal';
+	$MULTILANG_PCODER_EditorArchivos='File editor';

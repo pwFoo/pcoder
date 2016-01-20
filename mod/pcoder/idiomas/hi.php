@@ -119,3 +119,5 @@
 	$MULTILANG_PCODER_DividirVertical='कार्यक्षेत्र विभाजन';
 	$MULTILANG_PCODER_ClicSeleccionar='चुनने के लिए क्लिक करें';
 	$MULTILANG_PCODER_ExploradorColores='रंग एक्सप्लोरर';
+	$MULTILANG_PCODER_TerminalRemota='दूरस्थ टर्मिनल';
+	$MULTILANG_PCODER_EditorArchivos='फ़ाइल संपादक';

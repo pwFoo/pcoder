@@ -53,6 +53,9 @@
 				}
 		}
 
+	//Crea variable se sesion usada por la consola de comandos
+	$_SESSION['PCONSOLE_KEY']="23456789abcdefghijkmnpqrstuvwxyz";
+
     //Incluye librerias basicas de trabajo
     @require('inc/variables.php');
     @require('inc/comunes.php');
@@ -73,7 +76,7 @@
 		}
 
     // Establece la zona horaria por defecto para la aplicacion
-    date_default_timezone_set("America/Bogota");
+    date_default_timezone_set($ZonaHoraria);
 
     // Datos de fecha, hora y direccion IP para algunas operaciones
     $PCO_PCODER_FechaOperacion=date("Ymd");
@@ -167,8 +170,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 	<script type="text/javascript" src="../../inc/jquery/plugins/jquery.fileTree-1.01/jqueryFileTree.js"></script>
     <link  type="text/css" href="../../inc/jquery/plugins/jquery.fileTree-1.01/jqueryFileTree.css" rel="stylesheet" media="screen">
     
+    <!-- Selector de colores -->
 	<script type="text/javascript" src="../../inc/jquery/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-
 </head>
 <body>
 
@@ -196,26 +199,47 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 				<?php include_once ("inc/panel_centralsuperior.php");	?>
 
 				<div id="panel_central_medio">
-					<!--
-					TODO: Implementacion de pestanas superiores para editores, preferencias, etc.
+
 					<div class="tab-content">
-						<div id="pestanasuperior_editores" class="tab-pane fade in active">
-					-->
-						<div class="row" style="margin:0px;">
-							<div id="panel_editor_real" style="float:left">
-								<div id="editor_codigo" style="display:block;  width:100%; height:100vh;" width="100%" height="100vh"></div>
-							</div>
-							<div id="panel_editor_clonado" style="float:right">
-								<div id="editor_clonado" style="display:block;  width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
-							</div>
+						<div id="pestana_superior_editores" class="tab-pane fade in active">
+								<!-- ################## PESTANAS DE ARCHIVOS ################### -->
+								<div class="row">
+									<div id="contenedor_archivos" class="col-md-12" style="height:0px">
+										<nav class="nav-xs">
+											<ul id="lista_contenedor_archivos" name="lista_contenedor_archivos" class="nav nav-pills nav-xs">
+											</ul>
+										</nav>
+									</div>
+								</div>
+
+								<!-- ############### MARCO MENSAJES SUPERIORES ################# -->
+								<div class="row">
+									<div id="contenedor_mensajes_superior" class="col-md-12">
+									</div>
+								</div>
+
+								<!-- ############### MARCO BARRA DE EDICION ################# -->
+								<div class="row">
+									<div id="contenedor_barra_edicion" class="col-md-12">
+									</div>
+								</div>
+
+								<!-- ############### EDITORES ################# -->
+								<div class="row" style="margin:0px;">
+									<div id="panel_editor_real" style="float:left">
+										<div id="editor_codigo" style="display:block;  width:100%; height:100vh;" width="100%" height="100vh"></div>
+									</div>
+									<div id="panel_editor_clonado" style="float:right">
+										<div id="editor_clonado" style="display:block;  width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
+									</div>
+								</div>
 						</div>
-					<!--
-					TODO: Implementacion de pestanas superiores para editores, preferencias, etc.
-						</div>
-						<div id="pestanasuperior_preferencias" class="tab-pane fade in">
+
+						<div id="pestana_consola_comandos" class="tab-pane fade">
+							<iframe name="frame_terminal" id="frame_terminal" src="mod/consola" style="border:0px;"></iframe>
 						</div>
 					</div>
-					-->
+
 				</div>
 
 				<?php include_once ("inc/panel_centralinferior.php");	?>
@@ -233,10 +257,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <!-- Carga editor ACE y sus extensiones -->
 	<script src="../../inc/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../inc/ace/src-min-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
-
-
-
-
 
 	<!-- Funciones especificas de PCoder -->
 	<script language="JavaScript">
@@ -267,22 +287,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		//Carga los popovers programados en la hoja.  Por defecto todos los elementos con data-toggle=popover
 		$(function () {
 		  $('[data-toggle="popover"]').popover()
-		})
+		});
 	</script>
+<script language="JavaScript">
+function activaTab(tab){
+   $('#'+tab).trigger('click');
+};
 
-    <?php
-        // Estadisticas de uso anonimo con GABeacon
-        $PrefijoGA='<img src="https://ga-beacon.appspot.com/';
-        $PosfijoGA='/PCoder/'.$PCO_Accion.'?pixel" border=0 ALT=""/>';
-        // Este valor indica un ID generico de GA UA-847800-9 No edite esta linea sobre el codigo
-        // Para validar que su ID es diferente al generico de seguimiento.  En lugar de esto cambie
-        // su valor a traves del panel de configuracion con el entregado como ID de GoogleAnalytics
-        $Infijo=base64_decode("VUEtODQ3ODAwLTk=");
-        echo $PrefijoGA.$Infijo.$PosfijoGA;
-        if(@$CodigoGoogleAnalytics!="")
-            echo $PrefijoGA.$CodigoGoogleAnalytics.$PosfijoGA;	
-    ?>
-
+</script>
 </body>
 </html>
 <?php
