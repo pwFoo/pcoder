@@ -321,8 +321,6 @@ function PCODER_RecalcularPanelesExtensiones()
 		var AltoVentana = $(window).height();
 		
 		//Define tamanos del iframe para la TERMINAL
-		var AltoPanelTerminal = AltoVentana - $("#panel_inferior").height() - $("#panel_central_superior").height();
-
 		var AltoPanelTerminal = AltoVentana - $("#panel_superior").height() - $("#panel_inferior").height() - $("#panel_central_superior").height();
 		$('#frame_terminal').css('height', AltoPanelTerminal+'px');
 		$('#frame_terminal').css('width', '100%');
