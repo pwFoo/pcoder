@@ -6,7 +6,7 @@
 |_____\___/ \__, |  \__,_|\___|  \___\__,_|_| |_| |_|_.__/|_|\___/|___/
             |___/ 
 ```
-## Versión 16.2 (2016-01-07)
+## Versión 16.2 (2016-02-01)
 * Added: Soporte a vistas clonadas del archivo horizontal y verticalmente 
 * Added: Consola de comandos remota
 * Added: Barra superior para agregar áreas de trabajo, editores y módulos adicionales
