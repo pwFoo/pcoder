@@ -25,7 +25,6 @@
 	//Incluye algunos marcos del aplicativo
 	include_once ("inc/marco_preferencias.php");
 	include_once ("inc/marco_acerca.php");
-	include_once ("inc/marco_guardar.php");
 	include_once ("inc/marco_teclado.php");
 ?>
 

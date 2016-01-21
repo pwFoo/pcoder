@@ -75,6 +75,7 @@
 	$MULTILANG_PCODER_Si='हाँ';
 	$MULTILANG_PCODER_Tamano='आकार';
 	$MULTILANG_PCODER_Tipo='टाइप';
+	$MULTILANG_PCODER_Trabajando='कार्य';
 	$MULTILANG_PCODER_Ver='राय';
 
 	//Mensajes de error y varios
@@ -121,3 +122,5 @@
 	$MULTILANG_PCODER_ExploradorColores='रंग एक्सप्लोरर';
 	$MULTILANG_PCODER_TerminalRemota='दूरस्थ टर्मिनल';
 	$MULTILANG_PCODER_EditorArchivos='फ़ाइल संपादक';
+	$MULTILANG_PCODER_NavegadorEmbebido='एंबेडेड वेब ब्राउज़र';
+	

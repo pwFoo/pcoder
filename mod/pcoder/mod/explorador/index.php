@@ -55,16 +55,10 @@
 		}
 	else
 		{
+			header('Location: blank.html');
+			exit;
 		}
 
-
-
-/* ################################################################## */
-/* ################################################################## */
-/*
-	Function: PCONSOLE_Cargar
-	Abre la consola y la carga con cualquier posible resultado de comando ejecutado
-*/
 ?>
  <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
@@ -74,8 +68,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	<meta name="generator" content="PConsole" />
- 	<meta name="description" content="Consola del lado del servidor" />
+	<meta name="generator" content="PExplorer" />
+ 	<meta name="description" content="Explorador web embebido" />
     <meta name="author" content="John Arroyave G. - {www.practico.org} - {unix4you2 at gmail.com}">
 
     <!-- Custom Fonts -->
@@ -98,30 +92,21 @@
 				margin: 0px;
 			}
 
-		/*Estilos para cursor y linea de comandos*/
-			#command_line
-				{
-					overflow: hidden;
-				}
-			#command_line span	/*Caja de texto con el comando*/
-				{
-					margin-right:2px;
-					float: left; 
-					white-space: pre;
-				}
-			#cursor
-				{
-					float: left;
-					width: 7px;
-					height: 14px;
-					background: #FFFFFF;
-				}
-			input
-				{
-					width: 0;
-					height: 0;
-					opacity: 0; 
-				}
+		input
+			{
+				font-family: monospace;
+				background: #D6D6D6;
+				color: #000000;
+				margin: 0px;
+				border:0px;
+				height: 20px;
+			}
+
+		i:hover
+			{
+				cursor:pointer;
+				color:#6F7FA0;
+			}
 
 		/*Personalizacion de barras de desplazamiento*/
 			/*Barra de desplazamiento como tal*/
@@ -169,44 +154,41 @@
 
 </head>
 <body>
-
 	<!-- ################# INICIO DE LA MAQUETACION ################ -->
-
-		<form action="" method="POST">
-			<div id="terminal_output">
-				<textarea id="textarea_salida" name="textarea_salida" wrap="off" readonly><?php
-					//Si encuentra salidas de comandos previos las agrega
-					if (isset($_POST['textarea_salida']))
-						echo $_POST['textarea_salida'];
-					//Agrega siempre la linea de promtp y el comando para simular la terminal real
-					if (isset($_POST['command']))
-						echo "[".trim($login_usuario)."@".gethostname()."]$ ".$_POST['command']."\n";
-					//Presenta la salida de los comandos
-					echo(htmlentities($output));
-				?></textarea>
-			</div>
-						
-			<div id="command_line">
-				
-				<table border=0 width="100%" cellpadding="3" bgcolor="0f2836"><tr>
-					<td nowrap valign="top" style="color:#6c98c6;">[<font color="#74c237"><?php echo trim($login_usuario); ?></font>@<?php echo gethostname(); ?>]$</td>
-					<td width="100%"  valign="top">
-
-							<span></span>
-							<div id="cursor"></div>
-							<input type="text" id="command" name="command" style="position:inline; width:0px; height:0px;" autocomplete="off">			
-
+		<form name="form_barra_navegacion" OnSubmit="PEXPLORER_Navegar(); return false;">
+			<div id="barra_navegacion">
+				<table border=0 width="100%" cellpadding="3"><tr>
+					<td nowrap valign="middle">
+						<i class="fa fa-home fa-fw fa-2x" OnClick="CargarIframeURL('frame_navegador', 'blank.html'); document.form_barra_navegacion.url.value='';"></i>
+					</td>
+					<!--
+					<td nowrap valign="middle">
+						<i class="fa fa-chevron-circle-left fa-fw fa-2x" OnClick="frame_navegador.history.back();"></i>
+					</td>
+					<td nowrap valign="middle">
+						<i class="fa fa-chevron-circle-right fa-fw fa-2x" OnClick="frame_navegador.contentWindow.history.go(1);"></i>
+					</td>
+					-->
+					<td nowrap valign="middle">
+						<i class="fa fa-globe fa-fw fa-2x"></i>
+					</td>
+					<td width="100%"  valign="middle">
+						<input type="text" id="url" name="url" style="position:inline; width:100%;" value="http://" placeholder="http://">			
+					</td>
+					<td nowrap valign="middle">
+						<i class="fa fa-arrow-circle-right fa-fw fa-2x" OnClick="PEXPLORER_Navegar();"></i>
+					</td>
+					<td nowrap valign="middle">
+						<i class="fa fa-refresh fa-fw fa-2x" OnClick="PEXPLORER_Navegar();"></i>
 					</td>
 				</tr></table>
-
 			</div>
 		</form>
 		
 		<!--Marco de navegacion-->
-		<div id="marcos_navegacion">
-			<iframe name="frame_navegador" id="frame_navegador" src="http://www.google.com" style="border:0px;"></iframe>
+		<div id="marco_navegacion">
+			<iframe name="frame_navegador" id="frame_navegador" width="100%" height="100%"  scrolling="yes" src="blank.html" style="border:0px; width:100%; height:100%;"></iframe>
 		</div>
-
 
 	<!-- ################## FIN DE LA MAQUETACION ################## -->
 
@@ -218,64 +200,45 @@
 				var AltoVentana = $(window).height();
 
 				//Obtiene el alto de los diferentes marcos que componen el aplicativo
-				var alto_command_line = $("#command_line").height();
+				var alto_barra_navegacion = $("#barra_navegacion").height();
 
 				//Modifica el ALTO DEL PANEL CENTRAL MEDIO
-				var TamanoConsola = AltoVentana - ( alto_command_line );
-				$('#terminal_output').height( TamanoConsola+"px" ).css({ });
-				$('#textarea_salida').height( TamanoConsola+"px" ).css({ });
+				var TamanoNavegador = AltoVentana - ( alto_barra_navegacion );
+				$('#marco_navegacion').height( TamanoNavegador+"px" ).css({ });
+				$('#frame_navegador').height( TamanoNavegador+"px" ).css({ });
 			}
-			
+
+		function CargarIframeURL(iframeName, url)
+			{
+				//url=url+'&output=embed';
+				if(isAvailable(url, callback, timeout))
+					{
+						var $iframe = $('#' + iframeName);
+						if ( $iframe.length )
+							{
+								$iframe.attr('src',url);   
+								return false;
+							}
+						return true;
+					}
+			}
+
+		function PEXPLORER_Navegar()
+			{
+				//Verifica si se tiene http en la URL, sino lo agrega
+				//[DEPRECATED]
+
+				//Cambia la URL a que apunta el IFrame
+				CargarIframeURL('frame_navegador', document.form_barra_navegacion.url.value);
+			}
+
 		//Ajusta tamano de la consola en cada cambio de tamano de la ventana
 		$( window ).resize(function() {
-			PCONSOLE_RecalcularMaquetacion();
+			PEXPLORER_RecalcularMaquetacion();
 		});
 
 		//Inicializacion
-		PCONSOLE_RecalcularMaquetacion();
-		
-		//Inicia el parpadeo del cursor
-		$(function() {
-			var cursor;
-
-			$('#command_line').click(function() {
-			   $('#command').focus();
-			  
-			  cursor = window.setInterval(function() {
-			  if ($('#cursor').css('visibility') === 'visible') {
-				$('#cursor').css({ visibility: 'hidden' });
-			  } else {
-				$('#cursor').css({ visibility: 'visible' });  
-			  }  
-			  }, 500);
-			  
-			});
-
-			$('input').keyup(function() {
-			  $('#command_line span').text($(this).val());
-			  
-			});
-			  
-			  $('input').blur(function() {
-				 clearInterval(cursor);
-				 $('#cursor').css({ visibility: 'visible' });    
-			  });
-			});
-		
-		//Cuando encuentra que hay un comando entonces retorna el foco a la linea de comandos
-		<?php
-			if (isset($_POST['command']))
-				echo "$('#command').trigger('click'); $('#command').focus(); ";
-		?>
-		
-		//Si se hace clic sobre la consola de salida igual se pasa el foco a la linea de comandos
-		$('#textarea_salida').click(function() {
-		   $('#command').trigger('click');
-		});
-		
-		//Desplaza automaticamente el textarea de salida hasta el final
-		var textarea_scroll = document.getElementById('textarea_salida');
-		textarea_scroll.scrollTop = textarea_scroll.scrollHeight;
+		PEXPLORER_RecalcularMaquetacion();
 	</script>
 
 </body>

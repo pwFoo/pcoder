@@ -1,3 +1,76 @@
+// INICIO FUNCIONES RETOMADAS DE PRACTICO FRAMEWORK #################################################################
+//###################################################################################################################
+function PCO_ObtenerContenidoAjax(PCO_ASINCRONICO,PCO_URL,PCO_PARAMETROS)
+	{
+		var xmlhttp;
+		if (window.XMLHttpRequest)
+			{   // codigo for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			}
+		else
+			{   // codigo for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+
+		//funcion que se llama cada vez que cambia la propiedad readyState
+		xmlhttp.onreadystatechange=function()
+			{
+				//readyState 4: peticion finalizada y respuesta lista
+				//status 200: OK
+				if (xmlhttp.readyState===4 && xmlhttp.status===200)
+					{
+						contenido_recibido=xmlhttp.responseText;
+						contenido_recibido = contenido_recibido.trim();
+						//Cuando es asincronico devuelve la respuesta cuando este lista
+						if(PCO_ASINCRONICO==1)
+							return contenido_recibido;
+					}
+			};
+
+		/* open(metodo, url, asincronico)
+		* metodo: post o get
+		* url: localizacion del archivo en el servidor
+		* asincronico: comunicacion asincronica true o false.*/
+		if(PCO_ASINCRONICO==1)
+			xmlhttp.open("POST",PCO_URL,true);
+		else
+			xmlhttp.open("POST",PCO_URL,false);
+
+		//establece el header para la respuesta
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+		//enviamos las variables al archivo get_combo2.php
+		//xmlhttp.send();
+		xmlhttp.send(PCO_PARAMETROS);
+		
+		//Cuando la solicitud es asincronica devuelve el resultado al momento de llamado
+		if(PCO_ASINCRONICO==0)
+			return contenido_recibido;
+	}
+function PCO_MostrarMensajeCargandoSimple(MiliSegundos)
+	{
+		// Se muestra el cuadro modal
+		$('#PCO_Modal_MensajeCargandoSimple').modal('show');
+
+		//Hacer que la ventana este siempre por encima
+		$("#PCO_Modal_MensajeCargandoSimple").css("z-index", "1500");
+		
+		//Si recibe un valor de segundos diferente de cero entonces programa el cierre automatico
+		if (MiliSegundos!=0)
+			setTimeout(function(){PCOJS_OcultarMensajeCargandoSimple()},MiliSegundos);
+	}
+
+function PCO_OcultarMensajeCargandoSimple()
+	{
+		// Se oculta el cuadro modal
+		$('#PCO_Modal_MensajeCargandoSimple').modal('hide');
+		$('#PCO_Modal_MensajeCargandoSimple').hide();
+	}	
+// FIN FUNCIONES RETOMADAS DE PRACTICO FRAMEWORK ####################################################################
+//###################################################################################################################
+
+
+
 
 function CambiarFuenteEditor(tamano)
 	{
@@ -88,26 +161,19 @@ function SaltarALinea()
 				document.getElementById("linea_salto").value="";			
 			}
 	}
-function AvisoAlmacenamiento()
+function QuitarAvisoAlmacenamiento()
 	{
-		//$('#VentanaAlmacenamiento').modal('show');
-		//Oculta mensaje de guardando y presenta el mensaje de guardar finalizado
-		$('#progreso_marco_guardar').hide();
-		$('#finalizado_marco_guardar').show();
-		$('#boton_marco_guardar').show();
+		//Deja el mensaje de almacenamiento al menos un segundo (para archivos pequenos almacenados rapido), luego lo oculta
+		setTimeout("PCO_OcultarMensajeCargandoSimple();", 500);
 	}
+
 function Guardar()
 	{
 		//Solamente guarda si no se trata del archivo demo
 		if (document.form_archivo_editado.PCODER_archivo.value != "demos/demo.txt")
 			{
-				//Oculta mensaje de guardar finalizado y presenta el de guardando
-				$('#progreso_marco_guardar').show();
-				$('#finalizado_marco_guardar').hide();
-				$('#boton_marco_guardar').hide();
-				//Presenta la ventana informativa sobre el proceso de almacenamiento
-				$('#VentanaAlmacenamiento').modal('show');
 				//Metodo estandar, envia todo sobre el iframe para evitar recargar la pagina
+				PCO_MostrarMensajeCargandoSimple();
 				document.form_archivo_editado.submit();
 			}
 	}
@@ -123,60 +189,8 @@ function PCO_AgregarElementoDiv(marco,elemento)
 		zona.innerHTML = elemento;
 		capa.appendChild(zona);
 	}
-
-
-
 //###################################################################################################################
 //###################################################################################################################
-//###################################################################################################################
-//###################################################################################################################
-function PCODER_ObtenerContenidoAjax(PCO_ASINCRONICO,PCO_URL,PCO_PARAMETROS)
-	{
-		var xmlhttp;
-		if (window.XMLHttpRequest)
-			{   // codigo for IE7+, Firefox, Chrome, Opera, Safari
-				xmlhttp=new XMLHttpRequest();
-			}
-		else
-			{   // codigo for IE6, IE5
-				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			}
-
-		//funcion que se llama cada vez que cambia la propiedad readyState
-		xmlhttp.onreadystatechange=function()
-			{
-				//readyState 4: peticion finalizada y respuesta lista
-				//status 200: OK
-				if (xmlhttp.readyState===4 && xmlhttp.status===200)
-					{
-						contenido_recibido=xmlhttp.responseText;
-						contenido_recibido = contenido_recibido.trim();
-						//Cuando es asincronico devuelve la respuesta cuando este lista
-						if(PCO_ASINCRONICO==1)
-							return contenido_recibido;
-					}
-			};
-
-		/* open(metodo, url, asincronico)
-		* metodo: post o get
-		* url: localizacion del archivo en el servidor
-		* asincronico: comunicacion asincronica true o false.*/
-		if(PCO_ASINCRONICO==1)
-			xmlhttp.open("POST",PCO_URL,true);
-		else
-			xmlhttp.open("POST",PCO_URL,false);
-
-		//establece el header para la respuesta
-		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-
-		//enviamos las variables al archivo get_combo2.php
-		//xmlhttp.send();
-		xmlhttp.send(PCO_PARAMETROS);
-		
-		//Cuando la solicitud es asincronica devuelve el resultado al momento de llamado
-		if(PCO_ASINCRONICO==0)
-			return contenido_recibido;
-	}
 function PCODER_DesactivarPanelIzquierdo()
 	{
 		AnchoPanelIzquierdo=0;
@@ -321,9 +335,13 @@ function PCODER_RecalcularPanelesExtensiones()
 		var AltoVentana = $(window).height();
 		
 		//Define tamanos del iframe para la TERMINAL
-		var AltoPanelTerminal = AltoVentana - $("#panel_superior").height() - $("#panel_inferior").height() - $("#panel_central_superior").height();
-		$('#frame_terminal').css('height', AltoPanelTerminal+'px');
+		var AltoPanelIFrames = AltoVentana - $("#panel_superior").height() - $("#panel_inferior").height() - $("#panel_central_superior").height();
+		$('#frame_terminal').css('height', AltoPanelIFrames+'px');
 		$('#frame_terminal').css('width', '100%');
+
+		//Define tamanos del iframe para EXPLORADOR WEB
+		$('#frame_explorador').css('height', AltoPanelIFrames+'px');
+		$('#frame_explorador').css('width', '100%');
 	}
 
 function PCODER_RecalcularMaquetacion()   //RedimensionarEditor();
@@ -463,7 +481,7 @@ function PCODER_CambiarArchivoActual(IndiceRecibido,VieneDesdeApertura)
 		IndiceArchivoActual=IndiceRecibido;
 		
 		//Verifica permisos de escritura en cada cargue de archivo para saber si presenta o no mensaje de advertencia
-		ValorPermisosRW=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_VerificarPermisosRW&PCODER_archivo="+ListaArchivos[IndiceRecibido].RutaDocumento);
+		ValorPermisosRW=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_VerificarPermisosRW&PCODER_archivo="+ListaArchivos[IndiceRecibido].RutaDocumento);
 		if(ValorPermisosRW==0 && ListaArchivos[IndiceRecibido].RutaDocumento!='demos/demo.txt')
 			contenedor_mensajes_superior.innerHTML = '<div class="alert alert-warning btn-xs" role="alert" style="margin: 0px; padding: 5px;" ><i class="fa fa-warning"></i> '+'<b>' + MULTILANG_PCODER_ErrorRW + '</b>. ' + MULTILANG_PCODER_Estado + '=' + ListaArchivos[IndiceRecibido].PermisosArchivo+'</div>';
 		else
@@ -577,15 +595,15 @@ function PCODER_CargarArchivo(path_archivo)
 		if (BusquedaArchivoAbierto==-1)
 			{
 				//Busca algunos datos del archivo
-				ValorTipoElemento=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTipoElemento&PCODER_archivo="+path_archivo);
-				ValorTamanoDocumento=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTamanoDocumento&PCODER_archivo="+path_archivo);
-				ValorFechaModificadoDocumento=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerFechaElemento&PCODER_archivo="+path_archivo);
-				ValorTokenEdicion=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTokenEdicion&PCODER_archivo="+path_archivo);
-				ValorModoEditor=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerModoEditor&PCODER_archivo="+path_archivo);
-				ValorNombreArchivo=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerNombreArchivo&PCODER_archivo="+path_archivo);
-				ValorContenidoArchivo=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerContenidoArchivo&PCODER_archivo="+path_archivo);
-				ValorPermisosRW=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_VerificarPermisosRW&PCODER_archivo="+path_archivo);
-				ValorPermisosArchivo=PCODER_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerPermisosArchivo&PCODER_archivo="+path_archivo);
+				ValorTipoElemento=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTipoElemento&PCODER_archivo="+path_archivo);
+				ValorTamanoDocumento=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTamanoDocumento&PCODER_archivo="+path_archivo);
+				ValorFechaModificadoDocumento=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerFechaElemento&PCODER_archivo="+path_archivo);
+				ValorTokenEdicion=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTokenEdicion&PCODER_archivo="+path_archivo);
+				ValorModoEditor=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerModoEditor&PCODER_archivo="+path_archivo);
+				ValorNombreArchivo=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerNombreArchivo&PCODER_archivo="+path_archivo);
+				ValorContenidoArchivo=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerContenidoArchivo&PCODER_archivo="+path_archivo);
+				ValorPermisosRW=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_VerificarPermisosRW&PCODER_archivo="+path_archivo);
+				ValorPermisosArchivo=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerPermisosArchivo&PCODER_archivo="+path_archivo);
 				ValorVistaSplit=""; //Valor inicial de la vista dividida (sin dividir)
 
 				//Agrega nuevo elemento al arreglo

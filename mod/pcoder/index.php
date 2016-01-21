@@ -188,7 +188,23 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 	<form id="form_textareas_archivos" name="form_textareas_archivos" method="POST" style="visibility: hidden; display:none; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">					
 	</form>
 	<!-- Marco para recepcion de eventos generados por el boton de guardar -->
-	<iframe OnLoad="if (frame_almacenamiento.location.href != 'about:blank') AvisoAlmacenamiento();" height="0" width="0" name="frame_almacenamiento" id="frame_almacenamiento" src="about:blank" style="visibility:hidden; display:none"></iframe>
+	<iframe OnLoad="if (frame_almacenamiento.location.href != 'about:blank') QuitarAvisoAlmacenamiento();" height="0" width="0" name="frame_almacenamiento" id="frame_almacenamiento" src="about:blank" style="visibility:hidden; display:none"></iframe>
+
+	<!-- Modal para mensajes de carga -->
+	<div id="PCO_Modal_MensajeCargandoSimple" class="modal fade" tabindex="-1" role="dialog" data-backdrop="false"> <!--  data-backdrop="false" role="dialog" --> 
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-body" align="center">
+					<div class="progress" id="PCO_Modal_MensajeCargandoBarra">
+						<div id="PCO_Modal_MensajeCargandoPorcentaje" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+					</div>
+					<i class="fa fa-circle-o-notch fa-fw fa-spin fa-1x"></i> <?php echo $MULTILANG_PCODER_Trabajando; ?>...
+					
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
 
 
 	<!-- ################# INICIO DE LA MAQUETACION ################ -->
@@ -238,6 +254,10 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 
 						<div id="pestana_consola_comandos" class="tab-pane fade">
 							<iframe name="frame_terminal" id="frame_terminal" src="mod/consola" style="border:0px;"></iframe>
+						</div>
+
+						<div id="pestana_explorador_web" class="tab-pane fade">
+							<iframe name="frame_explorador" id="frame_explorador" src="mod/explorador" style="border:0px;"></iframe>
 						</div>
 					</div>
 

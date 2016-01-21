@@ -273,6 +273,7 @@
 			{
 				overflow-x:hidden;
 				overflow-y:hidden;
+				padding-top: 2px;
 				padding-left: 10px;
 				padding-right: 10px;
 			}

@@ -11,7 +11,9 @@
 * Added: Consola de comandos remota
 * Added: Barra superior para agregar áreas de trabajo, editores y módulos adicionales
 * Added: Utilidad para exploración de colores RGB
+* Added: Utilidad de navegador embebido para facilitar revisión de sitios web desde el editor
 * Enhan: Optimización y minimización de archivos JS y CSS
+* Enhan: Mensaje de almacenamiento fugaz, ya no requiere ser cerrado por el usuario
 * Enhan: Reescritura de funciones para cómputo de interfaz con mejora sustancial en rendimiento y apariencia
 * Enhan: Rediseño y maquetación de todos los marcos del aplicativo para hacerlos más claros
 * Fixed: Mejoras en maquetación y cálculo dinámico de marcos

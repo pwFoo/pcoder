@@ -75,6 +75,7 @@
 	$MULTILANG_PCODER_Si='Yes';
 	$MULTILANG_PCODER_Tamano='Size';
 	$MULTILANG_PCODER_Tipo='Type';
+	$MULTILANG_PCODER_Trabajando='Working';
 	$MULTILANG_PCODER_Ver='View';
 
 	//Mensajes de error y varios
@@ -121,3 +122,4 @@
 	$MULTILANG_PCODER_ExploradorColores='Color explorer Tool';
 	$MULTILANG_PCODER_TerminalRemota='Remote terminal';
 	$MULTILANG_PCODER_EditorArchivos='File editor';
+	$MULTILANG_PCODER_NavegadorEmbebido='Embedded web browser';
