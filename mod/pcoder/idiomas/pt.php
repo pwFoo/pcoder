@@ -123,4 +123,5 @@
 	$MULTILANG_PCODER_TerminalRemota='Terminal remoto';
 	$MULTILANG_PCODER_EditorArchivos='Editor de arquivo';
 	$MULTILANG_PCODER_NavegadorEmbebido='Navegador web embutido';
-	
+	$MULTILANG_PCODER_AdvertenciaCierre='Você está tentando desligar todo o editor {PI} Código. Arquivos editados que você armazenou ainda a não perder. Sua confirmação é necessária para continuar.';
+

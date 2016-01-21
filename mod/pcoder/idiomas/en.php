@@ -123,3 +123,4 @@
 	$MULTILANG_PCODER_TerminalRemota='Remote terminal';
 	$MULTILANG_PCODER_EditorArchivos='File editor';
 	$MULTILANG_PCODER_NavegadorEmbebido='Embedded web browser';
+	$MULTILANG_PCODER_AdvertenciaCierre='You are trying to shut down the entire {P} Coder editor. Edited files youve stored still not to be missed. Your confirmation is required to continue.';

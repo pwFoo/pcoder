@@ -124,3 +124,4 @@
 	$MULTILANG_PCODER_TerminalRemota='Terminal remota';
 	$MULTILANG_PCODER_EditorArchivos='Editor de archivos';
 	$MULTILANG_PCODER_NavegadorEmbebido='Navegador web embebido';
+	$MULTILANG_PCODER_AdvertenciaCierre='Esta intentando cerrar todo el editor {P}Coder.  La edicion de archivos que haya realizado y no haya almacenado todavia se puede perder.  Se requiere su confirmacion para continuar.';

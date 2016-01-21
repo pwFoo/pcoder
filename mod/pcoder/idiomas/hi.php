@@ -123,4 +123,5 @@
 	$MULTILANG_PCODER_TerminalRemota='दूरस्थ टर्मिनल';
 	$MULTILANG_PCODER_EditorArchivos='फ़ाइल संपादक';
 	$MULTILANG_PCODER_NavegadorEmbebido='एंबेडेड वेब ब्राउज़र';
-	
+	$MULTILANG_PCODER_AdvertenciaCierre='आप पूरे {पीआई} कोड संपादक को बंद करने के प्रयास कर रहे हैं। आप संग्रहित किया है एडिट फ़ाइलों को अभी भी याद नहीं होगा। आपका पुष्टि जारी रखने के लिए आवश्यक है।';
+

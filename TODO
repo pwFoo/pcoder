@@ -1,6 +1,5 @@
 
 * Advertencia al cerrar arcivo con cambios
-* Evitar CTRL+W
 * Creacion de archivos y carpetas en linea (modulo admin archivos)
 * Administracion de usuarios
 * Administracion de proyectos

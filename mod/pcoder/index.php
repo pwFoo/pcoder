@@ -174,7 +174,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <!-- Selector de colores -->
 	<script type="text/javascript" src="../../inc/jquery/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 </head>
-<body>
+<body onbeforeunload="return '<?php echo $MULTILANG_PCODER_AdvertenciaCierre; ?>';">
 
 	<!-- ######### FORMULARIOS Y MARCOS DE TRABAJO OCULTOS ######### -->
 	<form name="form_archivo_editado" action="index.php" method="POST" target="frame_almacenamiento" style="visibility: hidden; display:inline; height: 0px; border-width: 0px; width: 0px; padding: 0; margin: 0;">
@@ -311,7 +311,6 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		});
 	</script>
 <script language="JavaScript">
-	
     function activaTab(tab){
         $('.nav-tabs a[href="#' + tab + '"]').tab('show');
     };
@@ -334,6 +333,8 @@ $('#pestana_consola_comandos').trigger('click');
     });
 */
 }
+
+
 
 </script>
 </body>
