@@ -21,12 +21,7 @@
 
     // BLOQUE BASICO DE INCLUSION ######################################
     // Inicio de la sesion
-    ini_set("session.cookie_lifetime","360");
-    ini_set("session.gc_maxlifetime","360");
     @session_start();
-
-	// Agrega las variables de sesion
-	if (!empty($_SESSION)) extract($_SESSION);
 
     //Permite WebServices propios mediante el acceso a este script en solicitudes Cross-Domain
     header('Access-Control-Allow-Origin: *');
@@ -45,187 +40,21 @@
     date_default_timezone_set($ZonaHoraria);
 
     // Datos de fecha, hora y direccion IP para algunas operaciones
-    $PCO_PCODER_FechaOperacion=date("Ymd");
-    $PCO_PCODER_FechaOperacionGuiones=date("Y-m-d");
-    $PCO_PCODER_HoraOperacion=date("His");
-    $PCO_PCODER_HoraOperacionPuntos=date("H:i");
-    $PCO_PCODER_DireccionAuditoria=$_SERVER ['REMOTE_ADDR'];
+    $PCO_EXPLORER_FechaOperacion=date("Ymd");
+    $PCO_EXPLORER_FechaOperacionGuiones=date("Y-m-d");
+    $PCO_EXPLORER_HoraOperacion=date("His");
+    $PCO_EXPLORER_HoraOperacionPuntos=date("H:i");
+    $PCO_EXPLORER_DireccionAuditoria=$_SERVER ['REMOTE_ADDR'];
 
 /* ################################################################## */
 /* ################################################################## */
-
-
-    //////////////////////////////////////////////////////////////////
-    // Globals
-    //////////////////////////////////////////////////////////////////
-    
-    define('ROOT','/var/www');
-    define('BLOCKED','ssh,telnet');
-    
-    //////////////////////////////////////////////////////////////////
-    // Terminal Class
-    //////////////////////////////////////////////////////////////////
-    
-    class Terminal{
-        
-        ////////////////////////////////////////////////////
-        // Properties
-        ////////////////////////////////////////////////////
-        
-        public $command          = '';
-        public $output           = '';
-        public $directory        = '';
-        
-        // Holder for commands fired by system
-        public $command_exec     = '';
-        
-        ////////////////////////////////////////////////////
-        // Constructor
-        ////////////////////////////////////////////////////
-        
-        public function __construct(){
-            if(!isset($_SESSION['dir'])){
-                if(ROOT==''){
-                    $this->command_exec = 'pwd';
-                    $this->Execute();
-                    $_SESSION['dir'] = $this->output;
-                }else{
-                    $this->directory = ROOT;
-                    $this->ChangeDirectory();
-                }
-            }else{
-                $this->directory = $_SESSION['dir'];
-                $this->ChangeDirectory();
-            }
-        }
-        
-        ////////////////////////////////////////////////////
-        // Primary call
-        ////////////////////////////////////////////////////
-        
-        public function Process(){
-            $this->ParseCommand();
-            $this->Execute();
-            return $this->output;
-        }
-        
-        ////////////////////////////////////////////////////
-        // Parse command for special functions, blocks
-        ////////////////////////////////////////////////////
-        
-        public function ParseCommand(){
-            
-            // Explode command
-            $command_parts = explode(" ",$this->command);
-            
-			// Handle 'clear' command
-            if(in_array('clear',$command_parts)){
-                $_POST['textarea_salida']="";
-            }            
-            
-            // Handle 'cd' command
-            if(in_array('cd',$command_parts)){
-                $cd_key = array_search('cd', $command_parts);
-                $cd_key++;
-                $this->directory = $command_parts[$cd_key];
-                $this->ChangeDirectory();
-                // Remove from command
-                $this->command = str_replace('cd '.$this->directory,'',$this->command);
-            }
-            
-            // Replace text editors with cat
-            $editors = array('vi','vim','nano');
-            $this->command = str_replace($editors,'cat',$this->command);
-            
-            // Handle blocked commands
-            $blocked = explode(',',BLOCKED);
-            if(in_array($command_parts[0],$blocked)){
-                $this->command = 'echo ERROR: Comando no permitido / Command not allowed';
-            }
-            
-            // Update exec command
-            $this->command_exec = $this->command . ' 2>&1';
-        }
-        
-        ////////////////////////////////////////////////////
-        // Chnage Directory
-        ////////////////////////////////////////////////////
-        
-        public function ChangeDirectory(){
-            chdir($this->directory);
-            // Store new directory
-            $_SESSION['dir'] = exec('pwd');
-        }
-        
-        ////////////////////////////////////////////////////
-        // Execute commands
-        ////////////////////////////////////////////////////
-        
-        public function Execute(){
-            //system
-            if(function_exists('system')){
-                ob_start();
-                system($this->command_exec);
-                $this->output = ob_get_contents();
-                ob_end_clean();
-            }
-            //passthru
-            else if(function_exists('passthru')){
-                ob_start();
-                passthru($this->command_exec);
-                $this->output = ob_get_contents();
-                ob_end_clean();
-            }
-            //exec
-            else if(function_exists('exec')){
-                exec($this->command_exec , $this->output);
-                $this->output = implode("\n" , $output);
-            }
-            //shell_exec
-            else if(function_exists('shell_exec')){
-                $this->output = shell_exec($this->command_exec);
-            }
-            // no support
-            else{
-                $this->output = 'El sistema no permite comandos desde PHP / Command execution from PHP not possible on this system';
-            }
-        }        
-        
-    }
-    
-    //////////////////////////////////////////////////////////////////
-    // Processing
-    //////////////////////////////////////////////////////////////////
-
-	
-	$Terminal = new Terminal();
-	//Busca otros datos para linea de comandos
-	$Terminal->command = "whoami";
-	$login_usuario = $Terminal->Process();
-
-    $command = '';
-    if(!empty($_POST['command'])){ $command = $_POST['command']; }
 
 	//Valida la llave de sesion generada por {P}Coder
-	if ($_SESSION['PCONSOLE_KEY']!="")
+	if ($_SESSION['PEXPLORER_KEY']!="")
 		{
-			//////////////////////////////////////////////////////////////
-			// Execution
-			//////////////////////////////////////////////////////////////
-			
-			// Split &&
-			$output = '';
-			$command = explode("&&", $command);
-			
-			foreach($command as $c){
-				$Terminal->command = $c;
-				$output .= $Terminal->Process();
-			}
 		}
 	else
 		{
-			$Terminal->command = "echo [ERROR] Usuario no autenticado / Unauthenticated user";
-			$output .= $Terminal->Process();
 		}
 
 
@@ -240,7 +69,7 @@
  <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head>
-	<title>{C}</title>
+	<title>{E}</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -264,28 +93,9 @@
 				font-size:12px;
 				font-family: monospace;
 				font-weight: bold;
-				background: #153649;
+				background: #3A3838;
 				color: #ffffff;
 				margin: 0px;
-			}
-
-		#terminal_output
-			{
-				overflow-x:hidden;
-				overflow-y:hidden;
-			}
-
-		#textarea_salida
-			{
-				padding: 8px;
-				background: #153649;
-				overflow: auto;
-				width:100%;
-				border: 0px;
-				color: #C6FFB8;
-				font-size:12px;
-				font-family: monospace;
-				font-weight: bold;
 			}
 
 		/*Estilos para cursor y linea de comandos*/
@@ -391,12 +201,18 @@
 
 			</div>
 		</form>
+		
+		<!--Marco de navegacion-->
+		<div id="marcos_navegacion">
+			<iframe name="frame_navegador" id="frame_navegador" src="http://www.google.com" style="border:0px;"></iframe>
+		</div>
+
 
 	<!-- ################## FIN DE LA MAQUETACION ################## -->
 
 
 	<script language="javascript">
-		function PCONSOLE_RecalcularMaquetacion()   //RedimensionarEditor();
+		function PEXPLORER_RecalcularMaquetacion()   //RedimensionarEditor();
 			{
 				//Obtiene las dimensiones actuales de la ventana de edicion y algunos objetos
 				var AltoVentana = $(window).height();

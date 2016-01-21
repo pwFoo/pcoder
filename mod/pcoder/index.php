@@ -55,6 +55,7 @@
 
 	//Crea variable se sesion usada por la consola de comandos
 	$_SESSION['PCONSOLE_KEY']="23456789abcdefghijkmnpqrstuvwxyz";
+	$_SESSION['PEXPLORER_KEY']="23456789abcdefghijkmnpqrstuvwxyz";
 
     //Incluye librerias basicas de trabajo
     @require('inc/variables.php');

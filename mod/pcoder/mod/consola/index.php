@@ -21,8 +21,8 @@
 
     // BLOQUE BASICO DE INCLUSION ######################################
     // Inicio de la sesion
-    ini_set("session.cookie_lifetime","360");
-    ini_set("session.gc_maxlifetime","360");
+    //ini_set("session.cookie_lifetime","360");
+    //ini_set("session.gc_maxlifetime","360");
     @session_start();
 
 	// Agrega las variables de sesion
