@@ -1,12 +1,11 @@
 
-* Division de ventana de codigo para multiples vistas del mismo archivo
+* Advertencia al cerrar arcivo con cambios
+* Evitar CTRL+W
 * Creacion de archivos y carpetas en linea (modulo admin archivos)
-* Vista previa de una pagina web, marco para navegacion embebido (iframe)
-* Selector de colores
 * Administracion de usuarios
 * Administracion de proyectos
 * Restriccion de extensiones
 * Guardar preferencias por usuario
 * Permitir ajustar idioma por defecto
-* Acceso simplificado a grabacion y ejecucion de macros
+* Acceso simplificado a grabacion y ejecucion de macros (como en cloud9)
 
