@@ -1,4 +1,7 @@
-
+* Explorador de archivos puede ser de alto como el editor
+* Explorador debe actualizar su barra de navegacion segun la URL actual del IFRAME
+* Despues de ejecutar el comando de guardar regresar el foco al editor y la posicion del cursor
+* Guardar el tipo de archivo identificado al comienzo (verificar si se hace así ya) y de acuerdo a eso refrescar el editor y el resaltado
 * Advertencia al cerrar arcivo con cambios
 * Creacion de archivos y carpetas en linea (modulo admin archivos)
 * Administracion de usuarios
