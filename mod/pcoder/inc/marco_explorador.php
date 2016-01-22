@@ -22,7 +22,7 @@
 
     // EXPLORADOR DE ARCHIVOS
 	?>
-		<div class="" style="margin-left:17px;">
+		<div id="contenedor_explorador_archivos" style="margin-left:17px;">
 			<select id="path_exploracion_archivos" size="1" class="form-control btn-primary btn-xs" onchange="ExplorarPath()">
 				<option value="<?php echo $PCO_PCODER_RaizExploracionArchivos; ?>">     PATH: [<?php echo $PCO_PCODER_RaizExploracionArchivos; ?>] (<?php echo $MULTILANG_PCODER_Predeterminado; ?>)</option>
 				<optgroup label="<?php echo $MULTILANG_PCODER_Comunes; ?>">
@@ -30,6 +30,6 @@
 					<option value="<?php echo $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR; ?>">[<?php echo $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR; ?>] <?php echo $MULTILANG_PCODER_PathFull; ?></option>
 				</optgroup>
 			</select>
+			
+			<div id="marco_explorador" class="explorador_archivos"></div>
 		</div>
-		<div id="marco_explorador" class="explorador_archivos"></div>
-		

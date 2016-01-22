@@ -229,6 +229,12 @@ function PCODER_RecalcularPanelesLaterales()  //AjustarPanelesLaterales();
 		$("#panel_central").removeClass("col-md-10"); //Cuando esta un solo panel activo
 		$("#panel_central").removeClass("col-md-12"); //Cuando esta un solo panel activo
 		$("#panel_central").addClass("col-md-"+AnchoPanelCentral);
+		
+		//Reasigna el ALTO de los paneles
+		var AltoBotonOcultacionPI = $("#boton_ocultacion_panel_izquierdo").height();
+		var AltoComboSeleccionPath = $("#path_exploracion_archivos").height();
+		var AltoDisponible_PanelesLateralIzq = $("#panel_central_medio").height() - AltoBotonOcultacionPI - AltoComboSeleccionPath;
+		$('#marco_explorador').height( AltoDisponible_PanelesLateralIzq+"px" ).css({ });		
 	}
 function PCODER_ActivarPanelIzquierdo()
 	{
