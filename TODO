@@ -1,3 +1,4 @@
+* Poder cambiar el modo de resaltado de sintaxis en caliente
 * Explorador debe actualizar su barra de navegacion segun la URL actual del IFRAME
 * Despues de ejecutar el comando de guardar regresar el foco al editor y la posicion del cursor
 * Guardar el tipo de archivo identificado al comienzo (verificar si se hace así ya) y de acuerdo a eso refrescar el editor y el resaltado
@@ -9,5 +10,5 @@
 * Guardar preferencias por usuario
 * Permitir ajustar idioma por defecto
 * Acceso simplificado a grabacion y ejecucion de macros (como en cloud9)
-
+* Permitir pestañas en explorador web
 
