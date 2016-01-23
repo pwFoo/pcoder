@@ -17,6 +17,7 @@
 * Enhan: Reescritura de funciones para cómputo de interfaz con mejora sustancial en rendimiento y apariencia
 * Enhan: Rediseño y maquetación de todos los marcos del aplicativo para hacerlos más claros
 * Enhan: Se previene el cierre accidental de la pestaña o ventana completa del editor
+* Enhan: Mejorada la visualizacion del explorador de archivos
 * Fixed: Mejoras en maquetación y cálculo dinámico de marcos
 * Enhan: Actualizacion ACE version 1.2.2
 

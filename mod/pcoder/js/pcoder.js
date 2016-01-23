@@ -165,6 +165,11 @@ function QuitarAvisoAlmacenamiento()
 	{
 		//Deja el mensaje de almacenamiento al menos un segundo (para archivos pequenos almacenados rapido), luego lo oculta
 		setTimeout("PCO_OcultarMensajeCargandoSimple();", 500);
+		
+		//TODO: Devolver el foco al editor
+		//editor.focus();											//Establece el foco al editor
+		//$('#editor_codigo').trigger('click');
+
 	}
 
 function Guardar()
@@ -699,6 +704,10 @@ $(window).bind('keydown', function(event) {
 		case 's':  //<-- Cambiar para otras letras ;)
 			event.preventDefault();
 			Guardar();
+			break;
+		case 'a':  //<-- Funciona pero se debe deshabilitar el del editor
+			event.preventDefault();
+			PCODER_ActivarPanelIzquierdo();
 			break;
 		}
 	}
