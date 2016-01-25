@@ -174,12 +174,22 @@ function QuitarAvisoAlmacenamiento()
 
 function Guardar()
 	{
-		//Solamente guarda si no se trata del archivo demo
-		if (document.form_archivo_editado.PCODER_archivo.value != "demos/demo.txt")
+		var MensajeErrorAlmacenamiento="";
+		//Si se trata del archivo demo
+		if (document.form_archivo_editado.PCODER_archivo.value == "demos/demo.txt")
+			MensajeErrorAlmacenamiento="Error al guardar: No tiene permisos de excritura sobre este archivo!";
+			
+		//Ejecuta el proceso de almacenamiento
+		if (MensajeErrorAlmacenamiento == "")
 			{
 				//Metodo estandar, envia todo sobre el iframe para evitar recargar la pagina
 				PCO_MostrarMensajeCargandoSimple();
 				document.form_archivo_editado.submit();
+			}
+		else
+			{
+			
+			
 			}
 	}
 function PCO_VentanaPopup(theURL,winName,features)

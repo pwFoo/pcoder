@@ -79,7 +79,6 @@
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('duplicateSelection');"><i class="fa fa-pause fa-fw"></i> <?php echo $MULTILANG_PCODER_DuplicarSeleccion; ?>	<span class="pull-right text-muted small"><i>Ctrl+Shift+D</i></span></a></li>
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('invertSelection');"><i class="fa fa-eraser fa-fw"></i> <?php echo $MULTILANG_PCODER_InvertirSeleccion; ?>	</a></li>
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('joinlines');"><i class="fa fa-reorder fa-fw"></i> <?php echo $MULTILANG_PCODER_UnirSeleccion; ?>	</a></li>
-
 									<li role="separator" class="divider"></li>
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('find');"><i class="fa fa-search fa-fw"></i> <?php echo $MULTILANG_PCODER_Buscar; ?>	<span class="pull-right text-muted small"><i>Ctrl+F</i></span></a></li>
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('replace');"><i class="fa fa-exchange fa-fw"></i> <?php echo $MULTILANG_PCODER_Reemplazar; ?>	<span class="pull-right text-muted small"><i>Ctrl+H</i></span></a></li>
