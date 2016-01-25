@@ -125,3 +125,6 @@
 	$MULTILANG_PCODER_EditorArchivos='Editor de archivos';
 	$MULTILANG_PCODER_NavegadorEmbebido='Navegador web embebido';
 	$MULTILANG_PCODER_AdvertenciaCierre='Esta intentando cerrar todo el editor {P}Coder.  La edicion de archivos que haya realizado y no haya almacenado todavia se puede perder.  Se requiere su confirmacion para continuar.';
+	$MULTILANG_PCODER_ErrGuardarDefecto='Debe especificar o abrir un arcihvo diferente al predeterminado del editor!';
+	$MULTILANG_PCODER_ErrGuardarNoPermiso='No tiene permisos de escritura sobre este archivo!.  Verifique los permisos del mismo e intente nuevamente';
+

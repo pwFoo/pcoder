@@ -124,3 +124,6 @@
 	$MULTILANG_PCODER_EditorArchivos='File editor';
 	$MULTILANG_PCODER_NavegadorEmbebido='Embedded web browser';
 	$MULTILANG_PCODER_AdvertenciaCierre='You are trying to shut down the entire {P} Coder editor. Edited files youve stored still not to be missed. Your confirmation is required to continue.';
+	$MULTILANG_PCODER_ErrGuardarDefecto='You must specify a valid file to save or open a file to edit!';
+	$MULTILANG_PCODER_ErrGuardarNoPermiso='You dont have rights to write this file using your webserver user!.  Check permissions and try again.';
+

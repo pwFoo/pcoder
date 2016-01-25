@@ -124,4 +124,7 @@
 	$MULTILANG_PCODER_EditorArchivos='Editor de arquivo';
 	$MULTILANG_PCODER_NavegadorEmbebido='Navegador web embutido';
 	$MULTILANG_PCODER_AdvertenciaCierre='Você está tentando desligar todo o editor {PI} Código. Arquivos editados que você armazenou ainda a não perder. Sua confirmação é necessária para continuar.';
+	$MULTILANG_PCODER_ErrGuardarDefecto='Você deve especificar uma arquivo válido para salvar ou abrir um arquivo para editar!';
+	$MULTILANG_PCODER_ErrGuardarNoPermiso='Você não tem direitos para escrever este arquivo usando o seu usuário do servidor web !. Verifique as permissões e tente novamente.';
+
 

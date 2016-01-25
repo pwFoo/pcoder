@@ -47,6 +47,18 @@ function PCO_ObtenerContenidoAjax(PCO_ASINCRONICO,PCO_URL,PCO_PARAMETROS)
 		if(PCO_ASINCRONICO==0)
 			return contenido_recibido;
 	}
+function PCOJS_MostrarMensaje(TituloPopUp, Mensaje)
+	{
+		//Lleva los valores a cada parte del dialogo modal
+		$('#PCO_Modal_MensajeTitulo').html(TituloPopUp);
+		$('#PCO_Modal_MensajeCuerpo').html(Mensaje);
+
+		// Se muestra el cuadro modal
+		$('#PCO_Modal_Mensaje').modal('show');
+
+		//Hacer que la ventana este siempre por encima
+		$("#PCO_Modal_Mensaje").css("z-index", "1500");
+	}
 function PCO_MostrarMensajeCargandoSimple(MiliSegundos)
 	{
 		// Se muestra el cuadro modal
@@ -177,7 +189,10 @@ function Guardar()
 		var MensajeErrorAlmacenamiento="";
 		//Si se trata del archivo demo
 		if (document.form_archivo_editado.PCODER_archivo.value == "demos/demo.txt")
-			MensajeErrorAlmacenamiento="Error al guardar: No tiene permisos de excritura sobre este archivo!";
+			MensajeErrorAlmacenamiento=MULTILANG_PCODER_ErrGuardarDefecto;
+		//Verifica permisos
+		if (ListaArchivos[IndiceArchivoActual].PermisosRW!="1")
+			MensajeErrorAlmacenamiento=MULTILANG_PCODER_ErrGuardarNoPermiso;
 			
 		//Ejecuta el proceso de almacenamiento
 		if (MensajeErrorAlmacenamiento == "")
@@ -188,8 +203,7 @@ function Guardar()
 			}
 		else
 			{
-			
-			
+				PCOJS_MostrarMensaje(MULTILANG_PCODER_Guardando+": "+MULTILANG_PCODER_Error,MensajeErrorAlmacenamiento);			
 			}
 	}
 function PCO_VentanaPopup(theURL,winName,features)

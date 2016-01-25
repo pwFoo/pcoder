@@ -199,13 +199,28 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						<div id="PCO_Modal_MensajeCargandoPorcentaje" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
 					</div>
 					<i class="fa fa-circle-o-notch fa-fw fa-spin fa-1x"></i> <?php echo $MULTILANG_PCODER_Trabajando; ?>...
-					
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 
-
+	<!-- Modal para mensajes generales -->
+	<div id="PCO_Modal_Mensaje" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"><?php echo $MULTILANG_PCODER_Cerrar; ?></span></button>
+					<h4 id="PCO_Modal_MensajeTitulo" class="modal-title"></h4>
+				</div>
+				<div class="modal-body">
+					<p id="PCO_Modal_MensajeCuerpo"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline btn-info" data-dismiss="modal"><?php echo $MULTILANG_PCODER_Cerrar; ?></button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 
 	<!-- ################# INICIO DE LA MAQUETACION ################ -->
 		<?php include_once ("inc/panel_superior.php"); 	?>
@@ -290,6 +305,10 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		var MULTILANG_PCODER_Modificado="<?php echo $MULTILANG_PCODER_Modificado; ?>";
 		var MULTILANG_PCODER_ErrorRW="<?php echo $MULTILANG_PCODER_ErrorRW; ?>";
 		var MULTILANG_PCODER_Estado="<?php echo $MULTILANG_PCODER_Estado; ?>";
+		var MULTILANG_PCODER_ErrGuardarDefecto="<?php echo $MULTILANG_PCODER_ErrGuardarDefecto; ?>";
+		var MULTILANG_PCODER_ErrGuardarNoPermiso="<?php echo $MULTILANG_PCODER_ErrGuardarNoPermiso; ?>";
+		var MULTILANG_PCODER_Guardando="<?php echo $MULTILANG_PCODER_Guardando; ?>";
+		var MULTILANG_PCODER_Error="<?php echo $MULTILANG_PCODER_Error; ?>";
 	</script>
 	<script type="text/javascript" src="js/pcoder.min.js"></script>
 
