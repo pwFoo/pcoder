@@ -262,7 +262,8 @@ function PCODER_RecalcularPanelesLaterales()  //AjustarPanelesLaterales();
 		//Reasigna el ALTO de los paneles
 		var AltoBotonOcultacionPI = $("#boton_ocultacion_panel_izquierdo").height();
 		var AltoComboSeleccionPath = $("#path_exploracion_archivos").height();
-		var AltoDisponible_PanelesLateralIzq = $("#panel_central_medio").height() - AltoBotonOcultacionPI - AltoComboSeleccionPath;
+		var AltoOperacionesArchivos = $("#marco_operaciones_archivos").height();
+		var AltoDisponible_PanelesLateralIzq = $("#panel_central_medio").height() - AltoBotonOcultacionPI - AltoComboSeleccionPath - AltoOperacionesArchivos;
 		$('#marco_explorador').height( AltoDisponible_PanelesLateralIzq+"px" ).css({ });		
 	}
 function PCODER_ActivarPanelIzquierdo()
@@ -447,8 +448,6 @@ function ExplorarPath()
 		//Inicializa el explorador de archivos
 		$(document).ready( function() {
 			$('#marco_explorador').fileTree({ root: path_exploracion_archivos.value, script: '../../inc/jquery/plugins/jquery.fileTree-1.01/connectors/jqueryFileTree.php' }, function(archivo_seleccionado) {
-				//alert(file);
-				//PCODER_CargarArchivo('[link]');
 				PCODER_CargarArchivo(archivo_seleccionado);
 
 				//Simula clic sobre la pestana de archivos para pasar automaticamente a esta vista
@@ -671,6 +670,8 @@ var IndiceAperturaArchivo=0;									//Posicion del arreglo sobre la que se dese
 var IndiceUltimoArchivoAbierto=IndiceAperturaArchivo;			//Posicion del arreglo que contiene el ultimo archivo abierto
 var IndiceArchivoActual=IndiceAperturaArchivo;					//Posicion del arreglo con los datos del archivo actual
 var ValorModoEditor;
+var UltimaCarpetaSeleccionada;									//Utilizado en modificacion de conector JQueryFileTree para obtener carpeta seleccionada
+var UltimoArchivoSeleccionado;									//Utilizado en modificacion de conector JQueryFileTree para obtener archivo seleccionado
 AnchoPanelIzquierdo=0;
 AnchoPanelDerecho=0;
 

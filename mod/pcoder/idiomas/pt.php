@@ -59,6 +59,7 @@
 	$MULTILANG_PCODER_Formato='Formato';
 	$MULTILANG_PCODER_Guardando='Guardar';
 	$MULTILANG_PCODER_Guardar='Guardar';
+	$MULTILANG_PCODER_Herramientas='Ferramentas';
 	$MULTILANG_PCODER_Ir='Ir';
 	$MULTILANG_PCODER_Linea='Linha';
 	$MULTILANG_PCODER_Lineas='Linhas';
@@ -126,5 +127,11 @@
 	$MULTILANG_PCODER_AdvertenciaCierre='Você está tentando desligar todo o editor {PI} Código. Arquivos editados que você armazenou ainda a não perder. Sua confirmação é necessária para continuar.';
 	$MULTILANG_PCODER_ErrGuardarDefecto='Você deve especificar uma arquivo válido para salvar ou abrir um arquivo para editar!';
 	$MULTILANG_PCODER_ErrGuardarNoPermiso='Você não tem direitos para escrever este arquivo usando o seu usuário do servidor web !. Verifique as permissões e tente novamente.';
+	$MULTILANG_PCODER_CrearArchivo='Novo arquivo';
+	$MULTILANG_PCODER_CrearCarpeta='Novo pasta';
+	$MULTILANG_PCODER_EditarPermisos='Editar permissões';
+	$MULTILANG_PCODER_SubirArchivo='Subir arquivo';
+	$MULTILANG_PCODER_RecargarExplorador='Explorador de recarga';
+	$MULTILANG_PCODER_EliminarElemento='Excluir o arquivo / pasta';
 
 

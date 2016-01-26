@@ -59,6 +59,7 @@
 	$MULTILANG_PCODER_Formato='Format';
 	$MULTILANG_PCODER_Guardando='Saving';
 	$MULTILANG_PCODER_Guardar='Save';
+	$MULTILANG_PCODER_Herramientas='Tools';
 	$MULTILANG_PCODER_Ir='Go';
 	$MULTILANG_PCODER_Linea='Line';
 	$MULTILANG_PCODER_Lineas='Lines';
@@ -126,4 +127,9 @@
 	$MULTILANG_PCODER_AdvertenciaCierre='You are trying to shut down the entire {P} Coder editor. Edited files youve stored still not to be missed. Your confirmation is required to continue.';
 	$MULTILANG_PCODER_ErrGuardarDefecto='You must specify a valid file to save or open a file to edit!';
 	$MULTILANG_PCODER_ErrGuardarNoPermiso='You dont have rights to write this file using your webserver user!.  Check permissions and try again.';
-
+	$MULTILANG_PCODER_CrearArchivo='New file';
+	$MULTILANG_PCODER_CrearCarpeta='New folder';
+	$MULTILANG_PCODER_EditarPermisos='Edit permissions';
+	$MULTILANG_PCODER_SubirArchivo='Upload file';
+	$MULTILANG_PCODER_RecargarExplorador='Explorer reload';
+	$MULTILANG_PCODER_EliminarElemento='Delete file/folder';

@@ -59,6 +59,7 @@
 	$MULTILANG_PCODER_Formato='प्रारूप';
 	$MULTILANG_PCODER_Guardando='रखना';
 	$MULTILANG_PCODER_Guardar='सहेजें';
+	$MULTILANG_PCODER_Herramientas='उपकरण';
 	$MULTILANG_PCODER_Ir='जाना';
 	$MULTILANG_PCODER_Linea='पंक्तियां';
 	$MULTILANG_PCODER_Lineas='पंक्तियां';
@@ -126,5 +127,11 @@
 	$MULTILANG_PCODER_AdvertenciaCierre='आप पूरे {पीआई} कोड संपादक को बंद करने के प्रयास कर रहे हैं। आप संग्रहित किया है एडिट फ़ाइलों को अभी भी याद नहीं होगा। आपका पुष्टि जारी रखने के लिए आवश्यक है।';
 	$MULTILANG_PCODER_ErrGuardarDefecto='आप को बचाने या संपादित करने के लिए एक फ़ाइल को खोलने के लिए एक वैध फ़ाइल निर्दिष्ट करना होगा!';
 	$MULTILANG_PCODER_ErrGuardarNoPermiso='यदि आप अपने वेब सर्वर उपयोगकर्ता का उपयोग कर इस फाइल को लिखने के अधिकार के लिए है न !. अनुमतियों की जाँच करें और फिर कोशिश करें।';
+	$MULTILANG_PCODER_CrearArchivo='नई फ़ाइल';
+	$MULTILANG_PCODER_CrearCarpeta='नया फोल्डर';
+	$MULTILANG_PCODER_EditarPermisos='अनुमतियाँ संपादित';
+	$MULTILANG_PCODER_SubirArchivo='दस्तावेज अपलोड करें';
+	$MULTILANG_PCODER_RecargarExplorador='एक्सप्लोरर पुनः लोड';
+	$MULTILANG_PCODER_EliminarElemento='फ़ाइल / फ़ोल्डर हटाना';
 
 
