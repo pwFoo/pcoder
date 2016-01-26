@@ -11,4 +11,17 @@
 * Permitir ajustar idioma por defecto
 * Acceso simplificado a grabacion y ejecucion de macros (como en cloud9)
 * Permitir pestañas en explorador web
-
+* Remover aviso de Usted esta en fullscreen (Workaround):
+	CHROME:
+		Disable 'allow/decline full screen' message on your pc:
+		so not for other users on your website:
+		Go to settings page:
+		chrome://settings/contentExceptions#fullscreen
+		click on any URL
+		change the URL to:
+		*://*/*
+		Done
+		
+	FIREFOX:
+		enter about:config in address-bar, and search for full-screen-api.approval-required and set it to false
+		You're done!
