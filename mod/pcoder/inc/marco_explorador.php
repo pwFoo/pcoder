@@ -33,7 +33,7 @@
 
 			<div id="marco_operaciones_archivos" class="row" style="margin-top:5px; margin-bottom:10px;">
 				<div class="col-md-12" align="center">
-					<button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_CrearArchivo; ?>"><i class="fa fa-file fa-fw"></i></button>
+					<button OnClick="$('#myModalCREARARCHIVO').modal('show'); $('#myModalCREARARCHIVO').css('z-index', '1500');" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_CrearArchivo; ?>"><i class="fa fa-file fa-fw"></i></button>
 					<button class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_CrearCarpeta; ?>"><i class="fa fa-folder fa-fw"></i></button>
 					<button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_EditarPermisos; ?>"><i class="fa fa-lock fa-fw"></i></button>
 					<button class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_SubirArchivo; ?>"><i class="fa fa-upload fa-fw"></i></button>
@@ -44,3 +44,6 @@
 			
 			<div id="marco_explorador" class="explorador_archivos"></div>
 		</div>
+		
+
+		
