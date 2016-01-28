@@ -44,6 +44,7 @@
 	$MULTILANG_PCODER_Cancelar='Cancelar';
 	$MULTILANG_PCODER_Caracteres='Caracter';
 	$MULTILANG_PCODER_Cargando='Carregando';
+	$MULTILANG_PCODER_Carpeta='Pasta';
 	$MULTILANG_PCODER_Cerrar='Fechar';
 	$MULTILANG_PCODER_Columna='Coluna';
 	$MULTILANG_PCODER_Copiar='C&aacute;pia';

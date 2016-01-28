@@ -26,18 +26,11 @@
 
 			<div class="row">
 				<div class="col-lg-6">
-						<label for="tamano_fuente"><?php echo $MULTILANG_PCODER_TamanoFuente; ?></label>
-						<select id="tamano_fuente" size="1" class="form-control btn-warning" onchange="CambiarFuenteEditor(this.value)">
-						  <option value="10px">10px</option>
-						  <option value="11px">11px</option>
-						  <option value="12px">12px</option>
-						  <option value="13px">13px</option>
-						  <option value="14px" selected="selected">14px</option>
-						  <option value="16px">16px</option>
-						  <option value="18px">18px</option>
-						  <option value="20px">20px</option>
-						  <option value="24px">24px</option>
-						</select>
+
+						<label for="path_creacion"><?php echo $MULTILANG_PCODER_Carpeta; ?></label>					
+						<input type="text" name="path_creacion_elemento" id="path_creacion_elemento" class="form-control btn-block input-mini btn-xs" readonly>
+						<div id="marco_explorador_creacionarchivo" class="explorador_archivos"></div>
+					
 				</div>
 				<div class="col-lg-6">
 						<label for="tema_grafico"><?php echo $MULTILANG_PCODER_AparienciaEditor; ?></label>

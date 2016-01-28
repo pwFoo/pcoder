@@ -44,6 +44,7 @@
 	$MULTILANG_PCODER_Cancelar='Cancelar';
 	$MULTILANG_PCODER_Caracteres='Caracteres';
 	$MULTILANG_PCODER_Cargando='Cargando';
+	$MULTILANG_PCODER_Carpeta='Carpeta';
 	$MULTILANG_PCODER_Cerrar='Cerrar';
 	$MULTILANG_PCODER_Columna='Columna';
 	$MULTILANG_PCODER_Comunes='Comunes';

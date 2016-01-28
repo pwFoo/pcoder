@@ -445,7 +445,7 @@ function DisminuirTamanoFuente()
 	}
 function ExplorarPath()
 	{
-		//Inicializa el explorador de archivos
+		//Inicializa el explorador de archivos (panel izquierdo)
 		$(document).ready( function() {
 			$('#marco_explorador').fileTree({ root: path_exploracion_archivos.value, script: '../../inc/jquery/plugins/jquery.fileTree-1.01/connectors/jqueryFileTree.php' }, function(archivo_seleccionado) {
 				PCODER_CargarArchivo(archivo_seleccionado);
@@ -453,8 +453,16 @@ function ExplorarPath()
 				//Simula clic sobre la pestana de archivos para pasar automaticamente a esta vista
 				$('#pestana_editor_archivos').trigger('click');
 			});
-
 		});
+		
+		//Inicializa el explorador de archivos (creacion de archivos y carpetas)
+		$(document).ready( function() {
+			$('#marco_explorador_creacionarchivo').fileTree({ root: path_exploracion_archivos.value, script: '../../inc/jquery/plugins/jquery.fileTree-1.01/connectors/jqueryFileTree.php?nofiles=true' }, function(path_seleccionado_creacion) {
+				alert(path_seleccionado_creacion);
+				document.getElementById("path_creacion_elemento").value=path_seleccionado_creacion;
+				
+			});
+		});		
 	}
 function ActualizarBarraEstado()
 	{

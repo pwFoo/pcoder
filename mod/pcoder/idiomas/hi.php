@@ -44,6 +44,7 @@
 	$MULTILANG_PCODER_Cancelar='रद्द करना';
 	$MULTILANG_PCODER_Caracteres='वर्ण';
 	$MULTILANG_PCODER_Cargando='लदान';
+	$MULTILANG_PCODER_Carpeta='Carpeta';
 	$MULTILANG_PCODER_Cerrar='बंद करे';
 	$MULTILANG_PCODER_Columna='स्तंभ';
 	$MULTILANG_PCODER_Copiar='प्रतिलिपि';
