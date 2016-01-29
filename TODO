@@ -1,3 +1,4 @@
+OTROS:
 * Poder cambiar el modo de resaltado de sintaxis en caliente
 * Explorador debe actualizar su barra de navegacion segun la URL actual del IFRAME
 * Despues de ejecutar el comando de guardar regresar el foco al editor y la posicion del cursor
@@ -25,3 +26,35 @@
 	FIREFOX:
 		enter about:config in address-bar, and search for full-screen-api.approval-required and set it to false
 		You're done!
+
+UEDIT:
+* Archivo nuevo (y nuevo desde plantilla)
+* Archivos remotos (FTP,sFTP,SSH)
+* Guardar como
+* Guardar todo
+Renombrar archivo
+Comparar archivos
+Imprimir
+Favoritos de archivo
+Favoritos de navegador
+Historial de comandos consola
+Archivos recientes
+Proyectos
+Configurar tipos de archivo comunes
+Botones con comandos y funciones comunes que agreguen trozos de codigo
+Segun el lenguaje agregar enlaces a referencias de sintaxis
+
+Al lado izquierdo tener pestañas de:
++ Abrir (explorador)
++ Proyecto
++ Favoritos
++ Frecuentes
++ Ficheros remotos
+
+Barra de herramientas comunes como cualquier editor.
+Mejorar dialogos de busqueda y reemplazo
+Lograr reemplazo de caracteres especiales (tabs, saltos de linea, etc)
+
+Minimap: https://github.com/rocketinventor/ace-minimap
+	https://github.com/atom-minimap/minimap
+
