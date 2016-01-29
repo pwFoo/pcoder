@@ -464,9 +464,22 @@ function ExplorarPath()
 
 function ActualizarPathActual()
 	{
-		document.getElementById("path_operacion_elemento").value=UltimaCarpetaSeleccionada;
+		document.getElementById("path_operacion_elemento").value=UltimaCarpetaSeleccionada+UltimoArchivoSeleccionado;
 		//Llama periodicamente la rutina de actualizacion
 		window.setTimeout(ActualizarPathActual, 500);
+	}
+
+function EjecutarOperacionFS()
+	{
+		//Toma los valores de parametros de la ventana de operaciones FS, valida y hace el llamado a la operacion
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 function ActualizarBarraEstado()

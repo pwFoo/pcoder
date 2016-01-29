@@ -68,6 +68,7 @@
 	$MULTILANG_PCODER_Lineas='L&iacute;neas';
 	$MULTILANG_PCODER_Modificado='Modificado';
 	$MULTILANG_PCODER_No='No';
+	$MULTILANG_PCODER_Nombre='Nombre';
 	$MULTILANG_PCODER_Operacion='Operaci&oacute;n';
 	$MULTILANG_PCODER_Otros='Otros';
 	$MULTILANG_PCODER_Pegar='Pegar';

@@ -67,6 +67,7 @@
 	$MULTILANG_PCODER_Lineas='पंक्तियां';
 	$MULTILANG_PCODER_Modificado='संशोधित';
 	$MULTILANG_PCODER_No='नहीं';
+	$MULTILANG_PCODER_Nombre='नाम';
 	$MULTILANG_PCODER_Operacion='Operation';
 	$MULTILANG_PCODER_Otros='अन्य लोग';
 	$MULTILANG_PCODER_Pegar='पेस्ट';
