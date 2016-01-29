@@ -6,6 +6,13 @@
 |_____\___/ \__, |  \__,_|\___|  \___\__,_|_| |_| |_|_.__/|_|\___/|___/
             |___/ 
 ```
+## Versión 16.3 (2016-03-01)
+* Added: Operaciones simples con archivos y carpetas
+* Added: Validaciones durante almacenamiento para archivos sin permisos
+* Enhan: Mejorados enlaces en barra de menu para evitar barra de estado
+* Enhan: Presentación de la consola remota y explorador web
+* Enhan: Mejora sobre JQueryFileTree.  Ahora se utiliza fork propio con más posibilidades
+
 ## Versión 16.2 (2016-02-01)
 * Added: Soporte a vistas clonadas del archivo horizontal y verticalmente 
 * Added: Consola de comandos remota

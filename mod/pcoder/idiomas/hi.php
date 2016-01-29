@@ -35,6 +35,7 @@
 
 	//Lexico general
 	$MULTILANG_PCODER_Abrir='खुला';
+	$MULTILANG_PCODER_Aceptar='स्वीकार करना';
 	$MULTILANG_PCODER_Archivo='फ़ाइल';
 	$MULTILANG_PCODER_Acercar='ज़ूम इन';
 	$MULTILANG_PCODER_Alejar='ज़ूम आउट';

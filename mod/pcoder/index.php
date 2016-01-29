@@ -222,7 +222,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 
-<?php include_once ("inc/marco_creararchivo.php");	?>
+<?php include_once ("inc/marco_operarfs.php");	?>
 
 	<!-- ################# INICIO DE LA MAQUETACION ################ -->
 		<?php include_once ("inc/panel_superior.php"); 	?>

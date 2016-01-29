@@ -35,6 +35,7 @@
 
 	//Lexico general
 	$MULTILANG_PCODER_Abrir='Abrir';
+	$MULTILANG_PCODER_Aceptar='Aceptar';
 	$MULTILANG_PCODER_Archivo='Archivo';
 	$MULTILANG_PCODER_Acercar='Acercar';
 	$MULTILANG_PCODER_Alejar='Alejar';
