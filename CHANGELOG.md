@@ -7,6 +7,8 @@
             |___/ 
 ```
 ## Versión 16.3 (2016-03-01)
+* Added: Agregado acceso directo Ctrl+Q para cerrar el archivo actual
+* Added: Agregado acceso directo Ctrl+O para apertura de archivos
 * Added: Operaciones simples con archivos y carpetas
 * Added: Validaciones durante almacenamiento para archivos sin permisos
 * Enhan: Mejorados enlaces en barra de menu para evitar barra de estado

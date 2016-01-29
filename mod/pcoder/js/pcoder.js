@@ -756,15 +756,17 @@ $(window).bind('keydown', function(event) {
 			event.preventDefault();
 			Guardar();
 			break;
-		case 'a':  //<-- Funciona pero se debe deshabilitar el del editor
+		case 'o':
 			event.preventDefault();
 			PCODER_ActivarPanelIzquierdo();
+			break;
+		case 'q':
+			event.preventDefault();
+			PCODER_CerrarArchivoActual();
 			break;
 		}
 	}
 });
-
-
 
 //Genera una nueva sesion del editor ACE
 function ClonarSesionEditor(session)
