@@ -66,6 +66,7 @@
 	$MULTILANG_PCODER_Lineas='Linhas';
 	$MULTILANG_PCODER_Modificado='Modificado';
 	$MULTILANG_PCODER_No='Não';
+	$MULTILANG_PCODER_Operacion='Operation';
 	$MULTILANG_PCODER_Otros='Outros';
 	$MULTILANG_PCODER_Pegar='Colar';
 	$MULTILANG_PCODER_Predeterminado='Padrão';
@@ -78,6 +79,7 @@
 	$MULTILANG_PCODER_Tamano='Tamanho';
 	$MULTILANG_PCODER_Tipo='Tipo';
 	$MULTILANG_PCODER_Trabajando='Trabalhando';
+	$MULTILANG_PCODER_Ubicacion='Location';
 	$MULTILANG_PCODER_Ver='Visão';
 
 	//Mensajes de error y varios
@@ -134,5 +136,6 @@
 	$MULTILANG_PCODER_SubirArchivo='Subir arquivo';
 	$MULTILANG_PCODER_RecargarExplorador='Explorador de recarga';
 	$MULTILANG_PCODER_EliminarElemento='Excluir o arquivo / pasta';
+	$MULTILANG_PCODER_OperacionesFS='Files, Folders and Permissions tasks';
 
 

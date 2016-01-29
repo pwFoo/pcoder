@@ -458,12 +458,17 @@ function ExplorarPath()
 		//Inicializa el explorador de archivos (creacion de archivos y carpetas)
 		$(document).ready( function() {
 			$('#marco_explorador_creacionarchivo').fileTree({ root: path_exploracion_archivos.value, script: '../../inc/jquery/plugins/jquery.fileTree-1.01/connectors/jqueryFileTree.php?nofiles=true' }, function(path_seleccionado_creacion) {
-				alert(path_seleccionado_creacion);
-				document.getElementById("path_creacion_elemento").value=path_seleccionado_creacion;
-				
 			});
-		});		
+		});
 	}
+
+function ActualizarPathActual()
+	{
+		document.getElementById("path_operacion_elemento").value=UltimaCarpetaSeleccionada;
+		//Llama periodicamente la rutina de actualizacion
+		window.setTimeout(ActualizarPathActual, 500);
+	}
+
 function ActualizarBarraEstado()
 	{
 		//Actualiza ademas las posiciones del cursor sobre el arreglo de archivos abiertos
@@ -673,16 +678,16 @@ function PCODER_CargarArchivo(path_archivo)
 //##############################################################
 //###              INICIALIZACION DE VARIABLES               ###
 //##############################################################
-var ListaArchivos = new Array();								//Contiene la lista de los archivos cargados
-var IndiceAperturaArchivo=0;									//Posicion del arreglo sobre la que se desea guardar datos al abrir un archivo
-var IndiceUltimoArchivoAbierto=IndiceAperturaArchivo;			//Posicion del arreglo que contiene el ultimo archivo abierto
-var IndiceArchivoActual=IndiceAperturaArchivo;					//Posicion del arreglo con los datos del archivo actual
+var ListaArchivos = new Array();															//Contiene la lista de los archivos cargados
+var IndiceAperturaArchivo=0;																//Posicion del arreglo sobre la que se desea guardar datos al abrir un archivo
+var IndiceUltimoArchivoAbierto=IndiceAperturaArchivo;										//Posicion del arreglo que contiene el ultimo archivo abierto
+var IndiceArchivoActual=IndiceAperturaArchivo;												//Posicion del arreglo con los datos del archivo actual
 var ValorModoEditor;
-var UltimaCarpetaSeleccionada;									//Utilizado en modificacion de conector JQueryFileTree para obtener carpeta seleccionada
-var UltimoArchivoSeleccionado;									//Utilizado en modificacion de conector JQueryFileTree para obtener archivo seleccionado
+var UltimaCarpetaSeleccionada=document.getElementById("path_exploracion_archivos").value;	//Utilizado en modificacion de conector JQueryFileTree para obtener carpeta seleccionada
+var UltimoArchivoSeleccionado="";															//Utilizado en modificacion de conector JQueryFileTree para obtener archivo seleccionado
 AnchoPanelIzquierdo=0;
 AnchoPanelDerecho=0;
-
+			
 //Evento que quita la barra de progreso de carga para el explorador cada que finaliza el cargue de su IFrame
 $('#iframe_marco_explorador').load(function(){
 	$('#progreso_marco_explorador').hide();
@@ -792,6 +797,7 @@ EditorClonado.setSession( ClonarSesionEditor(NuevaSessionEditor) );
 
 // FUNCIONES DE INICIALIZACION ###############################################################
 	ExplorarPath();
+	ActualizarPathActual();
 	PCODER_RecalcularMaquetacion();
 	window.setTimeout(ActualizarBarraEstado, 1000);
 

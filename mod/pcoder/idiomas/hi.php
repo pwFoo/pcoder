@@ -66,6 +66,7 @@
 	$MULTILANG_PCODER_Lineas='पंक्तियां';
 	$MULTILANG_PCODER_Modificado='संशोधित';
 	$MULTILANG_PCODER_No='नहीं';
+	$MULTILANG_PCODER_Operacion='Operation';
 	$MULTILANG_PCODER_Otros='अन्य लोग';
 	$MULTILANG_PCODER_Pegar='पेस्ट';
 	$MULTILANG_PCODER_Predeterminado='चूक';
@@ -78,6 +79,7 @@
 	$MULTILANG_PCODER_Tamano='आकार';
 	$MULTILANG_PCODER_Tipo='टाइप';
 	$MULTILANG_PCODER_Trabajando='कार्य';
+	$MULTILANG_PCODER_Ubicacion='Location';
 	$MULTILANG_PCODER_Ver='राय';
 
 	//Mensajes de error y varios
@@ -134,5 +136,6 @@
 	$MULTILANG_PCODER_SubirArchivo='दस्तावेज अपलोड करें';
 	$MULTILANG_PCODER_RecargarExplorador='एक्सप्लोरर पुनः लोड';
 	$MULTILANG_PCODER_EliminarElemento='फ़ाइल / फ़ोल्डर हटाना';
+	$MULTILANG_PCODER_OperacionesFS='Files, Folders and Permissions tasks';
 
 

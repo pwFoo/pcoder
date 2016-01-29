@@ -22,41 +22,28 @@
 
     // PREFERENCIAS
 	
-	abrir_dialogo_modal("myModalCREARARCHIVO",$MULTILANG_PCODER_CrearArchivo); ?>
+	abrir_dialogo_modal("myModalCREARARCHIVO",$MULTILANG_PCODER_OperacionesFS); ?>
 
 			<div class="row">
 				<div class="col-lg-6">
 
-						<label for="path_creacion"><?php echo $MULTILANG_PCODER_Carpeta; ?></label>					
-						<input type="text" name="path_creacion_elemento" id="path_creacion_elemento" class="form-control btn-block input-mini btn-xs" readonly>
-						<div id="marco_explorador_creacionarchivo" class="explorador_archivos"></div>
+						<label for="path_creacion"><?php echo $MULTILANG_PCODER_Ubicacion; ?></label>					
+						<input type="text" name="path_operacion_elemento" id="path_operacion_elemento" class="form-control btn-block input-mini btn-xs" readonly>
+						<div id="marco_explorador_creacionarchivo" class="explorador_archivos_mini"></div>
 					
 				</div>
 				<div class="col-lg-6">
-						<label for="tema_grafico"><?php echo $MULTILANG_PCODER_AparienciaEditor; ?></label>
-						<select id="tema_grafico" size="1" class="form-control btn-primary" onchange="CambiarTemaEditor(this.value)">
-						  <optgroup label="Brillantes / Bright">
-							  <?php
-								//Presenta los temas claros disponibles
-								for ($i=0;$i<count($PCODER_TemasBrillantes);$i++)
-									echo '<option value="ace/theme/'.$PCODER_TemasBrillantes[$i]["Valor"].'">'.$PCODER_TemasBrillantes[$i]["Nombre"].'</option>';
-							  ?>
-						  </optgroup>
-						  <optgroup label="Oscuros / Dark">
-							  <?php
-								//Presenta los temas claros disponibles
-								for ($i=0;$i<count($PCODER_TemasOscuros);$i++)
-									{
-										$EstadoSeleccionTema="";
-										if ($PCODER_TemasOscuros[$i]["Valor"]=="ambiance")
-											$EstadoSeleccionTema=" SELECTED ";
-										echo '<option value="ace/theme/'.$PCODER_TemasOscuros[$i]["Valor"].'" '.$EstadoSeleccionTema.'>'.$PCODER_TemasOscuros[$i]["Nombre"].'</option>';
-									}
-							  ?>
-						  </optgroup>
+						<label for="operacion_fs"><?php echo $MULTILANG_PCODER_Operacion; ?></label>
+						<select id="operacion_fs" size="1" class="form-control btn-primary">
+							<option value="0"><?php echo $MULTILANG_PCODER_CrearArchivo; ?></option>
+							<option value="0"><?php echo $MULTILANG_PCODER_CrearCarpeta; ?></option>
+							<option value="0"><?php echo $MULTILANG_PCODER_EditarPermisos; ?></option>
+							<option value="0"><?php echo $MULTILANG_PCODER_SubirArchivo; ?></option>
+							<option value="0"><?php echo $MULTILANG_PCODER_EliminarElemento; ?></option>
 						</select>
 				</div>
 			</div>
+
 			<hr>
 			<div class="row">
 				<div class="col-lg-6">

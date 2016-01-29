@@ -26,7 +26,7 @@ if( file_exists($root . $_POST['dir']) ) {
 		// All dirs
 		foreach( $files as $file ) {
 			if( file_exists($root . $_POST['dir'] . $file) && $file != '.' && $file != '..' && is_dir($root . $_POST['dir'] . $file) ) {
-				echo "<li class=\"directory collapsed\"><a OnClick=\"UltimaCarpetaSeleccionada='" . htmlentities($_POST['dir'] . $file) . "';\" rel=\"" . htmlentities($_POST['dir'] . $file) . "/\">" . htmlentities($file) . "</a></li>";
+				echo "<li class=\"directory collapsed\"><a OnClick=\"UltimaCarpetaSeleccionada='" . htmlentities($_POST['dir'] . $file) . "'; UltimoArchivoSeleccionado=''; \" rel=\"" . htmlentities($_POST['dir'] . $file) . "/\">" . htmlentities($file) . "</a></li>";
 			}
 		}
 		// All files, only if not hidden flag is received
@@ -35,7 +35,7 @@ if( file_exists($root . $_POST['dir']) ) {
 			foreach( $files as $file ) {
 				if( file_exists($root . $_POST['dir'] . $file) && $file != '.' && $file != '..' && !is_dir($root . $_POST['dir'] . $file) ) {
 					$ext = preg_replace('/^.*\./', '', $file);
-					echo "<li class=\"file ext_$ext\"><a OnClick=\"UltimoArchivoSeleccionado='" . htmlentities($_POST['dir'] . $file) . "';\" rel=\"" . htmlentities($_POST['dir'] . $file) . "\">" . htmlentities($file) . "</a></li>";
+					echo "<li class=\"file ext_$ext\"><a OnClick=\"UltimoArchivoSeleccionado='" . htmlentities($_POST['dir'] . $file) . "'; UltimaCarpetaSeleccionada=''; \" rel=\"" . htmlentities($_POST['dir'] . $file) . "\">" . htmlentities($file) . "</a></li>";
 				}
 			}
 		}
