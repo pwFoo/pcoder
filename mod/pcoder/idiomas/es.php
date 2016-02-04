@@ -150,4 +150,5 @@
 	$MULTILANG_PCODER_ElementoNoCreado='El elemento no puede ser creado, eliminado o modificado sobre el sistema de ficheros.  Verifique que cuenta con permisos suficientes';
 	$MULTILANG_PCODER_NrosLinea='Ver/Ocultar Numeros de linea, plegado y chequeo de sintaxis';
 	$MULTILANG_PCODER_CheqSintaxis='Chequeo de sintaxis';
+	$MULTILANG_PCODER_LenguajeResaltado='Lenguaje de resaltado';
 	

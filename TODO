@@ -1,6 +1,5 @@
 OTROS:
 * Al realizar operaciones de eliminacion de archivos verificar si estan abiertos y cerrarlos previamente
-* Poder cambiar el modo de resaltado de sintaxis en caliente
 * Poder desactivar el autocompletado y la verificación de sintaxis en caliente
 * Explorador debe actualizar su barra de navegacion segun la URL actual del IFRAME
 * Despues de ejecutar el comando de guardar regresar el foco al editor y la posicion del cursor

@@ -149,3 +149,4 @@
 	$MULTILANG_PCODER_ElementoNoCreado='The element can not be created, deleted or modified over file system.  Please check your permissions';
 	$MULTILANG_PCODER_NrosLinea='Show/Hide line numbers, folding and syntax check';
 	$MULTILANG_PCODER_CheqSintaxis='Syntax check';
+	$MULTILANG_PCODER_LenguajeResaltado='Highlighted language';

@@ -150,7 +150,26 @@
 							<!-- BOTONES INDEPENDIENTES -->
 							<li><a style="cursor:pointer;" OnClick="editor.execCommand('find');" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_Buscar; ?>"><i class="fa fa-search fa-fw text-danger "></i></a></li>
 							<li><a style="cursor:pointer;" OnClick="IntercambiarPantallaCompleta();" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>"><i class="fa fa-arrows-alt fa-fw text-primary"></i></a></li>
-						
+							
+							<!-- SELECCION EN CALIENTE DEL LENGUAJE -->
+							<li>
+								<select style="margin-top:1px;" id="modo_archivo_top" size="1" class=" btn-xs btn-primary" onchange="CambiarModoEditor(this.value)"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_LenguajeResaltado; ?>">
+								  <?php
+									//Presenta los lenguajes disponibles
+									for ($i=0;$i<count($PCODER_Modos);$i++)
+										{
+											//Determina si el lenguaje o modo de archivo actual es la opcion a desplegar
+											$modo_seleccion='';
+											if($PCODER_Modos[$i]["Nombre"]==$PCODER_ModoEditor)
+												$modo_seleccion='SELECTED';
+											//PResenta la opcion
+											echo '<option value="ace/mode/'.$PCODER_Modos[$i]["Nombre"].'" '.$modo_seleccion.' >'.$PCODER_Modos[$i]["Nombre"].'</option>';
+										}
+								  ?>
+								</select>
+							</li>
+
+
 						</ul>
 							
 						<ul class="nav navbar-nav navbar-right">

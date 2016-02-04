@@ -13,6 +13,7 @@
 * Added: Validaciones durante almacenamiento para archivos sin permisos
 * Added: Nueva opción del menu permite ver u ocultar los números de línea, widgets de plegado de código y errores de sintaxis
 * Added: Se permite activar o desactivar en caliente el chequeo de sintaxis
+* Added: Lista de selección en la barra de menu permite ahora cambiar el modo de resaltado de sintaxis de lenguaje en caliente
 * Enhan: Mejorados enlaces en barra de menu para evitar barra de estado
 * Enhan: Presentación de la consola remota y explorador web
 * Enhan: Mejora sobre JQueryFileTree.  Ahora se utiliza fork propio con más posibilidades

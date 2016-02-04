@@ -149,3 +149,4 @@
 	$MULTILANG_PCODER_ElementoNoCreado='O elemento não pode ser criado, excluído ou modificado ao longo do sistema de arquivos. Por favor verifique as suas permissões';
 	$MULTILANG_PCODER_NrosLinea='N&uacute;meros de linha Si / No';
 	$MULTILANG_PCODER_CheqSintaxis='Verificação de sintaxe';
+	$MULTILANG_PCODER_LenguajeResaltado='Idioma realçado';

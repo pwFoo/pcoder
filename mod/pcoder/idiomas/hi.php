@@ -149,3 +149,4 @@
 	$MULTILANG_PCODER_ElementoNoCreado='तत्व, बनाया नहीं जा सकता है नष्ट कर दिया या फ़ाइल प्रणाली पर संशोधित। अपनी अनुमतियाँ जाँच';
 	$MULTILANG_PCODER_NrosLinea='दिखाएँ / छुपाएँ लाइन नंबर';
 	$MULTILANG_PCODER_CheqSintaxis='सिंटेक्स की जांच';
+	$MULTILANG_PCODER_LenguajeResaltado='प्रकाश डाला भाषा';
