@@ -54,6 +54,7 @@
 	$MULTILANG_PCODER_Deshacer='पूर्ववत';
 	$MULTILANG_PCODER_Desplazar='चाल';
 	$MULTILANG_PCODER_Editar='संपादित';
+	$MULTILANG_PCODER_Eliminado='नष्ट कर दिया';
 	$MULTILANG_PCODER_Error='एरर';
 	$MULTILANG_PCODER_Estado='स्थिति';
 	$MULTILANG_PCODER_Explorar='अन्वेषण';

@@ -24,32 +24,70 @@
 /* ################################################################## */
 /* ################################################################## */
 /*
+	Function: PCODER_EliminarElemento
+	Elimina un elemento en el sistema de ficheros
+	Retorna:
+		1	Operacion exitosa
+		-1	Error
+*/
+if ($PCO_Accion=="PCODER_EliminarElemento") 
+	{
+		$ResultadoOperacion="0";
+		//Realiza operacion segun el tipo de elemento
+		if($PCODER_TipoElementoFS=="archivo")
+			$Eliminacion=unlink($PCODER_ElementoFS);
+		if($PCODER_TipoElementoFS=="carpeta")
+			$Eliminacion=rmdir($PCODER_ElementoFS);
+		//Determina valor a devolver
+		if ($Eliminacion)
+			$ResultadoOperacion="1";
+		else
+			$ResultadoOperacion="-1";
+		@ob_clean();
+        echo $ResultadoOperacion;
+        die();
+	}
+
+
+/* ################################################################## */
+/* ################################################################## */
+/*
 	Function: PCODER_EditarPermisos
 	Cambia los permisos o propietario de un elemento en el sistema de ficheros
 	Retorna:
 		1	Operacion exitosa
-		-1	La carpeta ya existe
-		-2	La carpeta no se pudo crear
+		-1	Error cambiando permisos y propietario
+		-2	Error cambiando permisos
+		-3	Error cambiando propietario
 */
 if ($PCO_Accion=="PCODER_EditarPermisos") 
 	{
 		$ResultadoOperacion="0";
 
-
-/*
-		//Crea el archivo solo si no existe
-		$ExisteElemento=file_exists($PCODER_ElementoFS);
-		if(!$ExisteElemento)
+		//Cambia permisos
+		$CambioPermisos=chmod($PCODER_ElementoFS, $PCODER_PermisosFS );
+		
+		//Cambia propietario
+		$CambioPropietario=chown($PCODER_ElementoFS, $PCODER_PropietarioFS );
+		
+		if ($CambioPermisos && $CambioPropietario)
 			{
-				$CreacionElemento=mkdir($PCODER_ElementoFS);
-				if ($CreacionElemento)
-					$ResultadoOperacion="1";
-				else
-					$ResultadoOperacion="-2";
+				$ResultadoOperacion="1";
 			}
 		else
-			$ResultadoOperacion="-1";
-*/
+			{
+				if (!$CambioPermisos && !$CambioPropietario)
+					{
+						$ResultadoOperacion="-1";
+					}
+				else
+					{
+						if (!$CambioPermisos)
+							$ResultadoOperacion="-2";
+						if (!$CambioPropietario)
+							$ResultadoOperacion="-3";
+					}
+			}
 		@ob_clean();
         echo $ResultadoOperacion;
         die();

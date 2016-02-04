@@ -54,6 +54,7 @@
 	$MULTILANG_PCODER_Deshacer='Undo';
 	$MULTILANG_PCODER_Desplazar='Move';
 	$MULTILANG_PCODER_Editar='Edit';
+	$MULTILANG_PCODER_Eliminado='Deleted';
 	$MULTILANG_PCODER_Error='Error';
 	$MULTILANG_PCODER_Estado='Status';
 	$MULTILANG_PCODER_Explorar='Explore';

@@ -317,6 +317,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		var MULTILANG_PCODER_ElementoNoCreado="<?php echo $MULTILANG_PCODER_ElementoNoCreado; ?>";
 		var MULTILANG_PCODER_Propietario="<?php echo $MULTILANG_PCODER_Propietario; ?>";
 		var MULTILANG_PCODER_Permisos="<?php echo $MULTILANG_PCODER_Permisos; ?>";
+		var MULTILANG_PCODER_Eliminado="<?php echo $MULTILANG_PCODER_Eliminado; ?>";
 	</script>
 	<script type="text/javascript" src="js/pcoder.min.js"></script>
 
