@@ -124,25 +124,13 @@ function CaracteresInvisiblesEditor(estado)
 		else
 			editor.setShowInvisibles(true);
 	}
-function VerificarSintaxisEditor(estado)
-	{
-		//Cambia el la verificacion de sintaxis del editor
-		if (estado==0)
-			{
-				editor.session.setOption("useWorker", false);
-				EditorClonado.session.setOption("useWorker", false);
-			}
-		else
-			{
-				editor.session.setOption("useWorker", true);
-				EditorClonado.session.setOption("useWorker", true);
-			}
-	}
+
 function IntercambiarAutocompletadoEditor(estado)
 	{
 		//Cambia el la verificacion de sintaxis del editor
 		if (estado==0)
 			{
+				//editor.setOptions(enableLiveAutocompletion: false})
 				 editor.session.setOption("enableBasicAutocompletion", false);
 				 editor.session.setOption("enableSnippets", false);
 				 editor.session.setOption("enableLiveAutocompletion", false);
@@ -166,6 +154,24 @@ function IntercambiarEstadoCaracteresInvisibles()
 			{
 				editor.setShowInvisibles(true);
 				EditorClonado.setShowInvisibles(true);
+			}
+	}
+function VerificarSintaxisEditor()
+	{
+		//Cambia el la verificacion de sintaxis del editor
+		if (document.getElementById("Check_VerificarSintaxisEditor").value=="1")
+			{
+				editor.session.setOption("useWorker", false);
+				EditorClonado.session.setOption("useWorker", false);
+				document.getElementById("Check_VerificarSintaxisEditor").value="0";
+				$('#Check_VerificarSintaxisEditor').prop('checked', false);
+			}
+		else
+			{
+				editor.session.setOption("useWorker", true);
+				EditorClonado.session.setOption("useWorker", true);
+				document.getElementById("Check_VerificarSintaxisEditor").value="1";
+				$('#Check_VerificarSintaxisEditor').prop('checked', true);
 			}
 	}
 function IntercambiarVisibilidadNumerosDeLinea()
@@ -1002,4 +1008,3 @@ EditorClonado.setSession( ClonarSesionEditor(NuevaSessionEditor) );
 	ActualizarPathActual();
 	PCODER_RecalcularMaquetacion();
 	window.setTimeout(ActualizarBarraEstado, 1000);
-

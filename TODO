@@ -14,6 +14,7 @@ OTROS:
 * Permitir ajustar idioma por defecto
 * Acceso simplificado a grabacion y ejecucion de macros (como en cloud9)
 * Permitir pestañas en explorador web
+* Agregar soporte para mostrar informacion de tokens igual a kitchen editor.tokenTooltip = new TokenTooltip(editor);
 * Remover aviso de Usted esta en fullscreen (Workaround):
 	CHROME:
 		Disable 'allow/decline full screen' message on your pc:

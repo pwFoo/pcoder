@@ -132,8 +132,7 @@
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('goToNextError');"><i class="fa fa-indent fa-fw"></i><?php echo $MULTILANG_PCODER_DepuraErrorSiguiente; ?> <span class="pull-right text-muted small"><i>Alt+E</i></span></a></li>
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('goToPreviousError');"><i class="fa fa-outdent fa-fw"></i><?php echo $MULTILANG_PCODER_DepuraErrorPrevio; ?> <span class="pull-right text-muted small"><i>Alt+Shift+E</i></span></a></li>
 									<li role="separator" class="divider"></li>
-									<li><a style="cursor:pointer;" OnClick="VerificarSintaxisEditor(1);"><i class="fa fa-check-square-o fa-fw"></i><?php echo $MULTILANG_PCODER_Activar; ?> <?php echo $MULTILANG_PCODER_CheqSintaxis; ?></a></li>
-									<li><a style="cursor:pointer;" OnClick="VerificarSintaxisEditor(0);"><i class="fa fa-square-o fa-fw"></i><?php echo $MULTILANG_PCODER_Desactivar; ?> <?php echo $MULTILANG_PCODER_CheqSintaxis; ?></a></li>
+									<li><a style="cursor:pointer;" OnClick="VerificarSintaxisEditor(0);"><input type="checkbox" id="Check_VerificarSintaxisEditor" value="1" checked readonly> <?php echo $MULTILANG_PCODER_Activar; ?>/<?php echo $MULTILANG_PCODER_Desactivar; ?> <?php echo $MULTILANG_PCODER_CheqSintaxis; ?></a></li>
 								</ul>
 							</li>
 
