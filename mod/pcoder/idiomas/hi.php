@@ -36,6 +36,7 @@
 	//Lexico general
 	$MULTILANG_PCODER_Abrir='खुला';
 	$MULTILANG_PCODER_Aceptar='स्वीकार करना';
+	$MULTILANG_PCODER_Activar='सक्षम';
 	$MULTILANG_PCODER_Archivo='फ़ाइल';
 	$MULTILANG_PCODER_Acercar='ज़ूम इन';
 	$MULTILANG_PCODER_Alejar='ज़ूम आउट';
@@ -45,12 +46,13 @@
 	$MULTILANG_PCODER_Cancelar='रद्द करना';
 	$MULTILANG_PCODER_Caracteres='वर्ण';
 	$MULTILANG_PCODER_Cargando='लदान';
-	$MULTILANG_PCODER_Carpeta='Carpeta';
+	$MULTILANG_PCODER_Carpeta='फ़ोल्डर';
 	$MULTILANG_PCODER_Cerrar='बंद करे';
 	$MULTILANG_PCODER_Columna='स्तंभ';
 	$MULTILANG_PCODER_Copiar='प्रतिलिपि';
 	$MULTILANG_PCODER_Cortar='कमी';
 	$MULTILANG_PCODER_Depurar='डीबग';
+	$MULTILANG_PCODER_Desactivar='अक्षम करें';
 	$MULTILANG_PCODER_Deshacer='पूर्ववत';
 	$MULTILANG_PCODER_Desplazar='चाल';
 	$MULTILANG_PCODER_Editar='संपादित';
@@ -69,7 +71,7 @@
 	$MULTILANG_PCODER_Modificado='संशोधित';
 	$MULTILANG_PCODER_No='नहीं';
 	$MULTILANG_PCODER_Nombre='नाम';
-	$MULTILANG_PCODER_Operacion='Operation';
+	$MULTILANG_PCODER_Operacion='आपरेशन';
 	$MULTILANG_PCODER_Otros='अन्य लोग';
 	$MULTILANG_PCODER_Pegar='पेस्ट';
 	$MULTILANG_PCODER_Permisos='अनुमतियां';
@@ -146,3 +148,4 @@
 	$MULTILANG_PCODER_ElementoExiste='तत्व पहले से मौजूद है';
 	$MULTILANG_PCODER_ElementoNoCreado='तत्व, बनाया नहीं जा सकता है नष्ट कर दिया या फ़ाइल प्रणाली पर संशोधित। अपनी अनुमतियाँ जाँच';
 	$MULTILANG_PCODER_NrosLinea='दिखाएँ / छुपाएँ लाइन नंबर';
+	$MULTILANG_PCODER_CheqSintaxis='सिंटेक्स की जांच';

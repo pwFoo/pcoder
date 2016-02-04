@@ -36,6 +36,7 @@
 	//Lexico general
 	$MULTILANG_PCODER_Abrir='Aberto';
 	$MULTILANG_PCODER_Aceptar='Aceitar';
+	$MULTILANG_PCODER_Activar='Habilitar';
 	$MULTILANG_PCODER_Archivo='Arquivo';
 	$MULTILANG_PCODER_Acercar='Mais Zoom';
 	$MULTILANG_PCODER_Alejar='Menos zoom';
@@ -51,6 +52,7 @@
 	$MULTILANG_PCODER_Copiar='C&aacute;pia';
 	$MULTILANG_PCODER_Cortar='Cortar';
 	$MULTILANG_PCODER_Depurar='Depurar';
+	$MULTILANG_PCODER_Desactivar='Incapacitar';
 	$MULTILANG_PCODER_Deshacer='Desfazer';
 	$MULTILANG_PCODER_Desplazar='Passo';
 	$MULTILANG_PCODER_Editar='Editar';
@@ -69,7 +71,7 @@
 	$MULTILANG_PCODER_Modificado='Modificado';
 	$MULTILANG_PCODER_No='Não';
 	$MULTILANG_PCODER_Nombre='Nome';
-	$MULTILANG_PCODER_Operacion='Operation';
+	$MULTILANG_PCODER_Operacion='Operação';
 	$MULTILANG_PCODER_Otros='Outros';
 	$MULTILANG_PCODER_Pegar='Colar';
 	$MULTILANG_PCODER_Permisos='Permissões';
@@ -146,3 +148,4 @@
 	$MULTILANG_PCODER_ElementoExiste='O elemento já existe';
 	$MULTILANG_PCODER_ElementoNoCreado='O elemento não pode ser criado, excluído ou modificado ao longo do sistema de arquivos. Por favor verifique as suas permissões';
 	$MULTILANG_PCODER_NrosLinea='N&uacute;meros de linha Si / No';
+	$MULTILANG_PCODER_CheqSintaxis='Verificação de sintaxe';

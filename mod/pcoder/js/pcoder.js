@@ -120,25 +120,25 @@ function CaracteresInvisiblesEditor(estado)
 	{
 		//Cambia el modo del editor para mostrar (true) u ocultar (false) los caracteres invisibles
 		if (estado==0)
-			{
-				editor.setShowInvisibles(false);
-				EditorClonado.setShowInvisibles(false);
-			}
+			editor.setShowInvisibles(false);
 		else
-			{
-				editor.setShowInvisibles(true);
-				EditorClonado.setShowInvisibles(true);
-			}
+			editor.setShowInvisibles(true);
 	}
 function VerificarSintaxisEditor(estado)
 	{
 		//Cambia el la verificacion de sintaxis del editor
 		if (estado==0)
-			editor.session.setOption("useWorker", false);
+			{
+				editor.session.setOption("useWorker", false);
+				EditorClonado.session.setOption("useWorker", false);
+			}
 		else
-			editor.session.setOption("useWorker", true);
+			{
+				editor.session.setOption("useWorker", true);
+				EditorClonado.session.setOption("useWorker", true);
+			}
 	}
-function VerificarAutocompletadoEditor(estado)
+function IntercambiarAutocompletadoEditor(estado)
 	{
 		//Cambia el la verificacion de sintaxis del editor
 		if (estado==0)
@@ -917,6 +917,7 @@ editor.setOptions({
 	enableSnippets: true,
 	enableLiveAutocompletion: true
 });
+
 editor.setAnimatedScroll(true);
 
 //Elimina la visualizacion de margen de impresion
@@ -985,9 +986,6 @@ function ClonarPropiedadesEditor()
 		ModoFiltrado = ModoFiltrado.toLowerCase();
 		//Cambia el modo de sintaxis y errores resaltado por el editor
 		EditorClonado.getSession().setMode(ModoFiltrado);
-
-		//Evita el chequeo de sintaxis en el editor auxiliar
-		EditorClonado.getSession().setUseWorker(false);
 	}
 	
 //Clona el editor hacia uno nuevo para permitir los split

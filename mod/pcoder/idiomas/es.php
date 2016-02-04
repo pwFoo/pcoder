@@ -36,6 +36,7 @@
 	//Lexico general
 	$MULTILANG_PCODER_Abrir='Abrir';
 	$MULTILANG_PCODER_Aceptar='Aceptar';
+	$MULTILANG_PCODER_Activar='Activar';
 	$MULTILANG_PCODER_Archivo='Archivo';
 	$MULTILANG_PCODER_Acercar='Acercar';
 	$MULTILANG_PCODER_Alejar='Alejar';
@@ -52,6 +53,7 @@
 	$MULTILANG_PCODER_Copiar='Copiar';
 	$MULTILANG_PCODER_Cortar='Cortar';
 	$MULTILANG_PCODER_Depurar='Depurar';
+	$MULTILANG_PCODER_Desactivar='Desactivar';
 	$MULTILANG_PCODER_Deshacer='Deshacer';
 	$MULTILANG_PCODER_Desplazar='Desplazar';
 	$MULTILANG_PCODER_Editar='Editar';
@@ -146,5 +148,6 @@
 	$MULTILANG_PCODER_ElementoCreado='El elemento ha sido creado';
 	$MULTILANG_PCODER_ElementoExiste='El elemento indicado ya existe';
 	$MULTILANG_PCODER_ElementoNoCreado='El elemento no puede ser creado, eliminado o modificado sobre el sistema de ficheros.  Verifique que cuenta con permisos suficientes';
-	$MULTILANG_PCODER_NrosLinea='Ver/Ocultar Numeros de linea';
+	$MULTILANG_PCODER_NrosLinea='Ver/Ocultar Numeros de linea, plegado y chequeo de sintaxis';
+	$MULTILANG_PCODER_CheqSintaxis='Chequeo de sintaxis';
 	

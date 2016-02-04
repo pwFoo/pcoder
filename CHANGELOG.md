@@ -9,11 +9,15 @@
 ## Versión 16.3 (2016-03-01)
 * Added: Agregado acceso directo Ctrl+Q para cerrar el archivo actual
 * Added: Agregado acceso directo Ctrl+O para apertura de archivos
-* Added: Operaciones simples con archivos y carpetas
+* Added: Operaciones simples con archivos y carpetas (crear/eliminar/permisos/etc)
 * Added: Validaciones durante almacenamiento para archivos sin permisos
+* Added: Nueva opción del menu permite ver u ocultar los números de línea, widgets de plegado de código y errores de sintaxis
+* Added: Se permite activar o desactivar en caliente el chequeo de sintaxis
 * Enhan: Mejorados enlaces en barra de menu para evitar barra de estado
 * Enhan: Presentación de la consola remota y explorador web
 * Enhan: Mejora sobre JQueryFileTree.  Ahora se utiliza fork propio con más posibilidades
+* Fixed: Algunas operaciones de visualización realizadas sobre el editor principal son ahora ejecutadas también sobre el editor clonado (split views)
+
 
 ## Versión 16.2 (2016-02-01)
 * Added: Soporte a vistas clonadas del archivo horizontal y verticalmente 
@@ -29,6 +33,7 @@
 * Enhan: Mejorada la visualizacion del explorador de archivos
 * Fixed: Mejoras en maquetación y cálculo dinámico de marcos
 * Enhan: Actualizacion ACE version 1.2.2
+
 
 ## Versión 16.1 (2016-01-07)
 * Added: Manejo de múltiples archivos en pestañas desde un solo editor!
