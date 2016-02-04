@@ -110,6 +110,10 @@ function CambiarModoEditor(modo)
 		ModoFiltrado = ModoFiltrado.toLowerCase();
 		//Cambia el modo de sintaxis y errores resaltado por el editor
 		editor.getSession().setMode(ModoFiltrado);
+
+		//Actualiza las listas de seleccion con el modo correspondiente
+		document.getElementById("modo_archivo_preferencias").value=modo;
+		document.getElementById("modo_archivo_top").value=modo;
 		try
 			{
 				EditorClonado.getSession().setMode(ModoFiltrado);

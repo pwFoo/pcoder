@@ -18,6 +18,7 @@
 * Enhan: Presentación de la consola remota y explorador web
 * Enhan: Mejora sobre JQueryFileTree.  Ahora se utiliza fork propio con más posibilidades
 * Fixed: Algunas operaciones de visualización realizadas sobre el editor principal son ahora ejecutadas también sobre el editor clonado (split views)
+* Fixed: Mejorada la detección del tipo de fichero por su extensión.  Algunos como Mush se podían confundir por ejemplo con los sh (por patrón similar)
 
 
 ## Versión 16.2 (2016-02-01)

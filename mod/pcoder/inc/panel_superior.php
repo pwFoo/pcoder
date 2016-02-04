@@ -157,14 +157,7 @@
 								  <?php
 									//Presenta los lenguajes disponibles
 									for ($i=0;$i<count($PCODER_Modos);$i++)
-										{
-											//Determina si el lenguaje o modo de archivo actual es la opcion a desplegar
-											$modo_seleccion='';
-											if($PCODER_Modos[$i]["Nombre"]==$PCODER_ModoEditor)
-												$modo_seleccion='SELECTED';
-											//PResenta la opcion
-											echo '<option value="ace/mode/'.$PCODER_Modos[$i]["Nombre"].'" '.$modo_seleccion.' >'.$PCODER_Modos[$i]["Nombre"].'</option>';
-										}
+										echo '<option value="ace/mode/'.$PCODER_Modos[$i]["Nombre"].'" >'.$PCODER_Modos[$i]["Nombre"].'</option>';
 								  ?>
 								</select>
 							</li>

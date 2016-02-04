@@ -317,8 +317,12 @@ if ($PCO_Accion=="PCOMOD_ObtenerModoEditor")
         $PCODER_ModoEditor='';
         for ($i=0;$i<count($PCODER_Modos) && $PCODER_ModoEditor=='';$i++)
             {
-               if(strpos($PCODER_Modos[$i]["Extensiones"], $PCODER_extension) !== false)
-                    $PCODER_ModoEditor=$PCODER_Modos[$i]["Nombre"];
+				//Lleva las extensiones a un array para buscar en el
+				$ArregloExtensiones=explode("|",$PCODER_Modos[$i]["Extensiones"]);
+                if(in_array($PCODER_extension,$ArregloExtensiones))
+					{
+						$PCODER_ModoEditor=$PCODER_Modos[$i]["Nombre"];
+					}
             }
 
    		@ob_clean();
