@@ -4,7 +4,6 @@ OTROS:
 * Poder desactivar el autocompletado y la verificación de sintaxis en caliente
 * Explorador debe actualizar su barra de navegacion segun la URL actual del IFRAME
 * Despues de ejecutar el comando de guardar regresar el foco al editor y la posicion del cursor
-* Poder ocultar o mostrar numeros de linea en caliente
 * Guardar el tipo de archivo identificado al comienzo (verificar si se hace así ya) y de acuerdo a eso refrescar el editor y el resaltado
 * Advertencia al cerrar arcivo con cambios
 * Administracion de usuarios

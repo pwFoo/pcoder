@@ -146,4 +146,5 @@
 	$MULTILANG_PCODER_ElementoCreado='El elemento ha sido creado';
 	$MULTILANG_PCODER_ElementoExiste='El elemento indicado ya existe';
 	$MULTILANG_PCODER_ElementoNoCreado='El elemento no puede ser creado, eliminado o modificado sobre el sistema de ficheros.  Verifique que cuenta con permisos suficientes';
+	$MULTILANG_PCODER_NrosLinea='Ver/Ocultar Numeros de linea';
 	

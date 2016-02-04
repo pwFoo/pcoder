@@ -145,4 +145,4 @@
 	$MULTILANG_PCODER_ElementoCreado='O elemento foi criado';
 	$MULTILANG_PCODER_ElementoExiste='O elemento já existe';
 	$MULTILANG_PCODER_ElementoNoCreado='O elemento não pode ser criado, excluído ou modificado ao longo do sistema de arquivos. Por favor verifique as suas permissões';
-
+	$MULTILANG_PCODER_NrosLinea='N&uacute;meros de linha Si / No';

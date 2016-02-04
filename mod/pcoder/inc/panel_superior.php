@@ -94,6 +94,7 @@
 								<ul class="dropdown-menu">
 									<li><a style="cursor:pointer;" OnClick="IntercambiarPantallaCompleta();"><i class="fa fa-arrows-alt fa-fw"></i> <?php echo $MULTILANG_PCODER_PantallaCompleta; ?>	<span class="pull-right text-muted small"><i>F11</i></span></a></li>
 									<li><a style="cursor:pointer;" OnClick="IntercambiarEstadoCaracteresInvisibles();"><i class="fa fa-eye-slash fa-fw"></i> <?php echo $MULTILANG_PCODER_CaracNoImprimibles; ?></a></li>
+									<li><a style="cursor:pointer;" OnClick="IntercambiarVisibilidadNumerosDeLinea();"><i class="fa fa-list-ol fa-fw"></i> <?php echo $MULTILANG_PCODER_NrosLinea; ?></a></li>
 									<li role="separator" class="divider"></li>
 									<li><a style="cursor:pointer;" OnClick="AumentarTamanoFuente();"><i class="fa fa-plus-square fa-fw"></i> <?php echo $MULTILANG_PCODER_Acercar; ?></a></li>
 									<li><a style="cursor:pointer;" OnClick="DisminuirTamanoFuente();"><i class="fa fa-minus-square fa-fw"></i> <?php echo $MULTILANG_PCODER_Alejar; ?></a></li>

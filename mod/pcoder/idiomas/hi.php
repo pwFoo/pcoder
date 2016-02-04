@@ -145,4 +145,4 @@
 	$MULTILANG_PCODER_ElementoCreado='तत्व बनाया गया है';
 	$MULTILANG_PCODER_ElementoExiste='तत्व पहले से मौजूद है';
 	$MULTILANG_PCODER_ElementoNoCreado='तत्व, बनाया नहीं जा सकता है नष्ट कर दिया या फ़ाइल प्रणाली पर संशोधित। अपनी अनुमतियाँ जाँच';
-
+	$MULTILANG_PCODER_NrosLinea='दिखाएँ / छुपाएँ लाइन नंबर';

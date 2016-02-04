@@ -120,9 +120,15 @@ function CaracteresInvisiblesEditor(estado)
 	{
 		//Cambia el modo del editor para mostrar (true) u ocultar (false) los caracteres invisibles
 		if (estado==0)
-			editor.setShowInvisibles(false);
+			{
+				editor.setShowInvisibles(false);
+				EditorClonado.setShowInvisibles(false);
+			}
 		else
-			editor.setShowInvisibles(true);
+			{
+				editor.setShowInvisibles(true);
+				EditorClonado.setShowInvisibles(true);
+			}
 	}
 function VerificarSintaxisEditor(estado)
 	{
@@ -152,9 +158,29 @@ function IntercambiarEstadoCaracteresInvisibles()
 	{
 		//InterCambia el modo del editor para mostrar (true) u ocultar (false) los caracteres invisibles segun su estado actual
 		if (editor.getShowInvisibles()==true)
-			editor.setShowInvisibles(false);
+			{
+				editor.setShowInvisibles(false);
+				EditorClonado.setShowInvisibles(false);
+			}
 		else
-			editor.setShowInvisibles(true);
+			{
+				editor.setShowInvisibles(true);
+				EditorClonado.setShowInvisibles(true);
+			}
+	}
+function IntercambiarVisibilidadNumerosDeLinea()
+	{
+		//InterCambia el modo del editor para mostrar (true) u ocultar (false) los numeros de linea
+		if (editor.renderer.getShowGutter()==true)
+			{
+				editor.renderer.setShowGutter(false);
+				EditorClonado.renderer.setShowGutter(false);
+			}
+		else
+			{
+				editor.renderer.setShowGutter(true);
+				EditorClonado.renderer.setShowGutter(true);
+			}
 	}
 function ActualizarTituloEditor(titulo)
 	{
@@ -181,7 +207,6 @@ function QuitarAvisoAlmacenamiento()
 		//TODO: Devolver el foco al editor
 		//editor.focus();											//Establece el foco al editor
 		//$('#editor_codigo').trigger('click');
-
 	}
 
 function Guardar()
@@ -952,6 +977,7 @@ function ClonarPropiedadesEditor()
 		EditorClonado.setWrapBehavioursEnabled(editor.getWrapBehavioursEnabled());
 		EditorClonado.setTheme(editor.getTheme());
 		EditorClonado.setFontSize(editor.getFontSize());
+		EditorClonado.renderer.setShowGutter(editor.renderer.getShowGutter());
 		
 		//Modo de resaltado
 		ModoClonado="ace/mode/"+ListaArchivos[IndiceArchivoActual].ModoEditor;

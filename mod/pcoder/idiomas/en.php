@@ -145,4 +145,4 @@
 	$MULTILANG_PCODER_ElementoCreado='The element has been created';
 	$MULTILANG_PCODER_ElementoExiste='The element already exists';
 	$MULTILANG_PCODER_ElementoNoCreado='The element can not be created, deleted or modified over file system.  Please check your permissions';
-	
+	$MULTILANG_PCODER_NrosLinea='Show/Hide line numbers';
