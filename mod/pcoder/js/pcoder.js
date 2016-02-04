@@ -469,18 +469,7 @@ function ActualizarPathActual()
 		window.setTimeout(ActualizarPathActual, 500);
 	}
 
-function EjecutarOperacionFS()
-	{
-		//Toma los valores de parametros de la ventana de operaciones FS, valida y hace el llamado a la operacion
-		
-		
-		
-		
-		
-		
-		
-		
-	}
+
 
 function ActualizarBarraEstado()
 	{

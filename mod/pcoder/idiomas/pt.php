@@ -71,8 +71,10 @@
 	$MULTILANG_PCODER_Operacion='Operation';
 	$MULTILANG_PCODER_Otros='Outros';
 	$MULTILANG_PCODER_Pegar='Colar';
+	$MULTILANG_PCODER_Permisos='Permissões';
 	$MULTILANG_PCODER_Predeterminado='Padrão';
 	$MULTILANG_PCODER_Preferencias='Preferências do editor {P}Coder';
+	$MULTILANG_PCODER_Propietario='Proprietário';
 	$MULTILANG_PCODER_Reemplazar='Substituir';
 	$MULTILANG_PCODER_Rehacer='Refazer';
 	$MULTILANG_PCODER_Salir='Sair';
@@ -138,6 +140,8 @@
 	$MULTILANG_PCODER_SubirArchivo='Subir arquivo';
 	$MULTILANG_PCODER_RecargarExplorador='Explorador de recarga';
 	$MULTILANG_PCODER_EliminarElemento='Excluir o arquivo / pasta';
-	$MULTILANG_PCODER_OperacionesFS='Files, Folders and Permissions tasks';
-
+	$MULTILANG_PCODER_OperacionesFS='Archivos, carpetas y tareas de permisos';
+	$MULTILANG_PCODER_ElementoCreado='O elemento foi criado';
+	$MULTILANG_PCODER_ElementoExiste='O elemento já existe';
+	$MULTILANG_PCODER_ElementoNoCreado='O elemento não pode ser criado, excluído ou modificado ao longo do sistema de arquivos. Por favor verifique as suas permissões';
 

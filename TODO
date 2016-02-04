@@ -29,7 +29,7 @@ OTROS:
 
 UEDIT:
 * Archivo nuevo (y nuevo desde plantilla)
-* Archivos remotos (FTP,sFTP,SSH)
+* Archivos remotos (FTP,sFTP,SSH)  PAra FTP Ver http://php.net/manual/es/function.mkdir.php comentario: toppi at kacke
 * Guardar como
 * Guardar todo
 Renombrar archivo

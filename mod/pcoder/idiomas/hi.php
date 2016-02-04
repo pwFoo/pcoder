@@ -71,8 +71,10 @@
 	$MULTILANG_PCODER_Operacion='Operation';
 	$MULTILANG_PCODER_Otros='अन्य लोग';
 	$MULTILANG_PCODER_Pegar='पेस्ट';
+	$MULTILANG_PCODER_Permisos='अनुमतियां';
 	$MULTILANG_PCODER_Predeterminado='चूक';
 	$MULTILANG_PCODER_Preferencias='{P}Coder संपादक वरीयताओं';
+	$MULTILANG_PCODER_Propietario='मालिक';
 	$MULTILANG_PCODER_Reemplazar='की जगह';
 	$MULTILANG_PCODER_Rehacer='फिर से करना';
 	$MULTILANG_PCODER_Salir='छोड़ना';
@@ -138,6 +140,8 @@
 	$MULTILANG_PCODER_SubirArchivo='दस्तावेज अपलोड करें';
 	$MULTILANG_PCODER_RecargarExplorador='एक्सप्लोरर पुनः लोड';
 	$MULTILANG_PCODER_EliminarElemento='फ़ाइल / फ़ोल्डर हटाना';
-	$MULTILANG_PCODER_OperacionesFS='Files, Folders and Permissions tasks';
-
+	$MULTILANG_PCODER_OperacionesFS='फाइल, फोल्डर और अनुमतियाँ कार्यों';
+	$MULTILANG_PCODER_ElementoCreado='तत्व बनाया गया है';
+	$MULTILANG_PCODER_ElementoExiste='तत्व पहले से मौजूद है';
+	$MULTILANG_PCODER_ElementoNoCreado='तत्व, बनाया नहीं जा सकता है नष्ट कर दिया या फ़ाइल प्रणाली पर संशोधित। अपनी अनुमतियाँ जाँच';
 

@@ -71,8 +71,10 @@
 	$MULTILANG_PCODER_Operacion='Operation';
 	$MULTILANG_PCODER_Otros='Others';
 	$MULTILANG_PCODER_Pegar='Paste';
+	$MULTILANG_PCODER_Permisos='Permissions';
 	$MULTILANG_PCODER_Predeterminado='Default';
 	$MULTILANG_PCODER_Preferencias='{P}Coder editors Preferences';
+	$MULTILANG_PCODER_Propietario='Owner';
 	$MULTILANG_PCODER_Reemplazar='Replace';
 	$MULTILANG_PCODER_Rehacer='Redo';
 	$MULTILANG_PCODER_Salir='Quit';
@@ -139,3 +141,7 @@
 	$MULTILANG_PCODER_RecargarExplorador='Explorer reload';
 	$MULTILANG_PCODER_EliminarElemento='Delete file/folder';
 	$MULTILANG_PCODER_OperacionesFS='Files, Folders and Permissions tasks';
+	$MULTILANG_PCODER_ElementoCreado='The element has been created';
+	$MULTILANG_PCODER_ElementoExiste='The element already exists';
+	$MULTILANG_PCODER_ElementoNoCreado='The element can not be created, deleted or modified over file system.  Please check your permissions';
+	

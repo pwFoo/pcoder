@@ -205,7 +205,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 	</div><!-- /.modal -->
 
 	<!-- Modal para mensajes generales -->
-	<div id="PCO_Modal_Mensaje" class="modal fade">
+	<div id="PCO_Modal_Mensaje" class="modal fade" data-backdrop="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -222,7 +222,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 
-<?php include_once ("inc/marco_operarfs.php");	?>
+	<?php include_once ("inc/marco_operarfs.php");	?>
 
 	<!-- ################# INICIO DE LA MAQUETACION ################ -->
 		<?php include_once ("inc/panel_superior.php"); 	?>
@@ -311,6 +311,12 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		var MULTILANG_PCODER_ErrGuardarNoPermiso="<?php echo $MULTILANG_PCODER_ErrGuardarNoPermiso; ?>";
 		var MULTILANG_PCODER_Guardando="<?php echo $MULTILANG_PCODER_Guardando; ?>";
 		var MULTILANG_PCODER_Error="<?php echo $MULTILANG_PCODER_Error; ?>";
+		var MULTILANG_PCODER_Finalizado="<?php echo $MULTILANG_PCODER_Finalizado; ?>";
+		var MULTILANG_PCODER_ElementoCreado="<?php echo $MULTILANG_PCODER_ElementoCreado; ?>";
+		var MULTILANG_PCODER_ElementoExiste="<?php echo $MULTILANG_PCODER_ElementoExiste; ?>";
+		var MULTILANG_PCODER_ElementoNoCreado="<?php echo $MULTILANG_PCODER_ElementoNoCreado; ?>";
+		var MULTILANG_PCODER_Propietario="<?php echo $MULTILANG_PCODER_Propietario; ?>";
+		var MULTILANG_PCODER_Permisos="<?php echo $MULTILANG_PCODER_Permisos; ?>";
 	</script>
 	<script type="text/javascript" src="js/pcoder.min.js"></script>
 
