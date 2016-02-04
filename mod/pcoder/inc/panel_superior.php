@@ -92,7 +92,7 @@
 							<li class="dropdown">
 								<a style="cursor:pointer;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Ver; ?> <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a style="cursor:pointer;" OnClick="IntercambiarPantallaCompleta();"><i class="fa fa-arrows-alt fa-fw"></i> <?php echo $MULTILANG_PCODER_PantallaCompleta; ?>	<span class="pull-right text-muted small"><i>F11</i></span></a></li>
+									<li><a style="cursor:pointer;" OnClick="IntercambiarPantallaCompleta();"><i class="fa fa-desktop fa-fw"></i> <?php echo $MULTILANG_PCODER_PantallaCompleta; ?>	<span class="pull-right text-muted small"><i>F11</i></span></a></li>
 									<li><a style="cursor:pointer;" OnClick="IntercambiarEstadoCaracteresInvisibles();"><i class="fa fa-eye-slash fa-fw"></i> <?php echo $MULTILANG_PCODER_CaracNoImprimibles; ?></a></li>
 									<li><a style="cursor:pointer;" OnClick="IntercambiarVisibilidadNumerosDeLinea();"><i class="fa fa-list-ol fa-fw"></i> <?php echo $MULTILANG_PCODER_NrosLinea; ?></a></li>
 									<li role="separator" class="divider"></li>
@@ -149,7 +149,7 @@
 
 							<!-- BOTONES INDEPENDIENTES -->
 							<li><a style="cursor:pointer;" OnClick="editor.execCommand('find');" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_Buscar; ?>"><i class="fa fa-search fa-fw text-danger "></i></a></li>
-							<li><a style="cursor:pointer;" OnClick="IntercambiarPantallaCompleta();" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>"><i class="fa fa-arrows-alt fa-fw text-primary"></i></a></li>
+							<li><a style="cursor:pointer;" OnClick="IntercambiarPantallaCompleta();" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_PantallaCompleta; ?>"><i class="fa fa-desktop fa-fw text-default"></i></a></li>
 							
 							<!-- SELECCION EN CALIENTE DEL LENGUAJE -->
 							<li>
