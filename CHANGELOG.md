@@ -6,7 +6,11 @@
 |_____\___/ \__, |  \__,_|\___|  \___\__,_|_| |_| |_|_.__/|_|\___/|___/
             |___/ 
 ```
-## Versión 16.3 (2016-03-01)
+
+## Versión 16.4 (2016-XX-XX)
+
+
+## Versión 16.3 (2016-02-07)
 * Added: Agregado acceso directo Ctrl+Q para cerrar el archivo actual
 * Added: Agregado acceso directo Ctrl+O para apertura de archivos
 * Added: Operaciones simples con archivos y carpetas (crear/eliminar/permisos/etc)

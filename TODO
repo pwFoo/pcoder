@@ -19,7 +19,7 @@ PCODER - INTERFAZ:
 ==================
 	* Barra de herramientas comunes como cualquier editor
 	* Opciones adicionales de menu:
-		+ Archivo nuevo (y nuevo desde plantilla)
+		+ Archivo uevo desde plantillas
 		+ Guardar como (Solicitar nombre, Llamar a crear sobre FS, llamar a guardar, Llamar a cerrar, Llamar a abrir... o cambiar valores sobre arreglo)
 		+ Guardar todo (Recorrer arreglo de activos y enviar comando de guardado)
 		+ Imprimir
