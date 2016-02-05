@@ -1,64 +1,75 @@
-OTROS:
-* Complementar soporte a extensiones: http://fileinfo.com/browse/
-* Al realizar operaciones de eliminacion de archivos verificar si estan abiertos y cerrarlos previamente
-* Poder desactivar el autocompletado y la verificación de sintaxis en caliente
-* Explorador debe actualizar su barra de navegacion segun la URL actual del IFRAME
-* Despues de ejecutar el comando de guardar regresar el foco al editor y la posicion del cursor
-* Guardar el tipo de archivo identificado al comienzo (verificar si se hace así ya) y de acuerdo a eso refrescar el editor y el resaltado
-* Advertencia al cerrar arcivo con cambios
-* Administracion de usuarios
-* Administracion de proyectos
-* Carga de archivos / descompresion de archivos / Compresion de carpetas / Descarga de archivos
-* Guardar preferencias por usuario
-* Permitir ajustar idioma por defecto
-* Acceso simplificado a grabacion y ejecucion de macros (como en cloud9)
-* Permitir pestañas en explorador web
-* Agregar soporte para mostrar informacion de tokens igual a kitchen editor.tokenTooltip = new TokenTooltip(editor);
-* Remover aviso de Usted esta en fullscreen (Workaround):
-	CHROME:
-		Disable 'allow/decline full screen' message on your pc:
-		so not for other users on your website:
-		Go to settings page:
-		chrome://settings/contentExceptions#fullscreen
-		click on any URL
-		change the URL to:
-		*://*/*
-		Done
-		
-	FIREFOX:
-		enter about:config in address-bar, and search for full-screen-api.approval-required and set it to false
-		You're done!
+PCODER - EDICION:
+=================
+	* Poder desactivar el autocompletado y la verificación de sintaxis en caliente
+	* Advertencia al cerrar arcivo con cambios
+	* Administracion de usuarios
+	* Administracion de proyectos
+	* Acceso simplificado a grabacion y ejecucion de macros (como en cloud9)
+	* Agregar soporte para mostrar informacion de tokens igual a kitchen editor.tokenTooltip = new TokenTooltip(editor);
+	* Configurar/Agregar tipos de archivo comunes o personalizados
+	* Botones con comandos y funciones comunes que agreguen trozos de codigo (ver barra de herramientas de edicion en interfaz)
+	* Segun el lenguaje agregar enlaces a referencias de sintaxis
+	* Minimap: https://github.com/rocketinventor/ace-minimap
+		https://github.com/atom-minimap/minimap
+	* Conectores para diferentes lenguajes
+	* Comparar dos archivos. Diff sobre nuevo, nueva pagina?
 
-UEDIT:
-* Archivo nuevo (y nuevo desde plantilla)
-* Archivos remotos (FTP,sFTP,SSH)  PAra FTP Ver http://php.net/manual/es/function.mkdir.php comentario: toppi at kacke
-* Guardar como
-* Guardar todo
-Renombrar archivo
-Comparar archivos
-Imprimir
-Favoritos de archivo
-Favoritos de navegador
-Historial de comandos consola
-Archivos recientes
-Proyectos
-Configurar tipos de archivo comunes
-Botones con comandos y funciones comunes que agreguen trozos de codigo
-Segun el lenguaje agregar enlaces a referencias de sintaxis
 
-Al lado izquierdo tener pestañas de:
-+ Abrir (explorador)
-+ Proyecto
-+ Favoritos
-+ Frecuentes
-+ Ficheros remotos
+PCODER - INTERFAZ:
+==================
+	* Barra de herramientas comunes como cualquier editor
+	* Opciones adicionales de menu:
+		+ Archivo nuevo (y nuevo desde plantilla)
+		+ Guardar como (Solicitar nombre, Llamar a crear sobre FS, llamar a guardar, Llamar a cerrar, Llamar a abrir... o cambiar valores sobre arreglo)
+		+ Guardar todo (Recorrer arreglo de activos y enviar comando de guardado)
+		+ Imprimir
+	* Mejorar dialogos de busqueda y reemplazo
+		+ Interfaz propia
+		+ Lograr reemplazo de caracteres especiales (tabs, saltos de linea, etc)
+	* Permitir ajustar idioma de interfaz por defecto
+	* Al lado izquierdo tener pestañas de:
+		+ Abrir (explorador)
+		+ Proyecto
+		+ Favoritos
+		+ Frecuentes
+		+ Ficheros remotos. (FTP,sFTP,SSH, etc)  PAra FTP Ver http://php.net/manual/es/function.mkdir.php comentario: toppi at kacke
+		+ Archivos recientes
+	* Al realizar operaciones de eliminacion de archivos verificar si estan abiertos y cerrarlos previamente
+	* Despues de ejecutar el comando de guardar regresar el foco al editor y la posicion del cursor
+	* Guardar preferencias por usuario
+	* Remover aviso de Usted esta en fullscreen (Workaround):
+		CHROME:
+			Disable 'allow/decline full screen' message on your pc:
+			so not for other users on your website:
+			Go to settings page:
+			chrome://settings/contentExceptions#fullscreen
+			click on any URL
+			change the URL to:
+			*://*/*
+			Done
+		FIREFOX:
+			enter about:config in address-bar, and search for full-screen-api.approval-required and set it to false
+			You're done!
+	* Revisar posible Version de escritorio:  http://electron.atom.io/
 
-Barra de herramientas comunes como cualquier editor.
-Mejorar dialogos de busqueda y reemplazo
-Lograr reemplazo de caracteres especiales (tabs, saltos de linea, etc)
 
-Minimap: https://github.com/rocketinventor/ace-minimap
-	https://github.com/atom-minimap/minimap
+EXPLORADOR WEB:
+===============
+	* Debe actualizar su barra de navegacion segun la URL actual del IFRAME
+	* Permitir pestañas
+	* Permitir crear favoritos
+	* Permitir almacenar/ver historial
 
-*Revisar posible Version de escritorio:  http://electron.atom.io/
-* Conectores para diferentes lenguajes
+
+TERMINAL REMOTA:
+================
+	* Permitir almacenar/ver historial de comandos
+	* Permitir crear botones o automatizar comandos comunes
+
+
+GESTION DE ARCHIVOS:
+====================
+	* Carga de archivos / descompresion de archivos / Compresion de carpetas / Descarga de archivos
+	* Renombrar archivo
+	* Proteger operaciones y en general todo el lib_pcoder.php usado por los AJAX
+

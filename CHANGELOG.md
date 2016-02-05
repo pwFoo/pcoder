@@ -14,7 +14,8 @@
 * Added: Nueva opción del menu permite ver u ocultar los números de línea, widgets de plegado de código y errores de sintaxis
 * Added: Se permite activar o desactivar en caliente el chequeo de sintaxis
 * Added: Lista de selección en la barra de menu permite ahora cambiar el modo de resaltado de sintaxis de lenguaje en caliente
-* Added: Soporte a lenguajes y archivos: Basic, URL, INF, DAT, ASP, ASP .Net, LOG, CSV, XSL
+* Added: Soporte a lenguajes y archivos: Basic, URL, INF, DAT, ASP, ASP .Net, LOG, Archivos separados por coma (CSV), Plantillas XML (XSL), Windows Script File (WSF), Archivos léame (1ST,ME,NOW,README), ASI Doc (ANS), AutoDesk Export File (ASC), Fountain Script, Revisable Form Text Document (RFT), LaTeX Style (STY), Tabular Separated File (TAB), Lenguaje Forth (4TH), Ada specification files (ADS), Borland C++ MakeFile (BCP), Visual C# Script (CSX), Content Serve Template (CST), CakePHP Template (CTP), Delphi Form (DFM), BeanShell Script (BSH), Haskell Script (HAS), Literate Haskell Script (LHS,LIT), Lisp Program Source Code File (LSP), MarkDown (markdn), PL/I Source Code (PL1,PLI), PL/B Source File (PLC), Small Basic Project (SB), Source code (SRC), Swift Source Code File (SWIFT), Turbo C++ (TCC), Tk Script (TK)
+* Added: Acceso directo en menu de herramientas al selector de colores
 * Enhan: Mejorados enlaces en barra de menu para evitar barra de estado
 * Enhan: Presentación de la consola remota y explorador web
 * Enhan: Mejora sobre JQueryFileTree.  Ahora se utiliza fork propio con más posibilidades
