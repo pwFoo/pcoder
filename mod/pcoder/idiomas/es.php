@@ -151,4 +151,4 @@
 	$MULTILANG_PCODER_NrosLinea='Ver/Ocultar Numeros de linea, plegado y chequeo de sintaxis';
 	$MULTILANG_PCODER_CheqSintaxis='Chequeo de sintaxis';
 	$MULTILANG_PCODER_LenguajeResaltado='Lenguaje de resaltado';
-	
+	$MULTILANG_PCODER_ExtensionNoSoportada='La extensión del archivo que intenta abrir no se encuentra soprotada.  Si lo desea puede agregarla a la lista de extensiones soportadas en caso que aun quiera editarla mediante PCoder.';

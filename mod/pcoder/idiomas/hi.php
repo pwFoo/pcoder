@@ -150,3 +150,5 @@
 	$MULTILANG_PCODER_NrosLinea='दिखाएँ / छुपाएँ लाइन नंबर';
 	$MULTILANG_PCODER_CheqSintaxis='सिंटेक्स की जांच';
 	$MULTILANG_PCODER_LenguajeResaltado='प्रकाश डाला भाषा';
+	$MULTILANG_PCODER_ExtensionNoSoportada='The file extension that you are trying to open is not supported.  You could add it to the supported extensions if you want to edit this file using PCoder.';
+

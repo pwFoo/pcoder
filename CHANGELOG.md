@@ -14,9 +14,11 @@
 * Added: Nueva opción del menu permite ver u ocultar los números de línea, widgets de plegado de código y errores de sintaxis
 * Added: Se permite activar o desactivar en caliente el chequeo de sintaxis
 * Added: Lista de selección en la barra de menu permite ahora cambiar el modo de resaltado de sintaxis de lenguaje en caliente
+* Added: Soporte a lenguajes y archivos: Basic, URL, INF, DAT, ASP, ASP .Net, LOG, CSV, XSL
 * Enhan: Mejorados enlaces en barra de menu para evitar barra de estado
 * Enhan: Presentación de la consola remota y explorador web
 * Enhan: Mejora sobre JQueryFileTree.  Ahora se utiliza fork propio con más posibilidades
+* Enhan: Ahora sólo son cargados para edición las extensiones de archivo conocidas como de texto
 * Fixed: Algunas operaciones de visualización realizadas sobre el editor principal son ahora ejecutadas también sobre el editor clonado (split views)
 * Fixed: Mejorada la detección del tipo de fichero por su extensión.  Algunos como Mush se podían confundir por ejemplo con los sh (por patrón similar)
 

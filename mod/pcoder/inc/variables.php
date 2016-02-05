@@ -44,7 +44,7 @@
 	$PCODER_Modos[]=array(Nombre => "AsciiDoc",	Extensiones => "asciidoc");
 	$PCODER_Modos[]=array(Nombre => "Assembly_x86",	Extensiones => "asm");
 	$PCODER_Modos[]=array(Nombre => "AutoHotKey",	Extensiones => "ahk");
-	$PCODER_Modos[]=array(Nombre => "BatchFile",	Extensiones => "bat|cmd");
+	$PCODER_Modos[]=array(Nombre => "BatchFile",	Extensiones => "bat|cmd|pif");
 	$PCODER_Modos[]=array(Nombre => "C9Search",	Extensiones => "c9search_results");
 	$PCODER_Modos[]=array(Nombre => "C_Cpp",	Extensiones => "cpp|c|cc|cxx|h|hh|hpp");
 	$PCODER_Modos[]=array(Nombre => "Cirru",	Extensiones => "cirru|cr");
@@ -79,7 +79,7 @@
 	$PCODER_Modos[]=array(Nombre => "Handlebars",	Extensiones => "hbs|handlebars|tpl|mustache");
 	$PCODER_Modos[]=array(Nombre => "Haskell",	Extensiones => "hs");
 	$PCODER_Modos[]=array(Nombre => "haXe",	Extensiones => "hx");
-	$PCODER_Modos[]=array(Nombre => "HTML",	Extensiones => "html|htm|xhtml");
+	$PCODER_Modos[]=array(Nombre => "HTML",	Extensiones => "url|html|htm|xhtml|asp|aspx");
 	$PCODER_Modos[]=array(Nombre => "HTML_Ruby",	Extensiones => "erb|rhtml|html.erb");
 	$PCODER_Modos[]=array(Nombre => "INI",	Extensiones => "ini|conf|cfg|prefs");
 	$PCODER_Modos[]=array(Nombre => "Io",	Extensiones => "io");
@@ -143,17 +143,17 @@
 	$PCODER_Modos[]=array(Nombre => "SVG",	Extensiones => "svg");
 	$PCODER_Modos[]=array(Nombre => "Tcl",	Extensiones => "tcl");
 	$PCODER_Modos[]=array(Nombre => "Tex",	Extensiones => "tex");
-	$PCODER_Modos[]=array(Nombre => "Text",	Extensiones => "txt");
+	$PCODER_Modos[]=array(Nombre => "Text",	Extensiones => "txt|nfo|dat|inf|log|csv");
 	$PCODER_Modos[]=array(Nombre => "Textile",	Extensiones => "textile");
 	$PCODER_Modos[]=array(Nombre => "Toml",	Extensiones => "toml");
 	$PCODER_Modos[]=array(Nombre => "Twig",	Extensiones => "twig");
 	$PCODER_Modos[]=array(Nombre => "Typescript",	Extensiones => "ts|typescript|str");
 	$PCODER_Modos[]=array(Nombre => "Vala",	Extensiones => "vala");
-	$PCODER_Modos[]=array(Nombre => "VBScript",	Extensiones => "vbs|vb");
+	$PCODER_Modos[]=array(Nombre => "VBScript",	Extensiones => "bas|vbs|vb");
 	$PCODER_Modos[]=array(Nombre => "Velocity",	Extensiones => "vm");
 	$PCODER_Modos[]=array(Nombre => "Verilog",	Extensiones => "v|vh|sv|svh");
 	$PCODER_Modos[]=array(Nombre => "VHDL",	Extensiones => "vhd|vhdl");
-	$PCODER_Modos[]=array(Nombre => "XML",	Extensiones => "xml|rdf|rss|wsdl|xslt|atom|mathml|mml|xul|xbl");
+	$PCODER_Modos[]=array(Nombre => "XML",	Extensiones => "xml|rdf|rss|wsdl|xsl|xslt|atom|mathml|mml|xul|xbl");
 	$PCODER_Modos[]=array(Nombre => "XQuery",	Extensiones => "xq");
 	$PCODER_Modos[]=array(Nombre => "YAML",	Extensiones => "yaml|yml");
 

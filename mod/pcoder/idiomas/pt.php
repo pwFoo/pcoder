@@ -150,3 +150,5 @@
 	$MULTILANG_PCODER_NrosLinea='N&uacute;meros de linha Si / No';
 	$MULTILANG_PCODER_CheqSintaxis='Verificação de sintaxe';
 	$MULTILANG_PCODER_LenguajeResaltado='Idioma realçado';
+	$MULTILANG_PCODER_ExtensionNoSoportada='The file extension that you are trying to open is not supported.  You could add it to the supported extensions if you want to edit this file using PCoder.';
+

@@ -314,7 +314,7 @@ if ($PCO_Accion=="PCOMOD_ObtenerModoEditor")
         $PCODER_extension = $PCODER_partes_extension[count($PCODER_partes_extension)-1];
 
         //Identifica el tipo de documento a ser aplicado segun la extension del archivo
-        $PCODER_ModoEditor='';
+        $PCODER_ModoEditor="";
         for ($i=0;$i<count($PCODER_Modos) && $PCODER_ModoEditor=='';$i++)
             {
 				//Lleva las extensiones a un array para buscar en el
@@ -324,6 +324,13 @@ if ($PCO_Accion=="PCOMOD_ObtenerModoEditor")
 						$PCODER_ModoEditor=$PCODER_Modos[$i]["Nombre"];
 					}
             }
+		//Valida que no se trate de un archivo sin extension despues de revisar todo
+		if($PCODER_ModoEditor=="")
+			{
+				//Asigna por defecto el modo de texto plano
+				if(count($PCODER_partes_extension)==1)
+					$PCODER_ModoEditor="Text";
+			}
 
    		@ob_clean();
         echo $PCODER_ModoEditor;

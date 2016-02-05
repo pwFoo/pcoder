@@ -150,3 +150,4 @@
 	$MULTILANG_PCODER_NrosLinea='Show/Hide line numbers, folding and syntax check';
 	$MULTILANG_PCODER_CheqSintaxis='Syntax check';
 	$MULTILANG_PCODER_LenguajeResaltado='Highlighted language';
+	$MULTILANG_PCODER_ExtensionNoSoportada='The file extension that you are trying to open is not supported.  You could add it to the supported extensions if you want to edit this file using PCoder.';

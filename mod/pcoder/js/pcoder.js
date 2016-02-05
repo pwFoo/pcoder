@@ -853,31 +853,40 @@ function PCODER_CargarArchivo(path_archivo)
 		if (BusquedaArchivoAbierto==-1)
 			{
 				//Busca algunos datos del archivo
-				ValorTipoElemento=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTipoElemento&PCODER_archivo="+path_archivo);
-				ValorTamanoDocumento=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTamanoDocumento&PCODER_archivo="+path_archivo);
-				ValorFechaModificadoDocumento=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerFechaElemento&PCODER_archivo="+path_archivo);
-				ValorTokenEdicion=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTokenEdicion&PCODER_archivo="+path_archivo);
 				ValorModoEditor=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerModoEditor&PCODER_archivo="+path_archivo);
-				ValorNombreArchivo=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerNombreArchivo&PCODER_archivo="+path_archivo);
-				ValorContenidoArchivo=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerContenidoArchivo&PCODER_archivo="+path_archivo);
-				ValorPermisosRW=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_VerificarPermisosRW&PCODER_archivo="+path_archivo);
-				ValorPermisosArchivo=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerPermisosArchivo&PCODER_archivo="+path_archivo);
-				ValorVistaSplit=""; //Valor inicial de la vista dividida (sin dividir)
 
-				//Agrega nuevo elemento al arreglo
-				ListaArchivos[IndiceAperturaArchivo] = { TipoDocumento: ValorTipoElemento, TamanoDocumento: ValorTamanoDocumento, FechaModificadoDocumento: ValorFechaModificadoDocumento, RutaDocumento: path_archivo, TokenEdicion: ValorTokenEdicion, ModoEditor: ValorModoEditor, NombreArchivo: ValorNombreArchivo, LineaActual: 1, ColumnaActual: 0 , PermisosRW: ValorPermisosRW, PermisosArchivo: ValorPermisosArchivo, VistaSplit: ValorVistaSplit};
-				
-				//Crea dinamicamente el textarea con el numero de indice y con su valor predeterminado
-				AgregarNuevoTextarea(document.form_textareas_archivos,"PCODER_AreaTexto"+IndiceAperturaArchivo,ValorContenidoArchivo);
-				
-				//Actualiza los indices de posiciones en el vector
-				IndiceUltimoArchivoAbierto=IndiceAperturaArchivo;
-				IndiceArchivoActual=IndiceAperturaArchivo;
-				IndiceAperturaArchivo++;
+				//Si el modo es uno de los soportados sigue adelante
+				if(ValorModoEditor!="")
+					{
+						ValorTipoElemento=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTipoElemento&PCODER_archivo="+path_archivo);
+						ValorTamanoDocumento=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTamanoDocumento&PCODER_archivo="+path_archivo);
+						ValorFechaModificadoDocumento=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerFechaElemento&PCODER_archivo="+path_archivo);
+						ValorTokenEdicion=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerTokenEdicion&PCODER_archivo="+path_archivo);
+						ValorNombreArchivo=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerNombreArchivo&PCODER_archivo="+path_archivo);
+						ValorContenidoArchivo=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerContenidoArchivo&PCODER_archivo="+path_archivo);
+						ValorPermisosRW=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_VerificarPermisosRW&PCODER_archivo="+path_archivo);
+						ValorPermisosArchivo=PCO_ObtenerContenidoAjax(0,"index.php","PCO_Accion=PCOMOD_ObtenerPermisosArchivo&PCODER_archivo="+path_archivo);
+						ValorVistaSplit=""; //Valor inicial de la vista dividida (sin dividir)
 
-				//Actualiza todo el editor con el archivo recier cargado
-				PCODER_CambiarArchivoActual(IndiceArchivoActual,1);
-				CambiarModoEditor("ace/mode/"+ListaArchivos[IndiceArchivoActual].ModoEditor); //Hace cambio forzado de tipo de editor cuando se abre un nuevo archivo
+						//Agrega nuevo elemento al arreglo
+						ListaArchivos[IndiceAperturaArchivo] = { TipoDocumento: ValorTipoElemento, TamanoDocumento: ValorTamanoDocumento, FechaModificadoDocumento: ValorFechaModificadoDocumento, RutaDocumento: path_archivo, TokenEdicion: ValorTokenEdicion, ModoEditor: ValorModoEditor, NombreArchivo: ValorNombreArchivo, LineaActual: 1, ColumnaActual: 0 , PermisosRW: ValorPermisosRW, PermisosArchivo: ValorPermisosArchivo, VistaSplit: ValorVistaSplit};
+						
+						//Crea dinamicamente el textarea con el numero de indice y con su valor predeterminado
+						AgregarNuevoTextarea(document.form_textareas_archivos,"PCODER_AreaTexto"+IndiceAperturaArchivo,ValorContenidoArchivo);
+						
+						//Actualiza los indices de posiciones en el vector
+						IndiceUltimoArchivoAbierto=IndiceAperturaArchivo;
+						IndiceArchivoActual=IndiceAperturaArchivo;
+						IndiceAperturaArchivo++;
+
+						//Actualiza todo el editor con el archivo recier cargado
+						PCODER_CambiarArchivoActual(IndiceArchivoActual,1);
+						CambiarModoEditor("ace/mode/"+ListaArchivos[IndiceArchivoActual].ModoEditor); //Hace cambio forzado de tipo de editor cuando se abre un nuevo archivo
+					}
+				else
+					{
+						PCOJS_MostrarMensaje(MULTILANG_PCODER_Error, MULTILANG_PCODER_ExtensionNoSoportada);
+					}
 			}
 		else
 			{
