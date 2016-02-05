@@ -71,6 +71,7 @@
 	$MULTILANG_PCODER_Modificado='Modified';
 	$MULTILANG_PCODER_No='No';
 	$MULTILANG_PCODER_Nombre='Name';
+	$MULTILANG_PCODER_Nuevo='New';
 	$MULTILANG_PCODER_Operacion='Operation';
 	$MULTILANG_PCODER_Otros='Others';
 	$MULTILANG_PCODER_Pegar='Paste';

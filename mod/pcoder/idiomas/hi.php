@@ -71,6 +71,7 @@
 	$MULTILANG_PCODER_Modificado='संशोधित';
 	$MULTILANG_PCODER_No='नहीं';
 	$MULTILANG_PCODER_Nombre='नाम';
+	$MULTILANG_PCODER_Nuevo='नई';
 	$MULTILANG_PCODER_Operacion='आपरेशन';
 	$MULTILANG_PCODER_Otros='अन्य लोग';
 	$MULTILANG_PCODER_Pegar='पेस्ट';

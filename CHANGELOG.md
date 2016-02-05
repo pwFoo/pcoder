@@ -16,8 +16,10 @@
 * Added: Lista de selección en la barra de menu permite ahora cambiar el modo de resaltado de sintaxis de lenguaje en caliente
 * Added: Soporte a lenguajes y archivos: Basic, URL, INF, DAT, ASP, ASP .Net, LOG, Archivos separados por coma (CSV), Plantillas XML (XSL), Windows Script File (WSF), Archivos léame (1ST,ME,NOW,README), ASI Doc (ANS), AutoDesk Export File (ASC), Fountain Script, Revisable Form Text Document (RFT), LaTeX Style (STY), Tabular Separated File (TAB), Lenguaje Forth (4TH), Ada specification files (ADS), Borland C++ MakeFile (BCP), Visual C# Script (CSX), Content Serve Template (CST), CakePHP Template (CTP), Delphi Form (DFM), BeanShell Script (BSH), Haskell Script (HAS), Literate Haskell Script (LHS,LIT), Lisp Program Source Code File (LSP), MarkDown (markdn), PL/I Source Code (PL1,PLI), PL/B Source File (PLC), Small Basic Project (SB), Source code (SRC), Swift Source Code File (SWIFT), Turbo C++ (TCC), Tk Script (TK)
 * Added: Acceso directo en menu de herramientas al selector de colores
+* Added: Acceso directo en menu de archivo a creacion de nuevos archivos
 * Enhan: Mejorados enlaces en barra de menu para evitar barra de estado
 * Enhan: Presentación de la consola remota y explorador web
+* Enhan: Después de crear un archivo éste es abierto automáticamente
 * Enhan: Mejora sobre JQueryFileTree.  Ahora se utiliza fork propio con más posibilidades
 * Enhan: Ahora sólo son cargados para edición las extensiones de archivo conocidas como de texto
 * Fixed: Algunas operaciones de visualización realizadas sobre el editor principal son ahora ejecutadas también sobre el editor clonado (split views)

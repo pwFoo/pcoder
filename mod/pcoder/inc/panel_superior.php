@@ -54,6 +54,8 @@
 							<li class="dropdown">
 								<a style="cursor:pointer;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Archivo; ?> <span class="caret"></span></a>
 								<ul class="dropdown-menu">
+									<li><a id="boton_navegador_archivos" style="cursor:pointer;" OnClick="OperacionFS_CrearArchivo();">		<i class="fa fa-file-o fa-fw"></i> <?php echo $MULTILANG_PCODER_Nuevo; ?></a></li>
+									<li role="separator" class="divider"></li>
 									<li><a id="boton_navegador_archivos" style="cursor:pointer;" OnClick="PCODER_ActivarPanelIzquierdo();">		<i class="fa fa-folder-open fa-fw"></i> <?php echo $MULTILANG_PCODER_Abrir; ?>			<span class="pull-right text-muted small"><i>Ctrl+O</i></span></a></li>
 									<li><a id="boton_guardar"            style="cursor:pointer;" OnClick="Guardar();">							<i class="fa fa-floppy-o fa-fw"></i> <?php echo $MULTILANG_PCODER_Guardar; ?>			<span class="pull-right text-muted small"><i>Ctrl+S</i></span></a></li>
 									<li role="separator" class="divider"></li>
@@ -140,7 +142,7 @@
 							<li class="dropdown">
 								<a style="cursor:pointer;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Herramientas; ?> <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a style="cursor:pointer;" OnClick="PCODER_ActivarPanelDerecho();"><i class="fa fa-columns fa-fw"></i> <?php echo $MULTILANG_PCODER_ExploradorColores; ?></a></li>
+									<li><a style="cursor:pointer;" OnClick="PCODER_ActivarPanelDerecho();"><i class="fa fa-paint-brush fa-fw"></i> <?php echo $MULTILANG_PCODER_ExploradorColores; ?></a></li>
 								</ul>
 							</li>
 
