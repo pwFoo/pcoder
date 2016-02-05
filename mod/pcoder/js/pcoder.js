@@ -275,6 +275,8 @@ function EjecutarOperacionFS()
 							ExplorarPath();
 							//Oculta el marco de operaciones FS
 							$('#myModalOPERARFS').modal('hide');
+							//Carga el archivo recien creado para su edicion
+							PCODER_CargarArchivo(path_operacion_elemento+"/"+nombre_elemento);
 						}
 					if (ResultadoOperacion==-1)
 						{
