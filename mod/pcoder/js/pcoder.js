@@ -212,7 +212,7 @@ function SaltarALinea()
 function QuitarAvisoAlmacenamiento()
 	{
 		//Deja el mensaje de almacenamiento al menos un segundo (para archivos pequenos almacenados rapido), luego lo oculta
-		setTimeout("PCO_OcultarMensajeCargandoSimple();", 500);
+		setTimeout(PCO_OcultarMensajeCargandoSimple, 500);
 		
 		//TODO: Devolver el foco al editor
 		//editor.focus();											//Establece el foco al editor
