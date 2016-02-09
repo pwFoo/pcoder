@@ -957,7 +957,7 @@ $( window ).resize(function() {
 });
 
 
-// CAPTURA DE EVENTOS DE TECLADO #############################################################
+// CAPTURA DE EVENTOS DE TECLADO DESDE LA VENTANA  #############################################################
 //Captura el evento de Ctrl+S para guardar el archivo
 $(window).bind('keydown', function(event) {
 	if (event.ctrlKey || event.metaKey) {
@@ -974,9 +974,33 @@ $(window).bind('keydown', function(event) {
 			event.preventDefault();
 			PCODER_CerrarArchivoActual();
 			break;
+		case 'z':	//Captura evento y no retorna nada para anular comando
+			event.preventDefault();
+			break;
+		case 'y':	//Captura evento y no retorna nada para anular comando
+			event.preventDefault();
+			break;
 		}
 	}
 });
+
+// CAPTURA DE EVENTOS DE TECLADO DESDE EL EDITOR  #############################################################
+editor.commands.addCommand({
+		name: 'deshacer',
+		bindKey: {win: 'Ctrl-Z', mac: 'Command-Option-Z'},
+		exec: function(editor) {
+			//MiComando
+			},
+		readOnly: true
+	});
+editor.commands.addCommand({
+		name: 'rehacer',
+		bindKey: {win: 'Ctrl-Y', mac: 'Command-Option-Y'},
+		exec: function(editor) {
+			//MiComando
+			},
+		readOnly: true
+	});
 
 //Genera una nueva sesion del editor ACE
 function ClonarSesionEditor(session)
