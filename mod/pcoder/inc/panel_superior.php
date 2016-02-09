@@ -69,15 +69,19 @@
 							<li class="dropdown">
 								<a style="cursor:pointer;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Editar; ?> <span class="caret"></span></a>
 								<ul class="dropdown-menu">
+									<!--
 									<li><a style="cursor:pointer;" OnClick="editor.undo();"><i class="fa fa-undo fa-fw"></i> <?php echo $MULTILANG_PCODER_Deshacer; ?>		<span class="pull-right text-muted small"><i>Ctrl+Z</i></span></a></li>
 									<li><a style="cursor:pointer;" OnClick="editor.redo();"><i class="fa fa-repeat fa-fw"></i> <?php echo $MULTILANG_PCODER_Rehacer; ?>	<span class="pull-right text-muted small"><i>Ctrl+Y</i></span></a></li>
 									<li role="separator" class="divider"></li>
+									-->
 									<li><a style="cursor:pointer;" OnClick="editor.selectAll();"><i class="fa fa-file-text fa-fw"></i> <?php echo $MULTILANG_PCODER_SeleccionarTodo; ?>	<span class="pull-right text-muted small"><i>Ctrl+A</i></span></a></li>
 									<li role="separator" class="divider"></li>
+									<!--
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('cut');"><i class="fa fa-scissors fa-fw"></i> <?php echo $MULTILANG_PCODER_Cortar; ?>	<span class="pull-right text-muted small"><i>Ctrl+X</i></span></a></li>
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('copy');"><i class="fa fa-files-o fa-fw"></i> <?php echo $MULTILANG_PCODER_Copiar; ?>	<span class="pull-right text-muted small"><i>Ctrl+C</i></span></a></li>
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('paste');"><i class="fa fa-clipboard fa-fw"></i> <?php echo $MULTILANG_PCODER_Pegar; ?>	<span class="pull-right text-muted small"><i>Ctrl+V</i></span></a></li>
 									<li role="separator" class="divider"></li>
+									-->
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('duplicateSelection');"><i class="fa fa-pause fa-fw"></i> <?php echo $MULTILANG_PCODER_DuplicarSeleccion; ?>	<span class="pull-right text-muted small"><i>Ctrl+Shift+D</i></span></a></li>
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('invertSelection');"><i class="fa fa-eraser fa-fw"></i> <?php echo $MULTILANG_PCODER_InvertirSeleccion; ?>	</a></li>
 									<li><a style="cursor:pointer;" OnClick="editor.execCommand('joinlines');"><i class="fa fa-reorder fa-fw"></i> <?php echo $MULTILANG_PCODER_UnirSeleccion; ?>	</a></li>
