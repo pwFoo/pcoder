@@ -31,3 +31,9 @@ Bootstrap
     License docs: Creative Commons  
     URL: http://getbootstrap.com/
 	Copyright 2011-2014 Twitter, Inc.
+
+PHP Diff Class
+	Location: mod/pcoder/mod/php-diff-1.0/lib
+	URL: https://github.com/chrisboulton/php-diff
+	Code License: BSD License
+	Copyright (c) 2009 Chris Boulton <chris.boulton@interspire.com>
