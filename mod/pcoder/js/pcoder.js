@@ -592,7 +592,8 @@ function PCODER_RecalcularPanelesExtensiones()
 		$('#frame_explorador').css('width', '100%');
 
 		//Define tamanos del iframe para HERRAMIENTA DIFF
-		$('#frame_diferencias').css('height', AltoPanelIFrames+'px');
+		var AltoPanelIFramesDiff = AltoPanelIFrames - $("#panel_controles_diff").height();
+		$('#frame_diferencias').css('height', AltoPanelIFramesDiff+'px');
 		$('#frame_diferencias').css('width', '100%');
 	}
 

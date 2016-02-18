@@ -278,6 +278,18 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						</div>
 
 						<div id="pestana_diferencias_archivos" class="tab-pane fade">
+							<div id="panel_controles_diff" >
+								<div class="row well well-sm">
+									<div class="col-md-12">
+										<?php echo $MULTILANG_PCODER_Archivo; ?> #1: 
+										<select style="margin-top:1px;" id="modo_archivo_top" size="1" class=" btn-xs btn-primary" onchange="CambiarModoEditor(this.value)"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_LenguajeResaltado; ?>">
+										</select>
+										<?php echo $MULTILANG_PCODER_Archivo; ?> #2: 
+										<select style="margin-top:1px;" id="modo_archivo_top" size="1" class=" btn-xs btn-primary" onchange="CambiarModoEditor(this.value)"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_LenguajeResaltado; ?>">
+										</select>
+									</div>
+								</div>	
+							</div>
 							<iframe name="frame_diferencias" id="frame_diferencias" src="mod/php-diff-1.0/generador" style="border:0px;"></iframe>
 						</div>
 					</div>
