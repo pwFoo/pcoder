@@ -8,6 +8,8 @@
 ```
 
 ## Versión 16.4 (2016-XX-XX)
+* Added: Módulo genérico para visualizar diferencias (diff) entre archivos o cadenas
+* Fixed: Eventos de deshacer y rehacer son ahora capturados desde el editor y sus opciones ocultas
 
 
 ## Versión 16.3 (2016-02-07)
