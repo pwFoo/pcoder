@@ -276,6 +276,10 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 						<div id="pestana_explorador_web" class="tab-pane fade">
 							<iframe name="frame_explorador" id="frame_explorador" src="mod/explorador" style="border:0px;"></iframe>
 						</div>
+
+						<div id="pestana_diferencias_archivos" class="tab-pane fade">
+							<iframe name="frame_diferencias" id="frame_diferencias" src="mod/php-diff-1.0/generador" style="border:0px;"></iframe>
+						</div>
 					</div>
 
 				</div>

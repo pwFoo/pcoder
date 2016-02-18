@@ -590,6 +590,10 @@ function PCODER_RecalcularPanelesExtensiones()
 		//Define tamanos del iframe para EXPLORADOR WEB
 		$('#frame_explorador').css('height', AltoPanelIFrames+'px');
 		$('#frame_explorador').css('width', '100%');
+
+		//Define tamanos del iframe para HERRAMIENTA DIFF
+		$('#frame_diferencias').css('height', AltoPanelIFrames+'px');
+		$('#frame_diferencias').css('width', '100%');
 	}
 
 function PCODER_RecalcularMaquetacion()   //RedimensionarEditor();
