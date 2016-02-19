@@ -17,6 +17,9 @@ PCODER - EDICION:
 	* Eliminar el historial de Undo para evitar borrado del contenido inicial.  Ver http://stackoverflow.com/questions/26037443/ace-editor-load-new-content-dynamically-clear-old-content-with-new-one
 	* Revisar posibilidad de plugins: https://cloud9-sdk.readme.io/docs/creating-an-editor-plugin
 	* Dar un vistazo a Codio: http://blog.codio.com/multiple-panels-new-editor-git-custom-keybindings-preferences/
+	* Permitir la configuración de atajos de teclado favoritos: ace|vim|emacs|textarea|sublime (Ver menu oculto)
+	* Permitir cambiar el modo de retorno de carro o fin de linea: auto|unix|windows (Ver menu oculto)
+	* Permitir configurar si se usan o no soft-tabs (Ver menu oculto)
 
 PCODER - INTERFAZ:
 ==================

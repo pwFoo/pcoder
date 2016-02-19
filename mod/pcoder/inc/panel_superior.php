@@ -179,7 +179,7 @@
 									<li><a style="cursor:pointer;" OnClick="$('#AtajosTeclado').modal('show'); $('#AtajosTeclado').css('z-index', '1500');"><i class="fa fa-keyboard-o fa-fw"></i> <?php echo $MULTILANG_PCODER_AtajosTitPcoder; ?></a></li>
 									<li role="separator" class="divider"></li>
 									<li><a style="cursor:pointer;" OnClick="$('#myModalACERCADEPCODER').modal('show'); $('#myModalACERCADEPCODER').css('z-index', '1500');"><i class="fa fa-info-circle fa-fw"></i> <?php echo $MULTILANG_PCODER_Acerca; ?></a></li>
-									<li><a style="cursor:pointer;" OnClick="editor.execCommand('showSettingsMenu');"><i class="fa fa-cogs fa-fw"></i> <?php echo $MULTILANG_PCODER_Otros; ?></a></li>
+									<!--<li><a style="cursor:pointer;" OnClick="editor.execCommand('showSettingsMenu');"><i class="fa fa-cogs fa-fw"></i> <?php echo $MULTILANG_PCODER_Otros; ?></a></li>-->
 								</ul>
 							</li>
 						</ul>
