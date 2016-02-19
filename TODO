@@ -57,6 +57,10 @@ PCODER - INTERFAZ:
 			enter about:config in address-bar, and search for full-screen-api.approval-required and set it to false
 			You're done!
 	* Revisar posible Version de escritorio:  http://electron.atom.io/
+	* Capturar los eventos Ctrl++ y Ctrl+- para el zoom propio (desde la ventana, desde el editor ya estan capturados)
+	* google-chrome --app=http://127.0.0.1/git/pcoder
+
+	
 
 
 EXPLORADOR WEB:
@@ -78,4 +82,5 @@ GESTION DE ARCHIVOS:
 	* Carga de archivos / descompresion de archivos / Compresion de carpetas / Descarga de archivos
 	* Renombrar archivo
 	* Proteger operaciones y en general todo el lib_pcoder.php usado por los AJAX
+	* Uso de git directamente desde el editor https://github.com/patrikf/glip
 

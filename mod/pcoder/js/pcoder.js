@@ -1067,6 +1067,7 @@ $( window ).resize(function() {
 // CAPTURA DE EVENTOS DE TECLADO DESDE LA VENTANA  #############################################################
 //Captura el evento de Ctrl+S para guardar el archivo
 $(window).bind('keydown', function(event) {
+	//alert(String.fromCharCode(event.which).toLowerCase());
 	if (event.ctrlKey || event.metaKey) {
 		switch (String.fromCharCode(event.which).toLowerCase()) {
 		case 's':  //<-- Cambiar para otras letras ;)
@@ -1108,6 +1109,24 @@ editor.commands.addCommand({
 			},
 		readOnly: true
 	});
+editor.commands.addCommand({
+		name: 'aumentarfuenteeditor',
+		bindKey: {win: 'Ctrl-+', mac: 'Command-Option-+'},
+		exec: function(editor) {
+			AumentarTamanoFuente();
+			},
+		readOnly: true
+	});
+editor.commands.addCommand({
+		name: 'disminuirfuenteeditor',
+		bindKey: {win: 'Ctrl--', mac: 'Command-Option--'},
+		exec: function(editor) {
+			DisminuirTamanoFuente();
+			},
+		readOnly: true
+	});
+
+
 
 //Genera una nueva sesion del editor ACE
 function ClonarSesionEditor(session)
