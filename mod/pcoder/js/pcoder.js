@@ -78,6 +78,44 @@ function PCO_OcultarMensajeCargandoSimple()
 		$('#PCO_Modal_MensajeCargandoSimple').modal('hide');
 		$('#PCO_Modal_MensajeCargandoSimple').hide();
 	}	
+	
+function PCOJS_ActualizarComboBox(ObjetoListaOpciones)
+    {
+		//Actualiza el listpicker y sus opciones identificado por el nombre del campo o id
+		var PCO_NombreCombo="#"+ObjetoListaOpciones;  // ALTERADA DESDE FUNCION ORIGINAL DE PRACTICO
+		$(PCO_NombreCombo).selectpicker("refresh");
+    }
+
+function PCOJS_LimpiarComboBox(ObjetoListaOpciones)
+    {
+		//Limpia una lista de seleccion determinada por su propiedad de ID
+        document.getElementById(ObjetoListaOpciones).options.length=0;
+        //Despues de limpiar un combo obliga a su actualizacion visual
+        PCOJS_ActualizarComboBox(ObjetoListaOpciones);
+    }
+
+function PCOJS_AgregarOpcionComboBox(ObjetoListaOpciones,ValorOpcion,EtiquetaOpcion)
+    {
+		//Determina el ID del objeto para realizar la operacion
+		var IDObjetoListaOpciones = document.getElementById(ObjetoListaOpciones);
+		//Agrega el elemento
+		var PCOEtiqueta_option = document.createElement("option");
+		PCOEtiqueta_option.value = ValorOpcion;
+		PCOEtiqueta_option.text = EtiquetaOpcion;
+		IDObjetoListaOpciones.add(PCOEtiqueta_option);
+    }
+
+function PCOJS_OpcionesCombo_DesdeCSV(ObjetoListaOpciones,Cadena,SeparadorLineas)
+    {
+		//Toma los valores contenidos en una cadena y los convierte en opciones de combo
+		var ContadorOpciones;
+		ArregloOpciones = Cadena.split(SeparadorLineas);
+        for (ContadorOpciones in ArregloOpciones) 
+			PCOJS_AgregarOpcionComboBox(ObjetoListaOpciones,ArregloOpciones[ContadorOpciones],ArregloOpciones[ContadorOpciones]);
+        //Obliga a una actualizacion de la lista despues de agregar todos los elementos
+        PCOJS_ActualizarComboBox(ObjetoListaOpciones);
+    }
+
 // FIN FUNCIONES RETOMADAS DE PRACTICO FRAMEWORK ####################################################################
 //###################################################################################################################
 
@@ -593,6 +631,8 @@ function PCODER_RecalcularPanelesExtensiones()
 
 		//Define tamanos del iframe para HERRAMIENTA DIFF
 		var AltoPanelIFramesDiff = AltoPanelIFrames - $("#panel_controles_diff").height();
+		//alert(AltoPanelIFrames);
+		//alert(AltoPanelIFramesDiff);
 		$('#frame_diferencias').css('height', AltoPanelIFramesDiff+'px');
 		$('#frame_diferencias').css('width', '100%');
 	}
@@ -805,6 +845,57 @@ function PCODER_BuscarArchivoAbierto(path_archivo)
 		return Encontrado;
 	}
 
+function PCODER_ActualizarListaArchivosDiff()
+	{
+		//Elimina posibles valores de las listas de seleccion
+		PCOJS_LimpiarComboBox("archivo_diff_1");
+		PCOJS_LimpiarComboBox("archivo_diff_2");
+		
+		//Carga las listas de seleccion desde la lista de archivos actuales
+		ListaArchivosAbiertosDiff="";
+		//Recorre arreglo de archivos y regenera las pestanas
+		for (i=1;i<IndiceAperturaArchivo;i++)
+			{
+				//Agrega el elemento simepre y cuando no sea vacio
+				if (ListaArchivos[i].NombreArchivo!="")
+					ListaArchivosAbiertosDiff=ListaArchivosAbiertosDiff + "|" + ListaArchivos[i].RutaDocumento;
+			}		
+		
+		//Asigna la lista de archivos a las listas de seleccion
+		PCOJS_OpcionesCombo_DesdeCSV("archivo_diff_1",ListaArchivosAbiertosDiff,"|");
+		PCOJS_OpcionesCombo_DesdeCSV("archivo_diff_2",ListaArchivosAbiertosDiff,"|");
+		
+		//Actualiza las listas de seleccion
+		PCOJS_ActualizarComboBox("archivo_diff_1");
+		PCOJS_ActualizarComboBox("archivo_diff_2");
+    }
+
+function PCODER_EjecutarDiff()
+	{
+		//Construye la URL de comparacion de archivos
+		Archivo1=document.getElementById("archivo_diff_1").value;
+		Archivo2=document.getElementById("archivo_diff_2").value;
+		EstiloCSSDiff=document.getElementById("formato_diff").value;
+		ModoVisualDiff=document.getElementById("modo_visual_diff").value;
+		URL_Diff="mod/php-diff-1.0/generador/index.php?ArchivoViejo="+Archivo1+"&ArchivoNuevo="+Archivo2+"&EstiloCSS="+EstiloCSSDiff+"&ModoVisual="+ModoVisualDiff;
+		
+		//Actualiza el IFrame con el comparador solo si se han seleccionado dos archivos
+		if (Archivo1!="" && Archivo2!="" && Archivo1!=Archivo2)
+			PCODER_CargarIframeURL("frame_diferencias", URL_Diff);
+    }
+
+function PCODER_CargarIframeURL(iframeName, url)
+	{
+		//url=url+'&output=embed';
+		var $iframe = $('#' + iframeName);
+		if ( $iframe.length )
+			{
+				$iframe.attr('src',url);
+				return false;
+			}
+		return true;
+	}
+
 function ActualizarPestanasArchivos()
 	{
 		var HayArchivosAbiertos=0;
@@ -834,6 +925,10 @@ function ActualizarPestanasArchivos()
 				//Actualiza el Tooltip asociado a la pestana agregada
 				RecargarToolTipsEnlaces();
 			}
+
+		//Actualiza listas de posibles archivos para herramienta diff
+		PCODER_ActualizarListaArchivosDiff();
+
 		//Si encuentra archivos abiertos actualiza el tamaño de la barra con pestanas de archivos, sino la pone en cero
 		if(HayArchivosAbiertos==1)
 			$('#contenedor_archivos').height( "auto" ).css({ });

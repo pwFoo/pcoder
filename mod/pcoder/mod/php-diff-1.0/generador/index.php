@@ -44,10 +44,13 @@
 	if ($TipoEntrada=="archivos")
 		{
 			//Carga los archivos a procesar
-			$ArchivoViejo=file_get_contents(dirname(__FILE__).'/demo_viejo.txt');
+			$ArchivoViejo=file_get_contents(dirname(__FILE__).'/demo_limpio.txt');
+			//$ArchivoViejo=file_get_contents(dirname(__FILE__).'/demo_viejo.txt');
 			if ($_GET["ArchivoViejo"]!="") $ArchivoViejo=file_get_contents($_GET["ArchivoViejo"]);
-			$ArchivoNuevo=file_get_contents(dirname(__FILE__).'/demo_nuevo.txt');
-			if ($_GET["ArchivoNuevo"]!="") $ArchivoNuevo==file_get_contents($_GET["ArchivoNuevo"]);
+
+			$ArchivoNuevo=file_get_contents(dirname(__FILE__).'/demo_limpio.txt');
+			//$ArchivoNuevo=file_get_contents(dirname(__FILE__).'/demo_nuevo.txt');
+			if ($_GET["ArchivoNuevo"]!="") $ArchivoNuevo=file_get_contents($_GET["ArchivoNuevo"]);
 		}
 	if ($TipoEntrada=="cadenas")
 		{
@@ -66,6 +69,9 @@
 		<link rel="stylesheet" href="estilo_<?php echo $EstiloCSS; ?>.css" type="text/css" charset="utf-8"/>
 	</head>
 	<body>
+		<script language="JavaScript">
+			//alert(document.location);		//DEPURACION: habilitar para revisar que la URL llega completa y bien
+		</script>
 		<?php
 			// Incluye la clase diff (php-diff-1.0)
 			require_once dirname(__FILE__).'/../lib/Diff.php';
