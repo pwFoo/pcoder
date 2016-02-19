@@ -295,8 +295,8 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 										&nbsp;&nbsp;&nbsp;&nbsp;
 										<?php echo $MULTILANG_PCODER_Formato; ?>: &nbsp;&nbsp;&nbsp;&nbsp;
 										<select                            name="formato_diff" id="formato_diff" size="1" class="selectpicker" data-style="btn-default btn-xs" OnChange="PCODER_EjecutarDiff();">
-											<option value="oscuro">Oscuro/Dark</option>
-											<option value="claro">Claro/Light</option>
+											<option value="oscuro">Oscuro / Dark</option>
+											<option value="claro">Claro / Light</option>
 										</select>
 										<?php echo $MULTILANG_PCODER_Tipo; ?>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<select                            name="modo_visual_diff" id="modo_visual_diff" size="1" class="selectpicker" data-style="btn-default btn-xs" OnChange="PCODER_EjecutarDiff();">

@@ -11,6 +11,10 @@
 * Added: Herramienta para comparación de diferencias entre archivos abiertos (Diff) con temas visuales y de salida
 * Added: Módulo genérico para visualizar diferencias (diff) entre archivos o cadenas
 * Fixed: Eventos de deshacer y rehacer son ahora capturados desde el editor y sus opciones ocultas
+* Enhan: La apertura de archivos y carpetas se hace ahora con doble clic.  Eso permite que sean seleccionados con un clic simple para aplicar operaciones de archivo sin necesidad de abrirlos previamente.
+* Enhan: Mejorados detalles de las vistas Diff
+* Enhan: Agregado acceso directo desde herramientas al visor de diferencias de archivos
+* Enhan: Mejorados enlaces en las pestañas de herramientas superiores.  Se deja sólo el icono para ahorrar espacio en futuras herramientas.
 
 
 ## Versión 16.3 (2016-02-07)

@@ -702,9 +702,16 @@ function DisminuirTamanoFuente()
 	}
 function ExplorarPath(DesdeOnChange)
 	{
+		//Si viene desde el OnChange del panel izquierdo asigna la ultima carpeta seleccionada como esta.
+		if (DesdeOnChange==1)
+			{
+				UltimaCarpetaSeleccionada=document.getElementById("path_exploracion_archivos").value;
+				UltimoArchivoSeleccionado='';
+			}
+		
 		//Inicializa el explorador de archivos (panel izquierdo)
 		$(document).ready( function() {
-			$('#marco_explorador').fileTree({ root: path_exploracion_archivos.value, script: '../../inc/jquery/plugins/jquery.fileTree-1.01/connectors/jqueryFileTree.php' }, function(archivo_seleccionado) {
+			$('#marco_explorador').fileTree({ root: path_exploracion_archivos.value, script: '../../inc/jquery/plugins/jquery.fileTree-1.01/connectors/jqueryFileTree.php', folderEvent: 'dblclick' }, function(archivo_seleccionado) {
 				PCODER_CargarArchivo(archivo_seleccionado);
 
 				//Simula clic sobre la pestana de archivos para pasar automaticamente a esta vista

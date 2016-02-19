@@ -147,8 +147,12 @@
 								<a style="cursor:pointer;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $MULTILANG_PCODER_Herramientas; ?> <span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a style="cursor:pointer;" OnClick="PCODER_ActivarPanelDerecho();"><i class="fa fa-paint-brush fa-fw"></i> <?php echo $MULTILANG_PCODER_ExploradorColores; ?></a></li>
+									<li><a style="cursor:pointer;" OnClick="$('#pestana_diferencias').trigger('click');"><i class="fa fa-eye-slash fa-fw"></i> <?php echo $MULTILANG_PCODER_HerramientaDiferencias; ?></a></li>
 								</ul>
 							</li>
+
+				
+
 
 							<!-- BOTONES INDEPENDIENTES -->
 							<li><a style="cursor:pointer;" OnClick="editor.execCommand('find');" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_Buscar; ?>"><i class="fa fa-search fa-fw text-danger "></i></a></li>
