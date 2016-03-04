@@ -230,6 +230,26 @@ function IntercambiarVisibilidadNumerosDeLinea()
 				EditorClonado.renderer.setShowGutter(true);
 			}
 	}
+function ActivarBuscadorArchivos()
+	{
+		//InterCambia la visibilidad del buscador
+		if (BuscadorArchivosVisible==1)
+			{
+				$("#contenedor_buscador_archivos").css("display", "none");
+				BuscadorArchivosVisible=0;
+			}
+		else
+			{
+				$("#contenedor_buscador_archivos").css("display", "block");
+				BuscadorArchivosVisible=1;
+			}
+	}
+function LanzarBusquedaArchivos()
+	{
+		//Llama al buscador de archivos con los parametros requeridos
+		ResultadoBuscador=PCO_ObtenerContenidoAjax(0,"mod/buscador/index.php","DirectorioExploracion="+UltimaCarpetaSeleccionada+"&PCODER_ElementoFS="+path_operacion_elemento+"/"+nombre_elemento);
+		$('#resultados_buscador_archivo').html(ResultadoBuscador);
+	}
 function ActualizarTituloEditor(titulo)
 	{
 		//Cambia el titulo presentado en la ventada del editor
@@ -1016,6 +1036,7 @@ var UltimaCarpetaSeleccionada=document.getElementById("path_exploracion_archivos
 var UltimoArchivoSeleccionado="";															//Utilizado en modificacion de conector JQueryFileTree para obtener archivo seleccionado
 AnchoPanelIzquierdo=0;
 AnchoPanelDerecho=0;
+BuscadorArchivosVisible=0;
 			
 //Evento que quita la barra de progreso de carga para el explorador cada que finaliza el cargue de su IFrame
 $('#iframe_marco_explorador').load(function(){

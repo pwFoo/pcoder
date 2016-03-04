@@ -30,9 +30,29 @@
 					<option value="<?php echo $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR; ?>">[<?php echo $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR; ?>] <?php echo $MULTILANG_PCODER_PathFull; ?></option>
 				</optgroup>
 			</select>
+			
+			<div id="contenedor_buscador_archivos" style="display: none;">
+				<br>
+					<div class="well well-sm">
+						<!-- FORMULARIO BUSCAR -->
+						<form onsubmit="LanzarBusquedaArchivos(); return false;">
+						<div class="input-group input-group-sm">
+							<span class="input-group-addon" id="sizing-addon3">
+								<i class="fa fa-search fa-fw"></i>
+							</span>
+							<input type="text" id="archivo_busqueda" name="archivo_busqueda" class="form-control input-mini btn-block btn-xs" placeholder="<?php echo $MULTILANG_PCODER_Nombre.' '.$MULTILANG_PCODER_Archivo; ?>">
+						</div>
+						</form>
+						<br>
+						<ul class="jqueryFileTree" id="resultados_buscador_archivo">
+						</ul>
+					</div>
+			</div>
+
 
 			<div id="marco_operaciones_archivos" class="row" style="margin-top:5px; margin-bottom:10px;">
 				<div class="col-md-12" align="center">
+					<button OnClick="ActivarBuscadorArchivos();" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_Buscar.' '.$MULTILANG_PCODER_Archivo; ?>"><i class="fa fa-search fa-fw"></i></button>
 					<button OnClick="OperacionFS_CrearArchivo();" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_CrearArchivo; ?>"><i class="fa fa-file fa-fw"></i></button>
 					<button OnClick="OperacionFS_CrearCarpeta();" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_CrearCarpeta; ?>"><i class="fa fa-folder fa-fw"></i></button>
 					<button OnClick="OperacionFS_EditarPermisos();" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_EditarPermisos; ?>"><i class="fa fa-lock fa-fw"></i></button>
