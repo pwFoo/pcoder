@@ -200,7 +200,7 @@ function IntercambiarEstadoCaracteresInvisibles()
 	}
 function VerificarSintaxisEditor()
 	{
-		//Cambia el la verificacion de sintaxis del editor
+		//Cambia la verificacion de sintaxis del editor
 		if (document.getElementById("Check_VerificarSintaxisEditor").value=="1")
 			{
 				editor.session.setOption("useWorker", false);
@@ -214,6 +214,26 @@ function VerificarSintaxisEditor()
 				EditorClonado.session.setOption("useWorker", true);
 				document.getElementById("Check_VerificarSintaxisEditor").value="1";
 				$('#Check_VerificarSintaxisEditor').prop('checked', true);
+			}
+	}
+function VerificarAutocompletado()
+	{
+		//Cambia el autocompletado del editor
+		if (document.getElementById("Check_VerificarAutocompletado").value=="1")
+			{
+				editor.setOptions({enableBasicAutocompletion: false, enableLiveAutocompletion: false});
+				EditorClonado.setOptions({enableBasicAutocompletion: false, enableLiveAutocompletion: false});
+				//EditorClonado.session.setOption("useWorker", false);
+				document.getElementById("Check_VerificarAutocompletado").value="0";
+				$('#Check_VerificarAutocompletado').prop('checked', false);
+			}
+		else
+			{
+				editor.setOptions({enableBasicAutocompletion: true, enableLiveAutocompletion: true});
+				EditorClonado.setOptions({enableBasicAutocompletion: true, enableLiveAutocompletion: true});
+				//EditorClonado.session.setOption("useWorker", true);
+				document.getElementById("Check_VerificarAutocompletado").value="1";
+				$('#Check_VerificarAutocompletado').prop('checked', true);
 			}
 	}
 function IntercambiarVisibilidadNumerosDeLinea()

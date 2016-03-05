@@ -34,7 +34,7 @@
 			<div id="contenedor_buscador_archivos" style="display: none;">
 					<div class=" well-sm">
 						<div align="center">
-							<button OnClick="ActivarBuscadorArchivos();" class="btn btn-warning btn-xs"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_Cerrar; ?>"><i class="fa fa-times fa-fw" ></i> <b><?php echo $MULTILANG_PCODER_Cerrar; ?></b>: <?php echo $MULTILANG_PCODER_Buscar; ?> <?php echo $MULTILANG_PCODER_Archivo; ?></button>
+							<button OnClick="BuscadorArchivosVisible=1; PCODER_DesactivarPanelIzquierdo(); ActivarBuscadorArchivos();" class="btn btn-warning btn-xs"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_Cerrar; ?>"><i class="fa fa-times fa-fw" ></i> <b><?php echo $MULTILANG_PCODER_Cerrar; ?></b>: <?php echo $MULTILANG_PCODER_Buscar; ?> <?php echo $MULTILANG_PCODER_Archivo; ?></button>
 						</div>
 						<!-- FORMULARIO BUSCAR -->
 						<form autocomplete="off" name="FormBuscadorArchivos" id="FormBuscadorArchivos" onsubmit="LanzarBusquedaArchivos(); return false;">

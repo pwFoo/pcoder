@@ -1,7 +1,6 @@
 PCODER - EDICION:
 =================
 	* Opciones de deshacer y rehacer operan en general sobre el ultimo archivo y no sobre los archivos de manera independiente.  Restringir temporalmente y crear funciones específicas por archivo.
-	* Poder desactivar el autocompletado y la verificación de sintaxis en caliente
 	* Advertencia al cerrar arcivo con cambios
 	* Administracion de usuarios
 	* Administracion de proyectos
@@ -13,7 +12,6 @@ PCODER - EDICION:
 	* Minimap: https://github.com/rocketinventor/ace-minimap
 		https://github.com/atom-minimap/minimap
 	* Conectores para diferentes lenguajes
-	* Comparar dos archivos. Diff sobre nuevo, nueva pagina?
 	* Eliminar el historial de Undo para evitar borrado del contenido inicial.  Ver http://stackoverflow.com/questions/26037443/ace-editor-load-new-content-dynamically-clear-old-content-with-new-one
 	* Revisar posibilidad de plugins: https://cloud9-sdk.readme.io/docs/creating-an-editor-plugin
 	* Dar un vistazo a Codio: http://blog.codio.com/multiple-panels-new-editor-git-custom-keybindings-preferences/

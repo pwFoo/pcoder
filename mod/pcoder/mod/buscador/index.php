@@ -80,7 +80,7 @@ function ExplorarDirectorio($DirectorioExploracion)
 										if ($CumplePatron==1)
 											{						
 												//OnDblClick=\"UltimoArchivoSeleccionado='"		  PCODER_CargarArchivo(path_operacion_elemento+"/"+nombre_elemento);				
-												print '<li class="file ext_'.$Extension.'"><a OnDblClick="PCODER_CargarArchivo(\''.$DirectorioExploracion.'/'.$file.'\');" data-toggle="tooltip" data-placement="right" title="PATH: '.$DirectorioExploracion.'/'.$file.'">'.$file.'</a></li>';
+												print '<li class="file ext_'.$Extension.'"><a OnDblClick="PCODER_CargarArchivo(\''.$DirectorioExploracion.'/'.$file.'\');" data-toggle="tooltip" data-placement="right" title="PATH: '.$DirectorioExploracion.'/">'.$file.'</a></li>';
 												$TotalEncontrados++;
 											}
 										//Llamado recursivo a la funcion para revisar subcarpetas
