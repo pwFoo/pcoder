@@ -9,6 +9,7 @@
 
 ## Versión 16.4 (2016-XX-XX)
 * Added: Herramienta para comparación de diferencias entre archivos abiertos (Diff) con temas visuales y de salida
+* Added: Buscador de archivos remotos
 * Added: Módulo genérico para visualizar diferencias (diff) entre archivos o cadenas
 * Fixed: Eventos de deshacer y rehacer son ahora capturados desde el editor y sus opciones ocultas
 * Enhan: La apertura de archivos y carpetas se hace ahora con doble clic.  Eso permite que sean seleccionados con un clic simple para aplicar operaciones de archivo sin necesidad de abrirlos previamente.
