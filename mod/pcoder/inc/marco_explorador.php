@@ -44,8 +44,8 @@
 						</div>
 						</form>
 						<br>
-						<ul class="jqueryFileTree" id="resultados_buscador_archivo">
-						</ul>
+						<div  id="resultados_buscador_archivo" class="buscador_archivos jqueryFileTree"></div>
+						<div  id="resumen_buscador_archivo"></div>
 					</div>
 			</div>
 

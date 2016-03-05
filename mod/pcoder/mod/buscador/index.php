@@ -96,4 +96,10 @@ $TotalEncontrados=0;
 //Hace el llamado inicial de exploracion
 ExplorarDirectorio($DirectorioExploracion,$PatronBusqueda);
 
-echo "<font size=1><i>Resultados de \"<b>$PatronBusqueda</b>\" sobre <b>$DirectorioExploracion</b><br>Total: ".$TotalEncontrados."</i></font>";
+//Actualiza el marco con resumen de resultados
+$CadenaResumen="<font size=1><i>Resultados de \"<b>$PatronBusqueda</b>\" sobre <b>$DirectorioExploracion</b><br>Total: ".$TotalEncontrados."</i></font>";
+echo "
+<script language='JavaScript'>
+$('#resumen_buscador_archivo').html('$CadenaResumen');
+</script>";
+
