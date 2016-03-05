@@ -250,8 +250,18 @@ function ActivarBuscadorArchivos()
 	}
 function LanzarBusquedaArchivos()
 	{
+		//Verifica que se tenga un Path para buscar, en caso que la ultima selecciona haya sido sobre un archivo asigna el path del combo
+		if (UltimaCarpetaSeleccionada=="")
+			UltimaCarpetaSeleccionada=document.getElementById("path_exploracion_archivos").value;
+
+		//Determina estado del check
+		if ($('#SensibleMayuscula').is(":checked"))
+			SensibleMayuscula=1;
+		else
+			SensibleMayuscula=0;
+
 		//Llama al buscador de archivos con los parametros requeridos
-		ResultadoBuscador=PCO_ObtenerContenidoAjax(0,"mod/buscador/index.php","DirectorioExploracion="+UltimaCarpetaSeleccionada+"&PatronBusqueda="+document.FormBuscadorArchivos.archivo_busqueda.value);
+		ResultadoBuscador=PCO_ObtenerContenidoAjax(0,"mod/buscador/index.php","DirectorioExploracion="+UltimaCarpetaSeleccionada+"&PatronBusqueda="+document.FormBuscadorArchivos.archivo_busqueda.value+"&SensibleMayuscula="+SensibleMayuscula);
 		//$('#resultados_buscador_archivo').html("<ul>"+ResultadoBuscador+"</ul>");
 		$('#resultados_buscador_archivo').html(ResultadoBuscador);
 	}

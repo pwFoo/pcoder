@@ -50,9 +50,9 @@
 /* ################################################################## */
 
 
-function ExplorarDirectorio($DirectorioExploracion,$PatronBusqueda)
+function ExplorarDirectorio($DirectorioExploracion)
 	{
-		global $TotalEncontrados;
+		global $TotalEncontrados,$SensibleMayuscula,$PatronBusqueda;
 		if (is_dir($DirectorioExploracion)) 
 			{
 				if ($dh = opendir($DirectorioExploracion)) 
@@ -63,7 +63,12 @@ function ExplorarDirectorio($DirectorioExploracion,$PatronBusqueda)
 									{
 										//Determina la extension del archivo
 										$Extension = preg_replace('/^.*\./', '', $file);
-										$Posicion = stripos($file,$PatronBusqueda);  							//Cambiar para coincidir mayusculas y minusculas
+										
+										//Si se desea sensible a mayuscula selecciona la funcion correcta strpos / stripos
+										if ($SensibleMayuscula==1)
+											$Posicion = strpos($file,$PatronBusqueda);
+										else
+											$Posicion = stripos($file,$PatronBusqueda);
 				
 										//Determina si el archivo cumple o no con el patron de busqueda
 										if($Posicion===false)
@@ -75,11 +80,11 @@ function ExplorarDirectorio($DirectorioExploracion,$PatronBusqueda)
 										if ($CumplePatron==1)
 											{						
 												//OnDblClick=\"UltimoArchivoSeleccionado='"		  PCODER_CargarArchivo(path_operacion_elemento+"/"+nombre_elemento);				
-												print '<li class="file ext_'.$Extension.'"><a OnDblClick="PCODER_CargarArchivo(\''.$DirectorioExploracion.$file.'\');" data-toggle="tooltip" data-placement="right" title="PATH: '.$DirectorioExploracion.$file.'">'.$file.'</a></li>';
+												print '<li class="file ext_'.$Extension.'"><a OnDblClick="PCODER_CargarArchivo(\''.$DirectorioExploracion.'/'.$file.'\');" data-toggle="tooltip" data-placement="right" title="PATH: '.$DirectorioExploracion.'/'.$file.'">'.$file.'</a></li>';
 												$TotalEncontrados++;
 											}
 										//Llamado recursivo a la funcion para revisar subcarpetas
-										ExplorarDirectorio($DirectorioExploracion .  "/" . $file,$PatronBusqueda);
+										ExplorarDirectorio($DirectorioExploracion .  "/" . $file);
 									}
 							}
 						closedir($dh);
@@ -87,15 +92,17 @@ function ExplorarDirectorio($DirectorioExploracion,$PatronBusqueda)
 			}
 	}
 
+$SensibleMayuscula=$_REQUEST["SensibleMayuscula"];
 $PatronBusqueda=$_REQUEST["PatronBusqueda"];
 $DirectorioExploracion=$_REQUEST["DirectorioExploracion"];
-if ($PatronBusqueda=="")	$PatronBusqueda="__ALGO_PARA_BUSCAR__";
+if ($PatronBusqueda=="" || strlen($PatronBusqueda)<3)	$PatronBusqueda="__PATRON_NO_VALIDO__";
 if ($DirectorioExploracion=="")	$DirectorioExploracion=".";
 
 $TotalEncontrados=0;
 
 //Hace el llamado inicial de exploracion
-ExplorarDirectorio($DirectorioExploracion,$PatronBusqueda);
+if($PatronBusqueda!="__PATRON_NO_VALIDO__")
+	ExplorarDirectorio($DirectorioExploracion);
 
 //Actualiza el marco con resumen de resultados
 $CadenaResumen="<font color=white size=1><i>Resultados de \"<b>$PatronBusqueda</b>\" sobre <b>$DirectorioExploracion</b><br>Total: ".$TotalEncontrados." ".$MULTILANG_PCODER_Archivo."(s)</i></font>";

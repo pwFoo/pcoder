@@ -34,21 +34,23 @@
 			<div id="contenedor_buscador_archivos" style="display: none;">
 					<div class=" well-sm">
 						<div align="center">
-							<button OnClick="ActivarBuscadorArchivos();" class="btn btn-danger btn-xs"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_Cerrar; ?>"><i class="fa fa-times fa-fw" ></i> <b><?php echo $MULTILANG_PCODER_Cerrar; ?></b>: <?php echo $MULTILANG_PCODER_Buscar; ?> <?php echo $MULTILANG_PCODER_Archivo; ?></button>
+							<button OnClick="ActivarBuscadorArchivos();" class="btn btn-warning btn-xs"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_Cerrar; ?>"><i class="fa fa-times fa-fw" ></i> <b><?php echo $MULTILANG_PCODER_Cerrar; ?></b>: <?php echo $MULTILANG_PCODER_Buscar; ?> <?php echo $MULTILANG_PCODER_Archivo; ?></button>
 						</div>
-						<br>
 						<!-- FORMULARIO BUSCAR -->
-						<form name="FormBuscadorArchivos" id="FormBuscadorArchivos" onsubmit="LanzarBusquedaArchivos(); return false;">
+						<form autocomplete="off" name="FormBuscadorArchivos" id="FormBuscadorArchivos" onsubmit="LanzarBusquedaArchivos(); return false;">
+						<div class="checkbox">
+						  <label style="color:#FFFFFF; font-size:11px;"><input name="SensibleMayuscula" id="SensibleMayuscula" type="checkbox"><?php echo $MULTILANG_PCODER_SensibleMayusculas; ?></label>
+						</div>
 						<div class="input-group input-group-sm">
 							<span class="input-group-addon" id="sizing-addon3">
 								<i class="fa fa-search fa-fw"></i>
 							</span>
-							<input type="text" id="archivo_busqueda" name="archivo_busqueda" class="form-control input-mini btn-block btn-xs" placeholder="<?php echo $MULTILANG_PCODER_Nombre.' '.$MULTILANG_PCODER_Archivo; ?>">
+							<input type="text" id="archivo_busqueda" name="archivo_busqueda" class="form-control input-mini btn-block btn-xs" placeholder="<?php echo $MULTILANG_PCODER_Nombre.' '.$MULTILANG_PCODER_Archivo; ?> (min 3 char)">
 						</div>
+
 						</form>
-						<br>
-						<ul  id="resultados_buscador_archivo" class=" jqueryFileTree buscador_archivos"></ul>
 						<div id="resumen_buscador_archivo"></div>
+						<ul  id="resultados_buscador_archivo" class=" jqueryFileTree buscador_archivos"></ul>
 					</div>
 			</div>
 
