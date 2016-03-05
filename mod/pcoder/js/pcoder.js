@@ -236,11 +236,15 @@ function ActivarBuscadorArchivos()
 		if (BuscadorArchivosVisible==1)
 			{
 				$("#contenedor_buscador_archivos").css("display", "none");
+				$("#marco_explorador").show();
+				$("#marco_operaciones_archivos").show();
 				BuscadorArchivosVisible=0;
 			}
 		else
 			{
 				$("#contenedor_buscador_archivos").css("display", "block");
+				$("#marco_explorador").hide();
+				$("#marco_operaciones_archivos").hide();
 				BuscadorArchivosVisible=1;
 			}
 	}

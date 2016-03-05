@@ -32,8 +32,11 @@
 			</select>
 			
 			<div id="contenedor_buscador_archivos" style="display: none;">
-				<br>
-					<div class="well well-sm">
+					<div class=" well-sm">
+						<div align="center">
+							<button OnClick="ActivarBuscadorArchivos();" class="btn btn-danger btn-xs"  data-toggle="tooltip" data-placement="bottom" title="<?php echo $MULTILANG_PCODER_Cerrar; ?>"><i class="fa fa-times fa-fw" ></i> <b><?php echo $MULTILANG_PCODER_Cerrar; ?></b>: <?php echo $MULTILANG_PCODER_Buscar; ?> <?php echo $MULTILANG_PCODER_Archivo; ?></button>
+						</div>
+						<br>
 						<!-- FORMULARIO BUSCAR -->
 						<form name="FormBuscadorArchivos" id="FormBuscadorArchivos" onsubmit="LanzarBusquedaArchivos(); return false;">
 						<div class="input-group input-group-sm">
@@ -44,8 +47,8 @@
 						</div>
 						</form>
 						<br>
-						<div  id="resultados_buscador_archivo" class="buscador_archivos jqueryFileTree"></div>
-						<div  id="resumen_buscador_archivo"></div>
+						<ul  id="resultados_buscador_archivo" class=" jqueryFileTree buscador_archivos"></ul>
+						<div id="resumen_buscador_archivo"></div>
 					</div>
 			</div>
 

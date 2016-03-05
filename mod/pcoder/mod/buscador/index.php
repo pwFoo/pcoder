@@ -63,7 +63,7 @@ function ExplorarDirectorio($DirectorioExploracion,$PatronBusqueda)
 									{
 										//Determina la extension del archivo
 										$Extension = preg_replace('/^.*\./', '', $file);
-										$Posicion = stripos($file,$PatronBusqueda);
+										$Posicion = stripos($file,$PatronBusqueda);  							//Cambiar para coincidir mayusculas y minusculas
 				
 										//Determina si el archivo cumple o no con el patron de busqueda
 										if($Posicion===false)
@@ -73,8 +73,9 @@ function ExplorarDirectorio($DirectorioExploracion,$PatronBusqueda)
 																				
 										//Muestra el elemento si cumple con el patron de busqueda
 										if ($CumplePatron==1)
-											{
-												print '<li class="file ext_'.$Extension.'"><a title="'.$DirectorioExploracion.'">'.$file.'</a></li>';
+											{						
+												//OnDblClick=\"UltimoArchivoSeleccionado='"		  PCODER_CargarArchivo(path_operacion_elemento+"/"+nombre_elemento);				
+												print '<li class="file ext_'.$Extension.'"><a OnDblClick="PCODER_CargarArchivo(\''.$DirectorioExploracion.$file.'\');" data-toggle="tooltip" data-placement="right" title="PATH: '.$DirectorioExploracion.$file.'">'.$file.'</a></li>';
 												$TotalEncontrados++;
 											}
 										//Llamado recursivo a la funcion para revisar subcarpetas
@@ -97,9 +98,11 @@ $TotalEncontrados=0;
 ExplorarDirectorio($DirectorioExploracion,$PatronBusqueda);
 
 //Actualiza el marco con resumen de resultados
-$CadenaResumen="<font size=1><i>Resultados de \"<b>$PatronBusqueda</b>\" sobre <b>$DirectorioExploracion</b><br>Total: ".$TotalEncontrados."</i></font>";
+$CadenaResumen="<font color=white size=1><i>Resultados de \"<b>$PatronBusqueda</b>\" sobre <b>$DirectorioExploracion</b><br>Total: ".$TotalEncontrados." ".$MULTILANG_PCODER_Archivo."(s)</i></font>";
+$CadenaResumen="<font color=white size=2><i><b>Total:</b> ".$TotalEncontrados." ".$MULTILANG_PCODER_Archivo."(s)</i></font>";
 echo "
 <script language='JavaScript'>
 $('#resumen_buscador_archivo').html('$CadenaResumen');
+RecargarToolTipsEnlaces();
 </script>";
 
