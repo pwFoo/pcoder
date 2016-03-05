@@ -50,8 +50,9 @@
 /* ################################################################## */
 
 
-function ExplorarDirectorio($DirectorioExploracion)
+function ExplorarDirectorio($DirectorioExploracion,$PatronBusqueda)
 	{
+		global $TotalEncontrados;
 		if (is_dir($DirectorioExploracion)) 
 			{
 				if ($dh = opendir($DirectorioExploracion)) 
@@ -62,12 +63,22 @@ function ExplorarDirectorio($DirectorioExploracion)
 									{
 										//Determina la extension del archivo
 										$Extension = preg_replace('/^.*\./', '', $file);
-										
-										//Imprime el archivo o directorio
-										//print "<br>'{$DirectorioExploracion}/{$file}',\\n"; 
-										echo '<li class="file ext_'.$Extension.'"><a>'.$file.'</a></li>';
+										$Posicion = stripos($file,$PatronBusqueda);
+				
+										//Determina si el archivo cumple o no con el patron de busqueda
+										if($Posicion===false)
+											$CumplePatron=0;
+										else
+											$CumplePatron=1;
+																				
+										//Muestra el elemento si cumple con el patron de busqueda
+										if ($CumplePatron==1)
+											{
+												print '<li class="file ext_'.$Extension.'"><a title="'.$DirectorioExploracion.'">'.$file.'</a></li>';
+												$TotalEncontrados++;
+											}
 										//Llamado recursivo a la funcion para revisar subcarpetas
-										ExplorarDirectorio($DirectorioExploracion .  "/" . $file);
+										ExplorarDirectorio($DirectorioExploracion .  "/" . $file,$PatronBusqueda);
 									}
 							}
 						closedir($dh);
@@ -75,9 +86,14 @@ function ExplorarDirectorio($DirectorioExploracion)
 			}
 	}
 
+$PatronBusqueda=$_REQUEST["PatronBusqueda"];
 $DirectorioExploracion=$_REQUEST["DirectorioExploracion"];
+if ($PatronBusqueda=="")	$PatronBusqueda="__ALGO_PARA_BUSCAR__";
 if ($DirectorioExploracion=="")	$DirectorioExploracion=".";
 
-//Hace el llamado inicial de exploracion
-ExplorarDirectorio($DirectorioExploracion);
+$TotalEncontrados=0;
 
+//Hace el llamado inicial de exploracion
+ExplorarDirectorio($DirectorioExploracion,$PatronBusqueda);
+
+echo "<font size=1><i>Resultados de \"<b>$PatronBusqueda</b>\" sobre <b>$DirectorioExploracion</b><br>Total: ".$TotalEncontrados."</i></font>";

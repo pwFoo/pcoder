@@ -35,7 +35,7 @@
 				<br>
 					<div class="well well-sm">
 						<!-- FORMULARIO BUSCAR -->
-						<form onsubmit="LanzarBusquedaArchivos(); return false;">
+						<form name="FormBuscadorArchivos" id="FormBuscadorArchivos" onsubmit="LanzarBusquedaArchivos(); return false;">
 						<div class="input-group input-group-sm">
 							<span class="input-group-addon" id="sizing-addon3">
 								<i class="fa fa-search fa-fw"></i>

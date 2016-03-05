@@ -247,7 +247,7 @@ function ActivarBuscadorArchivos()
 function LanzarBusquedaArchivos()
 	{
 		//Llama al buscador de archivos con los parametros requeridos
-		ResultadoBuscador=PCO_ObtenerContenidoAjax(0,"mod/buscador/index.php","DirectorioExploracion="+UltimaCarpetaSeleccionada+"&PCODER_ElementoFS="+path_operacion_elemento+"/"+nombre_elemento);
+		ResultadoBuscador=PCO_ObtenerContenidoAjax(0,"mod/buscador/index.php","DirectorioExploracion="+UltimaCarpetaSeleccionada+"&PatronBusqueda="+document.FormBuscadorArchivos.archivo_busqueda.value);
 		$('#resultados_buscador_archivo').html(ResultadoBuscador);
 	}
 function ActualizarTituloEditor(titulo)
