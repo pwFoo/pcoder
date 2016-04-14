@@ -7,11 +7,13 @@
             |___/ 
 ```
 
-## Versión 16.4 (2016-XX-XX)
+
+## Versión 16.4 (2016-04-17)
 * Added: Herramienta para comparación de diferencias entre archivos abiertos (Diff) con temas visuales y de salida
 * Added: Buscador de archivos remotos
 * Added: Módulo genérico para visualizar diferencias (diff) entre archivos o cadenas
 * Added: Ahora se permite activar o desactivar el autocompletado de código en caliente mientras se escribe
+* Added: Actualización Font-Awesome 4.6.1
 * Fixed: Eventos de deshacer y rehacer son ahora capturados desde el editor y sus opciones ocultas
 * Enhan: La apertura de archivos y carpetas se hace ahora con doble clic.  Eso permite que sean seleccionados con un clic simple para aplicar operaciones de archivo sin necesidad de abrirlos previamente.
 * Enhan: Mejorados detalles de las vistas Diff
