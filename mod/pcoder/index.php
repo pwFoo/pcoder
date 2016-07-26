@@ -40,8 +40,8 @@
         }
 
 	//Si esta como modulo de practico intenta incluir sus configuraciones
-	if ($PCO_PCODER_StandAlone==0)
-		include_once("../../core/configuracion.php");
+	//if ($PCO_PCODER_StandAlone==0)
+	//	include_once("../../core/configuracion.php");
 
     //Incluye archivo inicial de configuracion
 	include_once("inc/configuracion.php");
@@ -73,12 +73,6 @@
     include("idiomas/".$IdiomaPredeterminado.".php");
     // FIN BLOQUE BASICO DE INCLUSION ##################################
 
-	//Genera la conexion inicial del sistema para preferencias en standalone
-	if ($PCO_PCODER_StandAlone==1)
-		{
-			$ConexionPDO=PCO_NuevaConexionBD($MotorBD,$PuertoBD,$BaseDatos,$ServidorBD,$UsuarioBD,$PasswordBD);
-			include("inc/instalacion.php");
-		}
 
     // Establece la zona horaria por defecto para la aplicacion
     date_default_timezone_set($ZonaHoraria);
