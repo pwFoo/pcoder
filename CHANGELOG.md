@@ -10,6 +10,7 @@
 * Added: Actualizada la versión de fotn-awesome a 4.7.0
 * Added: Agregadas 8 extensiones extra para formatos de script SQL
 * Added: Actualizada la versión de ACE Editor de 1.2.2 a 1.2.6
+* Added: Se devuelve la funcionalidad del editor para Deshacer.  Tener presente que actúa sobre el marco general, no sobre cada archivo separado.
 
 
 ## Versión 16.4 (2016-04-17)
