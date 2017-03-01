@@ -6,6 +6,10 @@
 |_____\___/ \__, |  \__,_|\___|  \___\__,_|_| |_| |_|_.__/|_|\___/|___/
             |___/ 
 ```
+## Versión 17.3 (2017-03-01)
+* Added: Actualizada la versión de fotn-awesome a 4.7.0
+* Added: Agregadas 8 extensiones extra para formatos de script SQL
+* Added: Actualizada la versión de ACE Editor de 1.2.2 a 1.2.6
 
 
 ## Versión 16.4 (2016-04-17)
