@@ -44,3 +44,5 @@
     #chown -R apache *
     #chown -R http *
     #chown -R root *
+
+chmod -R 777 mod/pcoder/*

@@ -39,12 +39,12 @@
             error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_DEPRECATED | E_STRICT | E_USER_DEPRECATED | E_USER_ERROR | E_USER_WARNING); //Otras disponibles | E_PARSE | E_CORE_ERROR | E_CORE_WARNING |
         }
 
-	//Si esta como modulo de practico intenta incluir sus configuraciones
-	//if ($PCO_PCODER_StandAlone==0)
-	//	include_once("../../core/configuracion.php");
-
     //Incluye archivo inicial de configuracion
 	include_once("inc/configuracion.php");
+
+	//Si esta como modulo de practico intenta incluir sus configuraciones
+	if ($PCO_PCODER_StandAlone==0)
+		include_once("../../core/configuracion.php");
 
 	// Determina si no se trabaja en modo StandAlone y verifica entonces credenciales
 	if ($PCO_PCODER_StandAlone==0)
@@ -56,7 +56,27 @@
 					die();
 				}
 		}
-
+		
+	// Determina si es un usuario administrador para poder abrir el editor
+	if ($PCO_PCODER_StandAlone==0)
+		{
+			$ArregloAdmins=explode(",",$PCOVAR_Administradores);
+			//Recorre el arreglo de super-usuarios
+			$Resultado = 0;
+			if ($PCOSESS_LoginUsuario!="")
+				foreach ($ArregloAdmins as $UsuarioAdmin)
+					{
+						if (trim($UsuarioAdmin)==$PCOSESS_LoginUsuario)
+							$Resultado = 1;
+					}
+			//Anula el acceso
+			if ($Resultado == 0)
+				{
+					echo '<head><title>Error</title><style type="text/css"> body { background-color: #000000; color: #7f7f7f; font-family: sans-serif,helvetica; } </style></head><body><table width="100%" height="100%" border=0><tr><td align=center>&#9827; Acceso no autorizado !</td></tr></table></body>';
+					die();
+				}
+		}
+		
 	//Crea variable se sesion usada por la consola de comandos
 	$_SESSION['PCONSOLE_KEY']="23456789abcdefghijkmnpqrstuvwxyz";
 	$_SESSION['PEXPLORER_KEY']="23456789abcdefghijkmnpqrstuvwxyz";
@@ -150,14 +170,14 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
     <meta name="author" content="John Arroyave G. - {www.practico.org} - {unix4you2 at gmail.com}">
 
     <!-- CSS Core de Bootstrap -->
-    <link href="../../inc/bootstrap/css/bootstrap.min.css" rel="stylesheet"  media="screen">
+    <link href="../../inc/bootstrap/css/tema_bootstrap.min.css" rel="stylesheet"  media="screen">
     <link href="../../inc/bootstrap/css/bootstrap-theme.css" rel="stylesheet"  media="screen">
 
     <!-- Custom Fonts -->
     <link href="../../inc/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 	<!-- Estilos especificos PCoder -->
-    <link href="css/pcoder.min.css" rel="stylesheet" type="text/css">
+    <link href="css/pcoder.min.css?<?php echo filemtime('css/pcoder.min.css'); ?>" rel="stylesheet" type="text/css">
     
     <!-- Estilos selector de color -->
     <link rel="stylesheet" href="../../inc/jquery/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
@@ -355,7 +375,7 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		var MULTILANG_PCODER_Eliminado="<?php echo $MULTILANG_PCODER_Eliminado; ?>";
 		var MULTILANG_PCODER_ExtensionNoSoportada="<?php echo $MULTILANG_PCODER_ExtensionNoSoportada; ?>";
 	</script>
-	<script type="text/javascript" src="js/pcoder.min.js"></script>
+	<script type="text/javascript" src="js/pcoder.min.js?<?php echo filemtime('js/pcoder.min.js'); ?>"></script>
 
 	<script language="JavaScript">
 		function RecargarToolTipsEnlaces()
@@ -407,4 +427,3 @@ $('#pestana_consola_comandos').trigger('click');
 	} // Fin $PCO_Accion=="PCOMOD_CargarPcoder"
 
 } //Fin permisos modulo
-

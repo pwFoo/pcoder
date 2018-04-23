@@ -6,6 +6,14 @@
 |_____\___/ \__, |  \__,_|\___|  \___\__,_|_| |_| |_|_.__/|_|\___/|___/
             |___/ 
 ```
+## Versión 18.4 (2018-04-22)
+* Added: Actualizada la versión de ACE Editor de 1.2.6 a 1.3.3
+* Added: Agregados administradores de Deshacer/Rehacer independientes por cada archivo cargado.
+* Added: Agregadas opciones sobre el menú Edición para eventos de Deshacer y Rehacer
+* Added: Agregada herramienta básica de minimap para la navegación rápida del código sobre su vista miniatura.  Por defecto deshabilitada por rendimiento en archivos grandes.
+* Fixed: Eventos de deshacer y rehacer ahora no toman cambios globales de todos los archivos
+
+
 ## Versión 17.3 (2017-03-01)
 * Added: Actualizada la versión de fotn-awesome a 4.7.0
 * Added: Agregadas 8 extensiones extra para formatos de script SQL
