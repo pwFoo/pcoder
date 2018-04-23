@@ -11,6 +11,9 @@
 * Added: Agregados administradores de Deshacer/Rehacer independientes por cada archivo cargado.
 * Added: Agregadas opciones sobre el menú Edición para eventos de Deshacer y Rehacer
 * Added: Agregada herramienta básica de minimap para la navegación rápida del código sobre su vista miniatura.  Por defecto deshabilitada por rendimiento en archivos grandes.
+* Added: Agregado atajo de teclado sobre el editor Ctrl+M para el Minimap (o panel derecho).
+* Added: Agregados algunos atajos adicionales sobre la barra de menus.
+* Enhan: Generalizados saltos de linea a modo Windows (Salto+Retorno) para evitar terminaciones indeseadas en archivos de shell scripting.
 * Fixed: Eventos de deshacer y rehacer ahora no toman cambios globales de todos los archivos
 
 
