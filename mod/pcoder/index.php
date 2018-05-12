@@ -1,5 +1,5 @@
 <?php
-	/*
+/*
 	   PCODER (Editor de Codigo en la Nube)
 	   Copyright (C) 2013  John F. Arroyave Gutiérrez
 						   unix4you2@gmail.com
@@ -17,7 +17,7 @@
 
 	 You should have received a copy of the GNU General Public License
 	 along with this program.  If not, see <http://www.gnu.org/licenses/>
-	*/
+*/
 
     // BLOQUE BASICO DE INCLUSION ######################################
     // Inicio de la sesion
@@ -35,16 +35,16 @@
 	$ModoDepuracion=0;
     if ($ModoDepuracion==1)
         {
-            ini_set("display_errors", 1);
+            ini_set('display_errors', 1);
             error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_DEPRECATED | E_STRICT | E_USER_DEPRECATED | E_USER_ERROR | E_USER_WARNING); //Otras disponibles | E_PARSE | E_CORE_ERROR | E_CORE_WARNING |
         }
 
     //Incluye archivo inicial de configuracion
-	include_once("inc/configuracion.php");
+	include_once 'inc/configuracion.php';
 
 	//Si esta como modulo de practico intenta incluir sus configuraciones
 	if ($PCO_PCODER_StandAlone==0)
-		include_once("../../core/configuracion.php");
+		include_once '../../core/configuracion.php';
 
 	// Determina si no se trabaja en modo StandAlone y verifica entonces credenciales
 	if ($PCO_PCODER_StandAlone==0)
@@ -60,7 +60,7 @@
 	// Determina si es un usuario administrador para poder abrir el editor
 	if ($PCO_PCODER_StandAlone==0)
 		{
-			$ArregloAdmins=explode(",",$PCOVAR_Administradores);
+			$ArregloAdmins=explode(',',$PCOVAR_Administradores);
 			//Recorre el arreglo de super-usuarios
 			$Resultado = 0;
 			if ($PCOSESS_LoginUsuario!="")
@@ -89,8 +89,8 @@
 
 
     //Incluye idioma espanol, o sobreescribe vbles por configuracion de usuario
-    include("idiomas/es.php");
-    include("idiomas/".$IdiomaPredeterminado.".php");
+    include 'idiomas/es.php';
+    include 'idiomas/'.$IdiomaPredeterminado.'.php';
     // FIN BLOQUE BASICO DE INCLUSION ##################################
 
 
@@ -98,14 +98,14 @@
     date_default_timezone_set($ZonaHoraria);
 
     // Datos de fecha, hora y direccion IP para algunas operaciones
-    $PCO_PCODER_FechaOperacion=date("Ymd");
-    $PCO_PCODER_FechaOperacionGuiones=date("Y-m-d");
-    $PCO_PCODER_HoraOperacion=date("His");
-    $PCO_PCODER_HoraOperacionPuntos=date("H:i");
-    $PCO_PCODER_DireccionAuditoria=$_SERVER ['REMOTE_ADDR'];
+    $PCO_PCODER_FechaOperacion=date('Ymd');
+    $PCO_PCODER_FechaOperacionGuiones=date('Y-m-d');
+    $PCO_PCODER_HoraOperacion=date('His');
+    $PCO_PCODER_HoraOperacionPuntos=date('H:i');
+    $PCO_PCODER_DireccionAuditoria=$_SERVER['REMOTE_ADDR'];
 
 	// Establece version actual del sistema
-	$PCO_PCODER_VersionActual = file("inc/version_actual.txt");
+	$PCO_PCODER_VersionActual = file('inc/version_actual.txt');
 	$PCO_PCODER_VersionActual = trim($PCO_PCODER_VersionActual[0]);
 	
 	// Si no hay una accion definida entonces inicia con la predeterminada
@@ -135,7 +135,7 @@ if (@$PCOSESS_LoginUsuario="admin" || $PCO_PCODER_StandAlone==1)
         $PCODER_archivo = "demos/demo.txt";
 
     //Incluye archivo con funciones basicas de PCoder
-	include_once("inc/lib_pcoder.php");
+	include_once 'inc/lib_pcoder.php';
 
 
 
@@ -243,101 +243,99 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 
-	<?php include_once ("inc/marco_operarfs.php");	?>
+	<?php include_once 'inc/marco_operarfs.php'; ?>
 
 	<!-- ################# INICIO DE LA MAQUETACION ################ -->
-		<?php include_once ("inc/panel_superior.php"); 	?>
-		<DIV class="row">
-			<?php include_once ("inc/panel_izquierdo.php");	?>
-			<div class="col-md-8" style="margin:0px;" id="panel_central">
-				
-				<?php include_once ("inc/panel_centralsuperior.php");	?>
+	<?php include_once 'inc/panel_superior.php'; ?>
+	<div class="row">
+		<?php include_once 'inc/panel_izquierdo.php'; ?>
+		<div class="col-md-8" style="margin:0px;" id="panel_central">
+			
+			<?php include_once 'inc/panel_centralsuperior.php'; ?>
+			<div id="panel_central_medio">
 
-				<div id="panel_central_medio">
-
-					<div class="tab-content">
-						<div id="pestana_superior_editores" class="tab-pane fade in active">
-								<!-- ################## PESTANAS DE ARCHIVOS ################### -->
-								<div class="row">
-									<div id="contenedor_archivos" class="col-md-12" style="height:0px">
-										<nav class="nav-xs">
-											<ul id="lista_contenedor_archivos" name="lista_contenedor_archivos" class="nav nav-pills nav-xs">
-											</ul>
-										</nav>
-									</div>
-								</div>
-
-								<!-- ############### MARCO MENSAJES SUPERIORES ################# -->
-								<div class="row">
-									<div id="contenedor_mensajes_superior" class="col-md-12">
-									</div>
-								</div>
-
-								<!-- ############### MARCO BARRA DE EDICION ################# -->
-								<div class="row">
-									<div id="contenedor_barra_edicion" class="col-md-12">
-									</div>
-								</div>
-
-								<!-- ############### EDITORES ################# -->
-								<div class="row" style="margin:0px;">
-									<div id="panel_editor_real" style="float:left">
-										<div id="editor_codigo" style="display:block;  width:100%; height:100vh;" width="100%" height="100vh"></div>
-									</div>
-									<div id="panel_editor_clonado" style="float:right">
-										<div id="editor_clonado" style="display:block;  width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
-									</div>
-								</div>
-						</div>
-
-						<div id="pestana_consola_comandos" class="tab-pane fade">
-							<iframe name="frame_terminal" id="frame_terminal" src="mod/consola" style="border:0px;"></iframe>
-						</div>
-
-						<div id="pestana_explorador_web" class="tab-pane fade">
-							<iframe name="frame_explorador" id="frame_explorador" src="mod/explorador" style="border:0px;"></iframe>
-						</div>
-
-						<div id="pestana_diferencias_archivos" class="tab-pane fade">
-							<div class="row">
-								<div class="col-md-12">
-									<div id="panel_controles_diff" align="left" style="color:#FFFFFF; margin-top:7px; margin-bottom:5px;">
-										&nbsp;&nbsp;&nbsp;&nbsp;
-										<b><?php echo $MULTILANG_PCODER_Archivo; ?> #1: </b>
-										<select style="margin-right:50px;" name="archivo_diff_1" id="archivo_diff_1" size="1" class="selectpicker" data-style="btn-success btn-xs" OnChange="PCODER_EjecutarDiff();">
-										</select>
-										<b><?php echo $MULTILANG_PCODER_Archivo; ?> #2: </b>
-										<select                            name="archivo_diff_2" id="archivo_diff_2" size="1" class="selectpicker" data-style="btn-warning btn-xs" OnChange="PCODER_EjecutarDiff();">
-										</select>
-										<br>
-										&nbsp;&nbsp;&nbsp;&nbsp;
-										<?php echo $MULTILANG_PCODER_Formato; ?>: &nbsp;&nbsp;&nbsp;&nbsp;
-										<select                            name="formato_diff" id="formato_diff" size="1" class="selectpicker" data-style="btn-default btn-xs" OnChange="PCODER_EjecutarDiff();">
-											<option value="oscuro">Oscuro / Dark</option>
-											<option value="claro">Claro / Light</option>
-										</select>
-										<?php echo $MULTILANG_PCODER_Tipo; ?>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<select                            name="modo_visual_diff" id="modo_visual_diff" size="1" class="selectpicker" data-style="btn-default btn-xs" OnChange="PCODER_EjecutarDiff();">
-											<option value="ladoalado">Lado a Lado / Side by Side</option>
-											<option value="enlinea">Entre lineas / In line</option>
-											<option value="unificado">Unificado / Unified</option>
-											<option value="encontexto">En contexto / By context</option>
-										</select>
-									</div>
-								</div>	
+				<div class="tab-content">
+					<div id="pestana_superior_editores" class="tab-pane fade in active">
+						<!-- ################## PESTANAS DE ARCHIVOS ################### -->
+						<div class="row">
+							<div id="contenedor_archivos" class="col-md-12" style="height:0px">
+								<nav class="nav-xs">
+									<ul id="lista_contenedor_archivos" name="lista_contenedor_archivos" class="nav nav-pills nav-xs">
+									</ul>
+								</nav>
 							</div>
-							<iframe name="frame_diferencias" id="frame_diferencias" src="mod/php-diff-1.0/generador" style="border:0px;"></iframe>
 						</div>
-						
+
+						<!-- ############### MARCO MENSAJES SUPERIORES ################# -->
+						<div class="row">
+							<div id="contenedor_mensajes_superior" class="col-md-12">
+							</div>
+						</div>
+
+						<!-- ############### MARCO BARRA DE EDICION ################# -->
+						<div class="row">
+							<div id="contenedor_barra_edicion" class="col-md-12">
+							</div>
+						</div>
+
+						<!-- ############### EDITORES ################# -->
+						<div class="row" style="margin:0px;">
+							<div id="panel_editor_real" style="float:left">
+								<div id="editor_codigo" style="display:block;  width:100%; height:100vh;" width="100%" height="100vh"></div>
+							</div>
+							<div id="panel_editor_clonado" style="float:right">
+								<div id="editor_clonado" style="display:block;  width:100%; height:100vh; border-style: solid; border-width:1px; border-color:#373737;" width="100%" height="100vh"></div>
+							</div>
+						</div>
+					</div>
+
+					<div id="pestana_consola_comandos" class="tab-pane fade">
+						<iframe name="frame_terminal" id="frame_terminal" src="mod/consola" style="border:0px;"></iframe>
+					</div>
+
+					<div id="pestana_explorador_web" class="tab-pane fade">
+						<iframe name="frame_explorador" id="frame_explorador" src="mod/explorador" style="border:0px;"></iframe>
+					</div>
+
+					<div id="pestana_diferencias_archivos" class="tab-pane fade">
+						<div class="row">
+							<div class="col-md-12">
+								<div id="panel_controles_diff" align="left" style="color:#FFFFFF; margin-top:7px; margin-bottom:5px;">
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									<b><?php echo $MULTILANG_PCODER_Archivo; ?> #1: </b>
+									<select style="margin-right:50px;" name="archivo_diff_1" id="archivo_diff_1" size="1" class="selectpicker" data-style="btn-success btn-xs" OnChange="PCODER_EjecutarDiff();">
+									</select>
+									<b><?php echo $MULTILANG_PCODER_Archivo; ?> #2: </b>
+									<select                            name="archivo_diff_2" id="archivo_diff_2" size="1" class="selectpicker" data-style="btn-warning btn-xs" OnChange="PCODER_EjecutarDiff();">
+									</select>
+									<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									<?php echo $MULTILANG_PCODER_Formato; ?>: &nbsp;&nbsp;&nbsp;&nbsp;
+									<select                            name="formato_diff" id="formato_diff" size="1" class="selectpicker" data-style="btn-default btn-xs" OnChange="PCODER_EjecutarDiff();">
+										<option value="oscuro">Oscuro / Dark</option>
+										<option value="claro">Claro / Light</option>
+									</select>
+									<?php echo $MULTILANG_PCODER_Tipo; ?>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<select                            name="modo_visual_diff" id="modo_visual_diff" size="1" class="selectpicker" data-style="btn-default btn-xs" OnChange="PCODER_EjecutarDiff();">
+										<option value="ladoalado">Lado a Lado / Side by Side</option>
+										<option value="enlinea">Entre lineas / In line</option>
+										<option value="unificado">Unificado / Unified</option>
+										<option value="encontexto">En contexto / By context</option>
+									</select>
+								</div>
+							</div>	
+						</div>
+						<iframe name="frame_diferencias" id="frame_diferencias" src="mod/php-diff-1.0/generador" style="border:0px;"></iframe>
 					</div>
 				</div>
-
-				<?php include_once ("inc/panel_centralinferior.php");	?>
-
 			</div>
-			<?php include_once ("inc/panel_derecho.php"); ?>
-		</DIV>
-		<?php include_once ("inc/panel_inferior.php"); ?>
+
+			<?php include_once 'inc/panel_centralinferior.php'; ?>
+
+		</div>
+		<?php include_once 'inc/panel_derecho.php'; ?>
+	</div>
+	<?php include_once 'inc/panel_inferior.php'; ?>
 	<!-- ################## FIN DE LA MAQUETACION ################## -->
 
 
@@ -394,33 +392,30 @@ if ($PCO_Accion=="PCOMOD_CargarPcoder")
 		  $('[data-toggle="popover"]').popover()
 		});
 	</script>
-<script language="JavaScript">
-    function activaTab(tab){
-        $('.nav-tabs a[href="#' + tab + '"]').tab('show');
-    };
-function ActivarPestanaConsola(){
-	//$('#pestana_consola_comandos').show();
-//$('.nav-tabs a[href="#pestana_consola_comandos"]').tab('show');
-//$('.nav-tabs a:last').tab('show') 
-//activaTab('pestana_consola_comandos');
-//$(thisss).tab('show');
+	<script language="JavaScript">
+		function activaTab(tab){
+			$('.nav-tabs a[href="#' + tab + '"]').tab('show');
+		};
+	//function ActivarPestanaConsola(){
+		//$('#pestana_consola_comandos').show();
+	//$('.nav-tabs a[href="#pestana_consola_comandos"]').tab('show');
+	//$('.nav-tabs a:last').tab('show') 
+	//activaTab('pestana_consola_comandos');
+	//$(thisss).tab('show');
 
-//$('#pestana_consola_comandos').trigger('click');
-//$("#item_pestana_consola").click();
+	//$('#pestana_consola_comandos').trigger('click');
+	//$("#item_pestana_consola").click();
 
-/*
-$('#pestana_consola_comandos').trigger('click');
-    $("#pestana_consola_comandos a").click(function(e){
-        e.preventDefault();
-        alert();
-        $(this).tab('show');
-    });
-*/
-}
-
-
-
-</script>
+	/*
+	$('#pestana_consola_comandos').trigger('click');
+		$("#pestana_consola_comandos a").click(function(e){
+			e.preventDefault();
+			alert();
+			$(this).tab('show');
+		});
+	*/
+	//}
+	</script>
 </body>
 </html>
 <?php
