@@ -1,5 +1,5 @@
 <?php
-	/*
+/*
 	   PCODER (Editor de Codigo en la Nube)
 	   Sistema de Edicion de Codigo basado en PHP
 	   Copyright (C) 2013  John F. Arroyave Gutiérrez
@@ -18,7 +18,7 @@
 
 	 You should have received a copy of the GNU General Public License
 	 along with this program.  If not, see <http://www.gnu.org/licenses/>
-	*/
+*/
 
 
 /* ################################################################## */
@@ -34,67 +34,67 @@
 	Salida:
 		Cero (0) o uno (1) segun la pertenencia o no del usuario al grupo de admins
 */
-	function PCO_EsAdministrador($Usuario)
-		{
-			global $PCOVAR_Administradores;
-			$ArregloAdmins=explode(",",$PCOVAR_Administradores);
+function PCO_EsAdministrador($Usuario)
+	{
+		global $PCOVAR_Administradores;
+		$ArregloAdmins=explode(',',$PCOVAR_Administradores);
 
-			//Recorre el arreglo de super-usuarios
-			$Resultado = 0;
-			if ($Usuario!="")
-				foreach ($ArregloAdmins as $UsuarioAdmin)
-					{
-						if (trim($UsuarioAdmin)==$Usuario)
-							$Resultado = 1;
-					}
-			return $Resultado;
-		}
-
-
-/* ################################################################## */
-/* ################################################################## */
-    function abrir_dialogo_modal($identificador,$titulo="",$estilo_modal="")
-        {
-            /*
-            Procedure: abrir_modal
-            Crea un dialogo modal que puede ser activado luego por un anchor <a>
-
-            Variables de entrada:
-
-            titulo - Nombre de la ventana a visualizar en la parte superior.
-            tipo_panel - Recibe el tipo de panel bootstrap a crear: 
-
-            * panel-primary,panel-success,panel-info,panel-warning,panel-danger
-            * col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-
-            * Otros asociados a clases de bootstrap
-            
-            Ver tambien:
-            <cerrar_modal>
-            */
-            echo '
-                <div class="modal fade '.$estilo_modal.'" id="'.$identificador.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                <h4 class="modal-title" id="myModalLabel">'.$titulo.'</h4>
-                            </div>
-                            <div class="modal-body mdl-primary">';
-        }
-
+		//Recorre el arreglo de super-usuarios
+		$Resultado = 0;
+		if ($Usuario!="")
+			foreach ($ArregloAdmins as $UsuarioAdmin)
+				{
+					if (trim($UsuarioAdmin)==$Usuario)
+						$Resultado = 1;
+				}
+		return $Resultado;
+	}
 
 
 /* ################################################################## */
 /* ################################################################## */
-	function cerrar_dialogo_modal($contenido_piepagina)
-	  {
-		/*
-			Function: cerrar_modal
-			Cierra los espacios de trabajo por <abrir_modal>	
+/*
+	Procedure: abrir_modal
+	Crea un dialogo modal que puede ser activado luego por un anchor <a>
 
-			Ver tambien:
-			<abrir_modal>	
-		*/
+	Variables de entrada:
+
+	titulo - Nombre de la ventana a visualizar en la parte superior.
+	tipo_panel - Recibe el tipo de panel bootstrap a crear: 
+
+	* panel-primary,panel-success,panel-info,panel-warning,panel-danger
+	* col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-
+	* Otros asociados a clases de bootstrap
+	
+	Ver tambien:
+	<cerrar_modal>
+*/
+function abrir_dialogo_modal($identificador,$titulo="",$estilo_modal="")
+	{
+		echo '
+			<div class="modal fade '.$estilo_modal.'" id="'.$identificador.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4 class="modal-title" id="myModalLabel">'.$titulo.'</h4>
+						</div>
+						<div class="modal-body mdl-primary">';
+	}
+
+
+
+/* ################################################################## */
+/* ################################################################## */
+/*
+	Function: cerrar_modal
+	Cierra los espacios de trabajo por <abrir_modal>	
+
+	Ver tambien:
+	<abrir_modal>	
+*/
+function cerrar_dialogo_modal($contenido_piepagina)
+	{
         echo '
                             </div>
                             <div class="modal-footer">
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                 </div>';
-	  }
+	}
 
 
 
@@ -121,15 +121,15 @@
         ancho - Ancho del espacio de trabajo definido en pixels o porcentaje sobre el contenedor principal.
         estilo - Especifica el punto donde sera publicado el mensaje para definir la hoja de estilos correspondiente.
 */
-	function mensaje($titulo,$texto,$DEPRECATED_ancho="",$icono,$estilo)
-	  {
+function mensaje($titulo,$texto,$DEPRECATED_ancho="",$icono,$estilo)
+	{
         global $MULTILANG_PCODER_Cerrar;
         echo '<div class="'.$estilo.'" role="alert">
                 <i class="'.$icono.' pull-left"></i>
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">'.$MULTILANG_PCODER_Cerrar.'</span></button>
                 <strong>'.$titulo.'</strong><br>'.$texto.'
             </div>';
-	  }
+	}
 
 
 
