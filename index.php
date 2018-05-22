@@ -20,5 +20,5 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
-	header("Location: mod/pcoder");
+	header('Location: mod/pcoder');
 	die();
