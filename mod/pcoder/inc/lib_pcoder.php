@@ -1,5 +1,5 @@
 <?php
-	/*
+/*
 	   PCODER (Editor de Codigo en la Nube)
 	   Sistema de Edicion de Codigo basado en PHP
 	   Copyright (C) 2013  John F. Arroyave Gutiérrez
@@ -18,7 +18,7 @@
 
 	 You should have received a copy of the GNU General Public License
 	 along with this program.  If not, see <http://www.gnu.org/licenses/>
-	*/
+*/
 
 
 /* ################################################################## */
@@ -34,10 +34,8 @@ if ($PCO_Accion=="PCODER_EliminarElemento")
 	{
 		$ResultadoOperacion="0";
 		//Realiza operacion segun el tipo de elemento
-		if($PCODER_TipoElementoFS=="archivo")
-			$Eliminacion=unlink($PCODER_ElementoFS);
-		if($PCODER_TipoElementoFS=="carpeta")
-			$Eliminacion=rmdir($PCODER_ElementoFS);
+		if($PCODER_TipoElementoFS=="archivo") $Eliminacion=unlink($PCODER_ElementoFS);
+		if($PCODER_TipoElementoFS=="carpeta") $Eliminacion=rmdir($PCODER_ElementoFS);
 		//Determina valor a devolver
 		if ($Eliminacion)
 			$ResultadoOperacion="1";
@@ -71,22 +69,13 @@ if ($PCO_Accion=="PCODER_EditarPermisos")
 		$CambioPropietario=chown($PCODER_ElementoFS, $PCODER_PropietarioFS );
 		
 		if ($CambioPermisos && $CambioPropietario)
-			{
-				$ResultadoOperacion="1";
-			}
+			$ResultadoOperacion="1";
+		elseif (!$CambioPermisos && !$CambioPropietario)
+			$ResultadoOperacion="-1";
 		else
 			{
-				if (!$CambioPermisos && !$CambioPropietario)
-					{
-						$ResultadoOperacion="-1";
-					}
-				else
-					{
-						if (!$CambioPermisos)
-							$ResultadoOperacion="-2";
-						if (!$CambioPropietario)
-							$ResultadoOperacion="-3";
-					}
+				if (!$CambioPermisos)    $ResultadoOperacion="-2";
+				if (!$CambioPropietario) $ResultadoOperacion="-3";
 			}
 		@ob_clean();
         echo $ResultadoOperacion;
@@ -168,9 +157,9 @@ if ($PCO_Accion=="PCODER_CrearArchivo")
 if ($PCO_Accion=="PCOMOD_GuardarArchivo") 
 	{
         //Guarda el archivo
-        $ContenidoArchivo=$_POST["PCODER_AreaTexto"];
-        $ContenidoArchivo = preg_replace('~\r\n?~', "\n", $ContenidoArchivo); //Normaliza los saltos de linea dentro del archivo
-        $PCODER_Respuesta = file_put_contents($PCODER_archivo, $ContenidoArchivo) or die("No se puede abrir el archivo para escritura");
+        $ContenidoArchivo=$_POST['PCODER_AreaTexto'];
+        $ContenidoArchivo = preg_replace('~\r\n?~', '\n', $ContenidoArchivo); //Normaliza los saltos de linea dentro del archivo
+        $PCODER_Respuesta = file_put_contents($PCODER_archivo, $ContenidoArchivo) or die('No se puede abrir el archivo para escritura');
         //Vuelve a cargar el archivo para continuar con su edicion
         auditar("Modifica archivo $PCODER_archivo");
         //Continua presentando todo el editor solo si se pide el echo
@@ -183,6 +172,7 @@ if ($PCO_Accion=="PCOMOD_GuardarArchivo")
                     <input type="Hidden" name="PCODER_TokenEdicion" value="'.$PCODER_TokenEdicion.'">
                     <input type="Hidden" name="Presentar_FullScreen" value="'.@$Presentar_FullScreen.'">
                     <input type="Hidden" name="Precarga_EstilosBS" value="'.@$Precarga_EstilosBS.'">
+                </form>
                 <script type="" language="JavaScript"> document.continuar_edicion.submit();  </script>
                 </body>';
 	}
@@ -274,7 +264,7 @@ if ($PCO_Accion=="PCOMOD_ObtenerTamanoDocumento")
 */
 if ($PCO_Accion=="PCOMOD_ObtenerFechaElemento") 
 	{
-        $PCODER_FechaElemento=@date("d F Y H:i:s", @filemtime($PCODER_archivo));
+        $PCODER_FechaElemento=@date('d F Y H:i:s', @filemtime($PCODER_archivo));
 		@ob_clean();
         echo $PCODER_FechaElemento;
         die();
@@ -290,7 +280,7 @@ if ($PCO_Accion=="PCOMOD_ObtenerFechaElemento")
 if ($PCO_Accion=="PCOMOD_ObtenerTokenEdicion") 
 	{
 		//Obtiene algunos valores del archivo necesarios para el token
-		$PCODER_FechaElemento=@date("d F Y H:i:s", @filemtime($PCODER_archivo));
+		$PCODER_FechaElemento=@date('d F Y H:i:s', @filemtime($PCODER_archivo));
 		$PCODER_TamanoElemento=@round(filesize($PCODER_archivo)/1024);
         $PCODERcontenido_original_archivo=@file_get_contents($PCODER_archivo);
         
@@ -313,7 +303,7 @@ if ($PCO_Accion=="PCOMOD_ObtenerModoEditor")
         global $PCODER_Modos;
         
         //Obtiene la extension del archivo
-        $PCODER_partes_extension = explode(".",$PCODER_archivo);
+        $PCODER_partes_extension = explode('.',$PCODER_archivo);
         $PCODER_extension = $PCODER_partes_extension[count($PCODER_partes_extension)-1];
 
         //Identifica el tipo de documento a ser aplicado segun la extension del archivo
@@ -321,11 +311,9 @@ if ($PCO_Accion=="PCOMOD_ObtenerModoEditor")
         for ($i=0;$i<count($PCODER_Modos) && $PCODER_ModoEditor=='';$i++)
             {
 				//Lleva las extensiones a un array para buscar en el
-				$ArregloExtensiones=explode("|",$PCODER_Modos[$i]["Extensiones"]);
+				$ArregloExtensiones=explode('|',$PCODER_Modos[$i]['Extensiones']);
                 if(in_array($PCODER_extension,$ArregloExtensiones))
-					{
-						$PCODER_ModoEditor=$PCODER_Modos[$i]["Nombre"];
-					}
+					$PCODER_ModoEditor=$PCODER_Modos[$i]['Nombre'];
             }
 		//Valida que no se trate de un archivo sin extension despues de revisar todo
 		if($PCODER_ModoEditor=="")

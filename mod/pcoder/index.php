@@ -82,10 +82,10 @@
 	$_SESSION['PEXPLORER_KEY']="23456789abcdefghijkmnpqrstuvwxyz";
 
     //Incluye librerias basicas de trabajo
-    @require('inc/variables.php');
-    @require('inc/comunes.php');
-    @require('inc/comunes_bd.php');
-    @require('inc/conexiones.php');
+    @require 'inc/variables.php';
+    @require 'inc/comunes.php';
+    @require 'inc/comunes_bd.php';
+    @require 'inc/conexiones.php';
 
 
     //Incluye idioma espanol, o sobreescribe vbles por configuracion de usuario

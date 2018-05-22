@@ -1,5 +1,5 @@
 <?php
-	/*
+/*
 	   PCODER (Editor de Codigo en la Nube)
 	   Sistema de Edicion de Codigo basado en PHP
 	   Copyright (C) 2013  John F. Arroyave Gutiérrez
@@ -18,7 +18,7 @@
 
 	 You should have received a copy of the GNU General Public License
 	 along with this program.  If not, see <http://www.gnu.org/licenses/>
-	*/
+*/
 
     // PANEL IZQUIERDO DEL EDITOR
 ?>
@@ -30,7 +30,7 @@
 		
 		<?php
 			//Presenta el explorador de archivos del lado del servidor
-			include_once ("inc/marco_explorador.php");
+			include_once 'inc/marco_explorador.php';
 		?>
 
 

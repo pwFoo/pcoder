@@ -1,5 +1,5 @@
 <?php
-	/*
+/*
 	   PCODER (Editor de Codigo en la Nube)
 	   Sistema de Edicion de Codigo basado en PHP
 	   Copyright (C) 2013  John F. Arroyave Gutiérrez
@@ -18,17 +18,17 @@
 
 	 You should have received a copy of the GNU General Public License
 	 along with this program.  If not, see <http://www.gnu.org/licenses/>
-	*/
+*/
 
-	/*
-		Title: Idioma espanol para modulo de PCoder
-		Ubicacion *[idioma/es.php]*.  Incluye la definicion de variables utilizadas para presentar mensajes en el idioma correspondiente
-		NOTAS IMPORTANTES:
-			* Por cuestiones de rendimiento se recomienda la definicion usando comillas simples.
-			* Usar las dobles solo cuando se requieran variables o caracteres especiales.
-			* Se pueden definir cadenas en funcion de otras definidas con anterioridad
-			* Se puede hacer uso de notacion HTML dentro de las cadenas para dar formato
-	*/
+/*
+	Title: Idioma espanol para modulo de PCoder
+	Ubicacion *[idioma/es.php]*.  Incluye la definicion de variables utilizadas para presentar mensajes en el idioma correspondiente
+	NOTAS IMPORTANTES:
+		* Por cuestiones de rendimiento se recomienda la definicion usando comillas simples.
+		* Usar las dobles solo cuando se requieran variables o caracteres especiales.
+		* Se pueden definir cadenas en funcion de otras definidas con anterioridad
+		* Se puede hacer uso de notacion HTML dentro de las cadenas para dar formato
+*/
 
 	// Cadena que describe el archivo de idioma para su escogencia
 	$MULTILANG_PCODER_DescripcionIdioma='Espanol - Spanish';
@@ -153,7 +153,7 @@
 	$MULTILANG_PCODER_NrosLinea='Ver/Ocultar Numeros de linea, plegado y chequeo de sintaxis';
 	$MULTILANG_PCODER_CheqSintaxis='Chequeo de sintaxis';
 	$MULTILANG_PCODER_LenguajeResaltado='Lenguaje de resaltado';
-	$MULTILANG_PCODER_ExtensionNoSoportada='La extensión del archivo que intenta abrir no se encuentra soprotada.  Si lo desea puede agregarla a la lista de extensiones soportadas en caso que aun quiera editarla mediante PCoder.';
+	$MULTILANG_PCODER_ExtensionNoSoportada='La extensión del archivo que intenta abrir no se encuentra soportada.  Si lo desea puede agregarla a la lista de extensiones soportadas en caso que aun quiera editarla mediante PCoder.';
 	$MULTILANG_PCODER_HerramientaDiferencias='Visor de diferencias';
 	$MULTILANG_PCODER_SensibleMayusculas='Distinguir May&uacute;sculas / Min&uacute;sculas';
 	$MULTILANG_PCODER_Autocompletado='Autocompletado mientras se escribe';
