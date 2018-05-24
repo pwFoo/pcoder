@@ -158,7 +158,7 @@ if ($PCO_Accion=="PCOMOD_GuardarArchivo")
 	{
         //Guarda el archivo
         $ContenidoArchivo=$_POST['PCODER_AreaTexto'];
-        $ContenidoArchivo = preg_replace('~\r\n?~', '\n', $ContenidoArchivo); //Normaliza los saltos de linea dentro del archivo
+        $ContenidoArchivo = preg_replace('~\r\n?~', "\n", $ContenidoArchivo); //Normaliza los saltos de linea dentro del archivo
         $PCODER_Respuesta = file_put_contents($PCODER_archivo, $ContenidoArchivo) or die('No se puede abrir el archivo para escritura');
         //Vuelve a cargar el archivo para continuar con su edicion
         auditar("Modifica archivo $PCODER_archivo");
